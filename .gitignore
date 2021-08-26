@@ -20,12 +20,12 @@ node_modules
 .next
 /build
 /dist
-/www/build
+/build
 
 # Generated files
 .docusaurus
 .cache-loader
-www/providers.json
+providers.json
 /internals
 /providers
 /types/providers/*
