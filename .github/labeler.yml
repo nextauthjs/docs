@@ -1,0 +1,8 @@
+src:
+  - src/**/*
+
+docs:
+  - docs/**/*
+  - versioned_docs/**/*
+  - versioned_sidebars/**/*
+
