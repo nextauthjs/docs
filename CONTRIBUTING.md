@@ -25,17 +25,3 @@ The local environment can be setup by doing the following.
 2. Install dependencies `$ cd docs && npm install`
 3. Start development server `$ npm start`
 
-## For maintainers
-
-### Recommended Scopes
-
-A typical conventional commit looks like this:
-
-```
-type(scope): title
-
-body
-```
-
-Scope is the part that will help grouping the various commit types in the release notes.
-
