@@ -67,8 +67,8 @@ Version 4 makes using the `SessionProvider` mandatory. This means that you will 
 
 - `Provider` is renamed to `SessionProvider`
 - The options prop is now flattened as the props of SessionProvider.
-- `clientMaxAge` has been renamed to `staleTime`.
 - `keepAlive` has been renamed to `refetchInterval`.
+- `clientMaxAge` has been removed as it's implicit by setting `refetchInterval`.
 
 The best practice for wrapping your app in Providers is to do so in your `pages/_app.jsx` file.
 

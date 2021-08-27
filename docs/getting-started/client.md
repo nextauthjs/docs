@@ -396,8 +396,6 @@ export default function App({
   return (
     <SessionProvider
       session={session}
-      // Re-fetch session if cache is older than 60 seconds
-      staleTime={60}
       // Re-fetch session every 5 minutes
       refetchInterval={5 * 60}
     >
@@ -412,20 +410,8 @@ export default function App({
 
 Every tab/window maintains its own copy of the local session state; the session is not stored in shared storage like localStorage or sessionStorage. Any update in one tab/window triggers a message to other tabs/windows to update their own session state.
 
-Using low values for `staleTime` or `refetchInterval` will increase network traffic and load on authenticated clients and may impact hosting costs and performance.
+Using low values for `refetchInterval` will increase network traffic and load on authenticated clients and may impact hosting costs and performance.
 :::
-
-#### Stale time
-
-The `staleTime` option is the maximum age a session data can be on the client before it is considered stale.
-
-When `staleTime` is set to `0` (the default) the cache will always be used when `useSession` is called and only explicit calls made to get the session status (i.e. `getSession()`) or event triggers, such as signing in or out in another tab/window, or a tab/window gaining or losing focus, will trigger an update of the session state.
-
-If set to any value other than zero, it specifies in seconds the maximum age of session data on the client before the `useSession()` hook will call the server again to sync the session state.
-
-Unless you have a short session expiry time (e.g. < 24 hours) you probably don't need to change this option. Setting this option to too short a value will increase load (and potentially hosting costs).
-
-The value for `staleTime` should always be lower than the value of the session `maxAge` [session option](/configuration/options#session).
 
 #### Refetch interval
 
