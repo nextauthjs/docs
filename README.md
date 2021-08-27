@@ -28,11 +28,33 @@
 
 ## Overview
 
-This is the documentation repository for NextAuth.js!
+This is the repository for the documentation page for NextAuth.js!
 
 NextAuth.js is a complete open source authentication solution for [Next.js](http://nextjs.org/) applications.
 
-It is designed from the ground up to support Next.js and Serverless.
+This documentation site is based on the [Docusaurus](https://docusaurus.io) framework.
+
+## Getting Started
+
+To start a local environment of this project, please do the following.
+
+1. Clone the repository.
+
+```bash
+$ git clone https://github.com/nextauthjs/docs.git
+```
+2. Install dependencies
+
+```bash
+$ cd docs && npm install
+```
+3. Start the development server
+
+```bash
+$ npm start
+```
+
+And thats all! Now you should have a local copy of this docs site running at [localhost:3000](http://localhost:3000)!
 
 ## Contributing
 
