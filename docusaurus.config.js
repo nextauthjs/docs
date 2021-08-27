@@ -153,6 +153,10 @@ module.exports = {
           lastVersion: "current",
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
+          remarkPlugins: [
+            require("remark-mermaid-dataurl"), 
+            require("remark-github")
+          ],
           versions: {
             current: {
               label: "v4",
