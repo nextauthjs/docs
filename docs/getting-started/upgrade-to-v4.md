@@ -9,7 +9,7 @@ NextAuth.js version 4 included a few breaking changes from the last major versio
 
 You can find the official Adapters in the [nextauthjs/adapter](https://github.com/nextauthjs/adapters) repository. Although you can still [create your own](/tutorials/creating-a-database-adapter) with a new, [simplified Adapter API](https://github.com/nextauthjs/next-auth/pull/2361).
 
-1.1. If you use the built-in TypeORM or Prisma adapters, these have been removed from the core `next-auth` package to not balloon the package size for users who do not need a database. Thankfully the migration is super easy; you just need to install the external packages for your database and change the import in your `[...nextauth].js`. 
+1.1. If you use the built-in TypeORM or Prisma adapters, these have been removed from the core `next-auth` package to not balloon the package size for users who do not need a database. Thankfully the migration is super easy; you just need to install the external packages for your database and change the import in your `[...nextauth].js`.
 
 The `database` option is gone, you can do the following instead:
 
@@ -68,14 +68,14 @@ Version 4 makes using the `SessionProvider` mandatory. This means that you will 
 - `Provider` is renamed to `SessionProvider`
 - The options prop is now flattened as the props of SessionProvider.
 - `keepAlive` has been renamed to `refetchInterval`.
-- `clientMaxAge` has been removed as it's implicit by setting `refetchInterval`.
+- `clientMaxAge` has been removed in favor of `refetchInterval`, as they overlap in functionality, with the difference that `refetchInterval` will keep re-fetching the session periodically in the background.
 
 The best practice for wrapping your app in Providers is to do so in your `pages/_app.jsx` file.
 
 An example use-case with these new changes:
 
 ```jsx
-import { SessionProvider } from "next-auth/react"
+import { SessionProvider } from "next-auth/react";
 
 export default function App({
   Component,
@@ -87,7 +87,7 @@ export default function App({
     <SessionProvider session={session}>
       <Component {...pageProps} />
     </SessionProvider>
-  )
+  );
 }
 ```
 
