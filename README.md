@@ -46,7 +46,7 @@ $ git clone https://github.com/nextauthjs/docs.git
 2. Install dependencies
 
 ```bash
-$ cd docs && npm install
+$ npm install
 ```
 3. Start the development server
 
