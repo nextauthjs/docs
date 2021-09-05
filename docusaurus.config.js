@@ -67,7 +67,7 @@ module.exports = {
     announcementBar: {
       id: "new-major-announcement",
       content:
-        "You are looking at the recently released new major version. 🎉 If you need the old (v3) documentation, check it out  <a href='/v3/getting-started/introduction'>here</a>.",
+        "You are looking at the v4 documentation (currently in beta). 🎉 If you need the old (v3) documentation, check it out <a href='/v3/getting-started/introduction'>here</a>.",
       backgroundColor: "#1786fb",
       textColor: "#fff",
       isCloseable: true,
