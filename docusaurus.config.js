@@ -64,13 +64,14 @@ module.exports = {
         },
       ],
     },
-    // announcementBar: {
-    //   id: 'release-candiate-announcement',
-    //   content: 'NextAuth.js now has automatic 🤖 releases 🎉! Check out the <a href="https://next-auth-git-canary.nextauthjs.vercel.app">Canary documentation 📚</a>',
-    //   backgroundColor: '#2DB2F9',
-    //   textColor: '#fff'
-    //   isCloseable: true,
-    // },
+    announcementBar: {
+      id: "new-major-announcement",
+      content:
+        "You are looking at the recently released new major version. 🎉 If you need the old (v3) documentation, check it out  <a href='/v3/getting-started/introduction'>here</a>.",
+      backgroundColor: "#1786fb",
+      textColor: "#fff",
+      isCloseable: true,
+    },
     footer: {
       links: [
         {
@@ -154,8 +155,8 @@ module.exports = {
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
           remarkPlugins: [
-            require("remark-mermaid-dataurl"), 
-            require("remark-github")
+            require("remark-mermaid-dataurl"),
+            require("remark-github"),
           ],
           versions: {
             current: {
