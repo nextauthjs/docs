@@ -19,7 +19,7 @@ Below is a sample implementation using Google's Identity Provider. Please note t
 
 ```js title="pages/auth/[...nextauth.js]"
 import NextAuth from "next-auth"
-import Providers from "next-auth/providers"
+import GoogleProvider from "next-auth/providers/google"
 
 const GOOGLE_AUTHORIZATION_URL =
   "https://accounts.google.com/o/oauth2/v2/auth?" +
@@ -76,7 +76,7 @@ async function refreshAccessToken(token) {
 
 export default NextAuth({
   providers: [
-    Providers.Google({
+    GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       authorizationUrl: GOOGLE_AUTHORIZATION_URL,

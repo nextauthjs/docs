@@ -19,12 +19,12 @@ To add NextAuth.js to a project create a file called `[...nextauth].js` in `page
 
 ```javascript title="pages/api/auth/[...nextauth].js"
 import NextAuth from "next-auth"
-import Providers from "next-auth/providers"
+import GithubProvider from "next-auth/providers/github"
 
 export default NextAuth({
   // Configure one or more authentication providers
   providers: [
-    Providers.GitHub({
+    GithubProvider({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
     }),

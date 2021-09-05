@@ -16,7 +16,7 @@ Configure your NextAuth.js to use the Prisma Adapter:
 
 ```javascript title="pages/api/auth/[...nextauth].js"
 import NextAuth from "next-auth"
-import Providers from "next-auth/providers"
+import GoogleProvider from "next-auth/providers/google"
 import { PrismaAdapter } from "@next-auth/prisma-adapter"
 import { PrismaClient } from "@prisma/client"
 
@@ -25,7 +25,7 @@ const prisma = new PrismaClient()
 export default NextAuth({
   adapter: PrismaAdapter(prisma),
   providers: [
-    Providers.Google({
+    GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),

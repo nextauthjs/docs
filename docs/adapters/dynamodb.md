@@ -27,7 +27,8 @@ The default table name is `next-auth`, but you can customise that by passing `{ 
 ```javascript title="pages/api/auth/[...nextauth].js"
 import AWS from "aws-sdk";
 import NextAuth from "next-auth";
-import Providers from "next-auth/providers";
+import GithubProvider from "next-auth/providers/github";
+import EmailProvider from "next-auth/providers/email";
 import { DynamoDBAdapter } from "@next-auth/dynamodb-adapter"
 
 AWS.config.update({
@@ -39,11 +40,11 @@ AWS.config.update({
 export default NextAuth({
   // Configure one or more authentication providers
   providers: [
-    Providers.GitHub({
+    GithubProvider({
       clientId: process.env.GITHUB_ID,
       clientSecret: process.env.GITHUB_SECRET,
     }),
-    Providers.Email({
+    EmailProvider({
       server: process.env.EMAIL_SERVER,
       from: process.env.EMAIL_FROM,
     }),

@@ -85,7 +85,7 @@ As with all providers, the order you specify them is the order they are displaye
 
 ```js
 providers: [
-  Providers.Credentials({
+  CredentialsProvider({
     id: "domain-login",
     name: "Domain Account",
     async authorize(credentials, req) {
@@ -105,7 +105,7 @@ providers: [
       password: { label: "Password", type: "password" },
     },
   }),
-  Providers.Credentials({
+  CredentialsProvider({
     id: "intranet-credentials",
     name: "Two Factor Auth",
     async authorize(credentials, req) {

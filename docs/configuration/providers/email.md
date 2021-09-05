@@ -12,10 +12,10 @@ Adding support for signing in via email in addition to one or more OAuth service
 Configuration is similar to other providers, but the options are different:
 
 ```js title="pages/api/auth/[...nextauth].js"
-import Providers from `next-auth/providers`
+import EmailProvider from `next-auth/providers/email`
 ...
 providers: [
-  Providers.Email({
+  EmailProvider({
     server: process.env.EMAIL_SERVER,
     from: process.env.EMAIL_FROM,
     // maxAge: 24 * 60 * 60, // How long email links are valid for (default 24h)

@@ -60,10 +60,10 @@ TWITTER_SECRET=YOUR_TWITTER_CLIENT_SECRET
 4. Now you can add the provider settings to the NextAuth options object. You can add as many OAuth providers as you like, as you can see `providers` is an array.
 
 ```js title="pages/api/auth/[...nextauth].js"
-import Providers from `next-auth/providers`
+import TwitterProvider from `next-auth/providers/twitter`
 ...
 providers: [
-  Providers.Twitter({
+  TwitterProvider({
     clientId: process.env.TWITTER_ID,
     clientSecret: process.env.TWITTER_SECRET
   })
@@ -104,9 +104,9 @@ providers: [
 Even if you are using a built-in provider, you can override any of these options to tweak the default configuration.
 
 ```js title=[...nextauth].js
-import Providers from "next-auth/providers"
+import Auth0Provider from "next-auth/providers/auth0"
 
-Providers.Auth0({
+Auth0Provider({
   clientId: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
   domain: process.env.DOMAIN,
@@ -156,10 +156,10 @@ As an example of what this looks like, this is the provider object returned for 
 Replace all the options in this JSON object with the ones from your custom provider - be sure to give it a unique ID and specify the correct OAuth version - and add it to the providers option when initializing the library:
 
 ```js title="pages/api/auth/[...nextauth].js"
-import Providers from `next-auth/providers`
+import TwitterProvider from `next-auth/providers/twitter`
 ...
 providers: [
-  Providers.Twitter({
+  TwitterProvider({
     clientId: process.env.TWITTER_ID,
     clientSecret: process.env.TWITTER_SECRET,
   }),
@@ -201,10 +201,10 @@ Adding support for signing in via email in addition to one or more OAuth service
 Configuration is similar to other providers, but the options are different:
 
 ```js title="pages/api/auth/[...nextauth].js"
-import Providers from `next-auth/providers`
+import EmailProvider from `next-auth/providers/email`
 ...
 providers: [
-  Providers.Email({
+  EmailProvider({
     server: process.env.EMAIL_SERVER,
     from: process.env.EMAIL_FROM,
     // maxAge: 24 * 60 * 60, // How long email links are valid for (default 24h)
@@ -240,10 +240,10 @@ The Credentials provider allows you to handle signing in with arbitrary credenti
 It is intended to support use cases where you have an existing system you need to authenticate users against.
 
 ```js title="pages/api/auth/[...nextauth].js"
-import Providers from `next-auth/providers`
+import CredentialsProvider from `next-auth/providers/credentials`
 ...
 providers: [
-  Providers.Credentials({
+  CredentialsProvider({
     // The name to display on the sign in form (e.g. 'Sign in with...')
     name: 'Credentials',
     // The credentials is used to generate a suitable form on the sign in page.

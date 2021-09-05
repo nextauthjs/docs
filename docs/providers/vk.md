@@ -45,7 +45,7 @@ If you want to use a different version, you can pass it to provider's options ob
 const apiVersion = "5.126"
 ...
 providers: [
-  Providers.VK({
+  VkProvider({
     accessTokenUrl: `https://oauth.vk.com/access_token?v=${apiVersion}`,
     requestTokenUrl: `https://oauth.vk.com/access_token?v=${apiVersion}`,
     authorizationUrl:
