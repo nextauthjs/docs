@@ -60,6 +60,7 @@ html[data-theme="dark"] {
 
 a {
   font-weight: 600;
+  --ifm-alert-border-color: #03a7fa;
 }
 
 .navbar .navbar__link {
