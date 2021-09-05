@@ -16,12 +16,12 @@ The `database` option is gone, you can do the following instead:
 ```diff
 // [...nextauth].js
 import NextAuth from "next-auth"
-+ import TypeORMAdapter from "@next-auth/typeorm-legacy-adapter"
++ import { TypeORMLegacyAdapter } from "@next-auth/typeorm-legacy-adapter"
 
 ...
 export default NextAuth({
 -  database: "yourconnectionstring",
-+  adapter: TypeORMAdapter("yourconnectionstring")
++  adapter: TypeORMLegacyAdapter("yourconnectionstring")
 })
 ```
 
