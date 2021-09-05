@@ -22,10 +22,10 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import Providers from `next-auth/providers`
+import ZohoProvider from `next-auth/providers/zoho`
 ...
 providers: [
-  Providers.Zoho({
+  ZohoProvider({
     clientId: process.env.ZOHO_CLIENT_ID,
     clientSecret: process.env.ZOHO_CLIENT_SECRET
   })

@@ -22,10 +22,10 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import Providers from `next-auth/providers`
+import OneLoginProvider from `next-auth/providers/onelogin`
 ...
 providers: [
-  Providers.OneLogin({
+  OneLoginProvider({
     clientId: process.env.ONELOGIN_CLIENT_ID,
     clientSecret: process.env.ONELOGIN_CLIENT_SECRET,
     domain: process.env.ONELOGIN_DOMAIN

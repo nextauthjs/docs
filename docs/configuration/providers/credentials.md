@@ -10,10 +10,10 @@ The Credentials provider allows you to handle signing in with arbitrary credenti
 It is intended to support use cases where you have an existing system you need to authenticate users against.
 
 ```js title="pages/api/auth/[...nextauth].js"
-import Providers from `next-auth/providers`
+import CredentialsProvider from `next-auth/providers/credentials`
 ...
 providers: [
-  Providers.Credentials({
+  CredentialsProvider({
     // The name to display on the sign in form (e.g. 'Sign in with...')
     name: 'Credentials',
     // The credentials is used to generate a suitable form on the sign in page.

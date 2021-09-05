@@ -22,10 +22,10 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import Providers from `next-auth/providers`
+import GoogleProvider from `next-auth/providers/google`
 ...
 providers: [
-  Providers.Google({
+  GoogleProvider({
     clientId: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET
   })
@@ -47,7 +47,7 @@ If you need access to the RefreshToken or AccessToken for a Google account and y
 const options = {
   ...
   providers: [
-    Providers.Google({
+    GoogleProvider({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
       authorizationUrl: 'https://accounts.google.com/o/oauth2/v2/auth?prompt=consent&access_type=offline&response_type=code',

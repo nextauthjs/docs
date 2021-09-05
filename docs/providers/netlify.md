@@ -22,10 +22,10 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import Providers from `next-auth/providers`
+import NetlifyProvider from `next-auth/providers/netlify`
 ...
 providers: [
-  Providers.Netlify({
+  NetlifyProvider({
     clientId: process.env.NETLIFY_CLIENT_ID,
     clientSecret: process.env.NETLIFY_CLIENT_SECRET
   })

@@ -22,10 +22,10 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import Providers from `next-auth/providers`
+import GitlabProvider from `next-auth/providers/gitlab`
 ...
 providers: [
-  Providers.GitLab({
+  GitlabProvider({
     clientId: process.env.GITLAB_CLIENT_ID,
     clientSecret: process.env.GITLAB_CLIENT_SECRET
   })

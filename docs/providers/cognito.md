@@ -24,10 +24,10 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import Providers from `next-auth/providers`
+import CognitoProvider from `next-auth/providers/cognito`
 ...
 providers: [
-  Providers.Cognito({
+  CognitoProvider({
     clientId: process.env.COGNITO_CLIENT_ID,
     clientSecret: process.env.COGNITO_CLIENT_SECRET,
     domain: process.env.COGNITO_DOMAIN,

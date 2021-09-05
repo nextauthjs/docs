@@ -22,10 +22,10 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import Providers from `next-auth/providers`
+import VkProvider from `next-auth/providers/vk`
 ...
 providers: [
-  Providers.VK({
+  VkProvider({
     clientId: process.env.VK_CLIENT_ID,
     clientSecret: process.env.VK_CLIENT_SECRET
   })
@@ -45,7 +45,7 @@ If you want to use a different version, you can pass it to provider's options ob
 const apiVersion = "5.126"
 ...
 providers: [
-  Providers.VK({
+  VkProvider({
     accessTokenUrl: `https://oauth.vk.com/access_token?v=${apiVersion}`,
     requestTokenUrl: `https://oauth.vk.com/access_token?v=${apiVersion}`,
     authorizationUrl:

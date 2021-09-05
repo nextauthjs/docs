@@ -7,16 +7,16 @@ NextAuth.js provides the ability to setup a [custom Credential provider](/config
 
 You will need an additional dependency, `ldapjs`, which you can install by running `npm install ldapjs`.
 
-Then you must setup the `Providers.Credentials()` provider key like so:
+Then you must setup the `CredentialsProvider()` provider key like so:
 
 ```js title="[...nextauth].js"
 const ldap = require("ldapjs")
 import NextAuth from "next-auth"
-import Providers from "next-auth/providers"
+import CredentialsProvider from "next-auth/providers/credentials"
 
 export default NextAuth({
   providers: [
-    Providers.Credentials({
+    CredentialsProvider({
       name: "LDAP",
       credentials: {
         username: { label: "DN", type: "text", placeholder: "" },

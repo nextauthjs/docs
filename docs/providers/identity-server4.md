@@ -18,10 +18,10 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import Providers from `next-auth/providers`
+import IdentityServer4Provider from `next-auth/providers/identity-server4`
 ...
 providers: [
-  Providers.IdentityServer4({
+  IdentityServer4Provider({
     id: "identity-server4",
     name: "IdentityServer4",
     scope: "openid profile email api offline_access", // Allowed Scopes
@@ -42,10 +42,10 @@ If you want to try it out, you can copy and paste the configuration below.
 You can sign in to the demo service with either <b>bob/bob</b> or <b>alice/alice</b>.
 
 ```js
-import Providers from `next-auth/providers`
+import IdentityServer4Provider from `next-auth/providers/identity-server4`
 ...
 providers: [
-  Providers.IdentityServer4({
+  IdentityServer4Provider({
     id: "demo-identity-server",
     name: "Demo IdentityServer4",
     scope: "openid profile email api offline_access",

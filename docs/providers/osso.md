@@ -30,10 +30,10 @@ You can override any of the options to suit your own use case.
 A full example application is available at https://github.com/enterprise-oss/osso-next-auth-example and https://nextjs-demo.ossoapp.com
 
 ```js
-import Providers from `next-auth/providers`
+import OssoProvider from `next-auth/providers/osso`
 ...
 providers: [
-  Providers.Osso({
+  OssoProvider({
     clientId: process.env.OSSO_CLIENT_ID,
     clientSecret: process.env.OSSO_CLIENT_SECRET,
     domain: process.env.OSSO_DOMAIN

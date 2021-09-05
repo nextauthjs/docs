@@ -23,7 +23,7 @@ npm install next-auth @next-auth/pouchdb-adapter
 
 ```javascript title="pages/api/auth/[...nextauth].js"
 import NextAuth from "next-auth"
-import Providers from "next-auth/providers"
+import GoogleProvider from "next-auth/providers/google"
 import { PouchDBAdapter } from "@next-auth/pouchdb-adapter"
 import PouchDB from "pouchdb"
 
@@ -38,7 +38,7 @@ const pouchdb = new PouchDB("auth_db", { adapter: "leveldb" })
 export default NextAuth({
   // https://next-auth.js.org/configuration/providers
   providers: [
-    Providers.Google({
+    GoogleProvider({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
     }),

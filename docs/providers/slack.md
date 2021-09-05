@@ -23,10 +23,10 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import Providers from `next-auth/providers`
+import SlackProvider from `next-auth/providers/slack`
 ...
 providers: [
-  Providers.Slack({
+  SlackProvider({
     clientId: process.env.SLACK_CLIENT_ID,
     clientSecret: process.env.SLACK_CLIENT_SECRET
   })

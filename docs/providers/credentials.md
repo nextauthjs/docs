@@ -38,10 +38,10 @@ If you return an object it will be persisted to the JSON Web Token and the user 
 The Credentials provider's `authorize()` method also provides the request object as the second parameter (see example below).
 
 ```js title="pages/api/auth/[...nextauth].js"
-import Providers from `next-auth/providers`
+import CredentialsProvider from `next-auth/providers/credentials`
 ...
 providers: [
-  Providers.Credentials({
+  CredentialsProvider({
     // The name to display on the sign in form (e.g. 'Sign in with...')
     name: 'Credentials',
     // The credentials is used to generate a suitable form on the sign in page.
@@ -85,7 +85,7 @@ As with all providers, the order you specify them is the order they are displaye
 
 ```js
 providers: [
-  Providers.Credentials({
+  CredentialsProvider({
     id: "domain-login",
     name: "Domain Account",
     async authorize(credentials, req) {
@@ -105,7 +105,7 @@ providers: [
       password: { label: "Password", type: "password" },
     },
   }),
-  Providers.Credentials({
+  CredentialsProvider({
     id: "intranet-credentials",
     name: "Two Factor Auth",
     async authorize(credentials, req) {

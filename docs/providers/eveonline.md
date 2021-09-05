@@ -22,10 +22,10 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import Providers from `next-auth/providers`
+import EVEOnlineProvider from `next-auth/providers/eveonline`
 ...
 providers: [
-  Providers.EVEOnline({
+  EVEOnlineProvider({
     clientId: process.env.EVE_CLIENT_ID,
     clientSecret: process.env.EVE_CLIENT_SECRET
   })

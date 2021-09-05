@@ -22,10 +22,10 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import Providers from `next-auth/providers`
+import DropboxProvider from `next-auth/providers/dropbox`
 ...
 providers: [
-  Providers.Dropbox({
+  DropboxProvider({
     clientId: process.env.DROPBOX_CLIENT_ID,
     clientSecret: process.env.DROPBOX_CLIENT_SECRET
   })

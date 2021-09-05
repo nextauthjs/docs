@@ -22,10 +22,10 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import Providers from `next-auth/providers`
+import LineProvider from `next-auth/providers/line`
 ...
 providers: [
-  Providers.LINE({
+  LineProvider({
     clientId: process.env.LINE_CLIENT_ID,
     clientSecret: process.env.LINE_CLIENT_SECRET
   })

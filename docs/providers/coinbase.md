@@ -22,10 +22,10 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import Providers from `next-auth/providers`
+import CoinbaseProvider from `next-auth/providers/coinbase`
 ...
 providers: [
-  Providers.Coinbase({
+  CoinbaseProvider({
     clientId: process.env.COINBASE_CLIENT_ID,
     clientSecret: process.env.COINBASE_CLIENT_SECRET
   })

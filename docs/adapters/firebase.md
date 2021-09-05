@@ -19,7 +19,7 @@ npm install next-auth @next-auth/firebase-adapter
 
 ```javascript title="pages/api/auth/[...nextauth].js"
 import NextAuth from "next-auth"
-import Providers from "next-auth/providers"
+import GoogleProvider from "next-auth/providers/google"
 import { FirebaseAdapter } from "@next-auth/firebase-adapter"
 
 import firebase from "firebase/app"
@@ -34,7 +34,7 @@ const firestore = (
 export default NextAuth({
   // https://next-auth.js.org/configuration/providers
   providers: [
-    Providers.Google({
+    GoogleProvider({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
     }),

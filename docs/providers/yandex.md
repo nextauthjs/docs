@@ -22,10 +22,10 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import Providers from `next-auth/providers`
+import YandexProvider from `next-auth/providers/yandex`
 ...
 providers: [
-  Providers.Yandex({
+  YandexProvider({
     clientId: process.env.YANDEX_CLIENT_ID,
     clientSecret: process.env.YANDEX_CLIENT_SECRET
   })

@@ -22,10 +22,10 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import Providers from `next-auth/providers`
+import WorkOSProvider from `next-auth/providers/workos`
 ...
 providers: [
-  Providers.WorkOS({
+  WorkOSProvider({
     clientId: process.env.WORKOS_CLIENT_ID,
     clientSecret: process.env.WORKOS_API_KEY,
   }),
