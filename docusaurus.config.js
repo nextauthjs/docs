@@ -142,7 +142,6 @@ module.exports = {
       "@docusaurus/preset-classic",
       {
         docs: {
-          sidebarCollapsible: true,
           routeBasePath: "/",
           sidebarPath: require.resolve("./sidebars.js"),
           editUrl: "https://github.com/nextauthjs/docs",
