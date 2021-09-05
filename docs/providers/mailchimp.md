@@ -22,10 +22,10 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import MailchipProvider from `next-auth/providers/mailchip`
+import MailchimpProvider from `next-auth/providers/mailchimp`
 ...
 providers: [
-  MailchipProvider({
+  MailchimpProvider({
     clientId: process.env.MAILCHIMP_CLIENT_ID,
     clientSecret: process.env.MAILCHIMP_CLIENT_SECRET
   })

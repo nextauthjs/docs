@@ -38,7 +38,7 @@ That will default the tenant to use the `common` authorization endpoint. [For mo
 In `pages/api/auth/[...nextauth].js` find or add the `AzureAD` entries:
   
 ```js
-import AzureADProvider from 'next-auth/providers/azuread';
+import AzureADProvider from 'next-auth/providers/azure-ad';
 ...
 providers: [
   AzureADProvider({

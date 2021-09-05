@@ -31,7 +31,7 @@ If you use a dynamically generated secret you never have to manually update the 
 import AppleProvider from `next-auth/providers/apple`
 ...
 providers: [
-  Providers.Apple({
+  AppleProvider({
     clientId: process.env.APPLE_ID,
     clientSecret: {
       teamId: process.env.APPLE_TEAM_ID,
