@@ -78,8 +78,8 @@ Using SQL to create tables and columns is the recommended way to set up an SQL d
 
 Check out the links below for SQL you can run to set up a database for NextAuth.js.
 
-- [MySQL Schema](/adapters/typeorm/mysql)
-- [Postgres Schema](/adapters/typeorm/postgres)
+- [MySQL Schema](/v3/adapters/typeorm/mysql)
+- [Postgres Schema](/v3/adapters/typeorm/postgres)
 
 _If you are running SQLite, MongoDB or a Document database you can skip this step._
 
