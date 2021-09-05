@@ -22,10 +22,10 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import Providers from `next-auth/providers`
+import FacebookProvider from `next-auth/providers/facebook`
 ...
 providers: [
-  Providers.Facebook({
+  FacebookProvider({
     clientId: process.env.FACEBOOK_CLIENT_ID,
     clientSecret: process.env.FACEBOOK_CLIENT_SECRET
   })

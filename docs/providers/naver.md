@@ -22,10 +22,10 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import Providers from `next-auth/providers`
+import NaverProvider from `next-auth/providers/naver`
 ...
 providers: [
-  Providers.Naver({
+  NaverProvider({
     clientId: process.env.NAVER_CLIENT_ID,
     clientSecret: process.env.NAVER_CLIENT_SECRET
   })

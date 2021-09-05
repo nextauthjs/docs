@@ -21,10 +21,10 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import Providers from `next-auth/providers`
+import FreshbooksProvider from `next-auth/providers/freshbooks`
 ...
 providers: [
-  Providers.Freshbooks({
+  FreshbooksProvider({
     clientId: process.env.FRESHBOOKS_CLIENT_ID,
     clientSecret: process.env.FRESHBOOKS_CLIENT_SECRET,
   })

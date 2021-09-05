@@ -18,10 +18,10 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import Providers from `next-auth/providers`
+import OktaProvider from `next-auth/providers/okta`
 ...
 providers: [
-  Providers.Okta({
+  OktaProvider({
     clientId: process.env.OKTA_CLIENT_ID,
     clientSecret: process.env.OKTA_CLIENT_SECRET,
     domain: process.env.OKTA_DOMAIN

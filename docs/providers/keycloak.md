@@ -24,10 +24,10 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import Providers from `next-auth/providers`
+import KeycloakProvider from `next-auth/providers/keycloak`
 ...
 providers: [
-  Providers.Keycloak({
+  KeycloakProvider({
     clientId: process.env.KEYCLOAK_ID,
     clientSecret: process.env.KEYCLOAK_SECRET,
     issuer: process.env.KEYCLOAK_ISSUER,

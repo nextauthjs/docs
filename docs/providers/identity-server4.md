@@ -18,10 +18,10 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import Providers from `next-auth/providers`
+import IdentityServer4Provider from `next-auth/providers/identityserver4`
 ...
 providers: [
-  Providers.IdentityServer4({
+  IdentityServer4Provider({
     id: "identity-server4",
     name: "IdentityServer4",
     scope: "openid profile email api offline_access", // Allowed Scopes

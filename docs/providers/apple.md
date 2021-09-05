@@ -28,7 +28,7 @@ There are two ways you can use the Sign in with Apple provider.
 If you use a dynamically generated secret you never have to manually update the server.
 
 ```js
-import Providers from `next-auth/providers`
+import AppleProvider from `next-auth/providers/apple`
 ...
 providers: [
   Providers.Apple({

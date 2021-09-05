@@ -18,10 +18,10 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import Providers from `next-auth/providers`
+import SalesforceProvider from `next-auth/providers/salesforce`
 ...
 providers: [
-  Providers.Salesforce({
+  SalesforceProvider({
     clientId: process.env.SALESFORCE_CLIENT_ID,
     clientSecret: process.env.SALESFORCE_CLIENT_SECRET,
   })

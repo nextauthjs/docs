@@ -26,10 +26,10 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import Providers from `next-auth/providers`
+import LinkedInProvider from `next-auth/providers/linkedin`
 ...
 providers: [
-  Providers.LinkedIn({
+  LinkedInProvider({
     clientId: process.env.LINKEDIN_CLIENT_ID,
     clientSecret: process.env.LINKEDIN_CLIENT_SECRET
   })

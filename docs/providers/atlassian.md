@@ -18,10 +18,10 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import Providers from `next-auth/providers`
+import AtlassianProvider from `next-auth/providers/atlassian`
 ...
 providers: [
-  Providers.Atlassian({
+  AtlassianProvider({
     clientId: process.env.ATLASSIAN_CLIENT_ID,
     clientSecret: process.env.ATLASSIAN_CLIENT_SECRET,
     scope: 'write:jira-work read:jira-work read:jira-user offline_access read:me'

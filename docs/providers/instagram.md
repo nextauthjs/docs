@@ -23,10 +23,10 @@ You can override any of the options to suit your own use case.
 
 ```jsx
 // pages/api/auth/[...nextauth].js
-import Providers from `next-auth/providers`
+import InstagramProvider from `next-auth/providers/instagram`
 ...
 providers: [
-  Providers.Instagram({
+  InstagramProvider({
     clientId: process.env.INSTAGRAM_CLIENT_ID,
     clientSecret: process.env.INSTAGRAM_CLIENT_SECRET
   })

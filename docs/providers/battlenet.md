@@ -22,10 +22,10 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import Providers from `next-auth/providers`
+import BattleNetProvider from `next-auth/providers/battlenet`
 ...
 providers: [
-  Providers.BattleNet({
+  BattleNetProvider({
     clientId: process.env.BATTLENET_CLIENT_ID,
     clientSecret: process.env.BATTLENET_CLIENT_SECRET,
     region: process.env.BATTLENET_REGION

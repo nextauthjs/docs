@@ -24,10 +24,10 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import Providers from `next-auth/providers`
+import TwitchProvider from `next-auth/providers/twitch`
 ...
 providers: [
-  Providers.Twitch({
+  TwitchProvider({
     clientId: process.env.TWITCH_CLIENT_ID,
     clientSecret: process.env.TWITCH_CLIENT_SECRET
   })

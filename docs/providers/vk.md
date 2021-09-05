@@ -22,10 +22,10 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import Providers from `next-auth/providers`
+import VkProvider from `next-auth/providers/vk`
 ...
 providers: [
-  Providers.VK({
+  VkProvider({
     clientId: process.env.VK_CLIENT_ID,
     clientSecret: process.env.VK_CLIENT_SECRET
   })

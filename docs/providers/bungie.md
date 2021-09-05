@@ -22,10 +22,10 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import Providers from `next-auth/providers`
+import BungieProvider from `next-auth/providers/bungie`
 ...
 providers: [
-  Providers.Bungie({
+  BungieProvider({
     clientId: process.env.BUNGIE_CLIENT_ID,
     clientSecret: process.env.BUNGIE_SECRET,
     headers: {

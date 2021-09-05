@@ -22,10 +22,10 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import Providers from `next-auth/providers`
+import ZoomProvider from `next-auth/providers/zoom`
 ...
 providers: [
-  Providers.Zoom({
+  ZoomProvider({
     clientId: process.env.ZOOM_CLIENT_ID,
     clientSecret: process.env.ZOOM_CLIENT_SECRET
   })

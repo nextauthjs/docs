@@ -22,10 +22,10 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import Providers from `next-auth/providers`
+import RedditProvider from `next-auth/providers/reddit`
 ...
 providers: [
-  Providers.Reddit({
+  RedditProvider({
     clientId: process.env.REDDIT_CLIENT_ID,
     clientSecret: process.env.REDDIT_CLIENT_SECRET
   })

@@ -49,7 +49,7 @@ Now you can add the email provider like this:
 
 ```js {3} title="pages/api/auth/[...nextauth].js"
 providers: [
-  Providers.Email({
+  EmailProvider({
     server: process.env.EMAIL_SERVER,
     from: process.env.EMAIL_FROM
   }),
@@ -72,7 +72,7 @@ Now you can add the provider settings to the NextAuth options object in the Emai
 
 ```js title="pages/api/auth/[...nextauth].js"
 providers: [
-  Providers.Email({
+  EmailProvider({
     server: {
       host: process.env.EMAIL_SERVER_HOST,
       port: process.env.EMAIL_SERVER_PORT,
@@ -92,13 +92,13 @@ A user account (i.e. an entry in the Users table) will not be created for the us
 
 ## Customizing emails
 
-You can fully customize the sign in email that is sent by passing a custom function as the `sendVerificationRequest` option to `Providers.Email()`.
+You can fully customize the sign in email that is sent by passing a custom function as the `sendVerificationRequest` option to `EmailProvider()`.
 
 e.g.
 
 ```js {3} title="pages/api/auth/[...nextauth].js"
 providers: [
-  Providers.Email({
+  EmailProvider({
     server: process.env.EMAIL_SERVER,
     from: process.env.EMAIL_FROM,
     sendVerificationRequest({
@@ -200,7 +200,7 @@ By default, we are generating a random verification token. You can define a `gen
 
 ```js title="pages/api/auth/[...nextauth].js"
 providers: [
-  Providers.Email({
+  EmailProvider({
     async generateVerificationToken() {
       return "ABC123"
     }

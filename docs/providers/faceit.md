@@ -26,10 +26,10 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import Providers from `next-auth/providers`
+import FaceItProvider from `next-auth/providers/faceit`
 ...
 providers: [
-  Providers.FACEIT({
+  FaceItProvider({
     clientId: process.env.FACEIT_CLIENT_ID,
     clientSecret: process.env.FACEIT_CLIENT_SECRET
   })

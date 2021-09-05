@@ -18,10 +18,10 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import Providers from `next-auth/providers`
+import FusionAuthProvider from `next-auth/providers/fusionauth`
 ...
 providers: [
-  Providers.FusionAuth({
+  FusionAuthProvider({
     id: "fusionauth",
     name: "FusionAuth",
     domain:  process.env.FUSIONAUTH_DOMAIN,
