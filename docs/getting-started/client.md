@@ -7,15 +7,14 @@ The NextAuth.js client library makes it easy to interact with sessions from Reac
 
 #### Example Session Object
 
-```js
+```ts
 {
   user: {
-    name: string,
-    email: string,
-    image: uri
+    name: string
+    email: string
+    image: string
   },
-  accessToken: string,
-  expires: "YYYY-MM-DDTHH:mm:ss.SSSZ"
+  expires: Date // This is the expiry of the session, not any of the tokens within the session
 }
 ```
 
@@ -23,6 +22,10 @@ The NextAuth.js client library makes it easy to interact with sessions from Reac
 The session data returned to the client does not contain sensitive information such as the Session Token or OAuth tokens. It contains a minimal payload that includes enough data needed to display information on a page about the user who is signed in for presentation purposes (e.g name, email, image).
 
 You can use the [session callback](/configuration/callbacks#session-callback) to customize the session object returned to the client if you need to return additional data in the session object.
+:::
+
+:::note
+The `expires` value is rotated, meaning whenever the session is retrieved from the [REST API](/getting-started/rest-api), this value will be updated as well, to avoid session expiry.
 :::
 
 ---
@@ -86,6 +89,80 @@ export default function Admin() {
   return "User is logged in"
 }
 ```
+
+
+### Custom Client Session Handling
+
+Due to the way Next.js handles `getServerSideProps` / `getInitialProps`, every protected page load has to make a server-side request to check if the session is valid and then generate the requested page. This alternative solution allows for showing a loading state on the initial check and every page transition afterward will be client-side, without having to check with the server and regenerate pages.
+
+```js title="pages/admin.jsx"
+export default function AdminDashboard() {
+  const { data: session } = useSession()
+  // session is always non-null inside this page, all the way down the React tree.
+  return "Some super secret dashboard"
+}
+
+AdminDashboard.auth = true
+```
+
+```jsx title="pages/_app.jsx"
+export default function App({
+  Component,
+  pageProps: { session, ...pageProps },
+}) {
+  return (
+    <SessionProvider session={session}>
+      {Component.auth ? (
+        <Auth>
+          <Component {...pageProps} />
+        </Auth>
+      ) : (
+        <Component {...pageProps} />
+      )}
+    </SessionProvider>
+  )
+}
+
+function Auth({ children }) {
+  const { data: session, loading } = useSession()
+  const isUser = !!session?.user
+  React.useEffect(() => {
+    if (loading) return // Do nothing while loading
+    if (!isUser) signIn() // If not authenticated, force log in
+  }, [isUser, loading])
+
+  if (isUser) {
+    return children
+  }
+
+  // Session is being fetched, or no user.
+  // If no user, useEffect() will redirect.
+  return <div>Loading...</div>
+}
+```
+
+It can be easily be extended/modified to support something like an options object for role based authentication on pages. An example:
+
+```jsx title="pages/admin.jsx"
+AdminDashboard.auth = {
+  role: "admin",
+  loading: <AdminLoadingSkeleton />,
+  unauthorized: "/login-with-different-user", // redirect to this url
+}
+```
+
+Because of how `_app` is written, it won't unnecessarily contact the `/api/auth/session` endpoint for pages that do not require authentication.
+
+More information can be found in the following [GitHub Issue](https://github.com/nextauthjs/next-auth/issues/1210).
+
+### NextAuth.js + React-Query
+
+There is also an alternative client-side API library based upon [`react-query`](https://www.npmjs.com/package/react-query) available under [`nextauthjs/react-query`](https://github.com/nextauthjs/react-query).
+
+If you use `react-query` in your project already, you can leverage it with NextAuth.js to handle the client-side session management for you as well. This replaces NextAuth.js's native `useSession` and `SessionProvider` from `next-auth/react`.
+
+See repository [`README`](https://github.com/nextauthjs/react-query) for more details.
+
 
 ---
 
@@ -199,7 +276,7 @@ Using the `signIn()` method ensures the user ends back on the page they started 
 
 The `signIn()` method can be called from the client in different ways, as shown below.
 
-#### Redirects to sign in page when clicked
+### Redirects to sign in page when clicked
 
 ```js
 import { signIn } from "next-auth/react"
@@ -207,7 +284,7 @@ import { signIn } from "next-auth/react"
 export default () => <button onClick={() => signIn()}>Sign in</button>
 ```
 
-#### Starts Google OAuth sign-in flow when clicked
+### Starts Google OAuth sign-in flow when clicked
 
 ```js
 import { signIn } from "next-auth/react"
@@ -217,7 +294,7 @@ export default () => (
 )
 ```
 
-#### Starts Email sign-in flow when clicked
+### Starts Email sign-in flow when clicked
 
 When using it with the email flow, pass the target `email` as an option.
 
@@ -229,7 +306,7 @@ export default ({ email }) => (
 )
 ```
 
-#### Specifying a callbackUrl
+### Specifying a `callbackUrl`
 
 The `callbackUrl` specifies to which URL the user will be redirected after signing in. It defaults to the current URL of a user.
 
@@ -243,7 +320,7 @@ e.g.
 
 The URL must be considered valid by the [redirect callback handler](/configuration/callbacks#redirect-callback). By default it requires the URL to be an absolute URL at the same host name, or else it will redirect to the homepage. You can define your own [redirect callback](/configuration/callbacks#redirect-callback) to allow other URLs, including supporting relative URLs.
 
-#### Using the redirect: false option
+### Using the `redirect: false` option
 
 :::note
 The redirect option is only available for `credentials` and `email` providers.
@@ -283,7 +360,7 @@ e.g.
 }
 ```
 
-#### Additional parameters
+### Additional parameters
 
 It is also possible to pass additional parameters to the `/authorize` endpoint through the third argument of `signIn()`.
 
@@ -319,7 +396,7 @@ import { signOut } from "next-auth/react"
 export default () => <button onClick={() => signOut()}>Sign out</button>
 ```
 
-#### Specifying a callbackUrl
+### Specifying a `callbackUrl`
 
 As with the `signIn()` function, you can specify a `callbackUrl` parameter by passing it as an option.
 
@@ -327,7 +404,7 @@ e.g. `signOut({ callbackUrl: 'http://localhost:3000/foo' })`
 
 The URL must be considered valid by the [redirect callback handler](/configuration/callbacks#redirect-callback). By default this means it must be an absolute URL at the same host name (or else it will default to the homepage); you can define your own custom [redirect callback](/configuration/callbacks#redirect-callback) to allow other URLs, including supporting relative URLs.
 
-#### Using the redirect: false option
+### Using the `redirect: false` option
 
 If you pass `redirect: false` to `signOut`, the page will not reload. The session will be deleted, and the `useSession` hook is notified, so any indication about the user will be shown as logged out automatically. It can give a very nice experience for the user.
 
@@ -426,77 +503,3 @@ The value for `refetchInterval` should always be lower than the value of the ses
 :::note
 See [**the Next.js documentation**](https://nextjs.org/docs/advanced-features/custom-app) for more information on **\_app.js** in Next.js applications.
 :::
-
-## Alternatives
-
-### Custom Client Session Handling
-
-Due to the way Next.js handles `getServerSideProps` / `getInitialProps`, every protected page load has to make a server-side request to check if the session is valid and then generate the requested page. This alternative solution allows for showing a loading state on the initial check and every page transition afterward will be client-side, without having to check with the server and regenerate pages.
-
-```js title="pages/admin.jsx"
-export default function AdminDashboard() {
-  const { data: session } = useSession()
-  // session is always non-null inside this page, all the way down the React tree.
-  return "Some super secret dashboard"
-}
-
-AdminDashboard.auth = true
-```
-
-```jsx title="pages/_app.jsx"
-export default function App({
-  Component,
-  pageProps: { session, ...pageProps },
-}) {
-  return (
-    <SessionProvider session={session}>
-      {Component.auth ? (
-        <Auth>
-          <Component {...pageProps} />
-        </Auth>
-      ) : (
-        <Component {...pageProps} />
-      )}
-    </SessionProvider>
-  )
-}
-
-function Auth({ children }) {
-  const { data: session, loading } = useSession()
-  const isUser = !!session?.user
-  React.useEffect(() => {
-    if (loading) return // Do nothing while loading
-    if (!isUser) signIn() // If not authenticated, force log in
-  }, [isUser, loading])
-
-  if (isUser) {
-    return children
-  }
-
-  // Session is being fetched, or no user.
-  // If no user, useEffect() will redirect.
-  return <div>Loading...</div>
-}
-```
-
-It can be easily be extended/modified to support something like an options object for role based authentication on pages. An example:
-
-```jsx title="pages/admin.jsx"
-AdminDashboard.auth = {
-  role: "admin",
-  loading: <AdminLoadingSkeleton />,
-  unauthorized: "/login-with-different-user", // redirect to this url
-}
-```
-
-Because of how `_app` is written, it won't unnecessarily contact the `/api/auth/session` endpoint for pages that do not require authentication.
-
-More information can be found in the following [GitHub Issue](https://github.com/nextauthjs/next-auth/issues/1210).
-
-### NextAuth.js + React-Query
-
-There is also an alternative client-side API library based upon [`react-query`](https://www.npmjs.com/package/react-query) available under [`nextauthjs/react-query`](https://github.com/nextauthjs/react-query).
-
-If you use `react-query` in your project already, you can leverage it with NextAuth.js to handle the client-side session management for you as well. This replaces NextAuth.js's native `useSession` and `SessionProvider` from `next-auth/react`.
-
-See repository [`README`](https://github.com/nextauthjs/react-query) for more details.
