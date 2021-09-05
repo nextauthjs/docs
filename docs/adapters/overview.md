@@ -20,7 +20,7 @@ We have a list of official adapters that are distributed as their own packages u
 
 ## Custom Adapter
 
-If you have a database/backend that we don't have an officially support, you can create your own adapter.
+If you have a database/backend that we don't officially support, you can create your own adapter.
 See the tutorial for [creating a database Adapter](/tutorials/creating-a-database-adapter) for more information.
 
 :::tip
