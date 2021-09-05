@@ -5,7 +5,7 @@ title: TypeORM
 
 # TypeORM
 
-This Adapter is used to support SQL-flavored databases, and mostly kept around for legacy reasons. (See the warning below.)
+This Adapter is used to support SQL-flavored databases (like SQLite, MySQL, MSSQL, MariaDB, CockroachDB, etc.) through [TypeORM](https://typeorm.io), and mostly kept around for legacy reasons. (See the warning below.)
 
 :::note
 If you previously used this Adapter with MongoDB, check out the [MongoDB Adapter](/adapters/mongodb) instead.
