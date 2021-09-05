@@ -70,7 +70,6 @@ module.exports = {
         "You are looking at the v4 documentation (currently in beta). 🎉 If you need the old (v3) documentation, check it out <a href='/v3/getting-started/introduction'>here</a>.",
       backgroundColor: "#1786fb",
       textColor: "#fff",
-      isCloseable: true,
     },
     footer: {
       links: [
@@ -150,7 +149,7 @@ module.exports = {
         docs: {
           routeBasePath: "/",
           sidebarPath: require.resolve("./sidebars.js"),
-          editUrl: "https://github.com/nextauthjs/next-auth/edit/main/www",
+          editUrl: "https://github.com/nextauthjs/docs",
           lastVersion: "current",
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
