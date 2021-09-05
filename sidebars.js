@@ -47,6 +47,7 @@ module.exports = {
         "adapters/dynamodb",
         "adapters/firebase",
         "adapters/pouchdb",
+        "adapters/mongodb",
         "adapters/typeorm",
       ],
     },
