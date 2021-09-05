@@ -7,7 +7,6 @@ module.exports = {
   organizationName: "nextauthjs",
   projectName: "next-auth",
   themeConfig: {
-    sidebarCollapsible: true,
     prism: {
       theme: require("prism-react-renderer/themes/vsDark"),
     },
@@ -143,6 +142,7 @@ module.exports = {
       "@docusaurus/preset-classic",
       {
         docs: {
+          sidebarCollapsible: true,
           routeBasePath: "/",
           sidebarPath: require.resolve("./sidebars.js"),
           editUrl: "https://github.com/nextauthjs/docs",
