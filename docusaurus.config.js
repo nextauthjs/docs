@@ -7,7 +7,6 @@ module.exports = {
   organizationName: "nextauthjs",
   projectName: "next-auth",
   themeConfig: {
-    sidebarCollapsible: true,
     prism: {
       theme: require("prism-react-renderer/themes/vsDark"),
     },
@@ -70,7 +69,6 @@ module.exports = {
         "You are looking at the v4 documentation (currently in beta). 🎉 If you need the old (v3) documentation, check it out <a href='/v3/getting-started/introduction'>here</a>.",
       backgroundColor: "#1786fb",
       textColor: "#fff",
-      isCloseable: true,
     },
     footer: {
       links: [
@@ -82,12 +80,8 @@ module.exports = {
               to: "/getting-started/introduction",
             },
             {
-              label: "Next documentation",
-              to: "https://next-auth-git-next.nextauthjs.vercel.app",
-            },
-            {
-              label: "Next documentation",
-              to: "https://next-auth-git-next.nextauthjs.vercel.app",
+              label: "Unreleased documentation",
+              to: "https://docs-git-next-nextauthjs.vercel.app/",
             },
           ],
         },
@@ -148,9 +142,10 @@ module.exports = {
       "@docusaurus/preset-classic",
       {
         docs: {
+          sidebarCollapsible: true,
           routeBasePath: "/",
           sidebarPath: require.resolve("./sidebars.js"),
-          editUrl: "https://github.com/nextauthjs/next-auth/edit/main/www",
+          editUrl: "https://github.com/nextauthjs/docs",
           lastVersion: "current",
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
