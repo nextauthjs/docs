@@ -42,23 +42,13 @@ module.exports = {
       items: [
         "adapters/overview",
         "adapters/models",
-        {
-          type: "category",
-          label: "TypeORM",
-          collapsed: true,
-          items: [
-            "adapters/typeorm/typeorm-overview",
-            "adapters/typeorm/mysql",
-            "adapters/typeorm/postgres",
-            "adapters/typeorm/mssql",
-            "adapters/typeorm/mongodb",
-          ],
-        },
-        "adapters/fauna",
         "adapters/prisma",
+        "adapters/fauna",
         "adapters/dynamodb",
         "adapters/firebase",
         "adapters/pouchdb",
+        "adapters/mongodb",
+        "adapters/typeorm",
       ],
     },
     {

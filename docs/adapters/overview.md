@@ -3,36 +3,33 @@ id: overview
 title: Overview
 ---
 
-:::note
-When using the **NextAuth v4 beta**, please be sure to use the `next` tagged version of your adapter. For example, to use the appropriate `typeorm` version with NextAuth v4, you would install `@next-auth/typeorm-legacy-adapter@next`. 
-:::
-
 An **Adapter** in NextAuth.js connects your application to whatever database or backend system you want to use to store data for users, their accounts, sessions, etc. Adapters are optional, unless you need to persist user information in your own database, or you want to implement certain flows. The [Email Provider](/providers/email) requires an adapter to be able to save [Verification Tokens](/adapters/models#verification-token).
 
 :::tip
-When using a database, you can still use JWT for session handling for fast access. See the [`session.jwt`](/configuration/options#session) option. Read about the trade-offs of JWT in this [FAQ section](/faq#json-web-tokens).
+When using a database, you can still use JWT for session handling for fast access. See the [`session.jwt`](/configuration/options#session) option. Read about the trade-offs of JWT in the [FAQ](/faq#json-web-tokens).
 :::
 
-The official adapters can be found in their own repository under [`nextauthjs/adapters`](https://github.com/nextauthjs/adapters).
+We have a list of official adapters that are distributed as their own packages under the `@next-auth/{name}-adapter` namespace. Their source code is available in the organization repository at [`nextauthjs/adapters`](https://github.com/nextauthjs/adapters). Any issues regarding these adapters should be opened on that repository.
 
-There you can find the following adapters:
-
-- [`typeorm-legacy`](./typeorm/typeorm-overview)
 - [`prisma`](./prisma)
 - [`fauna`](./fauna)
 - [`dynamodb`](./dynamodb)
 - [`firebase`](./firebase)
 - [`pouchdb`](./pouchdb)
+- [`typeorm-legacy`](./typeorm)
 
 ## Custom Adapter
 
-See the tutorial for [creating a database Adapter](/tutorials/creating-a-database-adapter) for more information on how to create a custom Adapter.
+If you have a database/backend that we don't have an officially support, you can create your own adapter.
+See the tutorial for [creating a database Adapter](/tutorials/creating-a-database-adapter) for more information.
 
 :::tip
-If you would like to see a new adapter in the official repository, please [open a PR](https://github.com/nextauthjs/adapters) and we will help you.
+If you would like to see a new adapter in the official repository, please [open a PR](https://github.com/nextauthjs/adapters) and we will help you to get it merged. Tell us if you are interested in becoming a one of the maintainers of any of the official adapters.
 :::
 
 ### Editor integration
+
+Adapters are strongly typed, and they rely on the single `Adapter` interface imported from `next-auth/adapters`.
 
 When writing your own custom Adapter in plain JavaScript, note that you can use **JSDoc** to get helpful editor hints and auto-completion like so:
 
