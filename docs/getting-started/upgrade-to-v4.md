@@ -25,7 +25,7 @@ We are sorry for this inconvenience, and we hope to make this issue go away once
 :::
 
 
-### Adapters
+## Adapters
 
 You can find the official Adapters in the [nextauthjs/adapter](https://github.com/nextauthjs/adapters) repository. Although you can still [create your own](/tutorials/creating-a-database-adapter) with a new, [simplified Adapter API](https://github.com/nextauthjs/next-auth/pull/2361).
 
@@ -87,7 +87,7 @@ We've also made the following changes to the names of the exports:
 
 Introduced in https://github.com/nextauthjs/next-auth/releases/tag/v4.0.0-next.12
 
-## SessionProvider
+## `SessionProvider`
 
 Version 4 makes using the `SessionProvider` mandatory. This means that you will have to wrap any part of your application using `useSession` in this provider, if you were not doing so already. The `SessionProvider` has also undergone a few further changes:
 
@@ -166,7 +166,7 @@ events: {
 
 Introduced in https://github.com/nextauthjs/next-auth/releases/tag/v4.0.0-next.20
 
-## useSession Hook
+## `useSession` Hook
 
 The `useSession` hook has been updated to return an object. This allows you to test states much more cleanly with the new `status` option.
 
