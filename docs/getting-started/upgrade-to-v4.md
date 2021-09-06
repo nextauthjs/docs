@@ -5,6 +5,26 @@ title: Upgrade Guide (v4)
 
 NextAuth.js version 4 included a few breaking changes from the last major version (3.x). So we're here to help you upgrade your applications as smoothly as possible. It should be possible to upgrade from any version of 3.x to the latest 4 release by following the next few migration steps.
 
+:::note
+Version 4 is currently in beta. We encourage users to try it out as we don't plan to change the API any more, but be aware that if a bug-fix requires so, we will do that without further notice.
+:::
+
+You can upgrade to the new version by running:
+
+```sh
+npm i next-auth@beta
+```
+
+#### Verify the correct version
+:::warning
+Due to an [unfortunate publish on npm](https://www.npmjs.com/package/next-auth/v/4.0.0), there is a `4.0.0` version out there that is **NOT** suitable for use. During the beta release phase, please make sure/double check your `node_modules/next-auth/package.json` version to be exactly `4.0.0-beta.1` (or `beta.2` etc.), instead of `4.0.0`. (Adapters might try to install the wrong version in some cases for example.)
+
+In your project's `package.json`, make sure you don't have a `^` character before the version number. Read more in the [npm docs](https://docs.npmjs.com/cli/v7/configuring-npm/package-json#dependencies).
+
+We are sorry for this inconvenience, and we hope to make this issue go away once v4 goes stable.
+:::
+
+
 ### 1. Adapters
 
 You can find the official Adapters in the [nextauthjs/adapter](https://github.com/nextauthjs/adapters) repository. Although you can still [create your own](/tutorials/creating-a-database-adapter) with a new, [simplified Adapter API](https://github.com/nextauthjs/next-auth/pull/2361).
