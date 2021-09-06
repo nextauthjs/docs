@@ -25,7 +25,7 @@ We are sorry for this inconvenience, and we hope to make this issue go away once
 :::
 
 
-### 1. Adapters
+### Adapters
 
 You can find the official Adapters in the [nextauthjs/adapter](https://github.com/nextauthjs/adapters) repository. Although you can still [create your own](/tutorials/creating-a-database-adapter) with a new, [simplified Adapter API](https://github.com/nextauthjs/next-auth/pull/2361).
 
