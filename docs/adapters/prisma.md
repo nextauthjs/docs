@@ -7,7 +7,7 @@ title: Prisma Adapter
 
 To use this Adapter, you need to install Prisma Client, Prisma CLI, and the separate `@next-auth/prisma-adapter` package:
 
-```
+```bash npm2yarn
 npm install @prisma/client @next-auth/prisma-adapter
 npm install prisma --save-dev
 ```

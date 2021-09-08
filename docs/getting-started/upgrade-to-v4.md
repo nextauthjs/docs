@@ -11,8 +11,8 @@ Version 4 is currently in beta. We encourage users to try it out as we don't pla
 
 You can upgrade to the new version by running:
 
-```sh
-npm i next-auth@beta
+```bash npm2yarn
+npm install next-auth@beta
 ```
 
 #### Verify the correct version

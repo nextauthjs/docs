@@ -5,7 +5,10 @@ title: LDAP Authentication
 
 NextAuth.js provides the ability to setup a [custom Credential provider](/configuration/providers#sign-in-with-credentials) which we can take advantage of to authenticate users against an existing LDAP server.
 
-You will need an additional dependency, `ldapjs`, which you can install by running `npm install ldapjs`.
+You will need an additional dependency, `ldapjs`, which you can install by running 
+```bash npm2yarn
+npm install ldapjs
+```
 
 Then you must setup the `CredentialsProvider()` provider key like so:
 
