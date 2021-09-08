@@ -16,6 +16,7 @@ We have a list of official adapters that are distributed as their own packages u
 - [`dynamodb`](./dynamodb)
 - [`firebase`](./firebase)
 - [`pouchdb`](./pouchdb)
+- [`mongodb`](./mongodb)
 - [`typeorm-legacy`](./typeorm)
 
 ## Custom Adapter
