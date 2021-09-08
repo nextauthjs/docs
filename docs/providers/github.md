@@ -13,7 +13,7 @@ https://github.com/settings/apps
 
 ## Options
 
-The **Github Provider** comes with a set of default options:
+The **GitHub Provider** comes with a set of default options:
 
 - [GitHub Provider options](https://github.com/nextauthjs/next-auth/blob/main/src/providers/github.js)
 
