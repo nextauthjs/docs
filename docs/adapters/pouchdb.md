@@ -15,7 +15,7 @@ Depending on your architecture you can use PouchDB's http adapter to reach any d
 
 1. Install `next-auth` and `@next-auth/pouchdb-adapter`
 
-```js
+```bash npm2yarn
 npm install next-auth @next-auth/pouchdb-adapter
 ```
 
