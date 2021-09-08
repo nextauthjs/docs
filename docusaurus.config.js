@@ -151,6 +151,7 @@ module.exports = {
           remarkPlugins: [
             require("remark-mermaid-dataurl"),
             require("remark-github"),
+            [require("@docusaurus/remark-plugin-npm2yarn"), { sync: true }],
           ],
           versions: {
             current: {
