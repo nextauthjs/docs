@@ -75,16 +75,16 @@ To be able to use `useSession` first you'll need to expose the session context, 
 
 ```javascript
 // pages/_app.js
-import { SessionProvider } from "next-auth/react"
+import { Provider } from "next-auth/client";
 
 export default function App({
   Component,
   pageProps: { session, ...pageProps },
 }) {
   return (
-    <SessionProvider session={session}>
+    <Provider session={pageProps.session}>
       <Component {...pageProps} />
-    </SessionProvider>
+    </Provider>
   )
 }
 ```
