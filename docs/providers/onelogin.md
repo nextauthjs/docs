@@ -28,7 +28,7 @@ providers: [
   OneLoginProvider({
     clientId: process.env.ONELOGIN_CLIENT_ID,
     clientSecret: process.env.ONELOGIN_CLIENT_SECRET,
-    domain: process.env.ONELOGIN_DOMAIN
+    issuer: process.env.ONELOGIN_ISSUER
   })
 ]
 ...

@@ -32,12 +32,12 @@ providers: [
   Auth0Provider({
     clientId: process.env.AUTH0_CLIENT_ID,
     clientSecret: process.env.AUTH0_CLIENT_SECRET,
-    domain: process.env.AUTH0_DOMAIN
+    issuer: process.env.AUTH0_ISSUER
   })
 ]
 ...
 ```
 
 :::note
-`domain` should be the fully qualified domain – e.g. `dev-s6clz2lv.eu.auth0.com`
+`issuer` should be the fully qualified domain – e.g. `dev-s6clz2lv.eu.auth0.com`
 :::

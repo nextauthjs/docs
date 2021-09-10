@@ -165,7 +165,7 @@ import Auth0Provider from "next-auth/providers/auth0"
 Auth0Provider({
   clientId: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
-  domain: process.env.DOMAIN,
+  issuer: process.env.ISSUER,
   scope: "openid your_custom_scope", // We do provide a default, but this will override it if defined
   profile(profile) {
     return {} // Return the profile in a shape that is different from the built-in one.

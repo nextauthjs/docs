@@ -24,7 +24,7 @@ providers: [
   FusionAuthProvider({
     id: "fusionauth",
     name: "FusionAuth",
-    domain:  process.env.FUSIONAUTH_DOMAIN,
+    issuer:  process.env.FUSIONAUTH_ISSUER,
     clientId: process.env.FUSIONAUTH_CLIENT_ID,
     clientSecret: process.env.FUSIONAUTH_SECRET,
     tenantId: process.env.FUSIONAUTH_TENANT_ID // Only required if you're using multi-tenancy
