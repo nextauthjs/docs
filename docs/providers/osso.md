@@ -36,12 +36,12 @@ providers: [
   OssoProvider({
     clientId: process.env.OSSO_CLIENT_ID,
     clientSecret: process.env.OSSO_CLIENT_SECRET,
-    domain: process.env.OSSO_DOMAIN
+    issuer: process.env.OSSO_ISSUER
   })
 }
 ...
 ```
 
 :::note
-`domain` should be the fully qualified domain – e.g. `demo.ossoapp.com`
+`issuer` should be the fully qualified domain – e.g. `demo.ossoapp.com`
 :::
