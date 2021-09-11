@@ -235,7 +235,7 @@ export default App({
   return (
     <SessionProvider session={session}>
       <Component {...pageProps}/>
-    </SessionProvide>
+    </SessionProvider>
   )
 }`.trim()
 
