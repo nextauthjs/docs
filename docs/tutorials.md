@@ -93,7 +93,7 @@ title: Tutorials and Explainers
 
 ## Database
 
-#### [Custom models with TypeORM](tutorials/typeorm-custom-models)
+#### [Custom models with TypeORM](adapters/typeorm#custom-models)
 
 - How to use models with custom properties using the TypeORM adapter.
 
