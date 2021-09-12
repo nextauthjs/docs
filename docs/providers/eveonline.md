@@ -44,7 +44,7 @@ options: {
     secret: process.env.JWT_SECRET,
   },
   callbacks: {
-    jwt: async (token, user, account, profile, isNewUser) => {
+    jwt: async ({ token, profile }) => {
       if (profile) {
         token = {
           ...token,
@@ -53,7 +53,7 @@ options: {
       }
       return token;
     },
-    session: async (session, token) => {
+    session: async ({ session, token }) => {
       if (token) {
         session.user.id = token.id;
       }
