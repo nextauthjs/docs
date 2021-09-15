@@ -15,7 +15,7 @@ https://developers.eveonline.com/
 
 The **EVE Online Provider** comes with a set of default options:
 
-- [EVE Online Provider options](https://github.com/nextauthjs/next-auth/blob/main/src/providers/eveonline.js)
+- [EVE Online Provider options](https://github.com/nextauthjs/next-auth/blob/main/src/providers/eveonline.ts)
 
 You can override any of the options to suit your own use case.
 
@@ -44,19 +44,8 @@ options: {
     secret: process.env.JWT_SECRET,
   },
   callbacks: {
-    jwt: async (token, user, account, profile, isNewUser) => {
-      if (profile) {
-        token = {
-          ...token,
-          id: profile.CharacterID,
-        }
-      }
-      return token;
-    },
-    session: async (session, token) => {
-      if (token) {
-        session.user.id = token.id;
-      }
+    session: async ({ session, token }) => {
+      session.user.id = token.id;
       return session;
     }
   }
