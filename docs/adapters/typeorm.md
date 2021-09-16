@@ -24,7 +24,7 @@ When using the **NextAuth v4 beta**, please make sure to use the `next` tagged v
 :::
 
 ```bash npm2yarn
-npm install typeorm @next-auth/typeorm-legacy-adapter@next
+npm install next-auth@beta typeorm @next-auth/typeorm-legacy-adapter@next
 ```
 
 Configure your NextAuth.js to use the TypeORM Adapter:

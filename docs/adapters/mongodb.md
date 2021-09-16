@@ -16,7 +16,7 @@ When using the **NextAuth v4 beta**, please make sure to use the `next` tagged v
 1. Install the necessary packages
 
 ```bash npm2yarn
-npm install next-auth mongodb @next-auth/mongodb-adapter@next
+npm install next-auth@beta mongodb @next-auth/mongodb-adapter@next
 ```
 
 2. Add `lib/mongodb.js`

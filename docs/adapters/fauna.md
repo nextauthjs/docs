@@ -18,7 +18,7 @@ When using the **NextAuth v4 beta**, please make sure to use the `next` tagged v
 1. Install `next-auth` and `@next-auth/fauna-adapter@next`
 
 ```bash npm2yarn
-npm install next-auth @next-auth/fauna-adapter
+npm install next-auth@beta @next-auth/fauna-adapter
 ```
 
 2. Add this adapter to your `pages/api/[...nextauth].js` next-auth configuration object.
