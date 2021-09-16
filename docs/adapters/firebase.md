@@ -13,10 +13,10 @@ This is the Firebase Adapter for [`next-auth`](https://next-auth.js.org). This p
 Converting this adapter to support v4 is Work In Progress. See https://github.com/nextauthjs/adapters/pull/183 For more info on adapter changes, see [the migration docs](/getting-started/upgrade-v4#adapters)
 :::
 
-1. Install `next-auth` and `@next-auth/firebase-adapter`
+1. Install the necessary packages
 
 ```bash npm2yarn
-npm install next-auth@beta @next-auth/firebase-adapter
+npm install next-auth@beta @next-auth/firebase-adapter@experimental
 ```
 
 2. Add this adapter to your `pages/api/auth/[...nextauth].js` next-auth configuration object.
