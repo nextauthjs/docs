@@ -66,7 +66,7 @@ module.exports = {
     announcementBar: {
       id: "new-major-announcement",
       content:
-        "You are looking at the v4 documentation (currently in beta ⚠). If you need the old (v3) documentation, check it out <a href='/v3/getting-started/introduction'>here</a>. Migration docs to v4 <a href='/getting-started/upgrade-v4'>can be found here</a>.",
+        "The default documentation is for v4 , which is currently in beta ⚠. If you need the old (v3) documentation, check it out <a href='/v3/getting-started/introduction'>here</a> (make sure the url contains /v3/). Migration docs to v4 <a href='/getting-started/upgrade-v4'>can be found here</a>.",
       backgroundColor: "#1786fb",
       textColor: "#fff",
     },
