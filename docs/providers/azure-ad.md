@@ -45,7 +45,11 @@ providers: [
     clientId: process.env.AZURE_AD_CLIENT_ID,
     clientSecret: process.env.AZURE_AD_CLIENT_SECRET,
     tenantId: process.env.AZURE_AD_TENANT_ID, // omit this if it was omitted above.
-    scope: 'offline_access User.Read',
+    authorization: {
+        params: {
+            scope: 'offline_access User.Read',
+        },
+    },
   }),
 ]
 ...
