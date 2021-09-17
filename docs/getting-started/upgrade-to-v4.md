@@ -54,7 +54,7 @@ export default NextAuth({
 Introduced in https://github.com/nextauthjs/next-auth/releases/tag/v4.0.0-next.8 and https://github.com/nextauthjs/next-auth/pull/2361
 
 :::warning
-When using the **NextAuth v4 beta**, please be sure to use the `next` tagged version of your adapter. For example, to use the appropriate `typeorm` version with NextAuth v4, you would install `@next-auth/typeorm-legacy-adapter@next`. 
+When using the **NextAuth v4 beta**, please make sure to use the `next` tagged version of your adapter. For example, to use the appropriate `typeorm` version with NextAuth v4, you would install `@next-auth/typeorm-legacy-adapter@next`. 
 :::
 
 ### Adapter API
@@ -62,6 +62,92 @@ When using the **NextAuth v4 beta**, please be sure to use the `next` tagged ver
 The Adapter API has been rewritten and significantly simplified in NextAuth v4. The adapters now have less work to do as some functionality has been migrated to the core of NextAuth, like hashing the [verification token](/adapters/models/#verification-token).
 
 **This does not require any changes from the user**, however if you are an adapter maintainer or are interested in writing your own adapter, you can find more information about this change in https://github.com/nextauthjs/next-auth/pull/2361 and release https://github.com/nextauthjs/next-auth/releases/tag/v4.0.0-next.22.
+
+### Schema changes
+
+The way we save data with adapters have slightly changed. With the new Adapter API, we wanted to make it easier to extend your database with additional fields. For example if your User needs an extra `phone` field, it should be enough to add that to your database's schema, and no changes will be necessary in your adapter.
+
+- `created_at`/`createdAt` and `updated_at`/`updatedAt` fields are removed from all Models.
+- `user_id`/`userId` consistently named `userId`.
+- `compound_id`/`compundId` is removed from Account.
+- `access_token`/`accessToken` is removed from Session.
+- `email_verified`/`emailVerified` on User is consistently named `email_verified`.
+- `provider_id`/`providerId` renamed to `provider` on Account
+- `provider_type`/`providerType` renamed to `type` on Account
+- `provider_account_id`/`providerAccountId` on Account is consistently named `providerAccountId`
+- `access_token_expires`/`accessTokenExpires` on Account renamed to `expires_in`
+- New fields on Account: `expires_at`, `token_type`, `scope`, `id_token`, `oauth_token_secret`, `oauth_token`, `session_state`
+  
+
+<!-- REVIEW: Would something like this below be helpful? -->
+<details>
+<summary>
+See the changes
+</summary>
+<pre>
+
+```diff
+User {
+  id
+  name
+  email
+- emailVerified
++ email_verified
+  image
+-  created_at
+-  updated_at
+}
+
+Account {
+  id
+- compound_id
+- user_id
++ userId
+-  provider_type
++ type
+- provider_id
++ provider
+- provider_account_id
++ providerAccountId
+  refresh_token
+  access_token
+- access_token_expires
++ expires_in
++ expires_at
++ token_type
++ scope
++ id_token
++ oauth_token_secret
++ oauth_token
++ session_state
+- created_at
+- updated_at
+}
+
+Session {
+  id
+  userId
+  expires
+  sessionToken
+- access_token
+- created_at
+- updated_at
+}
+
+VerificationToken {
+  id
+  token
+  expires
+  identifier
+-  created_at
+-  updated_at
+}
+```
+</pre>
+</details>
+
+
+For more info, see the [Models page](/adapters/models).
 
 ## `next-auth/react`
 
