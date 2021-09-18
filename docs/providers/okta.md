@@ -24,7 +24,7 @@ providers: [
   OktaProvider({
     clientId: process.env.OKTA_CLIENT_ID,
     clientSecret: process.env.OKTA_CLIENT_SECRET,
-    domain: process.env.OKTA_DOMAIN
+    issuer: process.env.OKTA_ISSUER
   })
 ]
 ...

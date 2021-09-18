@@ -167,7 +167,7 @@ function Home() {
                       href="https://www.npmjs.com/package/next-auth"
                       className="button button--primary button--outline rounded-pill button--lg"
                     >
-                      npm install next-auth
+                      npm install next-auth@beta
                     </a>
                   </p>
                 </div>
@@ -235,7 +235,7 @@ export default App({
   return (
     <SessionProvider session={session}>
       <Component {...pageProps}/>
-    </SessionProvide>
+    </SessionProvider>
   )
 }`.trim()
 

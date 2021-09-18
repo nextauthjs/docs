@@ -47,3 +47,23 @@ You can use [node-jose-tools](https://www.npmjs.com/package/node-jose-tools) to 
 **Option 2**: Specify custom encode/decode functions on the jwt object. This gives you complete control over signing / verification / etc.
 
 #### JWT_AUTO_GENERATED_ENCRYPTION_KEY
+
+## Adapter
+
+### ADAPTER_TYPEORM_UPDATING_ENTITIES
+
+This warning occurs when typeorm finds that the provided entities differ from the database entities. By default while not in `production` the typeorm adapter will always synchronize changes made to the entities codefiles. 
+
+Disable this warning by setting `synchronize: false` in your typeorm config
+
+Example:
+```js title="/pages/api/auth/[...nextauth].js"
+adapter: TypeORMLegacyAdapter({
+  type: 'mysql',
+  username: process.env.DATABASE_USERNAME,
+  password: process.env.DATABASE_PASSWORD,
+  host: process.env.DATABASE_HOST,
+  database: process.env.DATABASE_DB,
+  synchronize: false
+}),
+```

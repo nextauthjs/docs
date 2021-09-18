@@ -24,8 +24,7 @@ providers: [
   IdentityServer4Provider({
     id: "identity-server4",
     name: "IdentityServer4",
-    scope: "openid profile email api offline_access", // Allowed Scopes
-    domain:  process.env.IdentityServer4_Domain,
+    issuer:  process.env.IdentityServer4_Issuer,
     clientId: process.env.IdentityServer4_CLIENT_ID,
     clientSecret: process.env.IdentityServer4_CLIENT_SECRET
   })
@@ -48,11 +47,10 @@ providers: [
   IdentityServer4Provider({
     id: "demo-identity-server",
     name: "Demo IdentityServer4",
-    scope: "openid profile email api offline_access",
-    domain:  "demo.identityserver.io",
+    authorization: { params: { scope: "openid profile email api offline_access" } },
+    issuer:  "https://demo.identityserver.io/",
     clientId: "interactive.confidential",
     clientSecret: "secret",
-    checks: ["pkce"]
   })
 }
 ...

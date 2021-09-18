@@ -13,9 +13,13 @@ You can find the full schema in the table structure section below.
 
 ## Getting Started
 
+:::warning
+This adapter currently doesn't support the `next-auth` v4. If you want to help to migrate it, please open a PR/issue. Source code is here: https://github.com/nextauthjs/adapters/tree/main/packages/pouchdb For more info on adapter changes, see [the migration docs](/getting-started/upgrade-v4#adapters)
+:::
+
 1. Install `next-auth` and `@next-auth/dynamodb-adapter`
 
-```js
+```bash npm2yarn
 npm install next-auth @next-auth/dynamodb-adapter
 ```
 

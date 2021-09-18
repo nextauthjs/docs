@@ -11,11 +11,16 @@ Depending on your architecture you can use PouchDB's http adapter to reach any d
 
 ## Getting Started
 
-> **Prerequesite**: Your PouchDB instance MUST provide the `pouchdb-find` plugin since it is used internally by the adapter to build and manage indexes
+:::warning
+This adapter currently doesn't support the `next-auth` v4. If you want to help to migrate it, please open a PR/issue. Source code is here: https://github.com/nextauthjs/adapters/tree/main/packages/pouchdb For more info on adapter changes, see [the migration docs](/getting-started/upgrade-v4#adapters)
+:::
+
+
+> **Prerequisites**: Your PouchDB instance MUST provide the `pouchdb-find` plugin since it is used internally by the adapter to build and manage indexes
 
 1. Install `next-auth` and `@next-auth/pouchdb-adapter`
 
-```js
+```bash npm2yarn
 npm install next-auth @next-auth/pouchdb-adapter
 ```
 

@@ -13,16 +13,16 @@ https://github.com/settings/apps
 
 ## Options
 
-The **Github Provider** comes with a set of default options:
+The **GitHub Provider** comes with a set of default options:
 
-- [Github Provider options](https://github.com/nextauthjs/next-auth/blob/main/src/providers/github.js)
+- [GitHub Provider options](https://github.com/nextauthjs/next-auth/blob/main/src/providers/github.js)
 
 You can override any of the options to suit your own use case.
 
 ## Example
 
 ```js
-import GithubProvider from `next-auth/providers/github`
+import GitHubProvider from `next-auth/providers/github`
 ...
 providers: [
   GitHubProvider({
