@@ -163,3 +163,7 @@ Check your mail server configuration.
 This error happens when `[...nextauth].js` file is not found inside `pages/api/auth`.
 
 Make sure the file is there and the filename is written correctly.
+
+#### oauth_callback_error expected 200 OK with body but no body was returned
+
+This error might happen with some of the providers. It happens due to `openid-client`(which is peer dependncy) node version mismatch. For instane openid client requires `>=14.2.0` for `lts/fermium` and have simmilar limits for the other versions. For the full list of the compatible node versions please see [pakage.json](https://github.com/panva/node-openid-client/blob/2a84e46992e1ebeaf685c3f87b65663d126e81aa/package.json#L78)
