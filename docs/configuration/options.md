@@ -366,12 +366,22 @@ If the `debug` level is defined by the user, it will be called regardless of the
 
 ### theme
 
-- **Default value**: `"auto"`
+- **Default value**: `object`
 - **Required**: _No_
 
 #### Description
 
-Changes the theme of [pages](/configuration/pages). Set to `"light"`, if you want to force pages to always be light. Set to `"dark"`, if you want to force pages to always be dark. Set to `"auto"`, (or leave this option out) if you want the pages to follow the preferred system theme. (Uses the [prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme) media query.)
+Changes the color scheme theme of [pages](/configuration/pages) as well as allows some minor customization. Set `theme.colorScheme` to `"light"`, if you want to force pages to always be light. Set to `"dark"`, if you want to force pages to always be dark. Set to `"auto"`, (or leave this option out) if you want the pages to follow the preferred system theme. (Uses the [prefers-color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme) media query.)
+
+In addition, you can define a logo URL in `theme.logo` which will be rendered above the main card in the default signin/signout/error/verify-request pages, as well as a `theme.brandColor` which will affect the accent color of these pages.
+
+```js
+theme: {
+  colorScheme: "auto", // "auto" | "dark" | "light"
+  brandColor: "", // Hex color code
+  logo: "" // Absolute URL to image
+}
+```
 
 ---
 
