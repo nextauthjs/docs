@@ -93,6 +93,8 @@ Please double check your Email settings.
 
 The Email authentication provider can only be used if a database is configured.
 
+This is required to store the verification token. Please see the [email provider](/providers/email#configuration) for more details.
+
 #### CALLBACK_CREDENTIALS_JWT_ERROR
 
 The Credentials Provider can only be used if JSON Web Tokens are used for sessions.
