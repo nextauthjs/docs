@@ -5,7 +5,7 @@ title: Upgrade Guide (v4)
 
 NextAuth.js version 4 included a few breaking changes from the last major version (3.x). So we're here to help you upgrade your applications as smoothly as possible. It should be possible to upgrade from any version of 3.x to the latest 4 release by following the next few migration steps.
 
-## 1. Adapters
+## Adapters
 
 You can find the official Adapters in the [nextauthjs/adapter](https://github.com/nextauthjs/adapters) repository. Although you can still [create your own](/tutorials/creating-a-database-adapter) with a new, [simplified Adapter API](https://github.com/nextauthjs/next-auth/pull/2361).
 
@@ -43,7 +43,7 @@ The Adapter API has been rewritten and significantly simplified in NextAuth v4. 
 
 **This does not require any changes from the user**, however if you are an adapter maintainer or are interested in writing your own adapter, you can find more information about this change in https://github.com/nextauthjs/next-auth/pull/2361 and release https://github.com/nextauthjs/next-auth/releases/tag/v4.0.0-next.22.
 
-## 2. `next-auth/react`
+## `next-auth/react`
 
 We've renamed the client-side import source to `next-auth/react`. To comply with this change, you will simply have to rename anywhere you were using `next-auth/client`.
 
@@ -67,7 +67,7 @@ We've also made the following changes to the names of the exports:
 
 Introduced in https://github.com/nextauthjs/next-auth/releases/tag/v4.0.0-next.12
 
-## 3. SessionProvider
+## SessionProvider
 
 Version 4 makes using the `SessionProvider` mandatory. This means that you will have to wrap any part of your application using `useSession` in this provider, if you were not doing so already. The `SessionProvider` has also undergone a few further changes:
 
@@ -99,7 +99,7 @@ export default function App({
 
 Introduced in https://github.com/nextauthjs/next-auth/releases/tag/v4.0.0-next.12
 
-## 4. Named Parameters
+## Named Parameters
 
 We have changed the arguments to our callbacks to the named parameters pattern. This way you don't have to use dummy `_` placeholders or other tricks.
 
@@ -146,7 +146,7 @@ events: {
 
 Introduced in https://github.com/nextauthjs/next-auth/releases/tag/v4.0.0-next.20
 
-## 5. useSession Hook
+## useSession Hook
 
 The `useSession` hook has been updated to return an object. This allows you to test states much more cleanly with the new `status` option.
 
@@ -160,13 +160,13 @@ The `useSession` hook has been updated to return an object. This allows you to t
 
 Introduced in https://github.com/nextauthjs/next-auth/releases/tag/v4.0.0-next.18
 
-## 6. `nodemailer`
+## `nodemailer`
 
 [`nodemailer`](https://npmjs.com/package/nodemailer) is no longer a dependency added by default. If you are using the Email provider you can install it in your project manually, or use any other Email library in the [`sendVerificationRequest`](/configuration/providers#options-1#:~:text=sendVerificationRequest) callback. This reduces bundle size for those not actually using the Email provider.
 
 Introduced in https://github.com/nextauthjs/next-auth/releases/tag/v4.0.0-next.2
 
-## 7. Logger API
+## Logger API
 
 The logger API has been simplified to use at most two parameters, where the second is usually an object (`metadata`) containing an `error` object. If you are not using the logger settings you can ignore this change.
 
@@ -186,7 +186,7 @@ logger: {
 
 Introduced in https://github.com/nextauthjs/next-auth/releases/tag/v4.0.0-next.19
 
-## 8. Providers
+## Providers
 
 Importing OAuth providers has changed a bit, they now need to be individually imported.
 
@@ -215,7 +215,7 @@ Also worth noting that the `id` is expected to be returned as a `string` type (F
 
 Introduced in https://github.com/nextauthjs/next-auth/releases/tag/v4.0.0-next.20
 
-## 9. Theme
+## Theme
 
 We've added some basic customization options to our built-in pages like `signin`, `signout`, etc.
 
