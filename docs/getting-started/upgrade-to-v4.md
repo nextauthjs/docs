@@ -9,7 +9,7 @@ NextAuth.js version 4 included a few breaking changes from the last major versio
 
 You can find the official Adapters in the [nextauthjs/adapter](https://github.com/nextauthjs/adapters) repository. Although you can still [create your own](/tutorials/creating-a-database-adapter) with a new, [simplified Adapter API](https://github.com/nextauthjs/next-auth/pull/2361).
 
-1.1. If you use the built-in TypeORM or Prisma adapters, these have been removed from the core `next-auth` package to not balloon the package size for users who do not need a database. Thankfully the migration is super easy; you just need to install the external packages for your database and change the import in your `[...nextauth].js`.
+1. If you use the built-in TypeORM or Prisma adapters, these have been removed from the core `next-auth` package to not balloon the package size for users who do not need a database. Thankfully the migration is super easy; you just need to install the external packages for your database and change the import in your `[...nextauth].js`.
 
 The `database` option is gone, you can do the following instead:
 
@@ -25,11 +25,11 @@ export default NextAuth({
 })
 ```
 
-1.2. The `prisma-legacy` adapter has been removed, please use the [`@next-auth/prisma-adapter`](https:/npmjs.com/package/@next-auth/prisma-adapter) instead.
+2. The `prisma-legacy` adapter has been removed, please use the [`@next-auth/prisma-adapter`](https:/npmjs.com/package/@next-auth/prisma-adapter) instead.
 
-1.3. The `typeorm-legacy` adapter will stay as-is for the time being, however we do aim to migrate this to individual lighter weight adapters for each database type in the future, or switch out `typeorm`.
+3. The `typeorm-legacy` adapter will stay as-is for the time being, however we do aim to migrate this to individual lighter weight adapters for each database type in the future, or switch out `typeorm`.
 
-1.4 MongoDB has been moved to its own adapter under `@next-auth/mongodb-adapter`. See the [MongoDB Adapter docs](/adapters/mongodb).
+4. MongoDB has been moved to its own adapter under `@next-auth/mongodb-adapter`. See the [MongoDB Adapter docs](/adapters/mongodb).
 
 Introduced in https://github.com/nextauthjs/next-auth/releases/tag/v4.0.0-next.8 and https://github.com/nextauthjs/next-auth/pull/2361
 
@@ -197,9 +197,9 @@ Importing OAuth providers has changed a bit, they now need to be individually im
 + Auth0Provider({...})
 ```
 
-> 1. The `AzureADB2C` provider has been renamed `AzureAD`.
-> 2. The `Basecamp` provider has been removed, see explanation [here](https://github.com/basecamp/api/blob/master/sections/authentication.md#on-authenticating-users-via-oauth).
-> 3. The GitHub provider by default now will not request full write access to user profiles. If you need this scope, please add `user` to the scope option manually.
+1. The `AzureADB2C` provider has been renamed `AzureAD`.
+2. The `Basecamp` provider has been removed, see explanation [here](https://github.com/basecamp/api/blob/master/sections/authentication.md#on-authenticating-users-via-oauth).
+3. The GitHub provider by default now will not request full write access to user profiles. If you need this scope, please add `user` to the scope option manually.
 
 The following new options are available when defining your Providers in the configuration:
 
