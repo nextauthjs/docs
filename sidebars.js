@@ -60,6 +60,7 @@ module.exports = {
         "adapters/pouchdb",
         "adapters/mongodb",
         "adapters/typeorm",
+        "adapters/sequelize",
       ],
     },
     "warnings",
