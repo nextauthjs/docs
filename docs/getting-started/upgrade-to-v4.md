@@ -34,7 +34,7 @@ export default NextAuth({
 Introduced in https://github.com/nextauthjs/next-auth/releases/tag/v4.0.0-next.8 and https://github.com/nextauthjs/next-auth/pull/2361
 
 :::note
-When using the **NextAuth v4 beta**, please be sure to use the `next` tagged version of your adapter. For example, to use the appropriate `typeorm` version with NextAuth v4, you would install `@next-auth/typeorm-legacy-adapter@next`. 
+When using the **NextAuth v4 beta**, please be sure to use the `next` tagged version of your adapter. For example, to use the appropriate `typeorm` version with NextAuth v4, you would install `@next-auth/typeorm-legacy-adapter@next`.
 :::
 
 ### Adapter API
@@ -214,6 +214,26 @@ When submitting a new OAuth provider to the repository, the `profile` callback i
 Also worth noting that the `id` is expected to be returned as a `string` type (For example if your provider returns it as a number, you can simply cast it by the `.toString()` method). This makes the returned profile comply across providers/accounts/adapters, and will hopefully cause less confusion.
 
 Introduced in https://github.com/nextauthjs/next-auth/releases/tag/v4.0.0-next.20
+
+## 9. Theme
+
+We've added some basic customization options to our built-in pages like `signin`, `signout`, etc.
+
+These can be set under the `theme` configuration key. This used to be a string which only controlled the color scheme option. Now it is an object with the following options:
+
+```js
+theme: {
+  colorScheme: "auto", // "auto" | "dark" | "light"
+  brandColor: "", // Hex color value
+  logo: "" // Absolute URL to logo image
+}
+```
+
+The hope is that with some minimal configuration / customization options, users won't immediately feel the need to replace the built-in pages with their own.
+
+More details and previews of the effects of these options can be found in the docs under [configuration/pages](https://next-auth.js.org/configuration/pages#theming).
+
+Introducted in https://github.com/nextauthjs/next-auth/pull/2788
 
 ## Summary
 
