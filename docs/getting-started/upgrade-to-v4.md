@@ -219,7 +219,7 @@ Introduced in https://github.com/nextauthjs/next-auth/releases/tag/v4.0.0-next.2
 
 We've added some basic customization options to our built-in pages like `signin`, `signout`, etc.
 
-These can be set under the `theme` configuration key. It used to string which only controlled the color scheme option. Now it is an object with the following options:
+These can be set under the `theme` configuration key. This used to be a string which only controlled the color scheme option. Now it is an object with the following options:
 
 ```js
 theme: {
