@@ -314,7 +314,7 @@ The following new options are available when defining your Providers in the conf
 3. `userinfo` (replaces `profileUrl`)
 4. `issuer`(replaces `domain`)
 
-Read more about it in this PR: (next-auth#2411)[https://github.com/nextauthjs/next-auth/pull/2411#issue-693918157]
+Read more about it in this PR: https://github.com/nextauthjs/next-auth/pull/2411
 
 When submitting a new OAuth provider to the repository, the `profile` callback is expected to only return these fields from now on: `id`, `name`, `email`, and `image`. If any of these are missing values, they should be set to `null`.
 
