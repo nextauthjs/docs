@@ -261,7 +261,7 @@ NextAuth.js comes with a set of built-in providers. You can find them [here](htt
 
 ### Override default options
 
-For built-in providers, in most cases you will only need to specify the `clienId` and `clientSecret`. If you need to override any of the defaults, add your own [options](#options).
+For built-in providers, in most cases you will only need to specify the `clientId` and `clientSecret`. If you need to override any of the defaults, add your own [options](#options).
 
 For example, the `profile` callback will return `id`, `name`, `email` and `picture` by default, but you might need more information from the provider. After setting the correct scopes, you can then do something like this:
 
