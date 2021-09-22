@@ -14,7 +14,7 @@ It is designed from the ground up to support Next.js and Serverless.
 ### Flexible and easy to use
 
 - Designed to work with any OAuth service, it supports OAuth 1.0, 1.0A, 2.0 and OpenID Connect
-- Built-in support for [many popular sign-in services](/configuration/providers)
+- Built-in support for [many popular sign-in services](/configuration/providers/oauth-provider)
 - Supports email / passwordless authentication
 - Supports stateless authentication with any backend (Active Directory, LDAP, etc)
 - Supports both JSON Web Tokens and database sessions
@@ -49,6 +49,8 @@ Advanced options allow you to define your own routines to handle controlling wha
 ## Credits
 
 NextAuth.js is an open source project that is only possible [thanks to contributors](/contributors).
+
+If you would like to financially support the development of NextAuth, you can find more information on our [OpenCollective](https://opencollective.com/nextauth) page.
 
 ## Getting Started
 
