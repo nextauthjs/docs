@@ -137,25 +137,30 @@ html[data-theme="dark"] hr {
 .home-main .feature-image-wrapper {
   display: inline-block;
   overflow: auto;
-  padding: 0.6rem;
+  padding: 2.0rem;
   border-radius: 10rem;
   overflow: visible;
-  background-color: var(--ifm-color-primary);
   box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
-  background-image: linear-gradient(0deg, #1786fb 0%, #45eaba 100%);
+  background-image: url('/img/mesh-1.jpg');
+  background-size: cover;
+  background-origin: center;
 }
 
 .home-main .section-features .row .col:nth-child(2) .feature-image-wrapper {
-  background-image: linear-gradient(0deg, #605bd4 0%, #e95595 100%);
+  background-image: url('/img/mesh-2.jpg');
+  background-size: cover;
+  background-origin: center;
 }
 
 .home-main .section-features .row .col:nth-child(3) .feature-image-wrapper {
-  background-image: linear-gradient(0deg, #fd5d21 0%, #fbb12e 100%);
+  background-image: url('/img/mesh-3.jpg');
+  background-size: cover;
+  background-origin: center;
 }
 
 .home-main .feature-image-wrapper img {
-  filter: saturate(1.2) contrast(2);
-  zoom: 0.8;
+  filter: saturate(1.2) contrast(1.4);
+  zoom: 0.7;
 }
 
 .main-wrapper h1 {
@@ -176,4 +181,3 @@ html[data-theme="dark"] hr {
     flex-direction: column;
   }
 }
-
