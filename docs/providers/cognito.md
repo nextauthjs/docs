@@ -36,6 +36,10 @@ providers: [
 ...
 ```
 
+:::tip
+The issuer is a URL, that looks like this: `https://cognito-idp.{region}.amazonaws.com/{userPoolId}`
+:::
+
 :::warning
 Make sure you select all the appropriate client settings or the OAuth flow will not work.
 :::
