@@ -53,7 +53,7 @@ datasource db {
 
 generator client {
   provider        = "prisma-client-js"
-  previewFeatures = ["referentialActions"]
+  previewFeatures = ["referentialActions"] // You won't need this in Prisma 3.X or higher.
 }
 
 model Account {
