@@ -22,7 +22,7 @@ Due to an [unfortunate publish on npm](https://www.npmjs.com/package/next-auth/v
 
 In your project's `package.json`, make sure you don't have a `^` character before the version number. Read more in the [npm docs](https://docs.npmjs.com/cli/v7/configuring-npm/package-json#dependencies).
 
-We are sorry for this inconvenience, and we will remedy this issue as soon as 4.0.0 goes stable.
+We are sorry for this inconvenience, and we will remedy this issue as soon as v4 goes stable.
 :::
 
 ## `next-auth/react`
