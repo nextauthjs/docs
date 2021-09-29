@@ -50,7 +50,7 @@ Advanced options allow you to define your own routines to handle controlling wha
 
 NextAuth.js is an open source project that is only possible [thanks to contributors](/contributors).
 
-If you would like to financially support the development of NextAuth, you can find more information on our [OpenCollective](https://opencollective.com/nextauth) page.
+If you would like to financially support the development of NextAuth.js, you can find more information on our [OpenCollective](https://opencollective.com/nextauth) page.
 
 ## Getting Started
 
