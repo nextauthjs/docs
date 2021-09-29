@@ -83,7 +83,7 @@ Introduced in https://github.com/nextauthjs/next-auth/releases/tag/v4.0.0-next.1
 
 ## Providers
 
-OAuth providers now need to be imported individually.
+Providers now need to be imported individually.
 
 ```diff
 - import Provider from "next-auth/providers"
