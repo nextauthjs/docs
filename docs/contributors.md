@@ -24,7 +24,7 @@ Thank you to the [dozens of individual contributors](https://github.com/nextauth
 
 ## OpenCollective
 
-We have opened an OpenCollective organisation to help support the development of NextAuth. We are very thankful for all of our existing contributors and would be delighted if you would decide to join them.
+You can find NextAuth.js on OpenCollective. We are very thankful for all of our existing contributors and would be delighted if you or your company would decide to join them.
 
 More information can be found at: https://opencollective.com/nextauth
 
