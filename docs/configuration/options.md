@@ -124,15 +124,17 @@ jwt: {
   // This is used to generate the actual signingKey and produces a warning
   // message if not defined explicitly.
   secret: 'INp8IvdIyeMcoGAgFGoA61DdBglwwSqnXJZkgz8PSnw',
-  // You can generate a signing key using `jose newkey -s 512 -t oct -a HS512`
+  // You can generate a signing key using `npx node-jose-tools newkey -s 512 -t oct -a HS512`
   // This gives you direct knowledge of the key used to sign the token so you can use it
-  // to authenticate indirectly (eg. to a database driver)
-  signingKey: {
+  // to authenticate indirectly (eg. to a database driver). You should define the signing
+  // key in an environment variable as a string, but if you want to define it here you must 
+  // JSON.stringify the object first.
+  signingKey: JSON.stringify({
      kty: "oct",
      kid: "Dl893BEV-iVE-x9EC52TDmlJUgGm9oZ99_ZL025Hc5Q",
      alg: "HS512",
      k: "K7QqRmJOKRK2qcCKV_pi9PSBv3XP0fpTu30TP8xn4w01xR3ZMZM38yL2DnTVPVw6e4yhdh0jtoah-i4c_pZagA"
-  },
+  }),
   // If you chose something other than the default algorithm for the signingKey (HS512)
   // you also need to configure the algorithm
   verificationOptions: {
