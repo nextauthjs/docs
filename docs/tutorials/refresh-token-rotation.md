@@ -124,7 +124,7 @@ import { signIn, useSession } from "next-auth/react";
 import { useEffect } from "react";
 
 const HomePage() {
-  const { data: session } = useSession();
+  const [session] = useSession();
 
   useEffect(() => {
     if (session?.error === "RefreshAccessTokenError") {
