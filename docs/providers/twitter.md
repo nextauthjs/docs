@@ -21,6 +21,10 @@ You can override any of the options to suit your own use case.
 
 ## Example
 
+:::note
+TWITTER_CLIENT_ID is the same as TWITTER_CONSUMER_KEY & TWITTER_CLIENT_SECRET is the same as TWITTER_CONSUMER_SECRET
+:::
+
 ```js
 import TwitterProvider from `next-auth/providers/twitter`
 ...
