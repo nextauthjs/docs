@@ -22,7 +22,7 @@ You can override any of the options to suit your own use case.
 ## Example
 
 :::note
-TWITTER_CLIENT_ID is the same as TWITTER_CONSUMER_KEY & TWITTER_CLIENT_SECRET is the same as TWITTER_CONSUMER_SECRET
+API Key == Consumer Key. API Secret Key == Consumer Secret. See `Terminology clarification` section under https://developer.twitter.com/en/docs/authentication/oauth-1-0a/obtaining-user-access-tokens
 :::
 
 ```js
