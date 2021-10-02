@@ -22,7 +22,7 @@ You can override any of the options to suit your own use case.
 ## Example
 
 :::note
-API Key == Consumer Key. API Secret Key == Consumer Secret. See `Terminology clarification` section under https://developer.twitter.com/en/docs/authentication/oauth-1-0a/obtaining-user-access-tokens
+`TWITTER_CLIENT_ID` refers to the *consumer key*, while `TWITTER_CLIENT_SECRET` is the *consumer key secret*. Read more about the Twitter [terminology here](https://developer.twitter.com/en/docs/authentication/oauth-1-0a/obtaining-user-access-tokens#:~:text=Terminology%20clarification).
 :::
 
 ```js
