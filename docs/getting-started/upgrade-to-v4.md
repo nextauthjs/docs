@@ -71,7 +71,7 @@ The way we save data with adapters have slightly changed. With the new Adapter A
 - `user_id`/`userId` consistently named `userId`.
 - `compound_id`/`compundId` is removed from Account.
 - `access_token`/`accessToken` is removed from Session.
-- `email_verified`/`emailVerified` on User is consistently named `email_verified`.
+- `email_verified`/`emailVerified` on User is consistently named `emailVerified`.
 - `provider_id`/`providerId` renamed to `provider` on Account
 - `provider_type`/`providerType` renamed to `type` on Account
 - `provider_account_id`/`providerAccountId` on Account is consistently named `providerAccountId`
