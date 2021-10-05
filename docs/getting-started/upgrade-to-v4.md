@@ -149,6 +149,16 @@ VerificationToken {
 
 For more info, see the [Models page](/adapters/models).
 
+## `next-auth/jwt`
+
+We no longer have a default export in `next-auth/jwt`.
+To comply with this, change the following:
+
+```diff
+- import jwt from "next-auth/jwt"
++ import { getToken } from "next-auth/jwt"
+```
+
 ## `next-auth/react`
 
 We've renamed the client-side import source to `next-auth/react`. To comply with this change, you will simply have to rename anywhere you were using `next-auth/client`.
