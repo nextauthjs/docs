@@ -50,7 +50,7 @@ const options = {
     GoogleProvider({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
-      authorizationUrl: 'https://accounts.google.com/o/oauth2/v2/auth?prompt=consent&access_type=offline&response_type=code',
+      authorization: 'https://accounts.google.com/o/oauth2/v2/auth?prompt=consent&access_type=offline&response_type=code',
     })
   ],
   ...
@@ -60,7 +60,7 @@ const options = {
 :::
 
 :::tip
-Google also returns a `verified_email` boolean property in the OAuth profile.
+Google also returns a `email_verified` boolean property in the OAuth profile.
 
 You can use this property to restrict access to people with verified accounts at a particular domain.
 
@@ -70,7 +70,7 @@ const options = {
   callbacks: {
     async signIn(user, account, profile) {
       if (account.provider === 'google' &&
-          profile.verified_email === true &&
+          profile.email_verified === true &&
           profile.email.endsWith('@example.com')) {
         return true
       } else {
