@@ -41,3 +41,7 @@ Create a provider and a LINE login channel at `https://developers.line.biz/conso
 
 - Callback URL
   - http://localhost:3000/api/auth/callback/line
+
+:::tip
+To retrieve email address, you need to apply for Email address permission. Open [Line Developer Console](https://developers.line.biz/console/), go to your Login Channel. Scroll down bottom to find **OpenID Connect** -> **Email address permission**. Click **Apply** and follow the instruction.
+:::
