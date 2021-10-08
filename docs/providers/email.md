@@ -190,7 +190,7 @@ function html({ url, host, email }: Record<"url" | "host" | "email", string>) {
 function text({ url, host }: Record<"url" | "host", string>) {
   return `Sign in to ${host}\n${url}\n\n`
 }
-
+```
 
 :::tip
 If you want to generate great looking email client compatible HTML with React, check out https://mjml.io
