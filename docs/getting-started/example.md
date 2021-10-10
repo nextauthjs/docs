@@ -71,7 +71,6 @@ You can use the `useSession` hook from anywhere in your application (e.g. in a h
 To protect an API Route, you can use the [`getSession()`](/getting-started/client#getsession) method in the NextAuth.js client.
 
 ```javascript
-// This is an example of to protect an API route
 import { getSession } from "next-auth/react"
 
 export default async (req, res) => {
@@ -118,6 +117,17 @@ callbacks: {
 ```
 
 Now whenever you call `getSession` or `useSession`, the data object which is returned will include the `accessToken` value.
+
+```js
+import { useSession, signIn, signOut } from "next-auth/react"
+
+export default function Component() {
+  const { data } = useSession()
+  const { accessToken } = data
+
+  return <div>Access Token: {accessToken}</div>
+}
+```
 
 #### Share/configure session state
 
