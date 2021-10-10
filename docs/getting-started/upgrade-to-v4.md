@@ -16,6 +16,7 @@ npm install next-auth@beta
 ```
 
 #### Verify the correct version
+
 :::warning
 Due to an [unfortunate publish on npm](https://www.npmjs.com/package/next-auth/v/4.0.0), there is a `4.0.0` version out there that is **NOT** suitable for use. During the beta release phase, please make sure/double check your `node_modules/next-auth/package.json` version to be exactly `4.0.0-beta.1` (or `beta.2` etc.), instead of `4.0.0`. (Adapters might try to install the wrong version in some cases for example.)
 
@@ -23,7 +24,6 @@ In your project's `package.json`, make sure you don't have a `^` character befor
 
 We are sorry for this inconvenience, and we hope to make this issue go away once v4 goes stable.
 :::
-
 
 ## Adapters
 
@@ -77,7 +77,6 @@ The way we save data with adapters have slightly changed. With the new Adapter A
 - `provider_account_id`/`providerAccountId` on Account is consistently named `providerAccountId`
 - `access_token_expires`/`accessTokenExpires` on Account renamed to `expires_in`
 - New fields on Account: `expires_at`, `token_type`, `scope`, `id_token`, `oauth_token_secret`, `oauth_token`, `session_state`
-  
 
 <!-- REVIEW: Would something like this below be helpful? -->
 <details>
@@ -143,9 +142,9 @@ VerificationToken {
 -  updated_at
 }
 ```
+
 </pre>
 </details>
-
 
 For more info, see the [Models page](/adapters/models).
 
@@ -197,7 +196,7 @@ The best practice for wrapping your app in Providers is to do so in your `pages/
 An example use-case with these new changes:
 
 ```jsx
-import { SessionProvider } from "next-auth/react";
+import { SessionProvider } from "next-auth/react"
 
 export default function App({
   Component,
@@ -209,7 +208,7 @@ export default function App({
     <SessionProvider session={session}>
       <Component {...pageProps} />
     </SessionProvider>
-  );
+  )
 }
 ```
 
@@ -278,7 +277,7 @@ Introduced in https://github.com/nextauthjs/next-auth/releases/tag/v4.0.0-next.1
 
 ## `nodemailer`
 
-[`nodemailer`](https://npmjs.com/package/nodemailer) is no longer a dependency added by default. If you are using the Email provider you can install it in your project manually, or use any other Email library in the [`sendVerificationRequest`](/configuration/providers#options-1#:~:text=sendVerificationRequest) callback. This reduces bundle size for those not actually using the Email provider.
+[`nodemailer`](https://npmjs.com/package/nodemailer) is no longer a dependency added by default. If you are using the Email provider you can install it in your project manually, or use any other Email library in the [`sendVerificationRequest`](/configuration/providers/email#options) callback. This reduces bundle size for those not actually using the Email provider.
 
 Introduced in https://github.com/nextauthjs/next-auth/releases/tag/v4.0.0-next.2
 

@@ -90,7 +90,6 @@ export default function Admin() {
 }
 ```
 
-
 ### Custom Client Session Handling
 
 Due to the way Next.js handles `getServerSideProps` / `getInitialProps`, every protected page load has to make a server-side request to check if the session is valid and then generate the requested page. This alternative solution allows for showing a loading state on the initial check and every page transition afterward will be client-side, without having to check with the server and regenerate pages.
@@ -162,7 +161,6 @@ There is also an alternative client-side API library based upon [`react-query`](
 If you use `react-query` in your project already, you can leverage it with NextAuth.js to handle the client-side session management for you as well. This replaces NextAuth.js's native `useSession` and `SessionProvider` from `next-auth/react`.
 
 See repository [`README`](https://github.com/nextauthjs/react-query) for more details.
-
 
 ---
 
@@ -372,7 +370,7 @@ e.g.
 - `signIn("auth0", null, { login_hint: "info@example.com" })` _hints the e-mail address to the provider_
 
 :::note
-You can also set these parameters through [`provider.authorizationParams`](/configuration/providers#oauth-provider-options).
+You can also set these parameters through [`provider.authorizationParams`](/configuration/providers/oauth#options).
 :::
 
 :::note
