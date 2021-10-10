@@ -1,6 +1,6 @@
-import React from 'react'
-import Head from '@docusaurus/Head'
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
+import React from "react"
+import Head from "@docusaurus/Head"
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext"
 
 const Seo = () => {
   const context = useDocusaurusContext()

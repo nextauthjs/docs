@@ -122,7 +122,7 @@ interface OAuthConfig {
    * [Userinfo endpoint](https://www.oauth.com/oauth2-servers/signing-in-with-google/verifying-the-user-info)
    */
   userinfo?: EndpointHandler<UrlParams, { tokens: TokenSet }, Profile>
-  type: 'oauth'
+  type: "oauth"
   /**
    * Used in URLs to refer to a certain provider.
    * @example /api/auth/callback/twitter // where the `id` is "twitter"
@@ -136,7 +136,7 @@ interface OAuthConfig {
   clientId: string
   clientSecret:
     | string
-    | Record<'appleId' | 'teamId' | 'privateKey' | 'keyId', string>
+    | Record<"appleId" | "teamId" | "privateKey" | "keyId", string>
   /**
    * If set to `true`, the user information will be extracted
    * from the `id_token` claims, instead of
@@ -156,13 +156,13 @@ interface OAuthConfig {
 Even if you are using a built-in provider, you can override any of these options to tweak the default configuration.
 
 ```js title=[...nextauth].js
-import Auth0Provider from 'next-auth/providers/auth0'
+import Auth0Provider from "next-auth/providers/auth0"
 
 Auth0Provider({
   clientId: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
   issuer: process.env.ISSUER,
-  scope: 'openid your_custom_scope', // We do provide a default, but this will override it if defined
+  scope: "openid your_custom_scope", // We do provide a default, but this will override it if defined
   profile(profile) {
     return {} // Return the profile in a shape that is different from the built-in one.
   },

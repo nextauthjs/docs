@@ -10,7 +10,7 @@ You can use these models with MySQL, MariaDB, Postgres, MongoDB and SQLite.
 ## Creating custom models
 
 ```js title="models/User.js"
-import Adapters from 'next-auth/adapters'
+import Adapters from "next-auth/adapters"
 
 // Extend the built-in models using class inheritance
 export default class User extends Adapters.TypeORM.Models.User.model {
@@ -22,13 +22,13 @@ export default class User extends Adapters.TypeORM.Models.User.model {
 }
 
 export const UserSchema = {
-  name: 'User',
+  name: "User",
   target: User,
   columns: {
     ...Adapters.TypeORM.Models.User.schema.columns,
     // Adds a phoneNumber to the User schema
     phoneNumber: {
-      type: 'varchar',
+      type: "varchar",
       nullable: true,
     },
   },
@@ -37,7 +37,7 @@ export const UserSchema = {
 
 ```js title="models/index.js"
 // To make importing them easier, you can export all models from single file
-import User, { UserSchema } from './User'
+import User, { UserSchema } from "./User"
 
 export default {
   User: {
@@ -56,11 +56,11 @@ export default {
 You can use custom models by specifying the TypeORM adapter explicitly and passing them as an option.
 
 ```js title="pages/api/auth/[...nextauth].js"
-import NextAuth from 'next-auth'
-import Providers from 'next-auth/providers'
-import Adapters from 'next-auth/adapters'
+import NextAuth from "next-auth"
+import Providers from "next-auth/providers"
+import Adapters from "next-auth/adapters"
 
-import Models from '../../../models'
+import Models from "../../../models"
 
 export default NextAuth({
   providers: [
@@ -69,7 +69,7 @@ export default NextAuth({
 
   adapter: Adapters.TypeORM.Adapter(
     // The first argument should be a database connection string or TypeORM config object
-    'mysql://username:password@127.0.0.1:3306/database_name',
+    "mysql://username:password@127.0.0.1:3306/database_name",
     // The second argument can be used to pass custom models and schemas
     {
       models: {

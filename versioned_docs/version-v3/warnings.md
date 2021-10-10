@@ -56,19 +56,19 @@ You returned something in the `signIn` callback, that is being deprecated.
 You probably had something similar in the callback:
 
 ```js
-return Promise.reject('/some/url')
+return Promise.reject("/some/url")
 ```
 
 or
 
 ```js
-throw '/some/url'
+throw "/some/url"
 ```
 
 To remedy this, simply return the url instead:
 
 ```js
-return '/some/url'
+return "/some/url"
 ```
 
 #### STATE_OPTION_DEPRECATION

@@ -28,22 +28,22 @@
   fill: #444;
 }
 
-html[data-theme='dark'] .admonition.admonition-note .admonition-icon svg,
-html[data-theme='dark'] .admonition.admonition-note .admonition-heading {
+html[data-theme="dark"] .admonition.admonition-note .admonition-icon svg,
+html[data-theme="dark"] .admonition.admonition-note .admonition-heading {
   color: #888;
   fill: #888;
 }
 
-html[data-theme='dark'] .admonition.admonition-tip,
-html[data-theme='dark'] .admonition.admonition-note,
-html[data-theme='dark'] .admonition.admonition-warning {
+html[data-theme="dark"] .admonition.admonition-tip,
+html[data-theme="dark"] .admonition.admonition-note,
+html[data-theme="dark"] .admonition.admonition-warning {
   color: #eee;
   background-color: #222;
 }
 
-html[data-theme='dark'] .admonition.admonition-tip a,
-html[data-theme='dark'] .admonition.admonition-note a,
-html[data-theme='dark'] .admonition.admonition-warning a {
+html[data-theme="dark"] .admonition.admonition-tip a,
+html[data-theme="dark"] .admonition.admonition-note a,
+html[data-theme="dark"] .admonition.admonition-warning a {
   color: #eee;
 }
 

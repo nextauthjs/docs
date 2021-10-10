@@ -21,10 +21,10 @@ npm install prisma --save-dev
 Configure your NextAuth.js to use the Prisma Adapter:
 
 ```javascript title="pages/api/auth/[...nextauth].js"
-import NextAuth from 'next-auth'
-import Providers from 'next-auth/providers'
-import Adapters from 'next-auth/adapters'
-import { PrismaClient } from '@prisma/client'
+import NextAuth from "next-auth"
+import Providers from "next-auth/providers"
+import Adapters from "next-auth/adapters"
+import { PrismaClient } from "@prisma/client"
 
 const prisma = new PrismaClient()
 
@@ -139,7 +139,7 @@ If you experience issues with Prisma opening too many database connections in lo
 ```javascript title="pages/api/auth/[...nextauth].js"
 let prisma
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === "production") {
   prisma = new PrismaClient()
 } else {
   if (!global.prisma) {

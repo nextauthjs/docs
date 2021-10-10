@@ -56,35 +56,35 @@ export default NextAuth({
 Run the following commands inside of the `Shell` tab in the Fauna dashboard to setup the appropriate collections and indexes.
 
 ```javascript
-CreateCollection({ name: 'accounts' })
-CreateCollection({ name: 'sessions' })
-CreateCollection({ name: 'users' })
-CreateCollection({ name: 'verification_tokens' })
+CreateCollection({ name: "accounts" })
+CreateCollection({ name: "sessions" })
+CreateCollection({ name: "users" })
+CreateCollection({ name: "verification_tokens" })
 CreateIndex({
-  name: 'account_by_provider_and_provider_account_id',
-  source: Collection('accounts'),
+  name: "account_by_provider_and_provider_account_id",
+  source: Collection("accounts"),
   unique: true,
   terms: [
-    { field: ['data', 'provider'] },
-    { field: ['data', 'providerAccountId'] },
+    { field: ["data", "provider"] },
+    { field: ["data", "providerAccountId"] },
   ],
 })
 CreateIndex({
-  name: 'session_by_session_token',
-  source: Collection('sessions'),
+  name: "session_by_session_token",
+  source: Collection("sessions"),
   unique: true,
-  terms: [{ field: ['data', 'sessionToken'] }],
+  terms: [{ field: ["data", "sessionToken"] }],
 })
 CreateIndex({
-  name: 'user_by_email',
-  source: Collection('users'),
+  name: "user_by_email",
+  source: Collection("users"),
   unique: true,
-  terms: [{ field: ['data', 'email'] }],
+  terms: [{ field: ["data", "email"] }],
 })
 CreateIndex({
-  name: 'verification_token_by_identifier_and_token',
-  source: Collection('verification_tokens'),
+  name: "verification_token_by_identifier_and_token",
+  source: Collection("verification_tokens"),
   unique: true,
-  terms: [{ field: ['data', 'token'] }, { field: ['data', 'identifier'] }],
+  terms: [{ field: ["data", "token"] }, { field: ["data", "identifier"] }],
 })
 ```

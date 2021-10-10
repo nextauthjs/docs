@@ -31,7 +31,7 @@ You can specify database credentials as as a connection string or a [TypeORM con
 The following approaches are exactly equivalent:
 
 ```js
-database: 'mysql://nextauth:password@127.0.0.1:3306/database_name'
+database: "mysql://nextauth:password@127.0.0.1:3306/database_name"
 ```
 
 ```js
@@ -51,7 +51,7 @@ You can pass in any valid [TypeORM configuration option](https://github.com/type
 _e.g. To set a prefix for all table names you can use the **entityPrefix** option as connection string parameter:_
 
 ```js
-'mysql://nextauth:password@127.0.0.1:3306/database_name?entityPrefix=nextauth_'
+"mysql://nextauth:password@127.0.0.1:3306/database_name?entityPrefix=nextauth_"
 ```
 
 _…or as a database configuration object:_
@@ -86,7 +86,7 @@ _If you are running SQLite, MongoDB or a Document database you can skip this ste
 Alternatively, you can also have your database configured automatically using the `synchronize: true` option:
 
 ```js
-database: 'mysql://nextauth:password@127.0.0.1:3306/database_name?synchronize=true'
+database: "mysql://nextauth:password@127.0.0.1:3306/database_name?synchronize=true"
 ```
 
 ```js
@@ -127,7 +127,7 @@ Install module:
 #### Example
 
 ```js
-database: 'mysql://username:password@127.0.0.1:3306/database_name'
+database: "mysql://username:password@127.0.0.1:3306/database_name"
 ```
 
 ### MariaDB
@@ -138,7 +138,7 @@ Install module:
 #### Example
 
 ```js
-database: 'mariadb://username:password@127.0.0.1:3306/database_name'
+database: "mariadb://username:password@127.0.0.1:3306/database_name"
 ```
 
 ### Postgres / CockroachDB
@@ -151,13 +151,13 @@ Install module:
 PostgresDB
 
 ```js
-database: 'postgres://username:password@127.0.0.1:5432/database_name'
+database: "postgres://username:password@127.0.0.1:5432/database_name"
 ```
 
 CockroachDB
 
 ```js
-database: 'postgres://username:password@127.0.0.1:26257/database_name'
+database: "postgres://username:password@127.0.0.1:26257/database_name"
 ```
 
 If the node is using Self-signed cert
@@ -189,7 +189,7 @@ Install module:
 #### Example
 
 ```js
-database: 'mssql://sa:password@localhost:1433/database_name'
+database: "mssql://sa:password@localhost:1433/database_name"
 ```
 
 ### MongoDB
@@ -200,7 +200,7 @@ Install module:
 #### Example
 
 ```js
-database: 'mongodb://username:password@127.0.0.1:3306/database_name'
+database: "mongodb://username:password@127.0.0.1:3306/database_name"
 ```
 
 ### SQLite
@@ -213,7 +213,7 @@ Install module:
 #### Example
 
 ```js
-database: 'sqlite://localhost/:memory:'
+database: "sqlite://localhost/:memory:"
 ```
 
 ## Other databases

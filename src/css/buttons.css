@@ -10,8 +10,8 @@
   filter: brightness(105%);
 }
 
-html[data-theme='dark'] .button:hover,
-html[data-theme='dark'] .button:active {
+html[data-theme="dark"] .button:hover,
+html[data-theme="dark"] .button:active {
   filter: brightness(105%);
 }
 
@@ -31,7 +31,7 @@ html[data-theme='dark'] .button:active {
   color: #222 !important;
 }
 
-html[data-theme='dark'] .button.button--secondary.button--outline {
+html[data-theme="dark"] .button.button--secondary.button--outline {
   background: linear-gradient(0deg, #000000 0%, #222222 100%) !important;
   background: #111 !important;
   color: #eee !important;

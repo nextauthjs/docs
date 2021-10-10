@@ -18,8 +18,8 @@ To add NextAuth.js to a project create a file called `[...nextauth].js` in `page
 [Read more about how to add authentication providers.](/configuration/providers)
 
 ```javascript title="pages/api/auth/[...nextauth].js"
-import NextAuth from 'next-auth'
-import GithubProvider from 'next-auth/providers/github'
+import NextAuth from "next-auth"
+import GithubProvider from "next-auth/providers/github"
 
 export default NextAuth({
   // Configure one or more authentication providers
@@ -44,7 +44,7 @@ See the [options documentation](/configuration/options) for how to configure pro
 The [`useSession()`](/getting-started/client#usesession) React Hook in the NextAuth.js client is the easiest way to check if someone is signed in.
 
 ```javascript
-import { useSession, signIn, signOut } from 'next-auth/react'
+import { useSession, signIn, signOut } from "next-auth/react"
 
 export default function Component() {
   const { data: session } = useSession()
@@ -75,7 +75,7 @@ To be able to use `useSession` first you'll need to expose the session context, 
 
 ```javascript
 // pages/_app.js
-import { SessionProvider } from 'next-auth/react'
+import { SessionProvider } from "next-auth/react"
 
 export default function App({
   Component,

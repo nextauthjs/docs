@@ -22,16 +22,16 @@ npm install next-auth @next-auth/pouchdb-adapter@canary
 2. Add this adapter to your `pages/api/auth/[...nextauth].js` next-auth configuration object
 
 ```javascript title="pages/api/auth/[...nextauth].js"
-import NextAuth from 'next-auth'
-import Providers from 'next-auth/providers'
-import { PouchDBAdapter } from '@next-auth/pouchdb-adapter'
-import PouchDB from 'pouchdb'
+import NextAuth from "next-auth"
+import Providers from "next-auth/providers"
+import { PouchDBAdapter } from "@next-auth/pouchdb-adapter"
+import PouchDB from "pouchdb"
 
 // Setup your PouchDB instance and database
-PouchDB.plugin(require('pouchdb-adapter-leveldb')) // Any other adapter
-  .plugin(require('pouchdb-find')) // Don't forget the `pouchdb-find` plugin
+PouchDB.plugin(require("pouchdb-adapter-leveldb")) // Any other adapter
+  .plugin(require("pouchdb-find")) // Don't forget the `pouchdb-find` plugin
 
-const pouchdb = new PouchDB('auth_db', { adapter: 'leveldb' })
+const pouchdb = new PouchDB("auth_db", { adapter: "leveldb" })
 
 // For more information on each option (and a full list of options) go to
 // https://next-auth.js.org/configuration/options

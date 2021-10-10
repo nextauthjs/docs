@@ -48,10 +48,10 @@ You must change the login credentials you want to use, but you can also redefine
 Third, if you're using the `cypress-social-login` plugin, you must add this to your `/cypress/plugins/index.js` file like so:
 
 ```js title="cypress/plugins/index.js"
-const { GoogleSocialLogin } = require('cypress-social-logins').plugins
+const { GoogleSocialLogin } = require("cypress-social-logins").plugins
 
 module.exports = (on, config) => {
-  on('task', {
+  on("task", {
     GoogleSocialLogin: GoogleSocialLogin,
   })
 }
@@ -71,16 +71,16 @@ Once we've got all that configuration out of the way, we can begin writing tests
 The basic login test looks like this:
 
 ```js title="cypress/integration/login.js"
-describe('Login page', () => {
+describe("Login page", () => {
   before(() => {
     cy.log(`Visiting https://company.tld`)
-    cy.visit('/')
+    cy.visit("/")
   })
-  it('Login with Google', () => {
-    const username = Cypress.env('GOOGLE_USER')
-    const password = Cypress.env('GOOGLE_PW')
-    const loginUrl = Cypress.env('SITE_NAME')
-    const cookieName = Cypress.env('COOKIE_NAME')
+  it("Login with Google", () => {
+    const username = Cypress.env("GOOGLE_USER")
+    const password = Cypress.env("GOOGLE_PW")
+    const loginUrl = Cypress.env("SITE_NAME")
+    const cookieName = Cypress.env("COOKIE_NAME")
     const socialLoginOptions = {
       username,
       password,
@@ -89,13 +89,13 @@ describe('Login page', () => {
       logs: false,
       isPopup: true,
       loginSelector: `a[href="${Cypress.env(
-        'SITE_NAME'
+        "SITE_NAME"
       )}/api/auth/signin/google"]`,
-      postLoginSelector: '.unread-count',
+      postLoginSelector: ".unread-count",
     }
 
     return cy
-      .task('GoogleSocialLogin', socialLoginOptions)
+      .task("GoogleSocialLogin", socialLoginOptions)
       .then(({ cookies }) => {
         cy.clearCookies()
 
@@ -117,8 +117,8 @@ describe('Login page', () => {
 
           // remove the two lines below if you need to stay logged in
           // for your remaining tests
-          cy.visit('/api/auth/signout')
-          cy.get('form').submit()
+          cy.visit("/api/auth/signout")
+          cy.get("form").submit()
         }
       })
   })

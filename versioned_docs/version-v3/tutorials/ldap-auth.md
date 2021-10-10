@@ -10,17 +10,17 @@ You will need an additional dependency, `ldapjs`, which you can install by runni
 Then you must setup the `Providers.Credentials()` provider key like so:
 
 ```js title="[...nextauth].js"
-const ldap = require('ldapjs')
-import NextAuth from 'next-auth'
-import Providers from 'next-auth/providers'
+const ldap = require("ldapjs")
+import NextAuth from "next-auth"
+import Providers from "next-auth/providers"
 
 export default NextAuth({
   providers: [
     Providers.Credentials({
-      name: 'LDAP',
+      name: "LDAP",
       credentials: {
-        username: { label: 'DN', type: 'text', placeholder: '' },
-        password: { label: 'Password', type: 'password' },
+        username: { label: "DN", type: "text", placeholder: "" },
+        password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
         // You might want to pull this call out so we're not making a new LDAP client on every login attemp
@@ -32,10 +32,10 @@ export default NextAuth({
         return new Promise((resolve, reject) => {
           client.bind(credentials.username, credentials.password, (error) => {
             if (error) {
-              console.error('Failed')
+              console.error("Failed")
               reject()
             } else {
-              console.log('Logged in')
+              console.log("Logged in")
               resolve({
                 username: credentials.username,
                 password: credentials.password,

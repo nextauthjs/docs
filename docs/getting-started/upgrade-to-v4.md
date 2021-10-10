@@ -196,7 +196,7 @@ The best practice for wrapping your app in Providers is to do so in your `pages/
 An example use-case with these new changes:
 
 ```jsx
-import { SessionProvider } from 'next-auth/react'
+import { SessionProvider } from "next-auth/react"
 
 export default function App({
   Component,

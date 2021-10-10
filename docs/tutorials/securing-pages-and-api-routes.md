@@ -18,16 +18,16 @@ The methods `getSession()` and `getToken()` both return an `object` if a session
 If data on a page is fetched using calls to secure API routes - i.e. routes which use `getSession()` or `getToken()` to access the session - you can use the `useSession` React Hook to secure pages.
 
 ```js title="pages/client-side-example.js"
-import { useSession, getSession } from 'next-auth/react'
+import { useSession, getSession } from "next-auth/react"
 
 export default function Page() {
   const { data: session, status } = useSession()
 
-  if (status === 'loading') {
+  if (status === "loading") {
     return <p>Loading...</p>
   }
 
-  if (status === 'unauthenticated') {
+  if (status === "unauthenticated") {
     return <p>Access Denied</p>
   }
 
@@ -45,12 +45,12 @@ export default function Page() {
 You can protect server side rendered pages using the `getSession()` method.
 
 ```js title="pages/server-side-example.js"
-import { useSession, getSession } from 'next-auth/react'
+import { useSession, getSession } from "next-auth/react"
 
 export default function Page() {
   const { data: session } = useSession()
 
-  if (typeof window !== 'undefined') return null
+  if (typeof window !== "undefined") return null
 
   if (session) {
     return (
@@ -76,7 +76,7 @@ export async function getServerSideProps(context) {
 When you supply a `session` prop in `_app.js`, `useSession` won't show a loading state, as it'll already have the session available. In this way, you can provide a more seamless user experience.
 
 ```js title="pages/_app.js"
-import { SessionProvider } from 'next-auth/react'
+import { SessionProvider } from "next-auth/react"
 
 export default function App({
   Component,
@@ -99,13 +99,13 @@ export default function App({
 You can protect API routes using the `getSession()` method.
 
 ```js title="pages/api/get-session-example.js"
-import { getSession } from 'next-auth/react'
+import { getSession } from "next-auth/react"
 
 export default async (req, res) => {
   const session = await getSession({ req })
   if (session) {
     // Signed in
-    console.log('Session', JSON.stringify(session, null, 2))
+    console.log("Session", JSON.stringify(session, null, 2))
   } else {
     // Not Signed in
     res.status(401)
@@ -120,7 +120,7 @@ If you are using JSON Web Tokens you can use the `getToken()` helper to access t
 
 ```js title="pages/api/get-token-example.js"
 // This is an example of how to read a JSON Web Token from an API route
-import { getToken } from 'next-auth/jwt'
+import { getToken } from "next-auth/jwt"
 
 const secret = process.env.SECRET
 
@@ -128,7 +128,7 @@ export default async (req, res) => {
   const token = await getToken({ req, secret })
   if (token) {
     // Signed in
-    console.log('JSON Web Token', JSON.stringify(token, null, 2))
+    console.log("JSON Web Token", JSON.stringify(token, null, 2))
   } else {
     // Not Signed in
     res.status(401)

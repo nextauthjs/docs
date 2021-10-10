@@ -39,7 +39,7 @@ It works best when the [`<Provider>`](#provider) is added to `pages/_app.js`.
 #### Example
 
 ```jsx
-import { useSession } from 'next-auth/client'
+import { useSession } from "next-auth/client"
 
 export default function Component() {
   const [session, loading] = useSession()
@@ -75,7 +75,7 @@ async function myFunction() {
 #### Server Side Example
 
 ```js
-import { getSession } from 'next-auth/client'
+import { getSession } from "next-auth/client"
 
 export default async (req, res) => {
   const session = await getSession({ req })
@@ -113,7 +113,7 @@ async function myFunction() {
 #### Server Side Example
 
 ```js
-import { getCsrfToken } from 'next-auth/client'
+import { getCsrfToken } from "next-auth/client"
 
 export default async (req, res) => {
   const csrfToken = await getCsrfToken({ req })
@@ -140,11 +140,11 @@ It can be useful if you are creating a dynamic custom sign in page.
 #### API Route
 
 ```jsx title="pages/api/example.js"
-import { getProviders } from 'next-auth/client'
+import { getProviders } from "next-auth/client"
 
 export default async (req, res) => {
   const providers = await getProviders()
-  console.log('Providers', providers)
+  console.log("Providers", providers)
   res.end()
 }
 ```
@@ -167,7 +167,7 @@ The `signIn()` method can be called from the client in different ways, as shown 
 #### Redirects to sign in page when clicked
 
 ```js
-import { signIn } from 'next-auth/client'
+import { signIn } from "next-auth/client"
 
 export default () => <button onClick={() => signIn()}>Sign in</button>
 ```
@@ -175,10 +175,10 @@ export default () => <button onClick={() => signIn()}>Sign in</button>
 #### Starts Google OAuth sign-in flow when clicked
 
 ```js
-import { signIn } from 'next-auth/client'
+import { signIn } from "next-auth/client"
 
 export default () => (
-  <button onClick={() => signIn('google')}>Sign in with Google</button>
+  <button onClick={() => signIn("google")}>Sign in with Google</button>
 )
 ```
 
@@ -187,10 +187,10 @@ export default () => (
 When using it with the email flow, pass the target `email` as an option.
 
 ```js
-import { signIn } from 'next-auth/client'
+import { signIn } from "next-auth/client"
 
 export default ({ email }) => (
-  <button onClick={() => signIn('email', { email })}>Sign in with Email</button>
+  <button onClick={() => signIn("email", { email })}>Sign in with Email</button>
 )
 ```
 
@@ -279,7 +279,7 @@ Using the `signOut()` method ensures the user ends back on the page they started
 It reloads the page in the browser when complete.
 
 ```js
-import { signOut } from 'next-auth/client'
+import { signOut } from "next-auth/client"
 
 export default () => <button onClick={() => signOut()}>Sign out</button>
 ```
@@ -311,7 +311,7 @@ Using the supplied React `<Provider>` allows instances of `useSession()` to shar
 This improves performance, reduces network calls and avoids page flicker when rendering. It is highly recommended and can be easily added to all pages in Next.js apps by using `pages/_app.js`.
 
 ```jsx title="pages/_app.js"
-import { Provider } from 'next-auth/client'
+import { Provider } from "next-auth/client"
 
 export default function App({ Component, pageProps }) {
   return (
@@ -411,7 +411,7 @@ Due to the way Next.js handles `getServerSideProps` / `getInitialProps`, every p
 export default function AdminDashboard() {
   const [session] = useSession()
   // session is always non-null inside this page, all the way down the React tree.
-  return 'Some super secret dashboard'
+  return "Some super secret dashboard"
 }
 
 AdminDashboard.auth = true
@@ -454,9 +454,9 @@ It can be easily be extended/modified to support something like an options objec
 
 ```jsx title="pages/admin.jsx"
 AdminDashboard.auth = {
-  role: 'admin',
+  role: "admin",
   loading: <AdminLoadingSkeleton />,
-  unauthorized: '/login-with-different-user', // redirect to this url
+  unauthorized: "/login-with-different-user", // redirect to this url
 }
 ```
 

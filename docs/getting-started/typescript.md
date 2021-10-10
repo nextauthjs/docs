@@ -15,7 +15,7 @@ https://github.com/nextauthjs/next-auth-typescript-example
 If you're writing your own custom Adapter, you can take advantage of the types to make sure your implementation conforms to what's expected:
 
 ```ts
-import type { Adapter } from 'next-auth/adapters'
+import type { Adapter } from "next-auth/adapters"
 
 function MyAdapter(): Adapter {
   return {
@@ -48,7 +48,7 @@ This will work in code editors with a strong TypeScript integration like VSCode 
 Let's look at `Session`:
 
 ```ts title="pages/api/[...nextauth].ts"
-import NextAuth from 'next-auth'
+import NextAuth from "next-auth"
 
 export default NextAuth({
   callbacks: {
@@ -75,9 +75,9 @@ export default function IndexPage() {
 To extend/augment this type, create a `types/next-auth.d.ts` file in your project:
 
 ```ts title="types/next-auth.d.ts"
-import NextAuth from 'next-auth'
+import NextAuth from "next-auth"
 
-declare module 'next-auth' {
+declare module "next-auth" {
   /**
    * Returned by `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context
    */
@@ -116,9 +116,9 @@ Make sure that the `types` folder is added to [`typeRoots`](https://www.typescri
 The `JWT` interface can be found in the `next-auth/jwt` submodule:
 
 ```ts title="types/next-auth.d.ts"
-import { JWT } from 'next-auth/jwt'
+import { JWT } from "next-auth/jwt"
 
-declare module 'next-auth/jwt' {
+declare module "next-auth/jwt" {
   /** Returned by the `jwt` callback and `getToken`, when using JWT sessions */
   interface JWT {
     /** OpenID ID Token */

@@ -42,12 +42,12 @@ Make sure that [`<SessionProvider>`](#sessionprovider) is added to `pages/_app.j
 #### Example
 
 ```jsx
-import { useSession } from 'next-auth/react'
+import { useSession } from "next-auth/react"
 
 export default function Component() {
   const { data: session, status } = useSession()
 
-  if (status === 'authenticated') {
+  if (status === "authenticated") {
     return <p>Signed in as {session.user.email}</p>
   }
 
@@ -98,7 +98,7 @@ Due to the way Next.js handles `getServerSideProps` / `getInitialProps`, every p
 export default function AdminDashboard() {
   const { data: session } = useSession()
   // session is always non-null inside this page, all the way down the React tree.
-  return 'Some super secret dashboard'
+  return "Some super secret dashboard"
 }
 
 AdminDashboard.auth = true
@@ -144,9 +144,9 @@ It can be easily be extended/modified to support something like an options objec
 
 ```jsx title="pages/admin.jsx"
 AdminDashboard.auth = {
-  role: 'admin',
+  role: "admin",
   loading: <AdminLoadingSkeleton />,
-  unauthorized: '/login-with-different-user', // redirect to this url
+  unauthorized: "/login-with-different-user", // redirect to this url
 }
 ```
 
@@ -185,7 +185,7 @@ async function myFunction() {
 #### Server Side Example
 
 ```js
-import { getSession } from 'next-auth/react'
+import { getSession } from "next-auth/react"
 
 export default async (req, res) => {
   const session = await getSession({ req })
@@ -223,7 +223,7 @@ async function myFunction() {
 #### Server Side Example
 
 ```js
-import { getCsrfToken } from 'next-auth/react'
+import { getCsrfToken } from "next-auth/react"
 
 export default async (req, res) => {
   const csrfToken = await getCsrfToken({ req })
@@ -250,11 +250,11 @@ It can be useful if you are creating a dynamic custom sign in page.
 #### API Route
 
 ```jsx title="pages/api/example.js"
-import { getProviders } from 'next-auth/react'
+import { getProviders } from "next-auth/react"
 
 export default async (req, res) => {
   const providers = await getProviders()
-  console.log('Providers', providers)
+  console.log("Providers", providers)
   res.end()
 }
 ```
@@ -277,7 +277,7 @@ The `signIn()` method can be called from the client in different ways, as shown 
 ### Redirects to sign in page when clicked
 
 ```js
-import { signIn } from 'next-auth/react'
+import { signIn } from "next-auth/react"
 
 export default () => <button onClick={() => signIn()}>Sign in</button>
 ```
@@ -285,10 +285,10 @@ export default () => <button onClick={() => signIn()}>Sign in</button>
 ### Starts Google OAuth sign-in flow when clicked
 
 ```js
-import { signIn } from 'next-auth/react'
+import { signIn } from "next-auth/react"
 
 export default () => (
-  <button onClick={() => signIn('google')}>Sign in with Google</button>
+  <button onClick={() => signIn("google")}>Sign in with Google</button>
 )
 ```
 
@@ -297,10 +297,10 @@ export default () => (
 When using it with the email flow, pass the target `email` as an option.
 
 ```js
-import { signIn } from 'next-auth/react'
+import { signIn } from "next-auth/react"
 
 export default ({ email }) => (
-  <button onClick={() => signIn('email', { email })}>Sign in with Email</button>
+  <button onClick={() => signIn("email", { email })}>Sign in with Email</button>
 )
 ```
 
@@ -389,7 +389,7 @@ In order to logout, use the `signOut()` method to ensure the user ends back on t
 It reloads the page in the browser when complete.
 
 ```js
-import { signOut } from 'next-auth/react'
+import { signOut } from "next-auth/react"
 
 export default () => <button onClick={() => signOut()}>Sign out</button>
 ```
@@ -419,7 +419,7 @@ where `data.url` is the validated URL you can redirect the user to without any f
 Using the supplied `<SessionProvider>` allows instances of `useSession()` to share the session object across components, by using [React Context](https://reactjs.org/docs/context.html) under the hood. It also takes care of keeping the session updated and synced between tabs/windows.
 
 ```jsx title="pages/_app.js"
-import { SessionProvider } from 'next-auth/react'
+import { SessionProvider } from "next-auth/react"
 
 export default function App({
   Component,
@@ -462,7 +462,7 @@ If you have session expiry times of 30 days (the default) or more then you proba
 However, if you need to customize the session behavior and/or are using short session expiry times, you can pass options to the provider to customize the behavior of the `useSession()` hook.
 
 ```jsx title="pages/_app.js"
-import { SessionProvider } from 'next-auth/react'
+import { SessionProvider } from "next-auth/react"
 
 export default function App({
   Component,

@@ -45,7 +45,7 @@
   },
   "prettier": {
     "semi": false,
-    "singleQuote": true
+    "singleQuote": false
   },
   "devDependencies": {
     "standard": "^16.0.3"
