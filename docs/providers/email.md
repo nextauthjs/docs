@@ -106,7 +106,7 @@ providers: [
     sendVerificationRequest({
       identifier: email,
       url,
-      provider: { server, from }
+      provider: { server, from },
     }) {
       /* your function */
     },
@@ -119,10 +119,10 @@ The following code shows the complete source for the built-in `sendVerificationR
 ```js
 import nodemailer from "nodemailer"
 
-async function sendVerificationRequest ({
+async function sendVerificationRequest({
   identifier: email,
   url,
-  provider: { server, from }
+  provider: { server, from },
 }) {
   const { host } = new URL(url)
   const transport = createTransport(server)

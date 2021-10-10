@@ -66,7 +66,7 @@ export default function Page() {
 export async function getServerSideProps(context) {
   return {
     props: {
-      session: await getSession(context)
+      session: await getSession(context),
     },
   }
 }
@@ -79,11 +79,11 @@ When you supply a `session` prop in `_app.js`, `useSession` won't show a loading
 import { SessionProvider } from "next-auth/react"
 
 export default function App({
-  Component, 
-  pageProps: { session, ...pageProps }
+  Component,
+  pageProps: { session, ...pageProps },
 }) {
   return (
-    <SessionProvider session={session} >
+    <SessionProvider session={session}>
       <Component {...pageProps} />
     </SessionProvider>
   )

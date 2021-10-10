@@ -132,14 +132,17 @@ You can also [use a custom sign in page](/configuration/pages#credentials-sign-i
 
 <Image src="/img/signin-complex.png"/>
 
-export const Image = ({ children, src, alt = '' }) => (
+```js
+export const Image = ({ children, src, alt = "" }) => (
   <div
     style={{
-      padding: '0.2rem',
-      width: '100%',
-      display: 'flex',
-      justifyContent: 'center'
-    }}>
+      padding: "0.2rem",
+      width: "100%",
+      display: "flex",
+      justifyContent: "center",
+    }}
+  >
     <img alt={alt} src={src} />
   </div>
 )
+```

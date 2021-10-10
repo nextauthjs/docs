@@ -25,7 +25,6 @@ In your project's `package.json`, make sure you don't have a `^` character befor
 We are sorry for this inconvenience, and we will remedy this issue as soon as v4 goes stable.
 :::
 
-
 ## Adapters
 
 You can find the official Adapters in the [nextauthjs/adapter](https://github.com/nextauthjs/adapters) repository. Although you can still [create your own](/tutorials/creating-a-database-adapter) with a new, [simplified Adapter API](https://github.com/nextauthjs/next-auth/pull/2361).
@@ -78,7 +77,6 @@ The way we save data with adapters have slightly changed. With the new Adapter A
 - `provider_account_id`/`providerAccountId` on Account is consistently named `providerAccountId`
 - `access_token_expires`/`accessTokenExpires` on Account renamed to `expires_in`
 - New fields on Account: `expires_at`, `token_type`, `scope`, `id_token`, `oauth_token_secret`, `oauth_token`, `session_state`
-  
 
 <!-- REVIEW: Would something like this below be helpful? -->
 <details>
@@ -144,9 +142,9 @@ VerificationToken {
 -  updated_at
 }
 ```
+
 </pre>
 </details>
-
 
 For more info, see the [Models page](/adapters/models).
 
@@ -198,7 +196,7 @@ The best practice for wrapping your app in Providers is to do so in your `pages/
 An example use-case with these new changes:
 
 ```jsx
-import { SessionProvider } from "next-auth/react";
+import { SessionProvider } from "next-auth/react"
 
 export default function App({
   Component,
@@ -210,7 +208,7 @@ export default function App({
     <SessionProvider session={session} refetchInterval={5 * 60}>
       <Component {...pageProps} />
     </SessionProvider>
-  );
+  )
 }
 ```
 

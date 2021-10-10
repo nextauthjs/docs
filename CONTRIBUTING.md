@@ -24,4 +24,3 @@ The local environment can be setup by doing the following.
 1. Clone the repository `$ git clone https://github.com/nextauthjs/docs.git`
 2. Install dependencies `$ npm install`
 3. Start development server `$ npm start`
-
