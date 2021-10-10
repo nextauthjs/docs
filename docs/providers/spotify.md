@@ -5,7 +5,7 @@ title: Spotify
 
 ## Documentation
 
-https://developer.spotify.com/documentation
+https://developer.spotify.com/documentation/general/guides/authorization-guide
 
 ## Configuration
 
