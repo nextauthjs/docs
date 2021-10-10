@@ -1,6 +1,6 @@
 ---
 id: prisma
-title: Prisma Adapter
+title: Prisma
 ---
 
 # Prisma

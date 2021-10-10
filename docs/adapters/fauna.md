@@ -1,6 +1,6 @@
 ---
 id: fauna
-title: FaunaDB Adapter
+title: FaunaDB
 ---
 
 # FaunaDB

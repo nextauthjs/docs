@@ -66,7 +66,7 @@ A single User can have multiple open Verification Tokens (e.g. to sign in to dif
 It has been designed to be extendable for other verification purposes in the future (e.g. 2FA / short codes).
 
 :::note
-NextAuth.js makes sure that every token is usable only once, and by default has a short (15 minutes, can be configured by [`maxAge`](/configuration/providers/email-provider#options)) lifetime. If your user did not manage to finish the sign-in flow in time, they will have to start the sign-in process again.
+NextAuth.js makes sure that every token is usable only once, and by default has a short (15 minutes, can be configured by [`maxAge`](/configuration/providers/email#options)) lifetime. If your user did not manage to finish the sign-in flow in time, they will have to start the sign-in process again.
 :::
 
 :::tip

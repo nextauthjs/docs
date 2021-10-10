@@ -1,21 +1,19 @@
 ---
 id: example
-title: Example Code
+title: Getting Started
 ---
-
-## Get started with NextAuth.js
 
 The example code below describes how to add authentication to a Next.js app.
 
-:::tip
+## New Project
+
 The easiest way to get started is to clone the [example app](https://github.com/nextauthjs/next-auth-example) and follow the instructions in README.md. You can try out a live demo at [next-auth-example.vercel.app](https://next-auth-example.vercel.app)
-:::
+
+## Existing Project
 
 ### Add API route
 
-To add NextAuth.js to a project create a file called `[...nextauth].js` in `pages/api/auth`.
-
-[Read more about how to add authentication providers.](/configuration/providers)
+To add NextAuth.js to a project create a file called `[...nextauth].js` in `pages/api/auth`. This contains the dynamic route handler for NextAuth.js which will also contain all of your global NextAuth.js configuration.
 
 ```javascript title="pages/api/auth/[...nextauth].js"
 import NextAuth from "next-auth"
@@ -35,11 +33,12 @@ export default NextAuth({
 
 All requests to `/api/auth/*` (`signIn`, callback, `signOut`, etc.) will automatically be handled by NextAuth.js.
 
-:::tip
-See the [options documentation](/configuration/options) for how to configure providers, databases and other options.
-:::
+**Further Reading**:
 
-### Add React Hook
+- See the [options documentation](/configuration/options) for more details on how to configure providers, databases and other options.
+- Read more about how to add authentication providers [here](/configuration/providers).
+
+### Frontend - Add React Hook
 
 The [`useSession()`](/getting-started/client#usesession) React Hook in the NextAuth.js client is the easiest way to check if someone is signed in.
 
@@ -65,11 +64,62 @@ export default function Component() {
 }
 ```
 
-:::tip
 You can use the `useSession` hook from anywhere in your application (e.g. in a header component).
-:::
 
-### Share/configure session state
+### Backend - API Route
+
+To protect an API Route, you can use the [`getSession()`](/getting-started/client#getsession) method in the NextAuth.js client.
+
+```javascript
+// This is an example of to protect an API route
+import { getSession } from "next-auth/react"
+
+export default async (req, res) => {
+  const session = await getSession({ req })
+
+  if (session) {
+    res.send({
+      content:
+        "This is protected content. You can access this content because you are signed in.",
+    })
+  } else {
+    res.send({
+      error: "You must be sign in to view the protected content on this page.",
+    })
+  }
+}
+```
+
+### Extensibility
+
+#### Using NextAuth.js Callbacks
+
+NextAuth.js allows you to hook into various parts of the authentication flow via our [built-in callbacks](/configuration/callbacks).
+
+For example, to pass a value from the sign-in to the frontend, client-side, you can use a combination of the [`session`](/configuration/callbacks#session-callback) and [`jwt`](/configuration/callbacks#jwt-callback) callback like so:
+
+```javascript
+...
+callbacks: {
+  async jwt({ token, account }) {
+    // Persist the OAuth access_token to the token right after signin
+    if (account) {
+      token.accessToken = account.access_token
+    }
+    return token
+  },
+  async session({ session, token, user }) {
+    // Send properties to the client, like an access_token from a provider.
+    session.accessToken = token.accessToken
+    return session
+  }
+}
+...
+```
+
+Now whenever you call `getSession` or `useSession`, the data object which is returned will include the `accessToken` value.
+
+#### Share/configure session state
 
 To be able to use `useSession` first you'll need to expose the session context, [`<SessionProvider />`](/getting-started/client#sessionprovider), at the top level of your application:
 
