@@ -3,7 +3,7 @@ id: testing-with-cypress
 title: Testing with Cypress
 ---
 
-To test an implementation of NextAuth.js, we encourage you to use [Cypress](https://cypress.io). 
+To test an implementation of NextAuth.js, we encourage you to use [Cypress](https://cypress.io).
 
 ## Setting up Cypress
 
@@ -64,7 +64,6 @@ Finally, you can also add the following npm scripts to your `package.json`:
 "test:e2e:run": "cypress run"
 ```
 
-
 ## Writing a test
 
 Once we've got all that configuration out of the way, we can begin writing tests to login using NextAuth.js.
@@ -101,7 +100,7 @@ describe('Login page', () => {
         cy.clearCookies()
 
         const cookie = cookies
-          .filter(cookie => cookie.name === cookieName)
+          .filter((cookie) => cookie.name === cookieName)
           .pop()
         if (cookie) {
           cy.setCookie(cookie.name, cookie.value, {
@@ -115,7 +114,7 @@ describe('Login page', () => {
           Cypress.Cookies.defaults({
             preserve: cookieName,
           })
-          
+
           // remove the two lines below if you need to stay logged in
           // for your remaining tests
           cy.visit('/api/auth/signout')
@@ -126,4 +125,4 @@ describe('Login page', () => {
 })
 ```
 
-Things to note here include, that you must adjust the CSS selector defined under `postLoginSelector` to match a selector found on your page after the user is logged in. This is how Cypress knows whether it succeeded or not.  Also, if you're using another provider, you will have to adjust the `loginSelector` URL.
+Things to note here include, that you must adjust the CSS selector defined under `postLoginSelector` to match a selector found on your page after the user is logged in. This is how Cypress knows whether it succeeded or not. Also, if you're using another provider, you will have to adjust the `loginSelector` URL.

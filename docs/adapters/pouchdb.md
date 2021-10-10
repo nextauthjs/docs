@@ -15,7 +15,6 @@ Depending on your architecture you can use PouchDB's http adapter to reach any d
 This adapter currently doesn't support the `next-auth` v4. If you want to help to migrate it, please open a PR/issue. Source code is here: https://github.com/nextauthjs/adapters/tree/main/packages/pouchdb For more info on adapter changes, see [the migration docs](/getting-started/upgrade-v4#adapters)
 :::
 
-
 > **Prerequisites**: Your PouchDB instance MUST provide the `pouchdb-find` plugin since it is used internally by the adapter to build and manage indexes
 
 1. Install `next-auth` and `@next-auth/pouchdb-adapter`
@@ -27,16 +26,16 @@ npm install next-auth @next-auth/pouchdb-adapter
 2. Add this adapter to your `pages/api/auth/[...nextauth].js` next-auth configuration object
 
 ```javascript title="pages/api/auth/[...nextauth].js"
-import NextAuth from "next-auth"
-import GoogleProvider from "next-auth/providers/google"
-import { PouchDBAdapter } from "@next-auth/pouchdb-adapter"
-import PouchDB from "pouchdb"
+import NextAuth from 'next-auth'
+import GoogleProvider from 'next-auth/providers/google'
+import { PouchDBAdapter } from '@next-auth/pouchdb-adapter'
+import PouchDB from 'pouchdb'
 
 // Setup your PouchDB instance and database
-PouchDB.plugin(require("pouchdb-adapter-leveldb")) // Any other adapter
-  .plugin(require("pouchdb-find")) // Don't forget the `pouchdb-find` plugin
+PouchDB.plugin(require('pouchdb-adapter-leveldb')) // Any other adapter
+  .plugin(require('pouchdb-find')) // Don't forget the `pouchdb-find` plugin
 
-const pouchdb = new PouchDB("auth_db", { adapter: "leveldb" })
+const pouchdb = new PouchDB('auth_db', { adapter: 'leveldb' })
 
 // For more information on each option (and a full list of options) go to
 // https://next-auth.js.org/configuration/options

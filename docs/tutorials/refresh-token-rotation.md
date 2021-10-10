@@ -18,15 +18,15 @@ Using a [JWT callback](https://next-auth.js.org/configuration/callbacks#jwt-call
 Below is a sample implementation using Google's Identity Provider. Please note that the OAuth 2.0 request in the `refreshAccessToken()` function will vary between different providers, but the core logic should remain similar.
 
 ```js title="pages/auth/[...nextauth.js]"
-import NextAuth from "next-auth"
-import GoogleProvider from "next-auth/providers/google"
+import NextAuth from 'next-auth'
+import GoogleProvider from 'next-auth/providers/google'
 
 const GOOGLE_AUTHORIZATION_URL =
-  "https://accounts.google.com/o/oauth2/v2/auth?" +
+  'https://accounts.google.com/o/oauth2/v2/auth?' +
   new URLSearchParams({
-    prompt: "consent",
-    access_type: "offline",
-    response_type: "code",
+    prompt: 'consent',
+    access_type: 'offline',
+    response_type: 'code',
   })
 
 /**
@@ -37,19 +37,19 @@ const GOOGLE_AUTHORIZATION_URL =
 async function refreshAccessToken(token) {
   try {
     const url =
-      "https://oauth2.googleapis.com/token?" +
+      'https://oauth2.googleapis.com/token?' +
       new URLSearchParams({
         client_id: process.env.GOOGLE_CLIENT_ID,
         client_secret: process.env.GOOGLE_CLIENT_SECRET,
-        grant_type: "refresh_token",
+        grant_type: 'refresh_token',
         refresh_token: token.refreshToken,
       })
 
     const response = await fetch(url, {
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
+        'Content-Type': 'application/x-www-form-urlencoded',
       },
-      method: "POST",
+      method: 'POST',
     })
 
     const refreshedTokens = await response.json()
@@ -69,7 +69,7 @@ async function refreshAccessToken(token) {
 
     return {
       ...token,
-      error: "RefreshAccessTokenError",
+      error: 'RefreshAccessTokenError',
     }
   }
 }

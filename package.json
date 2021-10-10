@@ -43,6 +43,10 @@
       "last 1 safari version"
     ]
   },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  },
   "devDependencies": {
     "standard": "^16.0.3"
   }

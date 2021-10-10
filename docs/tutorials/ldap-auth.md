@@ -5,7 +5,8 @@ title: LDAP Authentication
 
 NextAuth.js provides the ability to setup a [custom Credential provider](/configuration/providers#sign-in-with-credentials) which we can take advantage of to authenticate users against an existing LDAP server.
 
-You will need an additional dependency, `ldapjs`, which you can install by running 
+You will need an additional dependency, `ldapjs`, which you can install by running
+
 ```bash npm2yarn
 npm install ldapjs
 ```
@@ -13,17 +14,17 @@ npm install ldapjs
 Then you must setup the `CredentialsProvider()` provider key like so:
 
 ```js title="[...nextauth].js"
-const ldap = require("ldapjs")
-import NextAuth from "next-auth"
-import CredentialsProvider from "next-auth/providers/credentials"
+const ldap = require('ldapjs')
+import NextAuth from 'next-auth'
+import CredentialsProvider from 'next-auth/providers/credentials'
 
 export default NextAuth({
   providers: [
     CredentialsProvider({
-      name: "LDAP",
+      name: 'LDAP',
       credentials: {
-        username: { label: "DN", type: "text", placeholder: "" },
-        password: { label: "Password", type: "password" },
+        username: { label: 'DN', type: 'text', placeholder: '' },
+        password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials, req) {
         // You might want to pull this call out so we're not making a new LDAP client on every login attemp
@@ -35,10 +36,10 @@ export default NextAuth({
         return new Promise((resolve, reject) => {
           client.bind(credentials.username, credentials.password, (error) => {
             if (error) {
-              console.error("Failed")
+              console.error('Failed')
               reject()
             } else {
-              console.log("Logged in")
+              console.log('Logged in')
               resolve({
                 username: credentials.username,
                 password: credentials.password,

@@ -43,11 +43,13 @@ To start a local environment of this project, please do the following.
 ```bash
 $ git clone https://github.com/nextauthjs/docs.git
 ```
+
 2. Install dependencies
 
 ```bash
 $ npm install
 ```
+
 3. Start the development server
 
 ```bash

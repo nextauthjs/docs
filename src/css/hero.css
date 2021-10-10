@@ -10,7 +10,7 @@
   );
 }
 
-html[data-theme="dark"] .hero {
+html[data-theme='dark'] .hero {
   background: linear-gradient(
     0deg,
     var(--ifm-hero-background-color) 0%,
@@ -43,7 +43,7 @@ html[data-theme="dark"] .hero {
 }
 
 .hero-wave:before {
-  content: "";
+  content: '';
   display: block;
   position: absolute;
   border-radius: 100% 30%;
@@ -56,7 +56,7 @@ html[data-theme="dark"] .hero {
 }
 
 .hero-wave:after {
-  content: "";
+  content: '';
   display: block;
   position: absolute;
   border-radius: 100% 30%;
@@ -94,7 +94,7 @@ html[data-theme="dark"] .hero {
   }
 }
 
-html[data-theme="dark"] .hero .hero__title {
+html[data-theme='dark'] .hero .hero__title {
   text-shadow: 0 0.1rem 0 rgba(255, 255, 255, 0.1),
     0 0 5rem rgba(255, 255, 255, 0.5);
 }
@@ -112,10 +112,10 @@ html[data-theme="dark"] .hero .hero__title {
   }
 }
 
-html[data-theme="dark"] .hero .hero__title,
-html[data-theme="dark"] .hero .hero__subtitle,
-html[data-theme="dark"] .hero .button:not(.button--outline),
-html[data-theme="dark"] .hero .button:hover {
+html[data-theme='dark'] .hero .hero__title,
+html[data-theme='dark'] .hero .hero__subtitle,
+html[data-theme='dark'] .hero .button:not(.button--outline),
+html[data-theme='dark'] .hero .button:hover {
   color: white;
 }
 

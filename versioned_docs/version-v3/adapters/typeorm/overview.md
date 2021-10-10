@@ -28,16 +28,16 @@ database: {
 
 ```javascript
 adapter: Adapters.Default({
-  type: "sqlite",
-  database: ":memory:",
+  type: 'sqlite',
+  database: ':memory:',
   synchronize: true,
 })
 ```
 
 ```javascript
 adapter: Adapters.TypeORM.Adapter({
-  type: "sqlite",
-  database: ":memory:",
+  type: 'sqlite',
+  database: ':memory:',
   synchronize: true,
 })
 ```

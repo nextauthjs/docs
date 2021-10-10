@@ -152,18 +152,18 @@ Create directory `certificates` and place `localhost.key` and `localhost.crt`
 You can create a `server.js` in the root of your project and run it with `node server.js` to test Sign in with Apple integration locally:
 
 ```js
-const { createServer } = require("https")
-const { parse } = require("url")
-const next = require("next")
-const fs = require("fs")
+const { createServer } = require('https')
+const { parse } = require('url')
+const next = require('next')
+const fs = require('fs')
 
-const dev = process.env.NODE_ENV !== "production"
+const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
 const httpsOptions = {
-  key: fs.readFileSync("./certificates/localhost.key"),
-  cert: fs.readFileSync("./certificates/localhost.crt"),
+  key: fs.readFileSync('./certificates/localhost.key'),
+  cert: fs.readFileSync('./certificates/localhost.crt'),
 }
 
 app.prepare().then(() => {
@@ -172,7 +172,7 @@ app.prepare().then(() => {
     handle(req, res, parsedUrl)
   }).listen(3000, (err) => {
     if (err) throw err
-    console.log("> Ready on https://localhost:3000")
+    console.log('> Ready on https://localhost:3000')
   })
 })
 ```
@@ -182,25 +182,25 @@ app.prepare().then(() => {
 If you want to pre-generate your secret, this is an example of the code you will need:
 
 ```js
-const jwt = require("jsonwebtoken")
-const fs = require("fs")
+const jwt = require('jsonwebtoken')
+const fs = require('fs')
 
-const appleId = "myapp.example.com"
-const keyId = ""
-const teamId = ""
-const privateKey = fs.readFileSync("path/to/key")
+const appleId = 'myapp.example.com'
+const keyId = ''
+const teamId = ''
+const privateKey = fs.readFileSync('path/to/key')
 
 const secret = jwt.sign(
   {
     iss: teamId,
     iat: Math.floor(Date.now() / 1000),
     exp: Math.floor(Date.now() / 1000) + 86400 * 180, // 6 months
-    aud: "https://appleid.apple.com",
+    aud: 'https://appleid.apple.com',
     sub: appleId,
   },
   privateKey,
   {
-    algorithm: "ES256",
+    algorithm: 'ES256',
     keyid: keyId,
   }
 )

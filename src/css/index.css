@@ -22,8 +22,8 @@
   --ifm-color-success: #1eb1fc;
   --ifm-color-warning: #c94b4b;
   --ifm-font-family-base: -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell,
-    Noto Sans, sans-serif, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
-    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    Noto Sans, sans-serif, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial,
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   --ifm-background-color: #fff;
   --ifm-footer-background-color: #f9f9f9;
   --ifm-hero-background-color: #f5f5f5;
@@ -32,7 +32,7 @@
   --ifm-h1-font-size: 2rem;
 }
 
-html[data-theme="dark"]:root {
+html[data-theme='dark']:root {
   --ifm-color-link: #289ef9;
   --ifm-footer-background-color: #000;
   --ifm-html-background-color: #242526;
@@ -41,16 +41,16 @@ html[data-theme="dark"]:root {
   --ifm-navbar-background-color: rgba(0, 0, 0, 0.95);
 }
 
-html[data-theme="dark"] {
+html[data-theme='dark'] {
   --ifm-background-color: #1f201c;
 }
 
-@import "hero.css";
-@import "admonitions.css";
-@import "buttons.css";
-@import "providers.css";
-@import "navbar.css";
-@import "search.css";
+@import 'hero.css';
+@import 'admonitions.css';
+@import 'buttons.css';
+@import 'providers.css';
+@import 'navbar.css';
+@import 'search.css';
 
 @media screen and (max-width: 360px) {
   html {
@@ -97,7 +97,7 @@ hr {
   border-color: #ddd;
 }
 
-html[data-theme="dark"] hr {
+html[data-theme='dark'] hr {
   border-color: #242526;
 }
 
@@ -176,4 +176,3 @@ html[data-theme="dark"] hr {
     flex-direction: column;
   }
 }
-

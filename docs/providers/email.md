@@ -106,7 +106,7 @@ providers: [
     sendVerificationRequest({
       identifier: email,
       url,
-      provider: { server, from }
+      provider: { server, from },
     }) {
       /* your function */
     },
@@ -117,12 +117,12 @@ providers: [
 The following code shows the complete source for the built-in `sendVerificationRequest()` method:
 
 ```js
-import nodemailer from "nodemailer"
+import nodemailer from 'nodemailer'
 
-async function sendVerificationRequest ({
+async function sendVerificationRequest({
   identifier: email,
   url,
-  provider: { server, from }
+  provider: { server, from },
 }) {
   const { host } = new URL(url)
   const transport = createTransport(server)
@@ -136,21 +136,21 @@ async function sendVerificationRequest ({
 }
 
 // Email HTML body
-function html({ url, host, email }: Record<"url" | "host" | "email", string>) {
+function html({ url, host, email }: Record<'url' | 'host' | 'email', string>) {
   // Insert invisible space into domains and email address to prevent both the
   // email address and the domain from being turned into a hyperlink by email
   // clients like Outlook and Apple mail, as this is confusing because it seems
   // like they are supposed to click on their email address to sign in.
-  const escapedEmail = `${email.replace(/\./g, "&#8203;.")}`
-  const escapedHost = `${host.replace(/\./g, "&#8203;.")}`
+  const escapedEmail = `${email.replace(/\./g, '&#8203;.')}`
+  const escapedHost = `${host.replace(/\./g, '&#8203;.')}`
 
   // Some simple styling options
-  const backgroundColor = "#f9f9f9"
-  const textColor = "#444444"
-  const mainBackgroundColor = "#ffffff"
-  const buttonBackgroundColor = "#346df1"
-  const buttonBorderColor = "#346df1"
-  const buttonTextColor = "#ffffff"
+  const backgroundColor = '#f9f9f9'
+  const textColor = '#444444'
+  const mainBackgroundColor = '#ffffff'
+  const buttonBackgroundColor = '#346df1'
+  const buttonBorderColor = '#346df1'
+  const buttonTextColor = '#ffffff'
 
   return `
 <body style="background: ${backgroundColor};">
@@ -187,7 +187,7 @@ function html({ url, host, email }: Record<"url" | "host" | "email", string>) {
 }
 
 // Email Text body (fallback for email clients that don't render HTML, e.g. feature phones)
-function text({ url, host }: Record<"url" | "host", string>) {
+function text({ url, host }: Record<'url' | 'host', string>) {
   return `Sign in to ${host}\n${url}\n\n`
 }
 ```

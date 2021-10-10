@@ -1,18 +1,18 @@
-import React, { useEffect } from "react"
-import classnames from "classnames"
-import Layout from "@theme/Layout"
-import Link from "@docusaurus/Link"
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext"
-import useBaseUrl from "@docusaurus/useBaseUrl"
-import CodeBlock from "@theme/CodeBlock"
-import ProviderMarquee from "../components/ProviderMarquee"
-import Seo from "./seo"
-import styles from "./index.module.css"
+import React, { useEffect } from 'react'
+import classnames from 'classnames'
+import Layout from '@theme/Layout'
+import Link from '@docusaurus/Link'
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
+import useBaseUrl from '@docusaurus/useBaseUrl'
+import CodeBlock from '@theme/CodeBlock'
+import ProviderMarquee from '../components/ProviderMarquee'
+import Seo from './seo'
+import styles from './index.module.css'
 
 const features = [
   {
-    title: "Easy",
-    imageUrl: "img/undraw_social.svg",
+    title: 'Easy',
+    imageUrl: 'img/undraw_social.svg',
     description: (
       <ul>
         <li>
@@ -27,8 +27,8 @@ const features = [
     ),
   },
   {
-    title: "Flexible",
-    imageUrl: "img/undraw_authentication.svg",
+    title: 'Flexible',
+    imageUrl: 'img/undraw_authentication.svg',
     description: (
       <ul>
         <li>Built for Serverless, runs anywhere</li>
@@ -43,8 +43,8 @@ const features = [
     ),
   },
   {
-    title: "Secure",
-    imageUrl: "img/undraw_secure.svg",
+    title: 'Secure',
+    imageUrl: 'img/undraw_secure.svg',
     description: (
       <ul>
         <li>Signed, prefixed, server-only cookies</li>
@@ -58,13 +58,13 @@ const features = [
 ]
 
 const kFormatter = (num) => {
-  return Math.sign(num) * (Math.abs(num) / 1000).toFixed(1) + "k"
+  return Math.sign(num) * (Math.abs(num) / 1000).toFixed(1) + 'k'
 }
 
 function Feature({ imageUrl, title, description }) {
   const imgUrl = useBaseUrl(imageUrl)
   return (
-    <div className={classnames("col col--4", styles.feature)}>
+    <div className={classnames('col col--4', styles.feature)}>
       {imgUrl && (
         <div className="text--center">
           <div className="feature-image-wrapper">
@@ -83,15 +83,15 @@ function Home() {
   const { siteConfig = {} } = context
 
   useEffect(() => {
-    fetch("https://api.github.com/repos/nextauthjs/next-auth")
+    fetch('https://api.github.com/repos/nextauthjs/next-auth')
       .then((res) => res.json())
       .then((data) => {
         const navLinks = document.getElementsByClassName(
-          "navbar__item navbar__link"
+          'navbar__item navbar__link'
         )
-        const githubStat = document.createElement("span")
+        const githubStat = document.createElement('span')
         githubStat.innerHTML = kFormatter(data.stargazers_count)
-        githubStat.className = "github-counter"
+        githubStat.className = 'github-counter'
         navLinks[4].appendChild(githubStat)
       })
   }, [])
@@ -99,7 +99,7 @@ function Home() {
     <Layout description={siteConfig.tagline}>
       <Seo />
       <div className="home-wrapper">
-        <header className={classnames("hero", styles.heroBanner)}>
+        <header className={classnames('hero', styles.heroBanner)}>
           <div className="container">
             <div className="hero-inner">
               <img
@@ -114,7 +114,7 @@ function Home() {
               <div className={styles.buttons}>
                 <a
                   className={classnames(
-                    "button button--outline button--secondary button--lg rounded-pill",
+                    'button button--outline button--secondary button--lg rounded-pill',
                     styles.button
                   )}
                   href="https://next-auth-example.vercel.app"
@@ -123,10 +123,10 @@ function Home() {
                 </a>
                 <Link
                   className={classnames(
-                    "button button--primary button--lg rounded-pill",
+                    'button button--primary button--lg rounded-pill',
                     styles.button
                   )}
-                  to={useBaseUrl("/getting-started/example")}
+                  to={useBaseUrl('/getting-started/example')}
                 >
                   Get Started
                 </Link>
@@ -146,7 +146,7 @@ function Home() {
               <div className="row">
                 <div className="col">
                   <h2 className={styles.featuresTitle}>
-                    <span>Open Source.</span> <span>Full Stack.</span>{" "}
+                    <span>Open Source.</span> <span>Full Stack.</span>{' '}
                     <span>Own Your Data.</span>
                   </h2>
                 </div>
@@ -174,7 +174,7 @@ function Home() {
               </div>
               <div className="row">
                 <div className="col">
-                  <h2 className="text--center" style={{ fontSize: "2.5rem" }}>
+                  <h2 className="text--center" style={{ fontSize: '2.5rem' }}>
                     Add authentication in minutes!
                   </h2>
                 </div>
@@ -205,7 +205,7 @@ function Home() {
               </div>
               <div className="row">
                 <div className="col">
-                  <p className="text--center" style={{ marginTop: "2rem" }}>
+                  <p className="text--center" style={{ marginTop: '2rem' }}>
                     <Link
                       to="/getting-started/example"
                       className="button button--primary button--lg rounded-pill"

@@ -111,18 +111,18 @@ Create directory `certificates` and place `localhost.key` and `localhost.crt`
 You can create a `server.js` in the root of your project and run it with `node server.js` to test Sign in with Bungie integration locally:
 
 ```js
-const { createServer } = require("https")
-const { parse } = require("url")
-const next = require("next")
-const fs = require("fs")
+const { createServer } = require('https')
+const { parse } = require('url')
+const next = require('next')
+const fs = require('fs')
 
-const dev = process.env.NODE_ENV !== "production"
+const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
 const httpsOptions = {
-  key: fs.readFileSync("./certificates/localhost.key"),
-  cert: fs.readFileSync("./certificates/localhost.crt"),
+  key: fs.readFileSync('./certificates/localhost.key'),
+  cert: fs.readFileSync('./certificates/localhost.crt'),
 }
 
 app.prepare().then(() => {
@@ -131,7 +131,7 @@ app.prepare().then(() => {
     handle(req, res, parsedUrl)
   }).listen(3000, (err) => {
     if (err) throw err
-    console.log("> Ready on https://localhost:3000")
+    console.log('> Ready on https://localhost:3000')
   })
 })
 ```

@@ -14,6 +14,7 @@ https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-regis
 ## Example
 
 ### To allow specific Active Directory users access:
+
 - In https://portal.azure.com/ search for "Azure Active Directory", and select your organization.
 - Next, go to "App Registration" in the left menu, and create a new one.
 - Pay close attention to "Who can use this application or access this API?"
@@ -33,6 +34,7 @@ AZURE_AD_CLIENT_ID=<copy Application (client) ID here>
 AZURE_AD_CLIENT_SECRET=<copy generated cleint secret value here>
 AZURE_AD_TENANT_ID=<copy the tenant id here>
 ```
+
 That will default the tenant to use the `common` authorization endpoint. [For more details see here](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-v2-protocols#endpoints).
 
 :::note

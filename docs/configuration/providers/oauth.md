@@ -26,8 +26,6 @@ Without going into too much detail, the OAuth flow generally has 6 parts:
 
 For more details, check out Aaron Parecki's blog post [OAuth2 Simplified](https://aaronparecki.com/oauth-2-simplified/) or Postman's blog post [OAuth 2.0: Implicit Flow is Dead, Try PKCE Instead](https://blog.postman.com/pkce-oauth-how-to/).
 
-
-
 ## How to
 
 1. Register your application at the developer portal of your provider. There are usually links to the portals included in the aforementioned documentation pages for each supported provider with details on how to register your application.
@@ -49,8 +47,6 @@ Using Google in our example application would look like this:
 ```
 https://next-auth-example.vercel.app/api/auth/callback/google
 ```
-
-
 
 1. Create a `.env` file at the root of your project and add the client ID and client secret. For Twitter this would be:
 
@@ -81,7 +77,7 @@ providers: [
 
 ```ts
 interface OAuthConfig {
-/**
+  /**
    * OpenID Connect (OIDC) compliant providers can configure
    * this instead of `authorize`/`token`/`userinfo` options
    * without further configuration needed in most cases.
@@ -126,7 +122,7 @@ interface OAuthConfig {
    * [Userinfo endpoint](https://www.oauth.com/oauth2-servers/signing-in-with-google/verifying-the-user-info)
    */
   userinfo?: EndpointHandler<UrlParams, { tokens: TokenSet }, Profile>
-  type: "oauth"
+  type: 'oauth'
   /**
    * Used in URLs to refer to a certain provider.
    * @example /api/auth/callback/twitter // where the `id` is "twitter"
@@ -140,7 +136,7 @@ interface OAuthConfig {
   clientId: string
   clientSecret:
     | string
-    | Record<"appleId" | "teamId" | "privateKey" | "keyId", string>
+    | Record<'appleId' | 'teamId' | 'privateKey' | 'keyId', string>
   /**
    * If set to `true`, the user information will be extracted
    * from the `id_token` claims, instead of
@@ -160,13 +156,13 @@ interface OAuthConfig {
 Even if you are using a built-in provider, you can override any of these options to tweak the default configuration.
 
 ```js title=[...nextauth].js
-import Auth0Provider from "next-auth/providers/auth0"
+import Auth0Provider from 'next-auth/providers/auth0'
 
 Auth0Provider({
   clientId: process.env.CLIENT_ID,
   clientSecret: process.env.CLIENT_SECRET,
   issuer: process.env.ISSUER,
-  scope: "openid your_custom_scope", // We do provide a default, but this will override it if defined
+  scope: 'openid your_custom_scope', // We do provide a default, but this will override it if defined
   profile(profile) {
     return {} // Return the profile in a shape that is different from the built-in one.
   },
@@ -246,6 +242,7 @@ providers: [
 ## Built-in providers
 
 NextAuth.js comes with a set of built-in providers. You can find them [here](https://github.com/nextauthjs/next-auth/tree/main/src/providers). Each built-in provider has its own documentation page:
+
 <div className="provider-name-list">
 {Object.entries(require("../../../providers.json"))
   .filter(([key]) => !["email", "credentials"].includes(key))
@@ -264,7 +261,6 @@ NextAuth.js comes with a set of built-in providers. You can find them [here](htt
 For built-in providers, in most cases you will only need to specify the `clientId` and `clientSecret`. If you need to override any of the defaults, add your own [options](#options).
 
 For example, the `profile` callback will return `id`, `name`, `email` and `picture` by default, but you might need more information from the provider. After setting the correct scopes, you can then do something like this:
-
 
 ```js title=/api/auth/[...nextauth].js
 export default function NextAuth({

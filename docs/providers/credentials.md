@@ -87,8 +87,8 @@ As with all providers, the order you specify them is the order they are displaye
 ```js
 providers: [
   CredentialsProvider({
-    id: "domain-login",
-    name: "Domain Account",
+    id: 'domain-login',
+    name: 'Domain Account',
     async authorize(credentials, req) {
       const user = {
         /* add function to get user */
@@ -97,18 +97,18 @@ providers: [
     },
     credentials: {
       domain: {
-        label: "Domain",
-        type: "text ",
-        placeholder: "CORPNET",
-        value: "CORPNET",
+        label: 'Domain',
+        type: 'text ',
+        placeholder: 'CORPNET',
+        value: 'CORPNET',
       },
-      username: { label: "Username", type: "text ", placeholder: "jsmith" },
-      password: { label: "Password", type: "password" },
+      username: { label: 'Username', type: 'text ', placeholder: 'jsmith' },
+      password: { label: 'Password', type: 'password' },
     },
   }),
   CredentialsProvider({
-    id: "intranet-credentials",
-    name: "Two Factor Auth",
+    id: 'intranet-credentials',
+    name: 'Two Factor Auth',
     async authorize(credentials, req) {
       const user = {
         /* add function to get user */
@@ -116,8 +116,8 @@ providers: [
       return user
     },
     credentials: {
-      email: { label: "Username", type: "text ", placeholder: "jsmith" },
-      "2fa-key": { label: "2FA Key" },
+      email: { label: 'Username', type: 'text ', placeholder: 'jsmith' },
+      '2fa-key': { label: '2FA Key' },
     },
   }),
   /* ... additional providers ... /*/
@@ -133,6 +133,7 @@ You can also [use a custom sign in page](/configuration/pages#credentials-sign-i
 <Image src="/img/signin-complex.png"/>
 
 export const Image = ({ children, src, alt = '' }) => (
+
   <div
     style={{
       padding: '0.2rem',

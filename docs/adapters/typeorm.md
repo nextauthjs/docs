@@ -15,7 +15,7 @@ If you previously used this Adapter with MongoDB, check out the [MongoDB Adapter
 In the future, we might split up this adapter to support single flavors of SQL for easier maintenance and reduced bundle size.
 :::
 
-## Usage 
+## Usage
 
 To use this Adapter, you need to install the following packages:
 
