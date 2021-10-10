@@ -83,6 +83,17 @@ module.exports = {
               label: "Unreleased documentation",
               to: "https://docs-git-next-nextauthjs.vercel.app/",
             },
+            {
+              html: `
+            <a target="_blank" rel="noopener noreferrer" href="https://vercel.com?utm_source=nextauthjs&utm_campaign=oss">
+              <img
+                alt="Powered by Vercel"
+                style="margin-top: 8px"
+                height="32"
+                src="https://raw.githubusercontent.com/nextauthjs/next-auth/main/www/static/img/powered-by-vercel.svg"
+              />
+            </a>`,
+            },
           ],
         },
         {
@@ -112,17 +123,6 @@ module.exports = {
             {
               label: "Images by unDraw",
               to: "https://undraw.co/",
-            },
-            {
-              html: `
-            <a target="_blank" rel="noopener noreferrer" href="https://vercel.com?utm_source=nextauthjs&utm_campaign=oss">
-              <img
-                alt="Powered by Vercel"
-                style="margin-top: 8px"
-                height="32"
-                src="https://raw.githubusercontent.com/nextauthjs/next-auth/main/www/static/img/powered-by-vercel.svg"
-              />
-            </a>`,
             },
           ],
         },
