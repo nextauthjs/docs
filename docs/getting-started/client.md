@@ -123,12 +123,12 @@ export default function App({
 }
 
 function Auth({ children }) {
-  const { data: session, loading } = useSession()
+  const { data: session, status } = useSession()
   const isUser = !!session?.user
   React.useEffect(() => {
-    if (loading) return // Do nothing while loading
+    if (status === "loading") return // Do nothing while loading
     if (!isUser) signIn() // If not authenticated, force log in
-  }, [isUser, loading])
+  }, [isUser, status])
 
   if (isUser) {
     return children
