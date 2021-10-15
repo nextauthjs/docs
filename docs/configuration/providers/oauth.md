@@ -48,7 +48,7 @@ Using Google in our example application would look like this:
 https://next-auth-example.vercel.app/api/auth/callback/google
 ```
 
-1. Create a `.env` file at the root of your project and add the client ID and client secret. For Twitter this would be:
+3. Create a `.env` file at the root of your project and add the client ID and client secret. For Twitter this would be:
 
 ```
 TWITTER_ID=YOUR_TWITTER_CLIENT_ID
