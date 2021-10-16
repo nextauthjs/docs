@@ -82,7 +82,7 @@ export default function Admin() {
     }
   })
 
-  const if (status === "loading") {
+  if (status === "loading") {
     return "Loading or not authenticated..."
   }
 
