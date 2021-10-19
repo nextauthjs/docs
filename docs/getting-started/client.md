@@ -282,7 +282,11 @@ import { signIn } from "next-auth/react"
 export default () => <button onClick={() => signIn()}>Sign in</button>
 ```
 
-### Starts Google OAuth sign-in flow when clicked
+### Starts OAuth sign-in flow when clicked
+
+By default, when calling the `signIn()` method with no arguments, you will be redirected to the NextAuth.js sign-in page. If you want to skip that and get redirected to your provider's page immediately, call the `signIn()` method with the provider's `id`. 
+
+For example to sign in with Google:
 
 ```js
 import { signIn } from "next-auth/react"
