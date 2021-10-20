@@ -25,129 +25,6 @@ In your project's `package.json`, make sure you don't have a `^` character befor
 We are sorry for this inconvenience, and we will remedy this issue as soon as v4 goes stable.
 :::
 
-## Adapters
-
-You can find the official Adapters in the [nextauthjs/adapter](https://github.com/nextauthjs/adapters) repository. Although you can still [create your own](/tutorials/creating-a-database-adapter) with a new, [simplified Adapter API](https://github.com/nextauthjs/next-auth/pull/2361).
-
-1.1. If you use the built-in TypeORM or Prisma adapters, these have been removed from the core `next-auth` package to not balloon the package size for users who do not need a database. Thankfully the migration is super easy; you just need to install the external packages for your database and change the import in your `[...nextauth].js`.
-
-The `database` option is gone, you can do the following instead:
-
-```diff
-// [...nextauth].js
-import NextAuth from "next-auth"
-+ import { TypeORMLegacyAdapter } from "@next-auth/typeorm-legacy-adapter"
-
-...
-export default NextAuth({
--  database: "yourconnectionstring",
-+  adapter: TypeORMLegacyAdapter("yourconnectionstring")
-})
-```
-
-1.2. The `prisma-legacy` adapter has been removed, please use the [`@next-auth/prisma-adapter`](https:/npmjs.com/package/@next-auth/prisma-adapter) instead.
-
-1.3. The `typeorm-legacy` adapter will stay as-is for the time being, however we do aim to migrate this to individual lighter weight adapters for each database type in the future, or switch out `typeorm`.
-
-1.4 MongoDB has been moved to its own adapter under `@next-auth/mongodb-adapter`. See the [MongoDB Adapter docs](/adapters/mongodb).
-
-Introduced in https://github.com/nextauthjs/next-auth/releases/tag/v4.0.0-next.8 and https://github.com/nextauthjs/next-auth/pull/2361
-
-:::warning
-When using the **NextAuth v4 beta**, please make sure to use the `next` tagged version of your adapter. For example, to use the appropriate `typeorm` version with NextAuth v4, you would install `@next-auth/typeorm-legacy-adapter@next`.
-:::
-
-### Adapter API
-
-The Adapter API has been rewritten and significantly simplified in NextAuth v4. The adapters now have less work to do as some functionality has been migrated to the core of NextAuth, like hashing the [verification token](/adapters/models/#verification-token).
-
-**This does not require any changes from the user**, however if you are an adapter maintainer or are interested in writing your own adapter, you can find more information about this change in https://github.com/nextauthjs/next-auth/pull/2361 and release https://github.com/nextauthjs/next-auth/releases/tag/v4.0.0-next.22.
-
-### Schema changes
-
-The way we save data with adapters have slightly changed. With the new Adapter API, we wanted to make it easier to extend your database with additional fields. For example if your User needs an extra `phone` field, it should be enough to add that to your database's schema, and no changes will be necessary in your adapter.
-
-- `created_at`/`createdAt` and `updated_at`/`updatedAt` fields are removed from all Models.
-- `user_id`/`userId` consistently named `userId`.
-- `compound_id`/`compundId` is removed from Account.
-- `access_token`/`accessToken` is removed from Session.
-- `email_verified`/`emailVerified` on User is consistently named `emailVerified`.
-- `provider_id`/`providerId` renamed to `provider` on Account
-- `provider_type`/`providerType` renamed to `type` on Account
-- `provider_account_id`/`providerAccountId` on Account is consistently named `providerAccountId`
-- `access_token_expires`/`accessTokenExpires` on Account renamed to `expires_in`
-- New fields on Account: `expires_at`, `token_type`, `scope`, `id_token`, `oauth_token_secret`, `oauth_token`, `session_state`
-
-<!-- REVIEW: Would something like this below be helpful? -->
-<details>
-<summary>
-See the changes
-</summary>
-<pre>
-
-```diff
-User {
-  id
-  name
-  email
-- emailVerified
-+ email_verified
-  image
--  created_at
--  updated_at
-}
-
-Account {
-  id
-- compound_id
-- user_id
-+ userId
--  provider_type
-+ type
-- provider_id
-+ provider
-- provider_account_id
-+ providerAccountId
-  refresh_token
-  access_token
-- access_token_expires
-+ expires_in
-+ expires_at
-+ token_type
-+ scope
-+ id_token
-+ oauth_token_secret
-+ oauth_token
-+ session_state
-- created_at
-- updated_at
-}
-
-Session {
-  id
-  userId
-  expires
-  sessionToken
-- access_token
-- created_at
-- updated_at
-}
-
-VerificationToken {
-  id
-  token
-  expires
-  identifier
--  created_at
--  updated_at
-}
-```
-
-</pre>
-</details>
-
-For more info, see the [Models page](/adapters/models).
-
 ## `next-auth/jwt`
 
 We no longer have a default export in `next-auth/jwt`.
@@ -392,7 +269,39 @@ More details and screenshots of the new theme options can be found under [config
 
 Introduced in https://github.com/nextauthjs/next-auth/pull/2788
 
-## Adapter API
+## Adapters
+
+You can find the official Adapters in the [nextauthjs/adapter](https://github.com/nextauthjs/adapters) repository. Although you can still [create your own](/tutorials/creating-a-database-adapter) with a new, [simplified Adapter API](https://github.com/nextauthjs/next-auth/pull/2361).
+
+1.1. If you use the built-in TypeORM or Prisma adapters, these have been removed from the core `next-auth` package to not balloon the package size for users who do not need a database. Thankfully the migration is super easy; you just need to install the external packages for your database and change the import in your `[...nextauth].js`.
+
+The `database` option is gone, you can do the following instead:
+
+```diff
+// [...nextauth].js
+import NextAuth from "next-auth"
++ import { TypeORMLegacyAdapter } from "@next-auth/typeorm-legacy-adapter"
+
+...
+export default NextAuth({
+-  database: "yourconnectionstring",
++  adapter: TypeORMLegacyAdapter("yourconnectionstring")
+})
+```
+
+1.2. The `prisma-legacy` adapter has been removed, please use the [`@next-auth/prisma-adapter`](https:/npmjs.com/package/@next-auth/prisma-adapter) instead.
+
+1.3. The `typeorm-legacy` adapter will stay as-is for the time being, however we do aim to migrate this to individual lighter weight adapters for each database type in the future, or switch out `typeorm`.
+
+1.4 MongoDB has been moved to its own adapter under `@next-auth/mongodb-adapter`. See the [MongoDB Adapter docs](/adapters/mongodb).
+
+Introduced in https://github.com/nextauthjs/next-auth/releases/tag/v4.0.0-next.8 and https://github.com/nextauthjs/next-auth/pull/2361
+
+:::warning
+When using the **NextAuth v4 beta**, please make sure to use the `next` tagged version of your adapter. For example, to use the appropriate `typeorm` version with NextAuth v4, you would install `@next-auth/typeorm-legacy-adapter@next`.
+:::
+
+### Adapter API
 
 **This does not require any changes from the user - these are adapter specific changes only**
 
@@ -413,8 +322,7 @@ The way we save data with adapters have slightly changed. With the new Adapter A
 - `provider_type`/`providerType` renamed to `type` on Account
 - `provider_account_id`/`providerAccountId` on Account is consistently named `providerAccountId`
 - `access_token_expires`/`accessTokenExpires` on Account renamed to `expires_in`
-- New fields on Account: `expires_at`, `token_type`, `scope`, `id_token`, `oauth_token_secret`, `oauth_token`, `session_state`
-
+- New fields on Account: `expires_at`, `token_type`, `scope`, `id_token`, `session_state`
 
 <!-- REVIEW: Would something like this below be helpful? -->
 <details>
@@ -454,8 +362,6 @@ Account {
 + token_type
 + scope
 + id_token
-+ oauth_token_secret
-+ oauth_token
 + session_state
 - created_at
 - updated_at
@@ -480,9 +386,9 @@ VerificationToken {
 -  updated_at
 }
 ```
+
 </pre>
 </details>
-
 
 For more info, see the [Models page](/adapters/models).
 
