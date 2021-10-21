@@ -207,7 +207,7 @@ export default NextAuth({
 })
 ```
 
-2. The `prisma-legacy` adapter has been removed, please use the [`@next-auth/prisma-adapter`](https:/npmjs.com/package/@next-auth/prisma-adapter) instead.
+2. The `prisma-legacy` adapter has been removed, please use the [`@next-auth/prisma-adapter`](https://npmjs.com/package/@next-auth/prisma-adapter) instead.
 
 3. The `typeorm-legacy` adapter has been upgraded to use the newer adapter API, but has retained the `typeorm-legacy` name. We aim to migrate this to individual lighter weight adapters for each database type in the future, or switch out `typeorm`.
 
