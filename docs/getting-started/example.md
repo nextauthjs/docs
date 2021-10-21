@@ -8,7 +8,7 @@ title: Example Code
 The example code below describes how to add authentication to a Next.js app.
 
 :::tip
-The easiest way to get started is to clone the [example app](https://github.com/nextauthjs/next-auth-example) and follow the instructions in README.md. You can try out a live demo at [next-auth-example.vercel.app](https://next-auth-example.vercel.app)
+The easiest way to get started is to clone the [example app v4 branch](https://github.com/nextauthjs/next-auth-example/tree/ndom91/update-v4) and follow the instructions in README.md. You can try out a live demo at [https://next-auth-example-git-ndom91-update-v4-nextauthjs.vercel.app/](https://next-auth-example-git-ndom91-update-v4-nextauthjs.vercel.app/)
 :::
 
 ### Add API route
