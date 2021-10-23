@@ -20,10 +20,10 @@ By default, it should work for both versions: v3 and v4 (current in beta)
 ## Example
 
 ```js
-import Providers from 'next-auth/providers'
+import PipedriveProvider from 'next-auth/providers/pipedrive'
 ...
 providers: [
-  Providers.Pipedrive({
+  PipedriveProvider({
     clientId: process.env.PIPEDRIVE_CLIENT_ID,
     clientSecret: process.env.PIPEDRIVE_CLIENT_SECRET,
   })
