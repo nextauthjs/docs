@@ -26,7 +26,6 @@ providers: [
   Providers.Pipedrive({
     clientId: process.env.PIPEDRIVE_CLIENT_ID,
     clientSecret: process.env.PIPEDRIVE_CLIENT_SECRET,
-    redirectUri: 'http://localhost:3000/api/auth/callback/pipedrive'
   })
 ]
 ...
