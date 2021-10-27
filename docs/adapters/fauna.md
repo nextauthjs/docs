@@ -65,26 +65,40 @@ CreateIndex({
   source: Collection("accounts"),
   unique: true,
   terms: [
-    { field: ["data", "provider"] },
-    { field: ["data", "providerAccountId"] },
+    { field: ["data.provider"] },
+    { field: ["data.providerAccountId"] },
+  ],
+})
+CreateIndex({
+  name: "accounts_by_user_id",
+  source: Collection("accounts"),
+  unique: true,
+  terms: [
+    { field: ["data.userId"] }
   ],
 })
 CreateIndex({
   name: "session_by_session_token",
   source: Collection("sessions"),
   unique: true,
-  terms: [{ field: ["data", "sessionToken"] }],
+  terms: [{ field: ["data.sessionToken"] }],
+})
+CreateIndex({
+  name: "session_by_user_id",
+  source: Collection("sessions"),
+  unique: true,
+  terms: [{ field: ["data.userId"] }],
 })
 CreateIndex({
   name: "user_by_email",
   source: Collection("users"),
   unique: true,
-  terms: [{ field: ["data", "email"] }],
+  terms: [{ field: ["data.email"] }],
 })
 CreateIndex({
   name: "verification_token_by_identifier_and_token",
   source: Collection("verification_tokens"),
   unique: true,
-  terms: [{ field: ["data", "token"] }, { field: ["data", "identifier"] }],
+  terms: [{ field: ["data.identifier"] }, { field: ["data.token"] }],
 })
 ```
