@@ -34,7 +34,7 @@ providers: [
 ```
 
 :::note
-By default the provider uses `5.126` version of the API. See https://vk.com/dev/versions for more info.
+By default the provider uses `5.131` version of the API. See https://vk.com/dev/versions for more info.
 :::
 
 If you want to use a different version, you can pass it to provider's options object:
