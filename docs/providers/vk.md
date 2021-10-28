@@ -42,7 +42,7 @@ If you want to use a different version, you can pass it to provider's options ob
 ```js
 // pages/api/auth/[...nextauth].js
 
-const apiVersion = "5.126"
+const apiVersion = "5.131"
 ...
 providers: [
   VkProvider({
