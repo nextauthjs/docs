@@ -3,6 +3,16 @@ id: azure-ad-b2c
 title: Azure Active Directory B2C
 ---
 
+:::note
+Azure AD B2C returns the following fields on `Account`: 
+- `refresh_token_expires_in` (number) 
+- `not_before` (number)
+- `id_token_expires_in` (number)
+- `profile_info` (string). 
+
+See their [docs](https://docs.microsoft.com/en-us/azure/active-directory-b2c/access-tokens). Remember to add these fields to your database schema, in case if you are using an [Adapter](/adapters/overview).
+:::
+
 ## Documentation
 
 https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow
@@ -74,36 +84,6 @@ providers: [
   }),
 ]
 ...
-```
-
-## Database
-If you're using a database make sure the `Account` table has, at least, the following fields.
-
-### Prisma Adapter Example
-
-```
-model Account {
-  id                       String  @id @default(cuid())
-  userId                   String
-  type                     String
-  provider                 String
-  providerAccountId        String
-  refresh_token            String?
-  access_token             String?
-  expires_at               Int?
-  token_type               String?
-  scope                    String?
-  id_token                 String?
-  session_state            String?
-  not_before               Int?
-  id_token_expires_in      Int?
-  refresh_token_expires_in Int?
-  profile_info             String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@unique([provider, providerAccountId])
-}
 ```
 
 ## Configuration (Advanced)

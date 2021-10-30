@@ -38,31 +38,6 @@ providers: [
 ...
 ```
 
-## Database
-If you're using a database make sure the `Account` table has, at least, the following fields.
-
-### Prisma Adapter Example
-
-```
-model Account {
-  id                       String  @id @default(cuid())
-  userId                   String
-  type                     String
-  provider                 String
-  providerAccountId        String
-  access_token             String?
-  expires_at               Int?
-  refresh_token            String?
-  refresh_token_expires_in Int?
-  token_type               String?
-  scope                    String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@unique([provider, providerAccountId])
-}
-```
-
 :::warning
 Only allows one callback URL per Client ID / Client Secret.
 :::
