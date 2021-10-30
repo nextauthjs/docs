@@ -74,7 +74,36 @@ providers: [
   }),
 ]
 ...
+```
 
+## Database
+If you're using a database make sure the `Account` table has, at least, the following fields.
+
+### Prisma Adapter Example
+
+```
+model Account {
+  id                       String  @id @default(cuid())
+  userId                   String
+  type                     String
+  provider                 String
+  providerAccountId        String
+  refresh_token            String?
+  access_token             String?
+  expires_at               Int?
+  token_type               String?
+  scope                    String?
+  id_token                 String?
+  session_state            String?
+  not_before               Int?
+  id_token_expires_in      Int?
+  refresh_token_expires_in Int?
+  profile_info             String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
 ```
 
 ## Configuration (Advanced)
