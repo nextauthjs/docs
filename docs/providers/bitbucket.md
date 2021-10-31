@@ -18,10 +18,10 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import Providers from `next-auth/providers`
+import BitbucketProvider from `next-auth/providers/bitbucket`
 ...
 providers: [
-  Providers.Bitbucket({
+  BitbucketProvider({
     clientId: process.env.BITBUCKET_CLIENT_ID,
     clientSecret: process.env.BITBUCKET_CLIENT_SECRET
   })
