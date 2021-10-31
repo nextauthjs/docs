@@ -1,6 +1,6 @@
 ---
 id: bitbucket
-name: Bitbucket
+title: Bitbucket
 ---
 
 ## Documentation
