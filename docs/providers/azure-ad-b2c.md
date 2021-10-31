@@ -3,6 +3,16 @@ id: azure-ad-b2c
 title: Azure Active Directory B2C
 ---
 
+:::note
+Azure AD B2C returns the following fields on `Account`: 
+- `refresh_token_expires_in` (number) 
+- `not_before` (number)
+- `id_token_expires_in` (number)
+- `profile_info` (string). 
+
+See their [docs](https://docs.microsoft.com/en-us/azure/active-directory-b2c/access-tokens). Remember to add these fields to your database schema, in case if you are using an [Adapter](/adapters/overview).
+:::
+
 ## Documentation
 
 https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow
@@ -74,7 +84,6 @@ providers: [
   }),
 ]
 ...
-
 ```
 
 ## Configuration (Advanced)
