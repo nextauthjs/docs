@@ -402,8 +402,6 @@ When set to `true` (the default for all site URLs that start with `https://`) th
 
 This option defaults to `false` on URLs that start with `http://` (e.g. `http://localhost:3000`) for developer convenience.
 
-You can manually set this option to `false` to disable this security feature and allow cookies to be accessible from non-secured URLs (this is not recommended).
-
 :::note
 Properties on any custom `cookies` that are specified override this option.
 :::
@@ -420,6 +418,8 @@ Setting this option to _false_ in production is a security risk and may allow se
 - **Required**: _No_
 
 #### Description
+
+Cookies in NextAuth.js are chunked by default, meaning that once they reach the 4kb limit, we will create a new cookie with the `.{number}` suffix and reassemble the cookies in the correct order when parsing / reading them. This was introduced to avoid size constraints which can occur when users want to store additional custom fields in their sessionToken, for example, or enable encryption, which adds size overhead.
 
 You can override the default cookie names and options for any of the cookies used by NextAuth.js.
 
