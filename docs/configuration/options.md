@@ -119,38 +119,17 @@ session: {
 
 JSON Web Tokens can be used for session tokens if enabled with `session: { jwt: true }` option. JSON Web Tokens are enabled by default if you have not specified a database.
 
-By default JSON Web Tokens are signed (JWS) but not encrypted (JWE), as JWT encryption adds additional overhead and comes with some caveats. You can enable encryption by setting `encryption: true`.
+By default JSON Web Tokens are encrypted (JWE). We recommend you keep this behavoiur, but you can override it by defining your own `encode` and `decode` methods.
 
 #### JSON Web Token Options
 
 ```js
 jwt: {
-  // A secret to use for key generation - you should set this explicitly
-  // Defaults to NextAuth.js secret if not explicitly specified.
-  // This is used to generate the actual signingKey and produces a warning
-  // message if not defined explicitly.
+  // A secret to use for key generation. Defaults to the top-level `session`.
   secret: 'INp8IvdIyeMcoGAgFGoA61DdBglwwSqnXJZkgz8PSnw',
-  // You can generate a signing key using `jose newkey -s 512 -t oct -a HS512`
-  // This gives you direct knowledge of the key used to sign the token so you can use it
-  // to authenticate indirectly (eg. to a database driver)
-  signingKey: {
-     kty: "oct",
-     kid: "Dl893BEV-iVE-x9EC52TDmlJUgGm9oZ99_ZL025Hc5Q",
-     alg: "HS512",
-     k: "K7QqRmJOKRK2qcCKV_pi9PSBv3XP0fpTu30TP8xn4w01xR3ZMZM38yL2DnTVPVw6e4yhdh0jtoah-i4c_pZagA"
-  },
-  // If you chose something other than the default algorithm for the signingKey (HS512)
-  // you also need to configure the algorithm
-  verificationOptions: {
-     algorithms: ['HS256']
-  },
-  // Set to true to use encryption. Defaults to false (signing only).
-  encryption: true,
-  encryptionKey: "",
-  // decryptionKey: encryptionKey,
-  decryptionOptions: {
-     algorithms: ['A256GCM']
-  },
+  // The maximum age of the NextAuth.js issued JWT in seconds.
+  // Defaults to `session.maxAge`.
+  maxAge: 60 * 60 * 24 * 30,
   // You can define your own encode/decode functions for signing and encryption
   // if you want to override the default behaviour.
   async encode({ secret, token, maxAge }) {},
