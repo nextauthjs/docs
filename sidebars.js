@@ -59,6 +59,7 @@ module.exports = {
         "adapters/firebase",
         "adapters/pouchdb",
         "adapters/mongodb",
+        "adapters/neo4j",
         "adapters/typeorm",
       ],
     },
