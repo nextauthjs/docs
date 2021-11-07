@@ -66,11 +66,17 @@ See the [providers documentation](/configuration/providers/oauth-provider) for a
 
 #### Description
 
-A random string used to hash tokens, sign cookies and generate cryptographic keys.
+A random string used to hash tokens, sign/encrypt cookies and generate cryptographic keys.
 
-If not specified, it uses a hash for all configuration options, including Client ID / Secrets for entropy.
+If not specified, it uses a hash for all configuration options, including OAuth Client ID / Secrets for entropy. Although if the user does not use such a provider, the configuration might be guessed.
 
-The default behaviour is volatile, and it is strongly recommended you explicitly specify a value to avoid invalidating end user sessions when configuration changes are deployed.
+:::warn
+The default behaviour is volatile, and it is strongly recommended you explicitly specify a value. If `secret` is omitted in production, we will throw an error.
+:::
+
+:::tip
+If you rely on the default secret generation in development, you might notice JWT decryption errors, since the secret changes whenever you change your configuration. Defining a secret will make this problem go away.
+:::
 
 ---
 
