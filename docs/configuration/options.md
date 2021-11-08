@@ -70,7 +70,7 @@ A random string used to hash tokens, sign/encrypt cookies and generate cryptogra
 
 If not specified, it uses a hash for all configuration options, including OAuth Client ID / Secrets for entropy. Although if the user does not use such a provider, the configuration might be guessed.
 
-:::warn
+:::warning
 The default behaviour is volatile, and it is strongly recommended you explicitly specify a value. If `secret` is omitted in production, we will throw an error.
 :::
 
