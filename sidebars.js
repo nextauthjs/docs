@@ -18,6 +18,7 @@ module.exports = {
       label: "Configuration",
       collapsed: true,
       items: [
+        "configuration/initialization",
         "configuration/options",
         {
           type: "category",
