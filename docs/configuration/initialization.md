@@ -23,17 +23,11 @@ export default NextAuth({
 
 Here, you only need to pass your [options](/configuration/options) to `NextAuth`, and `NextAuth` does the rest.
 
-This is the preferred initialization in tutorials/other parts of the documentation, as it somewhat simplifies the code and there is smaller chances for errors in the authentication flow.
+This is the preferred initialization in tutorials/other parts of the documentation, as it simplifies the code and reduces potential errors in the authentication flow.
 
 ## Advanced initialization
 
-In rare cases, there is just **some extra functionality** that you wish NextAuth.js had, or you need to _preprocess_ the request, but you understand that it is way too specific for your use-case to be introduced as part of the library.
-
-There is an important thing to realize.
-
-:::tip
-The `/pages/api/auth/[...nextauth]` file is **just a regular [API Route](https://nextjs.org/docs/api-routes/introduction)**.
-:::
+If you have a specific use case and need to make NextAuth.js do something slightly different than what it is designed for, keep in mind, the `[...nextauth].js` config file is still just **a regular [API Route](https://nextjs.org/docs/api-routes/introduction)** at the end of the day.
 
 That said, you can initialize NextAuth.js like this:
 
@@ -120,7 +114,7 @@ export default async function auth(req, res) {
 }
 ```
 
-To completely understand what actions correspond to and what methods are supported, check out the [REST API documentation](/getting-started/rest-api), or look at the [source code](https://github.com/nextauthjs/next-auth/blob/beta/src/core/index.ts).
+For more details on all available actions and which methods are supported, please check out the [REST API documentation](/getting-started/rest-api) or the appropriate area in [the source code](https://github.com/nextauthjs/next-auth/blob/beta/src/core/index.ts)
 
 This way of initializing `NextAuth` is very powerful, but should be used sparingly.
 
