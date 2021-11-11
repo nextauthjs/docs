@@ -116,12 +116,13 @@ The following new options are available when defining your Providers in the conf
 3. `userinfo` (replaces `profileUrl`)
 4. `issuer`(replaces `domain`)
 
-For more details on their usage, please see [using a custom provider](/configuration/providers/oauth-provider#using-a-custom-provider) or checkout this PR: https://github.com/nextauthjs/next-auth/pull/2411
+For more details on their usage, please see [options](/configuration/providers/oauth-provider#options) section of the OAuth Provider documentation.
 
 When submitting a new OAuth provider to the repository, the `profile` callback is expected to only return these fields from now on: `id`, `name`, `email`, and `image`. If any of these are missing values, they should be set to `null`.
 
 Also worth noting is that `id` is expected to be returned as a `string` type (For example if your provider returns it as a number, you can cast it by using the `.toString()` method). This makes the returned profile object comply across all providers/accounts/adapters, and hopefully cause less confusion in the future.
 
+Implemented in: https://github.com/nextauthjs/next-auth/pull/2411
 Introduced in https://github.com/nextauthjs/next-auth/releases/tag/v4.0.0-next.20
 
 ## `useSession` Hook
