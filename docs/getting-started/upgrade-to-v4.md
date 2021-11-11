@@ -269,6 +269,26 @@ More details and screenshots of the new theme options can be found under [config
 
 Introduced in https://github.com/nextauthjs/next-auth/pull/2788
 
+## Session
+
+The `session.jwt: boolean` option has been renamed to `session.strategy: "jwt" | "database"`. The goal is to make the user's options more intuitive:
+
+1. No adapter, `strategy: "jwt"`: This is the default. The session is saved in a cookie and never persisted anywhere.
+2. With Adapter, `strategy: "database"`: If an Adapter is defined, this will be the implicit setting. No user config is needed.
+3. With Adapter, `strategy: "jwt"`: The user can explicitly instruct `next-auth` to use JWT even if a database is available. This can result in faster lookups in compromise of lowered security. Read more about: https://next-auth.js.org/faq#json-web-tokens
+
+Example:
+
+```diff
+session: {
+- jwt: true,
++ strategy: "jwt",
+}
+```
+
+Introduced in https://github.com/nextauthjs/next-auth/pull/3144
+
+
 ## Adapters
 
 You can find the official Adapters in the [nextauthjs/adapter](https://github.com/nextauthjs/adapters) repository. Although you can still [create your own](/tutorials/creating-a-database-adapter) with a new, [simplified Adapter API](https://github.com/nextauthjs/next-auth/pull/2361).
