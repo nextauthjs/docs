@@ -213,7 +213,7 @@ The `synchronize: true` option in TypeORM will generate SQL that exactly matches
 
 ## Naming Conventions
 
-If mixed snake case and camel case column names is an issue for you and/or your underlying database system, we recommend using TypeORM's naming strategy feature to change the target field names. There is a package called `typeorm-naming-strategies` which includes a `snake_case` strategy which will translate the fields from how NextAuth expects them, to snake case in the actual database.
+If mixed snake_case and camelCase column names are an issue for you and/or your underlying database system, we recommend using TypeORM's naming strategy feature to change the target field names. There is a package called `typeorm-naming-strategies` which includes a `snake_case` strategy which will translate the fields from how NextAuth.js expects them, to snake case in the actual database.
 
 For example, you can add the naming convention option to the connection object in your NextAuth config.
 
@@ -221,10 +221,10 @@ For example, you can add the naming convention option to the connection object i
 import NextAuth from "next-auth"
 import Providers from "next-auth/providers"
 import { TypeORMLegacyAdapter } from "@next-auth/typeorm-legacy-adapter"
-import { createConnection } from 'typeorm';
 import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
+import { ConnectionOptions } from "typeorm"
 
-const connection = await createConnection({
+const connection: ConnectionOptions = {
     type: "mysql",
     host: "localhost",
     port: 3306,
@@ -232,7 +232,7 @@ const connection = await createConnection({
     password: "test",
     database: "test",
     namingStrategy: new SnakeNamingStrategy()
-});
+}
 
 export default NextAuth({
   adapter: TypeORMLegacyAdapter(connection),
