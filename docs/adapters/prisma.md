@@ -132,7 +132,7 @@ npx prisma migrate dev
 
 ## Naming Conventions
 
-If mixed snake case and camel case column names is an issue for you and/or your underlying database system, we recommend using Prisma's `@Map()` feature to change the field names. This won't affect NextAuth, but will allow you to customize the column names to whichever naming convention you wish.
+If mixed snake case and camel case column names is an issue for you and/or your underlying database system, we recommend using Prisma's `@Map()`(https://www.prisma.io/docs/concepts/components/prisma-schema/names-in-underlying-database) feature to change the field names. This won't affect NextAuth, but will allow you to customize the column names to whichever naming convention you wish.
 
 For example, moving to `snake_case` and plural table names.
 
