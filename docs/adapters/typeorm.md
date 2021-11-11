@@ -220,7 +220,7 @@ For example, you can add the naming convention option to the connection object i
 ```javascript title="pages/api/auth/[...nextauth].js"
 import NextAuth from "next-auth"
 import { TypeORMLegacyAdapter } from "@next-auth/typeorm-legacy-adapter"
-import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
+import { SnakeNamingStrategy } from 'typeorm-naming-strategies'
 import { ConnectionOptions } from "typeorm"
 
 const connection: ConnectionOptions = {
