@@ -210,3 +210,32 @@ The `synchronize: true` option in TypeORM will generate SQL that exactly matches
 :::warning Using synchronize in production
 `synchronize: true` should not be enabled against production databases as it may cause data loss if the configured schema does not match the expected schema! We recommend that you synchronize/migrate your production database at build-time.
 :::
+
+## Naming Conventions
+
+If mixed snake case and camel case column names is an issue for you and/or your underlying database system, we recommend using TypeORM's naming strategy feature to change the target field names. There is a package called `typeorm-naming-strategies` which includes a `snake_case` strategy which will translate the fields from how NextAuth expects them, to snake case in the actual database.
+
+For example, you can add the naming convention option to the connection object in your NextAuth config.
+
+```javascript title="pages/api/auth/[...nextauth].js"
+import NextAuth from "next-auth"
+import Providers from "next-auth/providers"
+import { TypeORMLegacyAdapter } from "@next-auth/typeorm-legacy-adapter"
+import { createConnection } from 'typeorm';
+import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
+
+const connection = await createConnection({
+    type: "mysql",
+    host: "localhost",
+    port: 3306,
+    username: "test",
+    password: "test",
+    database: "test",
+    namingStrategy: new SnakeNamingStrategy()
+});
+
+export default NextAuth({
+  adapter: TypeORMLegacyAdapter(connection),
+  ...
+})
+```
