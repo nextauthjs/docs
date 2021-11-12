@@ -419,7 +419,7 @@ Setting this option to _false_ in production is a security risk and may allow se
 
 #### Description
 
-Cookies in NextAuth.js are chunked by default, meaning that once they reach the 4kb limit, we will create a new cookie with the `.{number}` suffix and reassemble the cookies in the correct order when parsing / reading them. This was introduced to avoid size constraints which can occur when users want to store additional custom fields in their sessionToken, for example, or enable encryption, which adds size overhead.
+Cookies in NextAuth.js are chunked by default, meaning that once they reach the 4kb limit, we will create a new cookie with the `.{number}` suffix and reassemble the cookies in the correct order when parsing / reading them. This was introduced to avoid size constraints which can occur when users want to store additional data in their sessionToken, for example.
 
 You can override the default cookie names and options for any of the cookies used by NextAuth.js.
 

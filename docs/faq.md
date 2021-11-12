@@ -345,7 +345,7 @@ JSON Web Tokens can be used for session tokens, but are also used for lots of ot
 </summary>
 <p>
 
-By default tokens are signed (JWS) but not encrypted (JWE), as encryption adds additional overhead and reduces the amount of space available to store data (total cookie size for a domain is limited to 4KB). Since v4 we have implemented cookie chunking so that cookies over the 4kb limit get split and reassembled upon reading them. As there is practically no limit to cookie size anymore, we strongly recommend enabling and keeping enabled jwt encryption.
+By default tokens are signed (JWS) but not encrypted (JWE), as encryption adds additional overhead and reduces the amount of space available to store data (total cookie size for a domain is limited to 4KB). Since v4 we have implemented cookie chunking so that cookies over the 4kb limit get split and reassembled upon parsing.
 
 - JSON Web Tokens in NextAuth.js use JWS and are signed using HS512 with an auto-generated key.
 
