@@ -239,7 +239,7 @@ The following new options are available when defining your Providers in the conf
 3. `userinfo` (replaces `profileUrl`)
 4. `issuer`(replaces `domain`)
 
-For more details on their usage, please see [using a custom provider](/configuration/providers/oauth-provider#using-a-custom-provider) or checkout this PR: https://github.com/nextauthjs/next-auth/pull/2411
+For more details on their usage, please see [using a custom provider](/configuration/providers/oauth#using-a-custom-provider) or checkout this PR: https://github.com/nextauthjs/next-auth/pull/2411
 
 When submitting a new OAuth provider to the repository, the `profile` callback is expected to only return these fields from now on: `id`, `name`, `email`, and `image`. If any of these are missing values, they should be set to `null`.
 
@@ -370,7 +370,7 @@ Introduced in https://github.com/nextauthjs/next-auth/releases/tag/v4.0.0-next.1
 
 ## `nodemailer`
 
-Like `typeorm` and `prisma`, [`nodemailer`](https://npmjs.com/package/nodemailer) is no longer included as a dependency by default. If you are using the Email provider you must install it in your project manually, or use any other Email library in the [`sendVerificationRequest`](/configuration/providers#options-1#:~:text=sendVerificationRequest) callback. This reduces bundle size for those not actually using the Email provider. Remember, when using the Email provider, it is mandatory to also use a database adapter due to the fact that verification tokens need to be persisted longer term for the magic link functionality to work.
+Like `typeorm` and `prisma`, [`nodemailer`](https://npmjs.com/package/nodemailer) is no longer included as a dependency by default. If you are using the Email provider you must install it in your project manually, or use any other Email library in the [`sendVerificationRequest`](/configuration/providers/email#options-1#:~:text=sendVerificationRequest) callback. This reduces bundle size for those not actually using the Email provider. Remember, when using the Email provider, it is mandatory to also use a database adapter due to the fact that verification tokens need to be persisted longer term for the magic link functionality to work.
 
 Introduced in https://github.com/nextauthjs/next-auth/releases/tag/v4.0.0-next.2
 
@@ -416,7 +416,6 @@ The way we save data with adapters have slightly changed. With the new Adapter A
 - `provider_account_id`/`providerAccountId` on Account is consistently named `providerAccountId`
 - `access_token_expires`/`accessTokenExpires` on Account renamed to `expires_in`
 - New fields on Account: `expires_at`, `token_type`, `scope`, `id_token`, `oauth_token_secret`, `oauth_token`, `session_state`
-
 
 <!-- REVIEW: Would something like this below be helpful? -->
 <details>
@@ -482,9 +481,9 @@ VerificationToken {
 -  updated_at
 }
 ```
+
 </pre>
 </details>
-
 
 For more info, see the [Models page](/adapters/models).
 
