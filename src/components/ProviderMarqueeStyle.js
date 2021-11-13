@@ -1,11 +1,11 @@
-import styled from 'styled-components'
+import styled from "styled-components"
 
 export const Circle = styled.div`
   position: absolute;
   object-position: center center;
   will-change: transform, opacity;
-  width: ${props => props.scale * 150}px;
-  height: ${props => props.scale * 150}px;
+  width: ${(props) => props.scale * 150}px;
+  height: ${(props) => props.scale * 150}px;
   top: -50%;
   left: -50%;
   border-radius: 50%;
@@ -35,11 +35,11 @@ export const FullWidth = styled.div`
 export const Height = styled.div`
   position: relative;
   width: 100%;
-  height: ${props => (props.height ? props.height + 'px' : 'auto')};
+  height: ${(props) => (props.height ? props.height + "px" : "auto")};
 `
 
 export const Company = styled.div`
   position: relative;
-  width: ${props => props.scale * 75}px;
-  height: ${props => props.scale * 75}px;
+  width: ${(props) => props.scale * 75}px;
+  height: ${(props) => props.scale * 75}px;
 `

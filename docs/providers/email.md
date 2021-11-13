@@ -31,8 +31,9 @@ You can override any of the options to suit your own use case.
 
 ## Configuration
 
-1. You will need an SMTP account; ideally for one of the [services known to work with `nodemailer`](http://nodemailer.com/smtp/well-known/).
-2. There are two ways to configure the SMTP server connection.
+1. NextAuth.js does not include `nodemailer` as a dependency, so you'll need to install it yourself if you want to use the Email Provider. Run `npm install nodemailer` or `yarn add nodemailer`.
+2. You will need an SMTP account; ideally for one of the [services known to work with `nodemailer`](http://nodemailer.com/smtp/well-known/).
+3. There are two ways to configure the SMTP server connection.
 
 You can either use a connection string or a `nodemailer` configuration object.
 
@@ -106,7 +107,7 @@ providers: [
     sendVerificationRequest({
       identifier: email,
       url,
-      provider: { server, from }
+      provider: { server, from },
     }) {
       /* your function */
     },
@@ -119,10 +120,10 @@ The following code shows the complete source for the built-in `sendVerificationR
 ```js
 import nodemailer from "nodemailer"
 
-async function sendVerificationRequest ({
+async function sendVerificationRequest({
   identifier: email,
   url,
-  provider: { server, from }
+  provider: { server, from },
 }) {
   const { host } = new URL(url)
   const transport = createTransport(server)

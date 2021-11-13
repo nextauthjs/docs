@@ -87,10 +87,13 @@ Default values for this option are shown below:
 
 ```js
 session: {
-  // Use JSON Web Tokens for session instead of database sessions.
-  // This option can be used with or without a database for users/accounts.
-  // Note: `jwt` is automatically set to `true` if no database is specified.
-  jwt: false,
+  // Choose how you want to save the user session.
+  // The default is `"jwt"`, an encrypted JWT (JWE) in the session cookie.
+  // If you use an `adapter` however, we default it to `"database"` instead.
+  // You can still force a JWT session by explicitly defining `"jwt"`.
+  // When using `"database"`, the session cookie will only contain a `sessionToken` value,
+  // which is used to look up the session in the database.
+  strategy: "database",
 
   // Seconds - How long until an idle session expires and is no longer valid.
   maxAge: 30 * 24 * 60 * 60, // 30 days
@@ -471,7 +474,16 @@ cookies: {
       path: '/',
       secure: useSecureCookies
     }
-  }
+  },
+  state: {
+    name: `${cookiePrefix}next-auth.state`,
+    options: {
+      httpOnly: true,
+      sameSite: "lax",
+      path: "/",
+      secure: useSecureCookies,
+    },
+  },
 }
 ```
 

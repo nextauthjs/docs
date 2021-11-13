@@ -26,6 +26,7 @@ These warnings are displayed on the terminal.
 To remedy this warning, you can either:
 
 **Option 1**: Pass a pre-regenerated Private Key (and, optionally a Public Key) in the jwt options.
+
 ```js title="/pages/api/auth/[...nextauth].js"
 jwt: {
   signingKey: process.env.JWT_SIGNING_PRIVATE_KEY,
@@ -52,11 +53,12 @@ You can use [node-jose-tools](https://www.npmjs.com/package/node-jose-tools) to 
 
 ### ADAPTER_TYPEORM_UPDATING_ENTITIES
 
-This warning occurs when typeorm finds that the provided entities differ from the database entities. By default while not in `production` the typeorm adapter will always synchronize changes made to the entities codefiles. 
+This warning occurs when typeorm finds that the provided entities differ from the database entities. By default while not in `production` the typeorm adapter will always synchronize changes made to the entities codefiles.
 
 Disable this warning by setting `synchronize: false` in your typeorm config
 
 Example:
+
 ```js title="/pages/api/auth/[...nextauth].js"
 adapter: TypeORMLegacyAdapter({
   type: 'mysql',

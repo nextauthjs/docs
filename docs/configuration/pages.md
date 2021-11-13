@@ -60,9 +60,11 @@ By default, the built-in pages will follow the system theme, utilizing the [`pre
 In addition, you can define a `theme.brandColor` to define a custom accent color for these built-in pages. You can also define a URL to a logo in `theme.logo` which will be rendered above the primary card in these pages.
 
 #### Sign In
+
 ![Customized Signin Page](/img/pages_signin.png)
 
 #### Sign Out
+
 ![Customized Signout Page](/img/pages_signout.png)
 
 ## Examples
