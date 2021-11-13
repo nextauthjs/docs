@@ -186,44 +186,6 @@ events: {
 
 Introduced in https://github.com/nextauthjs/next-auth/releases/tag/v4.0.0-next.20
 
-## Adapters
-
-Most importantly, the core `next-auth` package no longer ships with `typeorm` or any other database adapter by default. This brings the default bundle size down significantly for those not needing to persist user data to a database.
-
-You can find the official Adapters in the newly created [nextauthjs/adapter](https://github.com/nextauthjs/adapters) repository. Although you can still [create your own](/tutorials/creating-a-database-adapter) with a new, [simplified Adapter API](https://github.com/nextauthjs/next-auth/pull/2361).
-
-1. If you use the built-in TypeORM or Prisma adapters, these have been removed from the core `next-auth` package. Thankfully the migration is easy; you just need to install the external packages for your database and change the import in your `[...nextauth].js`.
-
-The `database` option has been removed, you must now do the following instead:
-
-```diff
-// [...nextauth].js
-import NextAuth from "next-auth"
-+ import { TypeORMLegacyAdapter } from "@next-auth/typeorm-legacy-adapter"
-
-...
-export default NextAuth({
--  database: "yourconnectionstring",
-+  adapter: TypeORMLegacyAdapter("yourconnectionstring")
-})
-```
-
-2. The `prisma-legacy` adapter has been removed, please use the [`@next-auth/prisma-adapter`](https://npmjs.com/package/@next-auth/prisma-adapter) instead.
-
-3. The `typeorm-legacy` adapter has been upgraded to use the newer adapter API, but has retained the `typeorm-legacy` name. We aim to migrate this to individual lighter weight adapters for each database type in the future, or switch out `typeorm`.
-
-4. MongoDB has been moved to its own adapter under `@next-auth/mongodb-adapter`. See the [MongoDB Adapter docs](/adapters/mongodb).
-
-Introduced in https://github.com/nextauthjs/next-auth/releases/tag/v4.0.0-next.8 and https://github.com/nextauthjs/next-auth/pull/2361
-
-:::warning IMPORTANT
-When using the **NextAuth v4 beta**, please make sure to use the `next` tagged version of your adapter. For example, to use the appropriate `typeorm` version with NextAuth v4, you would:
-
-`npm install @next-auth/typeorm-legacy-adapter@next`
-
-If you have issues installing `@next` adapters with npm due to the required `4.0.0-beta.X` version of `next-auth` and a `4.0.0` package already existing, please use the `--force-legacy-deps` flag with `npm install`.
-:::
-
 ## Logger API
 
 The logger API has been simplified to use at most two parameters, where the second is usually an object (`metadata`) containing an `error` object. If you are not using the logger settings you can ignore this change.
@@ -291,11 +253,14 @@ Introduced in https://github.com/nextauthjs/next-auth/pull/3144
 
 ## Adapters
 
-You can find the official Adapters in the [nextauthjs/adapter](https://github.com/nextauthjs/adapters) repository. Although you can still [create your own](/tutorials/creating-a-database-adapter) with a new, [simplified Adapter API](https://github.com/nextauthjs/next-auth/pull/2361).
+Most importantly, the core `next-auth` package no longer ships with `typeorm` or any other database adapter by default. This brings the default bundle size down significantly for those not needing to persist user da
+ta to a database.
 
-1.1. If you use the built-in TypeORM or Prisma adapters, these have been removed from the core `next-auth` package to not balloon the package size for users who do not need a database. Thankfully the migration is super easy; you just need to install the external packages for your database and change the import in your `[...nextauth].js`.
+You can find the official Adapters in the newly created [nextauthjs/adapter](https://github.com/nextauthjs/adapters) repository. Although you can still [create your own](/tutorials/creating-a-database-adapter) with a new, [simplified Adapter API](https://github.com/nextauthjs/next-auth/pull/2361).
 
-The `database` option is gone, you can do the following instead:
+1. If you use the built-in TypeORM or Prisma adapters, these have been removed from the core `next-auth` package. Thankfully the migration is easy; you just need to install the external packages for your database and change the import in your `[...nextauth].js`.
+
+The `database` option has been removed, you must now do the following instead:
 
 ```diff
 // [...nextauth].js
@@ -309,16 +274,20 @@ export default NextAuth({
 })
 ```
 
-1.2. The `prisma-legacy` adapter has been removed, please use the [`@next-auth/prisma-adapter`](https:/npmjs.com/package/@next-auth/prisma-adapter) instead.
+2. The `prisma-legacy` adapter has been removed, please use the [`@next-auth/prisma-adapter`](https://npmjs.com/package/@next-auth/prisma-adapter) instead.
 
-1.3. The `typeorm-legacy` adapter will stay as-is for the time being, however we do aim to migrate this to individual lighter weight adapters for each database type in the future, or switch out `typeorm`.
+3. The `typeorm-legacy` adapter has been upgraded to use the newer adapter API, but has retained the `typeorm-legacy` name. We aim to migrate this to individual lighter weight adapters for each database type in the future, or switch out `typeorm`.
 
-1.4 MongoDB has been moved to its own adapter under `@next-auth/mongodb-adapter`. See the [MongoDB Adapter docs](/adapters/mongodb).
+4. MongoDB has been moved to its own adapter under `@next-auth/mongodb-adapter`. See the [MongoDB Adapter docs](/adapters/mongodb).
 
 Introduced in https://github.com/nextauthjs/next-auth/releases/tag/v4.0.0-next.8 and https://github.com/nextauthjs/next-auth/pull/2361
 
-:::warning
-When using the **NextAuth v4 beta**, please make sure to use the `next` tagged version of your adapter. For example, to use the appropriate `typeorm` version with NextAuth v4, you would install `@next-auth/typeorm-legacy-adapter@next`.
+:::warning IMPORTANT
+When using the **NextAuth v4 beta**, please make sure to use the `next` tagged version of your adapter. For example, to use the appropriate `typeorm` version with NextAuth v4, you would:
+
+`npm install @next-auth/typeorm-legacy-adapter@next`
+
+If you have issues installing `@next` adapters with npm due to the required `4.0.0-beta.X` version of `next-auth` and a `4.0.0` package already existing, please use the `--force-legacy-deps` flag with `npm install`.
 :::
 
 ### Adapter API
