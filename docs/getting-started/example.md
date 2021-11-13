@@ -38,6 +38,32 @@ All requests to `/api/auth/*` (`signIn`, callback, `signOut`, etc.) will automat
 - See the [options documentation](/configuration/options) for more details on how to configure providers, databases and other options.
 - Read more about how to add authentication providers [here](/providers/overview).
 
+#### Configure Shared session state
+
+To be able to use `useSession` first you'll need to expose the session context, [`<SessionProvider />`](/getting-started/client#sessionprovider), at the top level of your application:
+
+```javascript
+// pages/_app.js
+import { SessionProvider } from "next-auth/react"
+
+export default function App({
+  Component,
+  pageProps: { session, ...pageProps },
+}) {
+  return (
+    <SessionProvider session={session}>
+      <Component {...pageProps} />
+    </SessionProvider>
+  )
+}
+```
+
+Instances of `useSession` will then have access to the session data and status. The `<SessionProvider />` also takes care of keeping the session updated and synced between browser tabs and windows.
+
+:::tip
+Check out the [client documentation](/getting-started/client) to see how you can improve the user experience and page performance by using the NextAuth.js client.
+:::
+
 ### Frontend - Add React Hook
 
 The [`useSession()`](/getting-started/client#usesession) React Hook in the NextAuth.js client is the easiest way to check if someone is signed in.
@@ -128,32 +154,6 @@ export default function Component() {
   return <div>Access Token: {accessToken}</div>
 }
 ```
-
-#### Share/configure session state
-
-To be able to use `useSession` first you'll need to expose the session context, [`<SessionProvider />`](/getting-started/client#sessionprovider), at the top level of your application:
-
-```javascript
-// pages/_app.js
-import { SessionProvider } from "next-auth/react"
-
-export default function App({
-  Component,
-  pageProps: { session, ...pageProps },
-}) {
-  return (
-    <SessionProvider session={session}>
-      <Component {...pageProps} />
-    </SessionProvider>
-  )
-}
-```
-
-In this way instances of `useSession` can have access to the session data and status, otherwise they'll throw an error... `<SessionProvider />` also takes care of keeping the session updated and synced between browser tabs and windows.
-
-:::tip
-Check out the [client documentation](/getting-started/client) to see how you can improve the user experience and page performance by using the NextAuth.js client.
-:::
 
 ### Deploying to production
 

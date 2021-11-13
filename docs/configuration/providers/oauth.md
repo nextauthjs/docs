@@ -346,13 +346,9 @@ For built-in providers, in most cases you will only need to specify the `clientI
 
 Even if you are using a built-in provider, you can override any of these options to tweak the default configuration.
 
-# <<<<<<< HEAD
-
 :::note
 The user provided options are deeply merged with the default options. That means you only have to override part of the options that you need to be different. For example if you want different scopes, overriding `authorization.params.scope` is enough, instead of the whole `authorization` option.
 :::
-
-> > > > > > > main
 
 ```js title=/api/auth/[...nextauth].js
 import Auth0Provider from "next-auth/providers/auth0"
