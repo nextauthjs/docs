@@ -116,7 +116,7 @@ The following new options are available when defining your Providers in the conf
 3. `userinfo` (replaces `profileUrl`)
 4. `issuer`(replaces `domain`)
 
-For more details on their usage, please see [options](/configuration/providers/oauth-provider#options) section of the OAuth Provider documentation.
+For more details on their usage, please see [options](/configuration/providers/oauth#options) section of the OAuth Provider documentation.
 
 When submitting a new OAuth provider to the repository, the `profile` callback is expected to only return these fields from now on: `id`, `name`, `email`, and `image`. If any of these are missing values, they should be set to `null`.
 
