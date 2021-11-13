@@ -1,6 +1,6 @@
 ---
 id: firebase
-title: Firebase Adapter
+title: Firebase
 ---
 
 # Firebase

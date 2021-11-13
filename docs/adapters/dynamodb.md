@@ -1,6 +1,6 @@
 ---
 id: dynamodb
-title: DynamoDB Adapter
+title: DynamoDB
 ---
 
 # DynamoDB

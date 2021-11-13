@@ -1,6 +1,6 @@
 ---
 id: mongodb
-title: MongoDB Adapter
+title: MongoDB
 ---
 
 # MongoDB

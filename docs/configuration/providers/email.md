@@ -1,6 +1,6 @@
 ---
-id: email-provider
-title: Email Provider
+id: email
+title: Email
 ---
 
 ### How to

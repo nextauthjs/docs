@@ -44,7 +44,7 @@ Options are passed to NextAuth.js when initializing it in an API route.
 
 An array of authentication providers for signing in (e.g. Google, Facebook, Twitter, GitHub, Email, etc) in any order. This can be one of the built-in providers or an object with a custom provider.
 
-See the [providers documentation](/configuration/providers/oauth-provider) for a list of supported providers and how to use them.
+See the [providers documentation](/configuration/providers/oauth) for a list of supported providers and how to use them.
 
 ---
 

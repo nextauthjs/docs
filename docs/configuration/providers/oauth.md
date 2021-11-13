@@ -1,6 +1,6 @@
 ---
-id: oauth-provider
-title: OAuth Provider
+id: oauth
+title: OAuth
 ---
 
 Authentication Providers in **NextAuth.js** are OAuth definitions which allow your users to sign in with their favorite preexisting logins. You can use any of our many predefined providers, or write your own custom OAuth configuration.
