@@ -113,7 +113,7 @@ session: {
 
 JSON Web Tokens can be used for session tokens if enabled with `session: { jwt: true }` option. JSON Web Tokens are enabled by default if you have not specified a database.
 
-By default JSON Web Tokens are signed (JWS) but not encrypted (JWE), as JWT encryption adds additional overhead and comes with some caveats. You can enable encryption by setting `encryption: true`.
+By default JSON Web Tokens are not signed (JWS) but are encrypted (JWE).
 
 #### JSON Web Token Options
 
