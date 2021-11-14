@@ -5,10 +5,6 @@ title: Refresh Token Rotation
 
 While NextAuth.js doesn't automatically handle access token rotation for OAuth providers yet, this functionality can be implemented using [callbacks](https://next-auth.js.org/configuration/callbacks).
 
-## Source Code
-
-_A working example can be accessed [here](https://github.com/lawrencecchen/next-auth-refresh-tokens)._
-
 ## Implementation
 
 ### Server Side
@@ -75,6 +71,7 @@ async function refreshAccessToken(token) {
 }
 
 export default NextAuth({
+  secret: process.env.NEXTAUTH_SECRET,
   providers: [
     Providers.Google({
       clientId: process.env.GOOGLE_CLIENT_ID,
