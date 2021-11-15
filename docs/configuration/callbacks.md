@@ -82,11 +82,16 @@ The redirect callback is called anytime the user is redirected to a callback URL
 
 By default only URLs on the same URL as the site are allowed, you can use the redirect callback to customise that behaviour.
 
+The default redirect callback looks like this:
+
 ```js title="pages/api/auth/[...nextauth].js"
 ...
 callbacks: {
-  redirect({ url, baseUrl }) {
-    return url.startsWith(baseUrl) ? url : baseUrl
+  redirect({ url, baseUrl   }) {
+    if (url.startsWith(baseUrl)) return url
+    // Allows relative callback URLs
+    else if (url.startsWith("/")) return new URL(url, baseUrl).toString()
+    return baseUrl
   }
 }
 ...

@@ -116,12 +116,13 @@ The following new options are available when defining your Providers in the conf
 3. `userinfo` (replaces `profileUrl`)
 4. `issuer`(replaces `domain`)
 
-For more details on their usage, please see [using a custom provider](/configuration/providers/oauth-provider#using-a-custom-provider) or checkout this PR: https://github.com/nextauthjs/next-auth/pull/2411
+For more details on their usage, please see [options](/configuration/providers/oauth#options) section of the OAuth Provider documentation.
 
 When submitting a new OAuth provider to the repository, the `profile` callback is expected to only return these fields from now on: `id`, `name`, `email`, and `image`. If any of these are missing values, they should be set to `null`.
 
 Also worth noting is that `id` is expected to be returned as a `string` type (For example if your provider returns it as a number, you can cast it by using the `.toString()` method). This makes the returned profile object comply across all providers/accounts/adapters, and hopefully cause less confusion in the future.
 
+Implemented in: https://github.com/nextauthjs/next-auth/pull/2411
 Introduced in https://github.com/nextauthjs/next-auth/releases/tag/v4.0.0-next.20
 
 ## `useSession` Hook
@@ -185,6 +186,71 @@ events: {
 
 Introduced in https://github.com/nextauthjs/next-auth/releases/tag/v4.0.0-next.20
 
+## Logger API
+
+The logger API has been simplified to use at most two parameters, where the second is usually an object (`metadata`) containing an `error` object. If you are not using the logger settings you can ignore this change.
+
+```diff
+// [...nextauth.js]
+import log from "some-logger-service"
+...
+logger: {
+- error(code, ...message) {},
++ error(code, metadata) {},
+- warn(code, ...message) {},
++ warn(code) {}
+- debug(code, ...message) {}
++ debug(code, metadata) {}
+}
+```
+
+Introduced in https://github.com/nextauthjs/next-auth/releases/tag/v4.0.0-next.19
+
+## `nodemailer`
+
+Like `typeorm` and `prisma`, [`nodemailer`](https://npmjs.com/package/nodemailer) is no longer included as a dependency by default. If you are using the Email provider you must install it in your project manually, or use any other Email library in the [`sendVerificationRequest`](/configuration/providers/email#options-1#:~:text=sendVerificationRequest) callback. This reduces bundle size for those not actually using the Email provider. Remember, when using the Email provider, it is mandatory to also use a database adapter due to the fact that verification tokens need to be persisted longer term for the magic link functionality to work.
+
+Introduced in https://github.com/nextauthjs/next-auth/releases/tag/v4.0.0-next.2
+
+## Theme
+
+We have added some basic customization options to our built-in pages like `signin`, `signout`, etc.
+
+These can be set under the `theme` configuration key. This used to be a string which only controlled the color scheme option. Now it is an object with the following options:
+
+```js
+theme: {
+  colorScheme: "auto", // "auto" | "dark" | "light"
+  brandColor: "", // Hex color value
+  logo: "" // Absolute URL to logo image
+}
+```
+
+The hope is that with some minimal configuration / customization options, users won't immediately feel the need to replace the built-in pages with their own.
+
+More details and screenshots of the new theme options can be found under [configuration/pages](https://next-auth.js.org/configuration/pages#theming).
+
+Introduced in https://github.com/nextauthjs/next-auth/pull/2788
+
+## Session
+
+The `session.jwt: boolean` option has been renamed to `session.strategy: "jwt" | "database"`. The goal is to make the user's options more intuitive:
+
+1. No adapter, `strategy: "jwt"`: This is the default. The session is saved in a cookie and never persisted anywhere.
+2. With Adapter, `strategy: "database"`: If an Adapter is defined, this will be the implicit setting. No user config is needed.
+3. With Adapter, `strategy: "jwt"`: The user can explicitly instruct `next-auth` to use JWT even if a database is available. This can result in faster lookups in compromise of lowered security. Read more about: https://next-auth.js.org/faq#json-web-tokens
+
+Example:
+
+```diff
+session: {
+- jwt: true,
++ strategy: "jwt",
+}
+```
+
+Introduced in https://github.com/nextauthjs/next-auth/pull/3144
+
 ## Adapters
 
 Most importantly, the core `next-auth` package no longer ships with `typeorm` or any other database adapter by default. This brings the default bundle size down significantly for those not needing to persist user data to a database.
@@ -221,84 +287,6 @@ When using the **NextAuth v4 beta**, please make sure to use the `next` tagged v
 `npm install @next-auth/typeorm-legacy-adapter@next`
 
 If you have issues installing `@next` adapters with npm due to the required `4.0.0-beta.X` version of `next-auth` and a `4.0.0` package already existing, please use the `--force-legacy-deps` flag with `npm install`.
-:::
-
-## Logger API
-
-The logger API has been simplified to use at most two parameters, where the second is usually an object (`metadata`) containing an `error` object. If you are not using the logger settings you can ignore this change.
-
-```diff
-// [...nextauth.js]
-import log from "some-logger-service"
-...
-logger: {
-- error(code, ...message) {},
-+ error(code, metadata) {},
-- warn(code, ...message) {},
-+ warn(code) {}
-- debug(code, ...message) {}
-+ debug(code, metadata) {}
-}
-```
-
-Introduced in https://github.com/nextauthjs/next-auth/releases/tag/v4.0.0-next.19
-
-## `nodemailer`
-
-Like `typeorm` and `prisma`, [`nodemailer`](https://npmjs.com/package/nodemailer) is no longer included as a dependency by default. If you are using the Email provider you must install it in your project manually, or use any other Email library in the [`sendVerificationRequest`](/configuration/providers#options-1#:~:text=sendVerificationRequest) callback. This reduces bundle size for those not actually using the Email provider. Remember, when using the Email provider, it is mandatory to also use a database adapter due to the fact that verification tokens need to be persisted longer term for the magic link functionality to work.
-
-Introduced in https://github.com/nextauthjs/next-auth/releases/tag/v4.0.0-next.2
-
-## Theme
-
-We have added some basic customization options to our built-in pages like `signin`, `signout`, etc.
-
-These can be set under the `theme` configuration key. This used to be a string which only controlled the color scheme option. Now it is an object with the following options:
-
-```js
-theme: {
-  colorScheme: "auto", // "auto" | "dark" | "light"
-  brandColor: "", // Hex color value
-  logo: "" // Absolute URL to logo image
-}
-```
-
-The hope is that with some minimal configuration / customization options, users won't immediately feel the need to replace the built-in pages with their own.
-
-More details and screenshots of the new theme options can be found under [configuration/pages](https://next-auth.js.org/configuration/pages#theming).
-
-Introduced in https://github.com/nextauthjs/next-auth/pull/2788
-
-## Adapters
-
-You can find the official Adapters in the [nextauthjs/adapter](https://github.com/nextauthjs/adapters) repository. Although you can still [create your own](/tutorials/creating-a-database-adapter) with a new, [simplified Adapter API](https://github.com/nextauthjs/next-auth/pull/2361).
-
-1.1. If you use the built-in TypeORM or Prisma adapters, these have been removed from the core `next-auth` package to not balloon the package size for users who do not need a database. Thankfully the migration is super easy; you just need to install the external packages for your database and change the import in your `[...nextauth].js`.
-
-The `database` option is gone, you can do the following instead:
-
-```diff
-// [...nextauth].js
-import NextAuth from "next-auth"
-+ import { TypeORMLegacyAdapter } from "@next-auth/typeorm-legacy-adapter"
-
-...
-export default NextAuth({
--  database: "yourconnectionstring",
-+  adapter: TypeORMLegacyAdapter("yourconnectionstring")
-})
-```
-
-1.2. The `prisma-legacy` adapter has been removed, please use the [`@next-auth/prisma-adapter`](https:/npmjs.com/package/@next-auth/prisma-adapter) instead.
-
-1.3. The `typeorm-legacy` adapter will stay as-is for the time being, however we do aim to migrate this to individual lighter weight adapters for each database type in the future, or switch out `typeorm`.
-
-1.4 MongoDB has been moved to its own adapter under `@next-auth/mongodb-adapter`. See the [MongoDB Adapter docs](/adapters/mongodb).
-
-Introduced in https://github.com/nextauthjs/next-auth/releases/tag/v4.0.0-next.8 and https://github.com/nextauthjs/next-auth/pull/2361
-
-:::warning
-When using the **NextAuth v4 beta**, please make sure to use the `next` tagged version of your adapter. For example, to use the appropriate `typeorm` version with NextAuth v4, you would install `@next-auth/typeorm-legacy-adapter@next`.
 :::
 
 ### Adapter API

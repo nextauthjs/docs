@@ -44,7 +44,7 @@ Options are passed to NextAuth.js when initializing it in an API route.
 
 An array of authentication providers for signing in (e.g. Google, Facebook, Twitter, GitHub, Email, etc) in any order. This can be one of the built-in providers or an object with a custom provider.
 
-See the [providers documentation](/configuration/providers/oauth-provider) for a list of supported providers and how to use them.
+See the [providers documentation](/configuration/providers/oauth) for a list of supported providers and how to use them.
 
 ---
 
@@ -93,10 +93,13 @@ Default values for this option are shown below:
 
 ```js
 session: {
-  // Use JSON Web Tokens for session instead of database sessions.
-  // This option can be used with or without a database for users/accounts.
-  // Note: `jwt` is automatically set to `true` if no database is specified.
-  jwt: false,
+  // Choose how you want to save the user session.
+  // The default is `"jwt"`, an encrypted JWT (JWE) in the session cookie.
+  // If you use an `adapter` however, we default it to `"database"` instead.
+  // You can still force a JWT session by explicitly defining `"jwt"`.
+  // When using `"database"`, the session cookie will only contain a `sessionToken` value,
+  // which is used to look up the session in the database.
+  strategy: "database",
 
   // Seconds - How long until an idle session expires and is no longer valid.
   maxAge: 30 * 24 * 60 * 60, // 30 days
@@ -387,8 +390,6 @@ When set to `true` (the default for all site URLs that start with `https://`) th
 
 This option defaults to `false` on URLs that start with `http://` (e.g. `http://localhost:3000`) for developer convenience.
 
-You can manually set this option to `false` to disable this security feature and allow cookies to be accessible from non-secured URLs (this is not recommended).
-
 :::note
 Properties on any custom `cookies` that are specified override this option.
 :::
@@ -405,6 +406,8 @@ Setting this option to _false_ in production is a security risk and may allow se
 - **Required**: _No_
 
 #### Description
+
+Cookies in NextAuth.js are chunked by default, meaning that once they reach the 4kb limit, we will create a new cookie with the `.{number}` suffix and reassemble the cookies in the correct order when parsing / reading them. This was introduced to avoid size constraints which can occur when users want to store additional data in their sessionToken, for example.
 
 You can override the default cookie names and options for any of the cookies used by NextAuth.js.
 
@@ -456,7 +459,16 @@ cookies: {
       path: '/',
       secure: useSecureCookies
     }
-  }
+  },
+  state: {
+    name: `${cookiePrefix}next-auth.state`,
+    options: {
+      httpOnly: true,
+      sameSite: "lax",
+      path: "/",
+      secure: useSecureCookies,
+    },
+  },
 }
 ```
 

@@ -1,6 +1,6 @@
 ---
 id: fauna
-title: FaunaDB Adapter
+title: FaunaDB
 ---
 
 # FaunaDB
@@ -25,11 +25,10 @@ npm install next-auth@beta @next-auth/fauna-adapter faunadb
 
 ```javascript title="pages/api/auth/[...nextauth].js"
 import NextAuth from "next-auth"
-import GoogleProvider from "next-auth/providers/google"
-import * as Fauna from "faunadb"
+import { Client as FaunaClient } from "faunadb"
 import { FaunaAdapter } from "@next-auth/fauna-adapter"
 
-const client = new Fauna.Client({
+const client = new FaunaClient({
   secret: "secret",
   scheme: "http",
   domain: "localhost",
@@ -40,13 +39,8 @@ const client = new Fauna.Client({
 // https://next-auth.js.org/configuration/options
 export default NextAuth({
   // https://next-auth.js.org/configuration/providers
-  providers: [
-    GoogleProvider({
-      clientId: process.env.GOOGLE_ID,
-      clientSecret: process.env.GOOGLE_SECRET,
-    }),
-  ],
-  adapter: FaunaAdapter({ faunaClient: client})
+  providers: [],
+  adapter: FaunaAdapter(client)
   ...
 })
 ```

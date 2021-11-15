@@ -1,6 +1,6 @@
 ---
 id: pouchdb
-title: PouchDB Adapter
+title: PouchDB
 ---
 
 # PouchDB
