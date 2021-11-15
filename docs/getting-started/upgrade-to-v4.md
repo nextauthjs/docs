@@ -380,19 +380,19 @@ VerificationToken {
 
 For more info, see the [Models page](/adapters/models).
 
+## Missing `secret`
+
+NextAuth.js has generated a secret for convenienve, when the user did not define one. This might have been useful in development, but can be a concern in production. We have always been clear about that in the docs, but from now on, if you forget to define a `secret` property in production, we will show the user an error page. Read more about this option [here](https://next-auth.js.org/configuration/options#secret)
+
+Introduced in https://github.com/nextauthjs/next-auth/issues/3143
+
 ## Session `strategy`
 
 We have always supported two different session strategies. The more popular (and our default) JWT based, and a Database persisted session. Both have their advantages/disadvantages, you can learn more about the in the [FAQ](https://next-auth.js.org/faq) page.
 
 The way you configured this has been through the `jwt: boolean` flag in the `session` option. The names `session` and `jwt` might be a bit overused in the options, and so for a clearer message, we renamed that option to `strategy: "jwt" | "database"`. This will hopefully better indicate the type of session you are going to use. See the [`session` option docs](https://next-auth.js.org/configuration/options#session) for more details.
 
-Introduced in https://github.com/nextauthjs/docs/pull/105
-
-## Missing `secret`
-
-NextAuth.js has generated a secret for convenienve, when the user did not define one. This might have been useful in development, but can be a concern in production. We have always been clear about that in the docs, but from now on, if you forget to define a `secret` property in production, we will show the user an error page. Read more about this option [here](https://next-auth.js.org/configuration/options#secret)
-
-Introduced in https://github.com/nextauthjs/next-auth/issues/3143
+Introduced in https://github.com/nextauthjs/next-auth/pull/3144
 
 ## Summary
 
