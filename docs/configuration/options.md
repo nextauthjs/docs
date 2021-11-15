@@ -116,7 +116,7 @@ session: {
 
 JSON Web Tokens can be used for session tokens if enabled with `session: { jwt: true }` option. JSON Web Tokens are enabled by default if you have not specified a database.
 
-By default JSON Web Tokens are signed (JWS) but not encrypted (JWE), as JWT encryption adds additional overhead and comes with some caveats. You can enable encryption by setting `encryption: true`.
+By default JSON Web Tokens are not signed (JWS) but are encrypted (JWE).
 
 #### JSON Web Token Options
 
@@ -405,8 +405,6 @@ When set to `true` (the default for all site URLs that start with `https://`) th
 
 This option defaults to `false` on URLs that start with `http://` (e.g. `http://localhost:3000`) for developer convenience.
 
-You can manually set this option to `false` to disable this security feature and allow cookies to be accessible from non-secured URLs (this is not recommended).
-
 :::note
 Properties on any custom `cookies` that are specified override this option.
 :::
@@ -423,6 +421,8 @@ Setting this option to _false_ in production is a security risk and may allow se
 - **Required**: _No_
 
 #### Description
+
+Cookies in NextAuth.js are chunked by default, meaning that once they reach the 4kb limit, we will create a new cookie with the `.{number}` suffix and reassemble the cookies in the correct order when parsing / reading them. This was introduced to avoid size constraints which can occur when users want to store additional data in their sessionToken, for example.
 
 You can override the default cookie names and options for any of the cookies used by NextAuth.js.
 
