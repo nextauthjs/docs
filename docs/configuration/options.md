@@ -17,8 +17,8 @@ If your Next.js application uses a custom base path, specify the route to the AP
 
 _e.g. `NEXTAUTH_URL=https://example.com/custom-route/api/auth`_
 
-:::tip
-To set environment variables on Vercel, you can use the [dashboard](https://vercel.com/dashboard) or the `vercel env` command.
+:::note
+On [Vercel](https://vercel.com) deployments, we will read the `VERCEL_URL` environment variable, so you won't need to define `NEXTAUTH_URL`.
 :::
 
 ### NEXTAUTH_URL_INTERNAL
@@ -66,11 +66,17 @@ See the [providers documentation](/configuration/providers/oauth) for a list of 
 
 #### Description
 
-A random string used to hash tokens, sign cookies and generate cryptographic keys.
+A random string used to hash tokens, sign/encrypt cookies and generate cryptographic keys.
 
-If not specified, it uses a hash for all configuration options, including Client ID / Secrets for entropy.
+If not specified, it uses a hash for all configuration options, including OAuth Client ID / Secrets for entropy. Although if the user does not use such a provider, the configuration might be guessed.
 
-The default behaviour is volatile, and it is strongly recommended you explicitly specify a value to avoid invalidating end user sessions when configuration changes are deployed.
+:::warning
+The default behaviour is volatile, and it is strongly recommended you explicitly specify a value. If `secret` is omitted in production, we will throw an error.
+:::
+
+:::tip
+If you rely on the default secret generation in development, you might notice JWT decryption errors, since the secret changes whenever you change your configuration. Defining a secret will make this problem go away.
+:::
 
 ---
 
@@ -116,38 +122,17 @@ session: {
 
 JSON Web Tokens can be used for session tokens if enabled with `session: { jwt: true }` option. JSON Web Tokens are enabled by default if you have not specified a database.
 
-By default JSON Web Tokens are not signed (JWS) but are encrypted (JWE).
+By default JSON Web Tokens are encrypted (JWE). We recommend you keep this behavoiur, but you can override it by defining your own `encode` and `decode` methods.
 
 #### JSON Web Token Options
 
 ```js
 jwt: {
-  // A secret to use for key generation - you should set this explicitly
-  // Defaults to NextAuth.js secret if not explicitly specified.
-  // This is used to generate the actual signingKey and produces a warning
-  // message if not defined explicitly.
+  // A secret to use for key generation. Defaults to the top-level `session`.
   secret: 'INp8IvdIyeMcoGAgFGoA61DdBglwwSqnXJZkgz8PSnw',
-  // You can generate a signing key using `jose newkey -s 512 -t oct -a HS512`
-  // This gives you direct knowledge of the key used to sign the token so you can use it
-  // to authenticate indirectly (eg. to a database driver)
-  signingKey: {
-     kty: "oct",
-     kid: "Dl893BEV-iVE-x9EC52TDmlJUgGm9oZ99_ZL025Hc5Q",
-     alg: "HS512",
-     k: "K7QqRmJOKRK2qcCKV_pi9PSBv3XP0fpTu30TP8xn4w01xR3ZMZM38yL2DnTVPVw6e4yhdh0jtoah-i4c_pZagA"
-  },
-  // If you chose something other than the default algorithm for the signingKey (HS512)
-  // you also need to configure the algorithm
-  verificationOptions: {
-     algorithms: ['HS256']
-  },
-  // Set to true to use encryption. Defaults to false (signing only).
-  encryption: true,
-  encryptionKey: "",
-  // decryptionKey: encryptionKey,
-  decryptionOptions: {
-     algorithms: ['A256GCM']
-  },
+  // The maximum age of the NextAuth.js issued JWT in seconds.
+  // Defaults to `session.maxAge`.
+  maxAge: 60 * 60 * 24 * 30,
   // You can define your own encode/decode functions for signing and encryption
   // if you want to override the default behaviour.
   async encode({ secret, token, maxAge }) {},
