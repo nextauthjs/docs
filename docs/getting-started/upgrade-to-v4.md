@@ -380,7 +380,7 @@ VerificationToken {
 
 For more info, see the [Models page](/adapters/models).
 
-## Session strategy
+## Session `strategy`
 
 We have always supported two different session strategies. The more popular (and our default) JWT based, and a Database persisted session. Both have their advantages/disadvantages, you can learn more about the in the [FAQ](https://next-auth.js.org/faq) page.
 
@@ -388,7 +388,7 @@ The way you configured this has been through the `jwt: boolean` flag in the `ses
 
 Introduced in https://github.com/nextauthjs/docs/pull/105
 
-## Missing secret throws an error in production
+## Missing `secret`
 
 NextAuth.js has generated a secret for convenienve, when the user did not define one. This might have been useful in development, but can be a concern in production. We have always been clear about that in the docs, but from now on, if you forget to define a `secret` property in production, we will show the user an error page. Read more about this option [here](https://next-auth.js.org/configuration/options#secret)
 
