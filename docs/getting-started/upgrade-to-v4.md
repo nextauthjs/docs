@@ -311,6 +311,7 @@ The way we save data with adapters have slightly changed. With the new Adapter A
 - `provider_account_id`/`providerAccountId` on Account is consistently named `providerAccountId`
 - `access_token_expires`/`accessTokenExpires` on Account renamed to `expires_in`
 - New fields on Account: `expires_at`, `token_type`, `scope`, `id_token`, `session_state`
+- `verificationTokens` collection has been renamed to `verification_tokens` (MongoDB)
 
 <!-- REVIEW: Would something like this below be helpful? -->
 <details>
