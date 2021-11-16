@@ -186,6 +186,46 @@ events: {
 
 Introduced in https://github.com/nextauthjs/next-auth/releases/tag/v4.0.0-next.20
 
+## JWT configuration
+
+We have removed some of the [configuration options](/configuration/options) when using JSON Web Tokens, [here's the PR](https://github.com/nextauthjs/next-auth/pull/3039) for more context.
+
+```diff
+export default NextAuth({
+  // ...
+  jwt: {
+    secret,
+    maxAge,
+-   encryptionKey
+-   signingKey
+-   encryptionKey
+-   verificationOptions
+    encode({
+        token
+        secret
+-       maxAge
+-       signingKey
+-       signingOptions
+-       encryptionKey
+-       encryptionOptions
+-       encryption
+    }) {},
+    decode({
+        token
+        secret
+-       maxAge
+-       signingKey
+-       verificationKey
+-       verificationOptions
+-       encryptionKey
+-       decryptionKey
+-       decryptionOptions
+-       encryption
+    }) {}
+  }
+})
+```
+
 ## Logger API
 
 The logger API has been simplified to use at most two parameters, where the second is usually an object (`metadata`) containing an `error` object. If you are not using the logger settings you can ignore this change.
