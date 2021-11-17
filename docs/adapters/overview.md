@@ -18,6 +18,7 @@ We have a list of official adapters that are distributed as their own packages u
 - [`pouchdb`](./pouchdb)
 - [`mongodb`](./mongodb)
 - [`typeorm-legacy`](./typeorm)
+- [`sequelize`](./sequelize)
 
 ## Custom Adapter
 
