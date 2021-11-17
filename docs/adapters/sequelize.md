@@ -1,6 +1,6 @@
 ---
 id: sequelize
-title: Sequelize Adapter
+title: Sequelize
 ---
 
 # Sequelize
@@ -13,12 +13,15 @@ When using the **NextAuth v4 beta**, please make sure to use the `next` tagged v
 
 ## Getting Started
 
-1. Install the necessary packages, including a [database driver](https://sequelize.org/master/manual/getting-started.html) of choice.
+1. Install the necessary packages
 
 ```bash npm2yarn
-npm install next-auth@beta @next-auth/sequelize-adapter sequelize sqlite3
+npm install next-auth@beta @next-auth/sequelize-adapter@next sequelize
 ```
 
+:::warning
+You'll also have to manually install [the driver for your database](https://sequelize.org/master/manual/getting-started.html) of choice.
+:::
 2. Add this adapter to your `pages/api/[...nextauth].js` next-auth configuration object.
 
 ```javascript title="pages/api/auth/[...nextauth].js"
@@ -26,14 +29,15 @@ import NextAuth from "next-auth"
 import SequelizeAdapter from "@next-auth/sequelize-adapter"
 import Sequelize from 'sequelize'
 
-const sequelize = new Sequelize('sqlite::memory:')
+// https://sequelize.org/master/manual/getting-started.html#connecting-to-a-database
+const sequelize = new Sequelize('yourconnectionstring')
 
 // For more information on each option (and a full list of options) go to
 // https://next-auth.js.org/configuration/options
 export default NextAuth({
-  ...
+  // https://next-auth.js.org/configuration/providers
+  providers: [],
   adapter: Sequelize(sequelize)
-  ...
 })
 ```
 
@@ -69,15 +73,14 @@ import SequelizeAdapter, { models } from "@next-auth/sequelize-adapter"
 import Sequelize, { DataTypes } from 'sequelize'
 
 const sequelize = new Sequelize("sqlite::memory:")
-const options = {
-  models: {
-    User: sequelize.define('user', { ...models.User, phoneNumber: DataTypes.STRING })
-  }
-}
 
 export default NextAuth({
-  ...
-  adapter: SequelizeAdapter(sequelize, options)
-  ...
+  // https://next-auth.js.org/configuration/providers
+  providers: [],
+  adapter: SequelizeAdapter(sequelize, {
+    models: {
+      User: sequelize.define('user', { ...models.User, phoneNumber: DataTypes.STRING })
+    },
+  })
 })
 ```
