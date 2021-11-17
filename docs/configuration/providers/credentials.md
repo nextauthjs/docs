@@ -1,6 +1,6 @@
 ---
-id: credentials-provider
-title: Credentials Provider
+id: credentials
+title: Credentials
 ---
 
 ### How to

@@ -1,11 +1,11 @@
 ---
 id: coinbase
-title: Coinbase 
+title: Coinbase
 ---
 
 ## Documentation
 
-https://developers.coinbase.com/api/v2      
+https://developers.coinbase.com/api/v2
 
 ## Configuration
 

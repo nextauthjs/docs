@@ -27,13 +27,15 @@ If a user first signs in with OAuth then their email address is automatically po
 This provides a way to contact users and for users to maintain access to their account and sign in using email in the event they are unable to sign in with the OAuth provider in future (if the [Email Provider](/providers/email) is configured).
 :::
 
-User creation in the database is automatic, and happens when the user is logging in for the first time with a provider. The default data saved is `id`, `name`, `email` and `image`. You can add more profile data by returning extra fields in your [OAuth provider's `profile()`](/configuration/providers/oauth-provider#options) callback.
+User creation in the database is automatic, and happens when the user is logging in for the first time with a provider. The default data saved is `id`, `name`, `email` and `image`. You can add more profile data by returning extra fields in your [OAuth provider's `profile()`](/configuration/providers/oauth#options) callback.
 
 ## Account
 
 The Account model is for information about OAuth accounts associated with a User. It will usually contain `access_token`, `id_token` and other OAuth specific data. [`TokenSet`](https://github.com/panva/node-openid-client/blob/main/docs/README.md#new-tokensetinput) from `openid-client` might give you an idea of all the fields.
 
-In case of an OAuth 1.0 provider (like Twitter), you will have to look for `oauth_token` and `oauth_token_secret`.
+:::note
+In case of an OAuth 1.0 provider (like Twitter), you will have to look for `oauth_token` and `oauth_token_secret` string fields. GitHub also has an extra `refresh_token_expires_in` integer field. You have to make sure that your database schema includes these fields.
+:::
 
 A single User can have multiple Accounts, but each Account can only have one User.
 
@@ -66,9 +68,13 @@ A single User can have multiple open Verification Tokens (e.g. to sign in to dif
 It has been designed to be extendable for other verification purposes in the future (e.g. 2FA / short codes).
 
 :::note
-NextAuth.js makes sure that every token is usable only once, and by default has a short (15 minutes, can be configured by [`maxAge`](/configuration/providers/email-provider#options)) lifetime. If your user did not manage to finish the sign-in flow in time, they will have to start the sign-in process again.
+NextAuth.js makes sure that every token is usable only once, and by default has a short (15 minutes, can be configured by [`maxAge`](/configuration/providers/email#options)) lifetime. If your user did not manage to finish the sign-in flow in time, they will have to start the sign-in process again.
 :::
 
 :::tip
 Due to users forgetting or failing at the sign-in flow, you might end up with unwanted rows in your database, that you might have to periodically clean up to avoid filling the database up with unnecessary data.
 :::
+
+## RDBMS Naming Convention
+
+In the NextAuth.js v4 some schemas for the providers which support classic RDBMS type databases, like Prisma and TypeORM, have ended up with column names with mixed casing, i.e. snake_case and camelCase. If this is an issue for you or your underlying database system, please take a look at the "Naming Convention" section in the Prisma or TypeORM page.

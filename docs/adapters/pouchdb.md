@@ -1,6 +1,6 @@
 ---
 id: pouchdb
-title: PouchDB Adapter
+title: PouchDB
 ---
 
 # PouchDB
@@ -14,7 +14,6 @@ Depending on your architecture you can use PouchDB's http adapter to reach any d
 :::warning
 This adapter currently doesn't support the `next-auth` v4. If you want to help to migrate it, please open a PR/issue. Source code is here: https://github.com/nextauthjs/adapters/tree/main/packages/pouchdb For more info on adapter changes, see [the migration docs](/getting-started/upgrade-v4#adapters)
 :::
-
 
 > **Prerequisites**: Your PouchDB instance MUST provide the `pouchdb-find` plugin since it is used internally by the adapter to build and manage indexes
 

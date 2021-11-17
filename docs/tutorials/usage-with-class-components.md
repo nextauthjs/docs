@@ -53,9 +53,7 @@ class ClassComponent extends React.Component {
   render() {
     return (
       <UseSession>
-        {(session) => (
-          <pre>{JSON.stringify(session, null, 2)}</pre>
-        )}
+        {(session) => <pre>{JSON.stringify(session, null, 2)}</pre>}
       </UseSession>
     )
   }

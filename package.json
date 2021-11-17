@@ -7,6 +7,7 @@
   },
   "scripts": {
     "start": "npm run generate-providers && docusaurus start",
+    "dev": "npm run start",
     "build": "npm run generate-providers && docusaurus build",
     "docusaurus": "docusaurus",
     "swizzle": "docusaurus swizzle",
@@ -43,7 +44,12 @@
       "last 1 safari version"
     ]
   },
+  "prettier": {
+    "semi": false,
+    "singleQuote": false
+  },
   "devDependencies": {
+    "prettier": "^2.4.1",
     "standard": "^16.0.3"
   }
 }

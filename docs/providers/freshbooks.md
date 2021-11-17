@@ -18,6 +18,7 @@ The Freshbooks Provider comes with a set of default options:
 https://www.freshbooks.com/api/start
 
 You can override any of the options to suit your own use case.
+
 ## Example
 
 ```js

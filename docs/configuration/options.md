@@ -17,8 +17,8 @@ If your Next.js application uses a custom base path, specify the route to the AP
 
 _e.g. `NEXTAUTH_URL=https://example.com/custom-route/api/auth`_
 
-:::tip
-To set environment variables on Vercel, you can use the [dashboard](https://vercel.com/dashboard) or the `vercel env` command.
+:::note
+On [Vercel](https://vercel.com) deployments, we will read the `VERCEL_URL` environment variable, so you won't need to define `NEXTAUTH_URL`.
 :::
 
 ### NEXTAUTH_URL_INTERNAL
@@ -44,7 +44,7 @@ Options are passed to NextAuth.js when initializing it in an API route.
 
 An array of authentication providers for signing in (e.g. Google, Facebook, Twitter, GitHub, Email, etc) in any order. This can be one of the built-in providers or an object with a custom provider.
 
-See the [providers documentation](/configuration/providers) for a list of supported providers and how to use them.
+See the [providers documentation](/configuration/providers/oauth) for a list of supported providers and how to use them.
 
 ---
 
@@ -66,11 +66,17 @@ See the [providers documentation](/configuration/providers) for a list of suppor
 
 #### Description
 
-A random string used to hash tokens, sign cookies and generate cryptographic keys.
+A random string used to hash tokens, sign/encrypt cookies and generate cryptographic keys.
 
-If not specified, it uses a hash for all configuration options, including Client ID / Secrets for entropy.
+If not specified, it uses a hash for all configuration options, including OAuth Client ID / Secrets for entropy. Although if the user does not use such a provider, the configuration might be guessed.
 
-The default behaviour is volatile, and it is strongly recommended you explicitly specify a value to avoid invalidating end user sessions when configuration changes are deployed.
+:::warning
+The default behaviour is volatile, and it is strongly recommended you explicitly specify a value. If `secret` is omitted in production, we will throw an error.
+:::
+
+:::tip
+If you rely on the default secret generation in development, you might notice JWT decryption errors, since the secret changes whenever you change your configuration. Defining a secret will make this problem go away.
+:::
 
 ---
 
@@ -87,10 +93,13 @@ Default values for this option are shown below:
 
 ```js
 session: {
-  // Use JSON Web Tokens for session instead of database sessions.
-  // This option can be used with or without a database for users/accounts.
-  // Note: `jwt` is automatically set to `true` if no database is specified.
-  jwt: false,
+  // Choose how you want to save the user session.
+  // The default is `"jwt"`, an encrypted JWT (JWE) in the session cookie.
+  // If you use an `adapter` however, we default it to `"database"` instead.
+  // You can still force a JWT session by explicitly defining `"jwt"`.
+  // When using `"database"`, the session cookie will only contain a `sessionToken` value,
+  // which is used to look up the session in the database.
+  strategy: "database",
 
   // Seconds - How long until an idle session expires and is no longer valid.
   maxAge: 30 * 24 * 60 * 60, // 30 days
@@ -113,38 +122,17 @@ session: {
 
 JSON Web Tokens can be used for session tokens if enabled with `session: { jwt: true }` option. JSON Web Tokens are enabled by default if you have not specified a database.
 
-By default JSON Web Tokens are signed (JWS) but not encrypted (JWE), as JWT encryption adds additional overhead and comes with some caveats. You can enable encryption by setting `encryption: true`.
+By default JSON Web Tokens are encrypted (JWE). We recommend you keep this behavoiur, but you can override it by defining your own `encode` and `decode` methods.
 
 #### JSON Web Token Options
 
 ```js
 jwt: {
-  // A secret to use for key generation - you should set this explicitly
-  // Defaults to NextAuth.js secret if not explicitly specified.
-  // This is used to generate the actual signingKey and produces a warning
-  // message if not defined explicitly.
+  // A secret to use for key generation. Defaults to the top-level `session`.
   secret: 'INp8IvdIyeMcoGAgFGoA61DdBglwwSqnXJZkgz8PSnw',
-  // You can generate a signing key using `jose newkey -s 512 -t oct -a HS512`
-  // This gives you direct knowledge of the key used to sign the token so you can use it
-  // to authenticate indirectly (eg. to a database driver)
-  signingKey: {
-     kty: "oct",
-     kid: "Dl893BEV-iVE-x9EC52TDmlJUgGm9oZ99_ZL025Hc5Q",
-     alg: "HS512",
-     k: "K7QqRmJOKRK2qcCKV_pi9PSBv3XP0fpTu30TP8xn4w01xR3ZMZM38yL2DnTVPVw6e4yhdh0jtoah-i4c_pZagA"
-  },
-  // If you chose something other than the default algorithm for the signingKey (HS512)
-  // you also need to configure the algorithm
-  verificationOptions: {
-     algorithms: ['HS256']
-  },
-  // Set to true to use encryption. Defaults to false (signing only).
-  encryption: true,
-  encryptionKey: "",
-  // decryptionKey: encryptionKey,
-  decryptionOptions: {
-     algorithms: ['A256GCM']
-  },
+  // The maximum age of the NextAuth.js issued JWT in seconds.
+  // Defaults to `session.maxAge`.
+  maxAge: 60 * 60 * 24 * 30,
   // You can define your own encode/decode functions for signing and encryption
   // if you want to override the default behaviour.
   async encode({ secret, token, maxAge }) {},
@@ -402,8 +390,6 @@ When set to `true` (the default for all site URLs that start with `https://`) th
 
 This option defaults to `false` on URLs that start with `http://` (e.g. `http://localhost:3000`) for developer convenience.
 
-You can manually set this option to `false` to disable this security feature and allow cookies to be accessible from non-secured URLs (this is not recommended).
-
 :::note
 Properties on any custom `cookies` that are specified override this option.
 :::
@@ -420,6 +406,8 @@ Setting this option to _false_ in production is a security risk and may allow se
 - **Required**: _No_
 
 #### Description
+
+Cookies in NextAuth.js are chunked by default, meaning that once they reach the 4kb limit, we will create a new cookie with the `.{number}` suffix and reassemble the cookies in the correct order when parsing / reading them. This was introduced to avoid size constraints which can occur when users want to store additional data in their sessionToken, for example.
 
 You can override the default cookie names and options for any of the cookies used by NextAuth.js.
 
@@ -471,7 +459,16 @@ cookies: {
       path: '/',
       secure: useSecureCookies
     }
-  }
+  },
+  state: {
+    name: `${cookiePrefix}next-auth.state`,
+    options: {
+      httpOnly: true,
+      sameSite: "lax",
+      path: "/",
+      secure: useSecureCookies,
+    },
+  },
 }
 ```
 

@@ -61,31 +61,29 @@ export default function MyAdapter(client, options = {}) {
 }
 ```
 
-
 ### Required methods
 
 These methods are required for all sign in flows:
 
-* `createUser`
-* `getUser`
-* `getUserByEmail`
-* `getUserByAccount`
-* `linkAccount`
-* `createSession`
-* `getSessionAndUser`
-* `updateSession`
-* `deleteSession`
-* `updateUser`
+- `createUser`
+- `getUser`
+- `getUserByEmail`
+- `getUserByAccount`
+- `linkAccount`
+- `createSession`
+- `getSessionAndUser`
+- `updateSession`
+- `deleteSession`
+- `updateUser`
 
 These methods are required to support email / passwordless sign in:
 
-* `createVerificationToken`
-* `useVerificationToken`
+- `createVerificationToken`
+- `useVerificationToken`
 
 ### Unimplemented methods
 
 These methods will be required in a future release, but are not yet invoked:
 
-* `deleteUser`
-* `unlinkAccount`
-
+- `deleteUser`
+- `unlinkAccount`

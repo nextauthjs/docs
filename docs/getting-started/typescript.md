@@ -116,6 +116,8 @@ Make sure that the `types` folder is added to [`typeRoots`](https://www.typescri
 The `JWT` interface can be found in the `next-auth/jwt` submodule:
 
 ```ts title="types/next-auth.d.ts"
+import { JWT } from "next-auth/jwt"
+
 declare module "next-auth/jwt" {
   /** Returned by the `jwt` callback and `getToken`, when using JWT sessions */
   interface JWT {

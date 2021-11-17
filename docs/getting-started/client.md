@@ -82,14 +82,13 @@ export default function Admin() {
     }
   })
 
-  const if (status === "loading") {
+  if (status === "loading") {
     return "Loading or not authenticated..."
   }
 
   return "User is logged in"
 }
 ```
-
 
 ### Custom Client Session Handling
 
@@ -124,12 +123,12 @@ export default function App({
 }
 
 function Auth({ children }) {
-  const { data: session, loading } = useSession()
+  const { data: session, status } = useSession()
   const isUser = !!session?.user
   React.useEffect(() => {
-    if (loading) return // Do nothing while loading
+    if (status === "loading") return // Do nothing while loading
     if (!isUser) signIn() // If not authenticated, force log in
-  }, [isUser, loading])
+  }, [isUser, status])
 
   if (isUser) {
     return children
@@ -162,7 +161,6 @@ There is also an alternative client-side API library based upon [`react-query`](
 If you use `react-query` in your project already, you can leverage it with NextAuth.js to handle the client-side session management for you as well. This replaces NextAuth.js's native `useSession` and `SessionProvider` from `next-auth/react`.
 
 See repository [`README`](https://github.com/nextauthjs/react-query) for more details.
-
 
 ---
 
@@ -284,7 +282,11 @@ import { signIn } from "next-auth/react"
 export default () => <button onClick={() => signIn()}>Sign in</button>
 ```
 
-### Starts Google OAuth sign-in flow when clicked
+### Starts OAuth sign-in flow when clicked
+
+By default, when calling the `signIn()` method with no arguments, you will be redirected to the NextAuth.js sign-in page. If you want to skip that and get redirected to your provider's page immediately, call the `signIn()` method with the provider's `id`. 
+
+For example to sign in with Google:
 
 ```js
 import { signIn } from "next-auth/react"
@@ -372,7 +374,7 @@ e.g.
 - `signIn("auth0", null, { login_hint: "info@example.com" })` _hints the e-mail address to the provider_
 
 :::note
-You can also set these parameters through [`provider.authorizationParams`](/configuration/providers#oauth-provider-options).
+You can also set these parameters through [`provider.authorizationParams`](/configuration/providers/oauth#options).
 :::
 
 :::note

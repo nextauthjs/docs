@@ -229,7 +229,7 @@ function Home() {
 const appCode = `
 import { SessionProvider } from "next-auth/react"
 
-export default App({
+export default function App({
   Component, pageProps: { session, ...pageProps }
 }) {
   return (

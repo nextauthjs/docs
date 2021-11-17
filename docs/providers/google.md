@@ -39,7 +39,7 @@ Google only provides Refresh Token to an application the first time a user signs
 To force Google to re-issue a Refresh Token, the user needs to remove the application from their account and sign in again:
 https://myaccount.google.com/permissions
 
-Alternatively, you can also pass options in the `authorizationUrl` which will force the Refresh Token to always be provided on sign in, however this will ask all users to confirm if they wish to grant your application access every time they sign in.
+Alternatively, you can also pass options in the `params` object of `authorization` which will force the Refresh Token to always be provided on sign in, however this will ask all users to confirm if they wish to grant your application access every time they sign in.
 
 If you need access to the RefreshToken or AccessToken for a Google account and you are not using a database to persist user accounts, this may be something you need to do.
 
@@ -50,7 +50,13 @@ const options = {
     GoogleProvider({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
-      authorization: 'https://accounts.google.com/o/oauth2/v2/auth?prompt=consent&access_type=offline&response_type=code',
+      authorization: {
+        params: {
+          prompt: "consent",
+          access_type: "offline",
+          response_type: "code"
+        }
+      }
     })
   ],
   ...

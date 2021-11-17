@@ -3,6 +3,16 @@ id: azure-ad-b2c
 title: Azure Active Directory B2C
 ---
 
+:::note
+Azure AD B2C returns the following fields on `Account`: 
+- `refresh_token_expires_in` (number) 
+- `not_before` (number)
+- `id_token_expires_in` (number)
+- `profile_info` (string). 
+
+See their [docs](https://docs.microsoft.com/en-us/azure/active-directory-b2c/access-tokens). Remember to add these fields to your database schema, in case if you are using an [Adapter](/adapters/overview).
+:::
+
 ## Documentation
 
 https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow
@@ -33,6 +43,7 @@ Step 3: User Flow
 https://docs.microsoft.com/en-us/azure/active-directory-b2c/tutorial-create-user-flows
 
 Note: For the step "User attributes and token claims" you might minimally:
+
 - Collect attribute:
   - Email Address
   - Display Name
@@ -53,7 +64,7 @@ In `.env.local` create the following entries:
 
 ```
 AZURE_AD_B2C_TENANT_NAME=<copy the B2C tenant name here from Step 1>
-AZURE_AD_B2C_CLIENT_ID=<copy Application (client) ID here from Step 2> 
+AZURE_AD_B2C_CLIENT_ID=<copy Application (client) ID here from Step 2>
 AZURE_AD_B2C_CLIENT_SECRET=<copy generated secret value here from Step 2>
 AZURE_AD_B2C_PRIMARY_USER_FLOW=<copy the name of the signin user flow you created from Step 3>
 ```
@@ -65,15 +76,14 @@ import AzureADB2CProvider from 'next-auth/providers/azure-ad-b2c';
 ...
 providers: [
   AzureADB2CProvider({
-    tenantName: process.env.AZURE_AD_B2C_TENANT_NAME,
+    tenantId: process.env.AZURE_AD_B2C_TENANT_NAME,
     clientId: process.env.AZURE_AD_B2C_CLIENT_ID,
     clientSecret: process.env.AZURE_AD_B2C_CLIENT_SECRET,
     primaryUserFlow: process.env.AZURE_AD_B2C_PRIMARY_USER_FLOW,
-    scope: `offline_access openid`,
+    authorization: { params: { scope: 'offline_access openid' } },
   }),
 ]
 ...
-
 ```
 
 ## Configuration (Advanced)
@@ -94,11 +104,11 @@ import AzureADB2CProvider from 'next-auth/providers/azure-ad-b2c';
 ...
 providers: [
   AzureADB2CProvider({
-    tenantName: process.env.AZURE_AD_B2C_TENANT_NAME,
+    tenantId: process.env.AZURE_AD_B2C_TENANT_NAME,
     clientId: process.env.AZURE_AD_B2C_CLIENT_ID,
     clientSecret: process.env.AZURE_AD_B2C_CLIENT_SECRET,
     primaryUserFlow: process.env.AZURE_AD_B2C_PRIMARY_USER_FLOW,
-    scope: `https://${process.env.AZURE_AD_B2C_TENANT_NAME}.onmicrosoft.com/api/demo.read https://${process.env.AZURE_AD_B2C_TENANT_NAME}.onmicrosoft.com/api/demo.write offline_access openid`,
+    authorization: { params: { scope: `https://${process.env.AZURE_AD_B2C_TENANT_NAME}.onmicrosoft.com/api/demo.read https://${process.env.AZURE_AD_B2C_TENANT_NAME}.onmicrosoft.com/api/demo.write offline_access openid` } },
   }),
 ]
 ...

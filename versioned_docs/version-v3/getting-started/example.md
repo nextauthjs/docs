@@ -15,7 +15,7 @@ The easiest way to get started is to clone the [example app](https://github.com/
 
 To add NextAuth.js to a project create a file called `[...nextauth].js` in `pages/api/auth`.
 
-[Read more about how to add authentication providers.](/configuration/providers)
+[Read more about how to add authentication providers.](/providers/overview)
 
 ```javascript title="pages/api/auth/[...nextauth].js"
 import NextAuth from "next-auth"
