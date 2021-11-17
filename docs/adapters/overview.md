@@ -19,6 +19,7 @@ We have a list of official adapters that are distributed as their own packages u
 - [`mongodb`](./mongodb)
 - [`typeorm-legacy`](./typeorm)
 - [`sequelize`](./sequelize)
+- [`dgraph`](./dgraph) 
 
 ## Custom Adapter
 

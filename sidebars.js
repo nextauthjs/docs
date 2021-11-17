@@ -64,6 +64,7 @@ module.exports = {
         "adapters/mongodb",
         "adapters/typeorm",
         "adapters/sequelize",
+        "adapters/dgraph",
       ],
     },
     "warnings",
