@@ -45,8 +45,11 @@ export default NextAuth({
 
 ## Quick start with the unsecure schema
 
-The simplest way to use Dgraph is by copy pasting the unsecure schema into your dashboard. Then create an api client key
-and grab your endpoint to initialize your `DgraphClient`. Forget about `adminSecret`, `authHeader` and `jwtSecret`.
+The quickest way to use Dgraph is by applying the unsecure schema to your [local](https://dgraph.io/docs/graphql/admin/#modifying-a-schema) Dgraph instance or if using Dgraph [cloud](https://dgraph.io/docs/cloud/cloud-quick-start/#the-schema) you can paste the schema in the codebox to update. If using Dgraph cloud, you will need to create an api client key and grab your endpoint to initialize your `DgraphClient`.
+
+:::warning
+This approach is not secure or for production use, and does not require `adminSecret`, `authHeader` and `jwtSecret`.
+:::
 
 #### Unsecure schema
 ```graphql
@@ -102,7 +105,7 @@ type VerificationRequest {
 
 ## Securing your database
 
-If your client is able to directly communicate with the Dgraph server you will want to restrict the access to the types used
+For production deployments you will want to restrict the access to the types used
 by next-auth. The main form of access control used in Dgraph is via `@auth` directive alongide types in the schema.
 
 #### Secure schema
@@ -203,7 +206,7 @@ type VerificationRequest
 
 #### Dgraph.Authorization
 
-The first thing to do in order to secure your graphql backend is to define the `Dgraph.Authorization` object at the
+In order to secure your graphql backend is to define the `Dgraph.Authorization` object at the
 bottom of your schema and provide `adminSecret`, `authHeader` and `jwtSecret` values to the DgraphClient.
 
 ```js
