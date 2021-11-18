@@ -244,7 +244,7 @@ type VerificationRequest
 ## Working with JWT session and @auth directive
 
 Dgraph only works with HS256 or RS256 algorithms. If you want to use session jwt to securely interact with your dgraph
-database you must customize next-auth `encode` and `decode` functions,, as the default algorithm is HS512. You can
+database you must customize next-auth `encode` and `decode` functions, as the default algorithm is HS512. You can
 further customize the jwt with roles if you want to implement [`RBAC
 logic`](https://dgraph.io/docs/graphql/authorization/directive/#role-based-access-control).
 
