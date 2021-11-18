@@ -45,7 +45,7 @@ export default NextAuth({
 
 ## Quick start with the unsecure schema
 
-The quickest way to use Dgraph is by applying the unsecure schema to your [local](https://dgraph.io/docs/graphql/admin/#modifying-a-schema) Dgraph instance or if using Dgraph [cloud](https://dgraph.io/docs/cloud/cloud-quick-start/#the-schema) you can paste the schema in the codebox to update. If using Dgraph cloud, you will also need to create an [api client key](https://dgraph.io/docs/cloud/admin/authentication/) and grab your endpoint to initialize your `DgraphClient`.
+The quickest way to use Dgraph is by applying the unsecure schema to your [local](https://dgraph.io/docs/graphql/admin/#modifying-a-schema) Dgraph instance or if using Dgraph [cloud](https://dgraph.io/docs/cloud/cloud-quick-start/#the-schema) you can paste the schema in the codebox to update. If using Dgraph cloud, you will also need to create an [api client key](https://dgraph.io/docs/cloud/admin/authentication/) and grab your endpoint to initialize your `DgraphClient`. Local instances of Dgraph do not require an `apiKey`, and can be passed as any string value for testing purposes.
 
 :::warning
 This approach is not secure or for production use, and does not require `adminSecret`, `authHeader` and `jwtSecret`.
