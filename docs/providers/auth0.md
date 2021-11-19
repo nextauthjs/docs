@@ -39,5 +39,5 @@ providers: [
 ```
 
 :::note
-`issuer` should be the fully qualified url – e.g. `https://dev-s6clz2lv.eu.auth0.com`
+`issuer` should be the fully qualified URL – e.g. `https://dev-s6clz2lv.eu.auth0.com`
 :::
