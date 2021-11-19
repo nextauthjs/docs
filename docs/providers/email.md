@@ -126,7 +126,7 @@ async function sendVerificationRequest({
   provider: { server, from },
 }) {
   const { host } = new URL(url)
-  const transport = createTransport(server)
+  const transport = nodemailer.createTransport(server)
   await transport.sendMail({
     to: email,
     from,
