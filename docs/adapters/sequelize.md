@@ -22,20 +22,21 @@ npm install next-auth@beta @next-auth/sequelize-adapter@next sequelize
 :::warning
 You'll also have to manually install [the driver for your database](https://sequelize.org/master/manual/getting-started.html) of choice.
 :::
+
 2. Add this adapter to your `pages/api/[...nextauth].js` next-auth configuration object.
 
 ```javascript title="pages/api/auth/[...nextauth].js"
 import NextAuth from "next-auth"
 import SequelizeAdapter from "@next-auth/sequelize-adapter"
-import Sequelize from 'sequelize'
+import Sequelize from "sequelize"
 
 // https://sequelize.org/master/manual/getting-started.html#connecting-to-a-database
-const sequelize = new Sequelize('yourconnectionstring')
+const sequelize = new Sequelize("yourconnectionstring")
 
 // For more information on each option (and a full list of options) go to
 // https://next-auth.js.org/configuration/options
 export default NextAuth({
-  // https://next-auth.js.org/configuration/providers
+  // https://next-auth.js.org/providers/overview
   providers: [],
   adapter: Sequelize(sequelize)
 })
@@ -70,16 +71,19 @@ Sequelize models are option to customization like so:
 ```js
 import NextAuth from "next-auth"
 import SequelizeAdapter, { models } from "@next-auth/sequelize-adapter"
-import Sequelize, { DataTypes } from 'sequelize'
+import Sequelize, { DataTypes } from "sequelize"
 
 const sequelize = new Sequelize("sqlite::memory:")
 
 export default NextAuth({
-  // https://next-auth.js.org/configuration/providers
+  // https://next-auth.js.org/providers/overview
   providers: [],
   adapter: SequelizeAdapter(sequelize, {
     models: {
-      User: sequelize.define('user', { ...models.User, phoneNumber: DataTypes.STRING })
+      User: sequelize.define("user", {
+        ...models.User,
+        phoneNumber: DataTypes.STRING,
+      }),
     },
   })
 })
