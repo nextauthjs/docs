@@ -21,7 +21,7 @@ You can override any of the options to suit your own use case.
 
 
 :::note
-Osu! does **not** provide an user email!
+Osu! does **not** provide a user email!
 :::
 
 
