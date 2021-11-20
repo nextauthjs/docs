@@ -210,7 +210,7 @@ A `userinfo` endpoint returns information about the logged-in user. It is not pa
 
 There are three ways to use this option:
 
-1. You can either set `token` to be a full URL, like `"https://example.com/oauth/token?some=param"`.
+1. You can either set `userinfo` to be a full URL, like `"https://example.com/oauth/userinfo?some=param"`.
 2. Use an object with `url` and `params` like so
    ```js
    userinfo: {
