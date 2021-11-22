@@ -382,7 +382,7 @@ For more info, see the [Models page](/adapters/models).
 
 ## Missing `secret`
 
-NextAuth.js has generated a secret for convenienve, when the user did not define one. This might have been useful in development, but can be a concern in production. We have always been clear about that in the docs, but from now on, if you forget to define a `secret` property in production, we will show the user an error page. Read more about this option [here](https://next-auth.js.org/configuration/options#secret)
+NextAuth.js used to generate a secret for convenience, when the user did not define one. This might have been useful in development, but can be a concern in production. We have always been clear about that in the docs, but from now on, if you forget to define a `secret` property in production, we will show the user an error page. Read more about this option [here](https://next-auth.js.org/configuration/options#secret)
 
 Introduced in https://github.com/nextauthjs/next-auth/issues/3143
 
