@@ -23,32 +23,30 @@ npm install next-auth@beta @next-auth/dgraph-adapter@next
 
 ```javascript title="pages/api/auth/[...nextauth].js"
 import NextAuth from "next-auth"
-import { DgraphAdapter, DgraphClient } from "@next-auth/dgraph-adapter"
-
-const dgraph = new DgraphClient({
-  endpoint: process.env.DGRAPH_GRAPHQL_ENDPOINT,
-  apiKey: process.env.DGRAPH_GRAPHQL_KEY,
-  // you can omit the following properties if you are running an unsecure schema
-  adminSecret: process.env.DGRAPH_ADMIN_SECRET,
-  authHeader: process.env.AUTH_HEADER, // "<YOUR AUTH HEADER>",
-  jwtSecret: process.env.SECRET
-});
+import { DgraphAdapter } from "@next-auth/dgraph-adapter"
 
 // For more information on each option (and a full list of options) go to
 // https://next-auth.js.org/configuration/options
 export default NextAuth({
   // https://next-auth.js.org/configuration/providers
   providers: [],
-  adapter: DgraphAdapter(dgraph)
+  adapter: DgraphAdapter({
+    endpoint: process.env.DGRAPH_GRAPHQL_ENDPOINT,
+    authToken: process.env.DGRAPH_GRAPHQL_KEY,
+
+    // you can omit the following properties if you are running an unsecure schema
+    authHeader: process.env.AUTH_HEADER, // default: "Authorization",
+    jwtSecret: process.env.SECRET
+  }),
 })
 ```
 
 ## Quick start with the unsecure schema
 
-The quickest way to use Dgraph is by applying the unsecure schema to your [local](https://dgraph.io/docs/graphql/admin/#modifying-a-schema) Dgraph instance or if using Dgraph [cloud](https://dgraph.io/docs/cloud/cloud-quick-start/#the-schema) you can paste the schema in the codebox to update. If using Dgraph cloud, you will also need to create an [api client key](https://dgraph.io/docs/cloud/admin/authentication/) and grab your endpoint to initialize your `DgraphClient`. Local instances of Dgraph do not require an `apiKey`, and can be passed as any string value for testing purposes.
+The quickest way to use Dgraph is by applying the unsecure schema to your [local](https://dgraph.io/docs/graphql/admin/#modifying-a-schema) Dgraph instance or if using Dgraph [cloud](https://dgraph.io/docs/cloud/cloud-quick-start/#the-schema) you can paste the schema in the codebox to update.
 
 :::warning
-This approach is not secure or for production use, and does not require `adminSecret`, `authHeader` and `jwtSecret`.
+This approach is not secure or for production use, and does not require a `jwtSecret`.
 :::
 
 #### Unsecure schema
@@ -59,7 +57,7 @@ type Account {
   provider: String @search(by: [hash])
   providerAccountId: String @search(by: [hash])
   refreshToken: String
-  expires_at: DateTime
+  expires_at: Int64
   accessToken: String
   token_type: String
   refresh_token: String
@@ -67,18 +65,12 @@ type Account {
   scope: String
   id_token: String
   session_state: String
-  oauth_token_secret: String
-  oauth_token: String
-  createdAt: DateTime
-  updatedAt: DateTime
   user: User @hasInverse(field: "accounts")
 }
 type Session {
   id: ID
   expires: DateTime
   sessionToken: String @search(by: [hash])
-  createdAt: DateTime
-  updatedAt: DateTime
   user: User @hasInverse(field: "sessions")
 }
 type User {
@@ -87,19 +79,15 @@ type User {
   email: String @search(by: [hash])
   emailVerified: DateTime
   image: String
-  createdAt: DateTime
-  updatedAt: DateTime
   accounts: [Account] @hasInverse(field: "user")
   sessions: [Session] @hasInverse(field: "user")
 }
 
-type VerificationRequest {
+type VerificationToken {
   id: ID
   identifier: String @search(by: [hash])
   token: String @search(by: [hash])
   expires: DateTime
-  createdAt: DateTime
-  updatedAt: DateTime
 }
 ```
 
@@ -112,17 +100,17 @@ by next-auth. The main form of access control used in Dgraph is via `@auth` dire
 ```graphql
 type Account
   @auth(
-    delete: { rule: "{$adminSecret: { eq: \"<YOUR ADMIN SECRET HERE>\" } }" }
-    add: { rule: "{$adminSecret: { eq: \"<YOUR ADMIN SECRET HERE>\" } }" }
-    query: { rule: "{$adminSecret: { eq: \"<YOUR ADMIN SECRET HERE>\" } }" }
-    update: { rule: "{$adminSecret: { eq: \"<YOUR ADMIN SECRET HERE>\" } }" }
+    delete: { rule: "{$nextAuth { eq: true } }" }
+    add: { rule: "{$nextAuth { eq: true } }" }
+    query: { rule: "{$nextAuth { eq: true } }" }
+    update: { rule: "{$nextAuth { eq: true } }" }
   ) {
   id: ID
   type: String
   provider: String @search(by: [hash])
   providerAccountId: String @search(by: [hash])
   refreshToken: String
-  expires_at: DateTime
+  expires_at: Int64
   accessToken: String
   token_type: String
   refresh_token: String
@@ -130,24 +118,18 @@ type Account
   scope: String
   id_token: String
   session_state: String
-  oauth_token_secret: String
-  oauth_token: String
-  createdAt: DateTime
-  updatedAt: DateTime
   user: User @hasInverse(field: "accounts")
 }
 type Session
   @auth(
-    delete: { rule: "{$adminSecret: { eq: \"<YOUR ADMIN SECRET HERE>\" } }" }
-    add: { rule: "{$adminSecret: { eq: \"<YOUR ADMIN SECRET HERE>\" } }" }
-    query: { rule: "{$adminSecret: { eq: \"<YOUR ADMIN SECRET HERE>\" } }" }
-    update: { rule: "{$adminSecret: { eq: \"<YOUR ADMIN SECRET HERE>\" } }" }
+    delete: { rule: "{$nextAuth { eq: true } }" }
+    add: { rule: "{$nextAuth { eq: true } }" }
+    query: { rule: "{$nextAuth { eq: true } }" }
+    update: { rule: "{$nextAuth { eq: true } }" }
   ) {
   id: ID
   expires: DateTime
   sessionToken: String @search(by: [hash])
-  createdAt: DateTime
-  updatedAt: DateTime
   user: User @hasInverse(field: "sessions")
 }
 type User
@@ -159,11 +141,11 @@ type User
           query ($userId: String!) {queryUser(filter: { id: { eq: $userId } } ) {id}}
           """
         }
-        { rule: "{$adminSecret: { eq: \"<YOUR ADMIN SECRET HERE>\" } }" }
+        { rule: "{$nextAuth { eq: true } }" }
       ]
     }
-    delete: { rule: "{$adminSecret: { eq: \"<YOUR ADMIN SECRET HERE>\" } }" }
-    add: { rule: "{$adminSecret: { eq: \"<YOUR ADMIN SECRET HERE>\" } }" }
+    delete: { rule: "{$nextAuth { eq: true } }" }
+    add: { rule: "{$nextAuth { eq: true } }" }
     update: {
       or: [
         {
@@ -171,7 +153,7 @@ type User
           query ($userId: String!) {queryUser(filter: { id: { eq: $userId } } ) {id}}
           """
         }
-        { rule: "{$adminSecret: { eq: \"<YOUR ADMIN SECRET HERE>\" } }" }
+        { rule: "{$nextAuth { eq: true } }" }
       ]
     }
   ) {
@@ -180,34 +162,30 @@ type User
   email: String @search(by: [hash])
   emailVerified: DateTime
   image: String
-  createdAt: DateTime
-  updatedAt: DateTime
   accounts: [Account] @hasInverse(field: "user")
   sessions: [Session] @hasInverse(field: "user")
 }
 
-type VerificationRequest
+type VerificationToken
   @auth(
-    delete: { rule: "{$adminSecret: { eq: \"<YOUR ADMIN SECRET HERE>\" } }" }
-    add: { rule: "{$adminSecret: { eq: \"<YOUR ADMIN SECRET HERE>\" } }" }
-    query: { rule: "{$adminSecret: { eq: \"<YOUR ADMIN SECRET HERE>\" } }" }
-    update: { rule: "{$adminSecret: { eq: \"<YOUR ADMIN SECRET HERE>\" } }" }
+    delete: { rule: "{$nextAuth { eq: true } }" }
+    add: { rule: "{$nextAuth { eq: true } }" }
+    query: { rule: "{$nextAuth { eq: true } }" }
+    update: { rule: "{$nextAuth { eq: true } }" }
   ) {
   id: ID
   identifier: String @search(by: [hash])
   token: String @search(by: [hash])
   expires: DateTime
-  createdAt: DateTime
-  updatedAt: DateTime
 }
 
-# Dgraph.Authorization {"VerificationKey":"<YOUR JWT SECRET HERE>","Header":"<YOUR AUTH HEADER HERE>","Namespace":"YOUR CUSTOM NAMESPACE HERE","Algo":"HS256"}
+# Dgraph.Authorization {"VerificationKey":"<YOUR JWT SECRET HERE>","Header":"<YOUR AUTH HEADER HERE>","Namespace":"<YOUR CUSTOM NAMESPACE HERE>","Algo":"HS256"}
 ```
 
 #### Dgraph.Authorization
 
-In order to secure your graphql backend is to define the `Dgraph.Authorization` object at the
-bottom of your schema and provide `adminSecret`, `authHeader` and `jwtSecret` values to the DgraphClient.
+In order to secure your graphql backend define the `Dgraph.Authorization` object at the
+bottom of your schema and provide `authHeader` and `jwtSecret` values to the DgraphClient.
 
 ```js
 # Dgraph.Authorization {"VerificationKey":"<YOUR JWT SECRET HERE>","Header":"<YOUR AUTH HEADER HERE>","Namespace":"YOUR CUSTOM NAMESPACE HERE","Algo":"HS256"}
@@ -223,19 +201,19 @@ The `Header` tells Dgraph where to lookup a JWT within the headers of the incomi
 You have to configure it at the bottom of your schema file. This header is the same as the `authHeader` property you
 provide when you instantiate the `DgraphClient`.
 
-#### The adminSecret
+#### The nextAuth env
 
-The admin secret enables an overriding rule that bypasses the JWT DgraphClient sends with each request. This allows
+The `$nextAuth` environment variable is securely injected by the DgraphAdapter in order to allow interacting with the JWT DgraphClient for anonymous user requests made within the system `ie. login, register`. This allows
 secure interactions to be made with the auth types required by next-auth. You have to specify it for each auth rule of
 each type defined in your secure schema.
 
 ```js
 type VerificationRequest
   @auth(
-    delete: { rule: "{$adminSecret: { eq: \"<YOUR ADMIN SECRET HERE>\" } }" },
-    add: { rule: "{$adminSecret: { eq: \"<YOUR ADMIN SECRET HERE>\" } }" },
-    query: { rule: "{$adminSecret: { eq: \"<YOUR ADMIN SECRET HERE>\" } }" },
-    update: { rule: "{$adminSecret: { eq: \"<YOUR ADMIN SECRET HERE>\" } }" }
+    delete: { rule: "{$nextAuth: { eq: true } }" },
+    add: { rule: "{$nextAuth: { eq: true } }" },
+    query: { rule: "{$nextAuth: { eq: true } }" },
+    update: { rule: "{$nextAuth: { eq: true } }" }
   ) {
  ...
 }
@@ -245,8 +223,7 @@ type VerificationRequest
 
 Dgraph only works with HS256 or RS256 algorithms. If you want to use session jwt to securely interact with your dgraph
 database you must customize next-auth `encode` and `decode` functions, as the default algorithm is HS512. You can
-further customize the jwt with roles if you want to implement [`RBAC
-logic`](https://dgraph.io/docs/graphql/authorization/directive/#role-based-access-control).
+further customize the jwt with roles if you want to implement [`RBAC logic`](https://dgraph.io/docs/graphql/authorization/directive/#role-based-access-control).
 
 ```js
 import * as jwt from "jsonwebtoken";
