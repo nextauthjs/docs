@@ -201,10 +201,10 @@ The `Header` tells Dgraph where to lookup a JWT within the headers of the incomi
 You have to configure it at the bottom of your schema file. This header is the same as the `authHeader` property you
 provide when you instantiate the `DgraphClient`.
 
-#### The nextAuth env
+#### The nextAuth secret
 
-The `$nextAuth` environment variable is securely injected by the DgraphAdapter in order to allow interacting with the JWT DgraphClient for anonymous user requests made within the system `ie. login, register`. This allows
-secure interactions to be made with the auth types required by next-auth. You have to specify it for each auth rule of
+The `$nextAuth` secret is securely generated using the `jwtSecret` and injected by the DgraphAdapter in order to allow interacting with the JWT DgraphClient for anonymous user requests made within the system `ie. login, register`. This allows
+secure interactions to be made with all the auth types required by next-auth. You have to specify it for each auth rule of
 each type defined in your secure schema.
 
 ```js
