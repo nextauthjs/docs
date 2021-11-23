@@ -7,7 +7,7 @@ While NextAuth.js doesn't automatically handle access token rotation for OAuth p
 
 ## Source Code
 
-_A working example can be accessed [here](https://github.com/lawrencecchen/next-auth-refresh-tokens)._
+A working example can be accessed [here](https://github.com/nextauthjs/next-auth-refresh-token-example).
 
 ## Implementation
 
