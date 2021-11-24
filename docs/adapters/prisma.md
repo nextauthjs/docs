@@ -37,6 +37,12 @@ export default NextAuth({
 })
 ```
 
+:::caution
+
+DO NOT set `rejectOnNotFound` to `true` in [PrismaClient](https://www.prisma.io/docs/reference/api-reference/prisma-client-reference#rejectonnotfound) options, otherwise NextAuth.js will throw an error when user is not found on the first authentication.
+
+:::
+
 Schema for the Prisma Adapter (`@next-auth/prisma-adapter`)
 
 ## Setup

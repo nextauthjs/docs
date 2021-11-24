@@ -173,3 +173,7 @@ In production, we expect you to define a `secret` property in your configuration
 #### oauth_callback_error expected 200 OK with body but no body was returned
 
 This error might happen with some of the providers. It happens due to `openid-client`(which is peer dependency) node version mismatch. For instance, `openid-client` requires `>=14.2.0` for `lts/fermium` and has similar limits for the other versions. For the full list of the compatible node versions please see [package.json](https://github.com/panva/node-openid-client/blob/2a84e46992e1ebeaf685c3f87b65663d126e81aa/package.json#L78)
+
+#### ADAPTER_ERROR_GETUSERBYEMAIL
+
+If you are using [Prisma](https://www.prisma.io) on your server, double check the option `rejectOnNotFound` in [PrismaClient](https://www.prisma.io/docs/reference/api-reference/prisma-client-reference#rejectonnotfound). It must be set to `false` to prevent `No User found` error for new user.
