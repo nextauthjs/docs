@@ -239,7 +239,7 @@ In the rare case you don't care about what this endpoint returns, or your provid
 
 ```js
 userinfo: {
-  requst: () => {}
+  request: () => {}
 }
 ```
 
