@@ -79,6 +79,6 @@ CreateIndex({
   name: "verification_token_by_identifier_and_token",
   source: Collection("verification_tokens"),
   unique: true,
-  terms: [{ field: ["data", "token"] }, { field: ["data", "identifier"] }],
+  terms: [{ field: ["data", "identifier"] }, { field: ["data", "token"] }],
 })
 ```
