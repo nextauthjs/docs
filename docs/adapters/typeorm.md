@@ -31,7 +31,6 @@ Configure your NextAuth.js to use the TypeORM Adapter:
 
 ```javascript title="pages/api/auth/[...nextauth].js"
 import NextAuth from "next-auth"
-import Providers from "next-auth/providers"
 import { TypeORMLegacyAdapter } from "@next-auth/typeorm-legacy-adapter"
 
 
@@ -193,7 +192,6 @@ export class VerificationTokenEntity {
 
 ```javascript title="pages/api/auth/[...nextauth].js"
 import NextAuth from "next-auth"
-import Providers from "next-auth/providers"
 import { TypeORMLegacyAdapter } from "@next-auth/typeorm-legacy-adapter"
 import * as entities from "lib/entities"
 
