@@ -41,6 +41,9 @@ providers: [
 :::warning
 Only allows one callback URL per Client ID / Client Secret.
 :::
+:::warning
+In order to retrieve GitHub data for initial testing, kindly use `session.user.name` instead of `session.user.email`
+:::
 
 :::tip
 Email address is not returned if privacy settings are enabled.
