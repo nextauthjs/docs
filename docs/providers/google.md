@@ -22,10 +22,10 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import GoogleProvider from `next-auth/providers/google`
+import Providers from `next-auth/providers`
 ...
 providers: [
-  GoogleProvider({
+  Providers.Google({
     clientId: process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET
   })
