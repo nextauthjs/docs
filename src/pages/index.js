@@ -83,7 +83,8 @@ function Home() {
   const { siteConfig = {} } = context
 
   useEffect(() => {
-    fetch("https://api.github.com/repos/nextauthjs/next-auth")
+    window
+      .fetch("https://api.github.com/repos/nextauthjs/next-auth")
       .then((res) => res.json())
       .then((data) => {
         const navLinks = document.getElementsByClassName(
