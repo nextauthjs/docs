@@ -1,6 +1,6 @@
 ---
 id: mikro-orm
-title: mikro-orm
+title: MikroORM
 ---
 
 # MikroORM
