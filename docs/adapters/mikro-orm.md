@@ -3,8 +3,6 @@ id: mikro-orm
 title: MikroORM
 ---
 
-# MikroORM
-
 To use this Adapter, you need to install Mikro ORM, the driver that suits your database, and the separate `@next-auth/mikro-orm-adapter` package:
 
 :::warning
