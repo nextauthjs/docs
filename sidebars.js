@@ -65,7 +65,8 @@ module.exports = {
         "adapters/neo4j",
         "adapters/typeorm",
         "adapters/sequelize",
-        "adapters/mikro-orm"
+        "adapters/mikro-orm",
+        "adapters/dgraph",
       ],
     },
     "warnings",
