@@ -44,7 +44,7 @@ To be able to use `useSession` first you'll need to expose the session context, 
 
 ```javascript
 // pages/_app.js
-import { SessionProvider } from "next-auth/react"
+import { SessionProvider } from "next-auth/client"
 
 export default function App({
   Component,
@@ -69,7 +69,7 @@ Check out the [client documentation](/getting-started/client) to see how you can
 The [`useSession()`](/getting-started/client#usesession) React Hook in the NextAuth.js client is the easiest way to check if someone is signed in.
 
 ```javascript
-import { useSession, signIn, signOut } from "next-auth/react"
+import { useSession, signIn, signOut } from "next-auth/client"
 
 export default function Component() {
   const { data: session } = useSession()
@@ -97,7 +97,7 @@ You can use the `useSession` hook from anywhere in your application (e.g. in a h
 To protect an API Route, you can use the [`getSession()`](/getting-started/client#getsession) method in the NextAuth.js client.
 
 ```javascript
-import { getSession } from "next-auth/react"
+import { getSession } from "next-auth/client"
 
 export default async (req, res) => {
   const session = await getSession({ req })
@@ -145,7 +145,7 @@ callbacks: {
 Now whenever you call `getSession` or `useSession`, the data object which is returned will include the `accessToken` value.
 
 ```js
-import { useSession, signIn, signOut } from "next-auth/react"
+import { useSession, signIn, signOut } from "next-auth/client"
 
 export default function Component() {
   const { data } = useSession()
