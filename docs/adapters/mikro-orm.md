@@ -14,33 +14,24 @@ Please make sure to use the `next` tagged version of the adapter.
 :::
 
 ```bash npm2yarn
-npm install next-auth@beta @next-auth/mikro-orm-adapter@next @mikro-orm/core@next @mikro-orm/[YOUR DRIVER]@next
+npm install next-auth @next-auth/mikro-orm-adapter @mikro-orm/core@next @mikro-orm/[YOUR DRIVER]@next
 ```
 
 Configure NextAuth.js to use the MikroORM Adapter:
 
 ```typescript title="pages/api/auth/[...nextauth].ts"
 import NextAuth from "next-auth"
-import GoogleProvider from "next-auth/providers/google"
 import { MikroOrmAdapter } from "@next-auth/mikro-orm-adapter"
 
-const prisma = new PrismaClient()
 
 export default NextAuth({
   adapter: MikroOrmAdapter({
     // MikroORM options object. Ref: https://mikro-orm.io/docs/next/configuration#driver
     dbName: "./db.sqlite",
     type: "sqlite",
-    // you can add e
-    entities: [],
     debug: process.env.DEBUG === "true" || process.env.DEBUG?.includes("db"),
   }),
-  providers: [
-    GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    }),
-  ],
+  providers: [],
 })
 ```
 
