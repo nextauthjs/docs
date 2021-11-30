@@ -15,7 +15,7 @@
     "serve": "docusaurus serve",
     "clear": "docusaurus clear",
     "lint": "standard",
-    "lint:fix": "standard --fix && prettier --write scripts src versioned_docs versioned_sidebars *.js",
+    "lint:fix": "standard --fix",
     "generate-providers": "node ./scripts/generate-providers.js"
   },
   "dependencies": {
