@@ -100,3 +100,7 @@ title: Tutorials and Explainers
 #### [Creating a database adapter](tutorials/creating-a-database-adapter)
 
 - How to create a custom adapter, to use any database to fetch and store user / account data.
+
+#### [Using NextAuth.js with Prisma and PlanetScale serverless databases](https://github.com/planetscale/nextjs-planetscale-starter)
+
+- How to set up a PlanetScale database to fetch and store user / account data with the Prisma adapter.
