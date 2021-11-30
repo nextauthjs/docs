@@ -10,13 +10,13 @@ The MongoDB adapter does not handle connections automatically, so you will have 
 ## Usage
 
 :::warning
-When using the **NextAuth v4 beta**, please make sure to use the `next` tagged version of your adapter. For more info on adapter changes, see [the migration docs](/getting-started/upgrade-v4#adapters)
+When using the **NextAuth v4**, please make sure to use the `next` tagged version of your adapter. For more info on adapter changes, see [the migration docs](/getting-started/upgrade-v4#adapters)
 :::
 
 1. Install the necessary packages
 
 ```bash npm2yarn
-npm install next-auth@beta @next-auth/mongodb-adapter@next mongodb
+npm install next-auth @next-auth/mongodb-adapter@next mongodb
 ```
 
 2. Add `lib/mongodb.js`

@@ -6,23 +6,23 @@ title: Upgrade Guide (v4)
 NextAuth.js version 4 includes a few breaking changes from the last major version (3.x). So we're here to help you upgrade your applications as smoothly as possible. It should be possible to upgrade from any version of 3.x to the latest 4 release by following the next few migration steps.
 
 :::note
-Version 4 is currently in beta. We encourage users to try it out as we don't plan to change the API any more, but be aware that if a bug-fix requires so, we will do that without further notice.
+Version 4 has been released to GA 🚨
+
+We encourage users to try it out and report any and all issues they come across.
 :::
 
 You can upgrade to the new version by running:
 
 ```bash npm2yarn
-npm install next-auth@beta
+npm install next-auth
 ```
 
 #### Verify the correct version
 
 :::warning
-Due to an [unfortunate publish on npm](https://www.npmjs.com/package/next-auth/v/4.0.0), there is a `4.0.0` version out there that is **NOT** suitable for use. During the beta release phase, please make sure/double check your `node_modules/next-auth/package.json` version to be exactly `4.0.0-beta.1` (or `beta.2` etc.), instead of `4.0.0`. (Adapters might try to install the wrong version in some cases for example.)
+Due to an [unfortunate publish on npm](https://www.npmjs.com/package/next-auth/v/4.0.0), there was already a `4.0.0` version out there that is **NOT** suitable for use. Please make sure to use at least `4.0.1`.
 
-In your project's `package.json`, make sure you don't have a `^` character before the version number. Read more in the [npm docs](https://docs.npmjs.com/cli/v7/configuring-npm/package-json#dependencies).
-
-We are sorry for this inconvenience, and we will remedy this issue as soon as v4 goes stable.
+We are sorry for any inconvenience this may have caused.
 :::
 
 ## `next-auth/jwt`
@@ -282,11 +282,9 @@ export default NextAuth({
 Introduced in https://github.com/nextauthjs/next-auth/releases/tag/v4.0.0-next.8 and https://github.com/nextauthjs/next-auth/pull/2361
 
 :::warning IMPORTANT
-When using the **NextAuth v4 beta**, please make sure to use the `next` tagged version of your adapter. For example, to use the appropriate `typeorm` version with NextAuth v4, you would:
+When using the **NextAuth v4**, please make sure to use the `next` tagged version of your adapter. For example, to use the appropriate `typeorm` version with NextAuth v4, you would:
 
 `npm install @next-auth/typeorm-legacy-adapter@next`
-
-If you have issues installing `@next` adapters with npm due to the required `4.0.0-beta.X` version of `next-auth` and a `4.0.0` package already existing, please use the `--force-legacy-deps` flag with `npm install`.
 :::
 
 ### Adapter API

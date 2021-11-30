@@ -16,7 +16,7 @@ Converting this adapter to support v4 is Work In Progress. See https://github.co
 1. Install the necessary packages
 
 ```bash npm2yarn
-npm install next-auth@beta @next-auth/firebase-adapter@experimental
+npm install next-auth @next-auth/firebase-adapter@experimental
 ```
 
 2. Add this adapter to your `pages/api/auth/[...nextauth].js` next-auth configuration object.

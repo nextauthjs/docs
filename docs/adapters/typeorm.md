@@ -20,11 +20,11 @@ In the future, we might split up this adapter to support single flavors of SQL f
 To use this Adapter, you need to install the following packages:
 
 :::warning
-When using the **NextAuth v4 beta**, please make sure to use the `next` tagged version of your adapter. For more info on adapter changes, see [the migration docs](/getting-started/upgrade-v4#adapters)
+When using the **NextAuth v4**, please make sure to use the `next` tagged version of your adapter. For more info on adapter changes, see [the migration docs](/getting-started/upgrade-v4#adapters)
 :::
 
 ```bash npm2yarn
-npm install next-auth@beta @next-auth/typeorm-legacy-adapter@next typeorm
+npm install next-auth @next-auth/typeorm-legacy-adapter@next typeorm
 ```
 
 Configure your NextAuth.js to use the TypeORM Adapter:

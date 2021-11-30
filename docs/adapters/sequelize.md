@@ -8,7 +8,7 @@ title: Sequelize
 This is the Sequelize Adapter for [`next-auth`](https://next-auth.js.org).
 
 :::warning
-When using the **NextAuth v4 beta**, please make sure to use the `next` tagged version of your adapter. For more info on adapter changes, see [the migration docs](/getting-started/upgrade-v4#adapters)
+When using the **NextAuth v4**, please make sure to use the `next` tagged version of your adapter. For more info on adapter changes, see [the migration docs](/getting-started/upgrade-v4#adapters)
 :::
 
 ## Getting Started
@@ -16,7 +16,7 @@ When using the **NextAuth v4 beta**, please make sure to use the `next` tagged v
 1. Install the necessary packages
 
 ```bash npm2yarn
-npm install next-auth@beta @next-auth/sequelize-adapter@next sequelize
+npm install next-auth @next-auth/sequelize-adapter@next sequelize
 ```
 
 :::warning
