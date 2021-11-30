@@ -5,14 +5,6 @@ title: MikroORM
 
 To use this Adapter, you need to install Mikro ORM, the driver that suits your database, and the separate `@next-auth/mikro-orm-adapter` package:
 
-:::warning
-Please make sure to use the `next` tagged version of mikro-orm. Refer [here](https://github.com/jonahallibone/mikro-orm-nextjs) for a setup example with NextJS.
-:::
-
-:::warning
-Please make sure to use the `next` tagged version of the adapter.
-:::
-
 ```bash npm2yarn
 npm install next-auth @next-auth/mikro-orm-adapter @mikro-orm/core@next @mikro-orm/[YOUR DRIVER]@next
 ```
