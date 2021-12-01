@@ -1,6 +1,6 @@
 ---
 id: neo4j
-title: Neo4j Adapter
+title: Neo4j
 ---
 
 # Neo4j
