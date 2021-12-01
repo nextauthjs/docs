@@ -9,14 +9,10 @@ This is the Neo4j Adapter for [`next-auth`](https://next-auth.js.org). This pack
 
 ## Getting Started
 
-:::warning
-When using the **NextAuth v4 beta**, please make sure to use the `next` tagged version of your adapter. For more info on adapter changes, see [the migration docs](/getting-started/upgrade-v4#adapters)
-:::
-
 1. Install the necessary packages
 
 ```bash npm2yarn
-npm install next-auth@beta @next-auth/neo4j-adapter@next neo4j-driver
+npm install next-auth @next-auth/neo4j-adapter@next neo4j-driver
 ```
 
 2. Add this adapter to your `pages/api/[...nextauth].js` next-auth configuration object.

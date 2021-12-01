@@ -7,16 +7,12 @@ title: Dgraph
 
 This is the Dgraph Adapter for [`next-auth`](https://next-auth.js.org).
 
-:::warning
-When using the **NextAuth v4 beta**, please make sure to use the `next` tagged version of your adapter. For more info on adapter changes, see [the migration docs](/getting-started/upgrade-v4#adapters)
-:::
-
 ## Getting Started
 
 1. Install the necessary packages
 
 ```bash npm2yarn
-npm install next-auth@beta @next-auth/dgraph-adapter@next
+npm install next-auth @next-auth/dgraph-adapter@next
 ```
 
 2. Add this adapter to your `pages/api/[...nextauth].js` next-auth configuration object.
@@ -36,7 +32,7 @@ export default NextAuth({
 
     // you can omit the following properties if you are running an unsecure schema
     authHeader: process.env.AUTH_HEADER, // default: "Authorization",
-    jwtSecret: process.env.SECRET
+    jwtSecret: process.env.SECRET,
   }),
 })
 ```
@@ -50,6 +46,7 @@ This approach is not secure or for production use, and does not require a `jwtSe
 :::
 
 #### Unsecure schema
+
 ```graphql
 type Account {
   id: ID
@@ -97,6 +94,7 @@ For production deployments you will want to restrict the access to the types use
 by next-auth. The main form of access control used in Dgraph is via `@auth` directive alongide types in the schema.
 
 #### Secure schema
+
 ```graphql
 type Account
   @auth(
