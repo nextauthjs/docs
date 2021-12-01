@@ -20,7 +20,7 @@ In the future, we might split up this adapter to support single flavors of SQL f
 To use this Adapter, you need to install the following packages:
 
 ```bash npm2yarn
-npm install next-auth @next-auth/typeorm-legacy-adapter@next typeorm
+npm install next-auth @next-auth/typeorm-legacy-adapter typeorm
 ```
 
 Configure your NextAuth.js to use the TypeORM Adapter:

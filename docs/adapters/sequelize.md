@@ -12,7 +12,7 @@ This is the Sequelize Adapter for [`next-auth`](https://next-auth.js.org).
 1. Install the necessary packages
 
 ```bash npm2yarn
-npm install next-auth @next-auth/sequelize-adapter@next sequelize
+npm install next-auth @next-auth/sequelize-adapter sequelize
 ```
 
 :::warning
@@ -34,7 +34,7 @@ const sequelize = new Sequelize("yourconnectionstring")
 export default NextAuth({
   // https://next-auth.js.org/providers/overview
   providers: [],
-  adapter: Sequelize(sequelize)
+  adapter: Sequelize(sequelize),
 })
 ```
 
@@ -81,6 +81,6 @@ export default NextAuth({
         phoneNumber: DataTypes.STRING,
       }),
     },
-  })
+  }),
 })
 ```

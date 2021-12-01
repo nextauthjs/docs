@@ -12,7 +12,7 @@ The MongoDB adapter does not handle connections automatically, so you will have 
 1. Install the necessary packages
 
 ```bash npm2yarn
-npm install next-auth @next-auth/mongodb-adapter@next mongodb
+npm install next-auth @next-auth/mongodb-adapter mongodb
 ```
 
 2. Add `lib/mongodb.js`
