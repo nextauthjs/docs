@@ -11,10 +11,6 @@ You can find the Fauna schema and seed information in the docs at [next-auth.js.
 
 ## Getting Started
 
-:::warning
-When using the **NextAuth v4**, please make sure to use the `next` tagged version of your adapter. For more info on adapter changes, see [the migration docs](/getting-started/upgrade-v4#adapters)
-:::
-
 1. Install the necessary packages
 
 ```bash npm2yarn

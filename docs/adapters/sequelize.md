@@ -7,10 +7,6 @@ title: Sequelize
 
 This is the Sequelize Adapter for [`next-auth`](https://next-auth.js.org).
 
-:::warning
-When using the **NextAuth v4**, please make sure to use the `next` tagged version of your adapter. For more info on adapter changes, see [the migration docs](/getting-started/upgrade-v4#adapters)
-:::
-
 ## Getting Started
 
 1. Install the necessary packages

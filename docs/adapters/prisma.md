@@ -7,10 +7,6 @@ title: Prisma
 
 To use this Adapter, you need to install Prisma Client, Prisma CLI, and the separate `@next-auth/prisma-adapter` package:
 
-:::warning
-When using the **NextAuth v4**, please make sure to use the `next` tagged version of your adapter. For more info on adapter changes, see [the migration docs](/getting-started/upgrade-v4#adapters)
-:::
-
 ```bash npm2yarn
 npm install next-auth @prisma/client @next-auth/prisma-adapter@next
 npm install prisma --save-dev

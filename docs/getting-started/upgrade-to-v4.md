@@ -17,14 +17,6 @@ You can upgrade to the new version by running:
 npm install next-auth
 ```
 
-#### Verify the correct version
-
-:::warning
-Due to an [unfortunate publish on npm](https://www.npmjs.com/package/next-auth/v/4.0.0), there was already a `4.0.0` version out there that is **NOT** suitable for use. Please make sure to use at least `4.0.1`.
-
-We are sorry for any inconvenience this may have caused.
-:::
-
 ## `next-auth/jwt`
 
 We no longer have a default export in `next-auth/jwt`.
