@@ -293,7 +293,7 @@ The way we save data with adapters have slightly changed. With the new Adapter A
 
 - `created_at`/`createdAt` and `updated_at`/`updatedAt` fields are removed from all Models.
 - `user_id`/`userId` consistently named `userId`.
-- `compound_id`/`compundId` is removed from Account.
+- `compound_id`/`compoundId` is removed from Account.
 - `access_token`/`accessToken` is removed from Session.
 - `email_verified`/`emailVerified` on User is consistently named `email_verified`.
 - `provider_id`/`providerId` renamed to `provider` on Account
