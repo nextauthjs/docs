@@ -51,6 +51,23 @@ How to use `useSession()` hook with class components.
 
 _These are tutorials and explainers that have been submitted or that we have found on the web and are hosted elsewhere They include articles, videos and example projects. Submissions for inclusion are welcome!_
 
+### [Magic Link Authentication in Next.js with NextAuth and Fauna](https://alterclass.io/tutorials/magic-link-authentication-in-nextjs-with-nextauth-and-fauna)
+
+Learn how to implement passwordless/magic link authentication with database storage in your Next.js projects using NextAuth and Fauna DB.
+
+> The final version of the project's code can be found on [Github](https://github.com/AlterClassIO/magic-next-auth). You can use it as a starting point for any Next.js app that requires passwordless authentication.
+
+> You can also preview the example live [here](https://magic-next-auth.vercel.app/).
+
+This tutorial covers:
+
+- Configuring Next.js, NextAuth, and Fauna to work together seamlessly
+- Using Next.js dynamic API routes to handle authentication requests
+- Using Fauna and the Fauna Adapter for next-auth to persist users, email sign in tokens, and sessions
+- Creating custom login and confirmation pages with React + Tailwind CSS
+- Customizing the sign-in email and sending a welcome email to new users
+
+
 ### [Adding social authentication support to a Next.js app](https://getstarted.sh/bulletproof-next/add-social-authentication)
 
 A tutorial by Arunoda Susirpiala. Checkout [GetStarted](https://getstarted.sh/) for more examples.
