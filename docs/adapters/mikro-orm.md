@@ -104,10 +104,8 @@ import { Options } from "@mikro-orm/core";
 import { defaultEntities } from "@next-auth/mikro-orm-adapter"
 
 const config: Options = {
-  dbName: "./db.sqlite",
-  type: "sqlite",
-  entities: [VeryImportantEntity, Object.values(defaultEntities)],
-  debug: process.env.NODE_ENV === "development",
+  ...
+  entities: [VeryImportantEntity, ...Object.values(defaultEntities)],
 };
 
 export default config;
