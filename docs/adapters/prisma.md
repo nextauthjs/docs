@@ -68,6 +68,7 @@ model Account {
   session_state      String?
   oauth_token_secret String?
   oauth_token        String?
+  created_at         Int?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -147,6 +148,7 @@ model Account {
   scope              String?
   id_token           String?
   session_state      String?
+  created_at         Int?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
