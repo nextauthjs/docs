@@ -61,14 +61,14 @@ See the [providers documentation](/configuration/providers/oauth) for a list of 
 
 ### secret
 
-- **Default value**: `string` (_SHA hash of the "options" object_)
-- **Required**: _No - but strongly recommended!_
+- **Default value**: `string` (_SHA hash of the "options" object_) in development, no default in production.
+- **Required**: _Yes, in production!_
 
 #### Description
 
 A random string used to hash tokens, sign/encrypt cookies and generate cryptographic keys.
 
-If not specified, it uses a hash for all configuration options, including OAuth Client ID / Secrets for entropy. Although if the user does not use such a provider, the configuration might be guessed.
+If not specified in development, it uses a hash for all configuration options, including OAuth Client ID / Secrets for entropy. Although if the user does not use such a provider, the configuration might be guessed.
 
 You can quickly create a valid secret on the command line via this `openssl` command.
 
@@ -77,7 +77,7 @@ $ openssl rand -base64 32
 ```
 
 :::warning
-The default behaviour is volatile, and it is strongly recommended you explicitly specify a value. If `secret` is omitted in production, we will throw an error.
+The default behaviour is volatile, and it is strongly recommended you explicitly specify a value. If `secret` is omitted in production, an error is thrown.
 :::
 
 :::tip
