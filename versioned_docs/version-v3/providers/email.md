@@ -25,7 +25,7 @@ The Email Provider can be used with both JSON Web Tokens and database sessions, 
 
 The **Email Provider** comes with a set of default options:
 
-- [Email Provider options](https://github.com/nextauthjs/next-auth/blob/main/src/providers/email.js)
+- [Email Provider options](https://github.com/nextauthjs/next-auth/blob/ead715219a5d7a6e882a6ba27fa56b03954d062d/src/providers/email.js)
 
 You can override any of the options to suit your own use case.
 

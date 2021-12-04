@@ -15,7 +15,7 @@ https://developers.eveonline.com/
 
 The **EVE Online Provider** comes with a set of default options:
 
-- [EVE Online Provider options](https://github.com/nextauthjs/next-auth/blob/main/src/providers/eveonline.js)
+- [EVE Online Provider options](https://github.com/nextauthjs/next-auth/blob/ead715219a5d7a6e882a6ba27fa56b03954d062d/src/providers/eveonline.js)
 
 You can override any of the options to suit your own use case.
 
