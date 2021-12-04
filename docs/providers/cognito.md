@@ -17,7 +17,7 @@ You need to select your AWS region to go the the Cognito dashboard.
 
 The **Amazon Cognito Provider** comes with a set of default options:
 
-- [Amazon Cognito Provider options](https://github.com/nextauthjs/next-auth/blob/main/src/providers/cognito.js)
+- [Amazon Cognito Provider options](https://github.com/nextauthjs/next-auth/blob/main/src/providers/cognito.ts)
 
 You can override any of the options to suit your own use case.
 

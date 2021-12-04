@@ -15,7 +15,7 @@ https://docs.microsoft.com/en-us/azure/active-directory-b2c/tutorial-create-tena
 
 The **Azure Active Directory Provider** comes with a set of default options:
 
-- [Azure Active Directory Provider options](https://github.com/nextauthjs/next-auth/blob/main/src/providers/azure-ad-b2c.js)
+- [Azure Active Directory Provider options](https://github.com/nextauthjs/next-auth/blob/ead715219a5d7a6e882a6ba27fa56b03954d062d/src/providers/azure-ad-b2c.js)
 
 You can override any of the options to suit your own use case.
 

@@ -15,7 +15,7 @@ https://developers.facebook.com/apps/
 
 The **Facebook Provider** comes with a set of default options:
 
-- [Facebook Provider options](https://github.com/nextauthjs/next-auth/blob/main/src/providers/facebook.js)
+- [Facebook Provider options](https://github.com/nextauthjs/next-auth/blob/ead715219a5d7a6e882a6ba27fa56b03954d062d/src/providers/facebook.js)
 
 You can override any of the options to suit your own use case.
 

@@ -11,7 +11,7 @@ https://developer.atlassian.com/cloud/jira/platform/oauth-2-authorization-code-g
 
 The **Atlassian Provider** comes with a set of default options:
 
-- [Atlassian Provider options](https://github.com/nextauthjs/next-auth/blob/main/src/providers/atlassian.js)
+- [Atlassian Provider options](https://github.com/nextauthjs/next-auth/blob/ead715219a5d7a6e882a6ba27fa56b03954d062d/src/providers/atlassian.js)
 
 You can override any of the options to suit your own use case.
 
