@@ -90,7 +90,7 @@ module.exports = {
                 alt="Powered by Vercel"
                 style="margin-top: 8px"
                 height="32"
-                src="https://raw.githubusercontent.com/nextauthjs/next-auth/main/www/static/img/powered-by-vercel.svg"
+                src="https://raw.githubusercontent.com/nextauthjs/docs/main/static/img/powered-by-vercel.svg"
               />
             </a>`,
             },
