@@ -61,7 +61,7 @@ Learn how to implement passwordless/magic link authentication with database stor
 
 This tutorial covers:
 
-- Configuring Next.js, NextAuth, and Fauna to work together seamlessly
+- Configuring Next.js, NextAuth.js, and Fauna to work together seamlessly
 - Using Next.js dynamic API routes to handle authentication requests
 - Using Fauna and the Fauna Adapter for next-auth to persist users, email sign in tokens, and sessions
 - Creating custom login and confirmation pages with React + Tailwind CSS
