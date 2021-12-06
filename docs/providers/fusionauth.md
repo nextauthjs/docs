@@ -24,6 +24,9 @@ providers: [
   FusionAuthProvider({
     id: "fusionauth",
     name: "FusionAuth",
+    idToken: true,
+    jwks_endpoint: process.env.FUSIONAUTH_JWKS_ENDPOINT,
+    wellKnown: process.env.FUSIONAUTH_WELLKNOWN,
     issuer:  process.env.FUSIONAUTH_ISSUER,
     clientId: process.env.FUSIONAUTH_CLIENT_ID,
     clientSecret: process.env.FUSIONAUTH_SECRET,
