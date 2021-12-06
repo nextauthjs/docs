@@ -50,6 +50,17 @@ An application can be created at https://your-fusionauth-server-url/admin/applic
 For more information, follow the [FusionAuth 5-minute setup guide](https://fusionauth.io/docs/v1/tech/5-minute-setup-guide).
 :::
 
+Next-Auth uses `RS256` algorithm to decrypt the Id Token, but FusionAuth uses `HS256` algorithm by default. You have to make sure your FusionAuth application's Id Token signing key is RS256 key pair for Next-Auth to work.
+
+In **Settings/Key Master**, create new `RS256` signing key if you don't have one:
+
+- Choose Generate RSA
+- Name the key, .e.g. _RS256_
+- Set the Algorithm to _RSA using SHA-256_
+- Submit
+
+After having your RS256 key pair, go to your application JWT settings, set the `Id Token signing key` to your RS256 key pair.
+
 In the OAuth settings for your application, configure the following.
 
 - Redirect URL
