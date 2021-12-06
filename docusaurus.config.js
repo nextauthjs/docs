@@ -80,10 +80,6 @@ module.exports = {
               to: "/getting-started/introduction",
             },
             {
-              label: "Unreleased documentation",
-              to: "https://docs-git-next-nextauthjs.vercel.app/",
-            },
-            {
               html: `
             <a target="_blank" rel="noopener noreferrer" href="https://vercel.com?utm_source=nextauthjs&utm_campaign=oss">
               <img
