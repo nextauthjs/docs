@@ -11,7 +11,7 @@ https://fusionauth.io/docs/v1/tech/oauth/
 
 The **FusionAuth Provider** comes with a set of default options:
 
-- [FusionAuth Provider options](https://github.com/nextauthjs/next-auth/blob/main/src/providers/fusionauth.js)
+- [FusionAuth Provider options](https://github.com/nextauthjs/next-auth/blob/main/src/providers/fusionauth.ts)
 
 You can override any of the options to suit your own use case.
 
