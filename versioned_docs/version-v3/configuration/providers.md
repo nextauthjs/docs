@@ -30,7 +30,6 @@ NextAuth.js is designed to work with any OAuth service, it supports **OAuth 1.0*
       <span className="provider-name-list__comma">,</span>
     </span>
   )
-
 )}
 </div>
 
