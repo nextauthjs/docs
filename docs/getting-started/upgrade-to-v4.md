@@ -195,7 +195,7 @@ export default NextAuth({
     encode({
         token
         secret
--       maxAge
+        maxAge
 -       signingKey
 -       signingOptions
 -       encryptionKey
