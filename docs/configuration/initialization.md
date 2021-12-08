@@ -50,7 +50,7 @@ You could for example log the request, add headers, read `query` or `body` param
 :::tip
 Since this is a catch-all route, remember to check what kind of NextAuth.js "action" is running. Compare the REST API with the `req.query.nextauth` parameter.
 
-For example to execute something on the "callback" action when the request is a POST method, you can check for `req.query.nextauth.includes("callback") && req.mehod === "POST"`
+For example to execute something on the "callback" action when the request is a POST method, you can check for `req.query.nextauth.includes("callback") && req.method === "POST"`
 :::
 
 :::note
