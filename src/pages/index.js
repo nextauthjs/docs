@@ -83,7 +83,8 @@ function Home() {
   const { siteConfig = {} } = context
 
   useEffect(() => {
-    fetch("https://api.github.com/repos/nextauthjs/next-auth")
+    window
+      .fetch("https://api.github.com/repos/nextauthjs/next-auth")
       .then((res) => res.json())
       .then((data) => {
         const navLinks = document.getElementsByClassName(
@@ -167,7 +168,7 @@ function Home() {
                       href="https://www.npmjs.com/package/next-auth"
                       className="button button--primary button--outline rounded-pill button--lg"
                     >
-                      npm install next-auth@beta
+                      npm install next-auth
                     </a>
                   </p>
                 </div>
@@ -185,7 +186,7 @@ function Home() {
                     <h4 className="code-heading">
                       Server <span>/pages/api/auth/[...nextauth].js</span>
                     </h4>
-                    <CodeBlock className="javascript">
+                    <CodeBlock className="prism-code language-js">
                       {serverlessFunctionCode}
                     </CodeBlock>
                   </div>
@@ -195,11 +196,11 @@ function Home() {
                     <h4 className="code-heading">
                       Client (App) <span>/pages/_app.jsx</span>
                     </h4>
-                    <CodeBlock className="javascript">{appCode}</CodeBlock>
+                    <CodeBlock className="prism-code language-js">{appCode}</CodeBlock>
                     <h4 className="code-heading">
                       Client (Page) <span>/pages/index.js</span>
                     </h4>
-                    <CodeBlock className="javascript">{pageCode}</CodeBlock>
+                    <CodeBlock className="prism-code language-js">{pageCode}</CodeBlock>
                   </div>
                 </div>
               </div>

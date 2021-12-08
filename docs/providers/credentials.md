@@ -19,7 +19,7 @@ The functionality provided for credentials based authentication is intentionally
 
 The **Credentials Provider** comes with a set of default options:
 
-- [Credentials Provider options](https://github.com/nextauthjs/next-auth/blob/main/src/providers/credentials.js)
+- [Credentials Provider options](https://github.com/nextauthjs/next-auth/blob/main/src/providers/credentials.ts)
 
 You can override any of the options to suit your own use case.
 
@@ -124,25 +124,4 @@ providers: [
 ]
 ```
 
-### Example UI
-
-This example below shows a complex configuration is rendered by the built in sign in page.
-
-You can also [use a custom sign in page](/configuration/pages#credentials-sign-in) if you want to provide a custom user experience.
-
-<Image src="/img/signin-complex.png"/>
-
-```js
-export const Image = ({ children, src, alt = "" }) => (
-  <div
-    style={{
-      padding: "0.2rem",
-      width: "100%",
-      display: "flex",
-      justifyContent: "center",
-    }}
-  >
-    <img alt={alt} src={src} />
-  </div>
-)
-```
+![](/img/signin-complex.png)

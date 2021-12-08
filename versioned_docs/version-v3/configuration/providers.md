@@ -30,7 +30,6 @@ NextAuth.js is designed to work with any OAuth service, it supports **OAuth 1.0*
       <span className="provider-name-list__comma">,</span>
     </span>
   )
-    
 )}
 </div>
 
@@ -184,10 +183,10 @@ You only need to add two changes:
 
 1. Add your config: [`src/providers/{provider}.js`](https://github.com/nextauthjs/next-auth/tree/main/src/providers)<br />
    • make sure you use a named default export, like this: `export default function YourProvider`
-2. Add provider documentation: [`www/docs/providers/{provider}.md`](https://github.com/nextauthjs/next-auth/tree/main/www/docs/providers)
-3. Add it to our [provider types](https://github.com/nextauthjs/next-auth/blob/main/types/providers.d.ts) (for TS projects)<br />
-   • you just need to add your new provider name to [this list](https://github.com/nextauthjs/next-auth/blob/main/types/providers.d.ts#L56-L97)<br />
-   • in case you new provider accepts some custom options, you can [add them here](https://github.com/nextauthjs/next-auth/blob/main/types/providers.d.ts#L48-L53)
+2. Add provider documentation: [`www/docs/providers/{provider}.md`](https://github.com/nextauthjs/next-auth/tree/ead715219a5d7a6e882a6ba27fa56b03954d062d/www/docs/providers)
+3. Add it to our [provider types](https://github.com/nextauthjs/next-auth/blob/ead715219a5d7a6e882a6ba27fa56b03954d062d/types/providers.d.ts) (for TS projects)<br />
+   • you just need to add your new provider name to [this list](https://github.com/nextauthjs/next-auth/blob/ead715219a5d7a6e882a6ba27fa56b03954d062d/types/providers.d.ts#L56-L97)<br />
+   • in case you new provider accepts some custom options, you can [add them here](https://github.com/nextauthjs/next-auth/blob/ead715219a5d7a6e882a6ba27fa56b03954d062d/types/providers.d.ts#L48-L53)
 
 That's it! 🎉 Others will be able to discover this provider much more easily now!
 

@@ -17,7 +17,10 @@ We have a list of official adapters that are distributed as their own packages u
 - [`firebase`](./firebase)
 - [`pouchdb`](./pouchdb)
 - [`mongodb`](./mongodb)
+- [`neo4j`](./neo4j)
 - [`typeorm-legacy`](./typeorm)
+- [`sequelize`](./sequelize)
+- [`dgraph`](./dgraph) 
 
 ## Custom Adapter
 

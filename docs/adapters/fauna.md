@@ -11,14 +11,10 @@ You can find the Fauna schema and seed information in the docs at [next-auth.js.
 
 ## Getting Started
 
-:::warning
-When using the **NextAuth v4 beta**, please make sure to use the `next` tagged version of your adapter. For more info on adapter changes, see [the migration docs](/getting-started/upgrade-v4#adapters)
-:::
-
 1. Install the necessary packages
 
 ```bash npm2yarn
-npm install next-auth@beta @next-auth/fauna-adapter faunadb
+npm install next-auth @next-auth/fauna-adapter faunadb
 ```
 
 2. Add this adapter to your `pages/api/[...nextauth].js` next-auth configuration object.
@@ -38,7 +34,7 @@ const client = new FaunaClient({
 // For more information on each option (and a full list of options) go to
 // https://next-auth.js.org/configuration/options
 export default NextAuth({
-  // https://next-auth.js.org/configuration/providers
+  // https://next-auth.js.org/providers/overview
   providers: [],
   adapter: FaunaAdapter(client)
   ...
@@ -79,6 +75,6 @@ CreateIndex({
   name: "verification_token_by_identifier_and_token",
   source: Collection("verification_tokens"),
   unique: true,
-  terms: [{ field: ["data", "token"] }, { field: ["data", "identifier"] }],
+  terms: [{ field: ["data", "identifier"] }, { field: ["data", "token"] }],
 })
 ```

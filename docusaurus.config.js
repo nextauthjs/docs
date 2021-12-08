@@ -41,6 +41,12 @@ module.exports = {
           position: "left",
         },
         {
+          to: "/security",
+          activeBasePath: "docs",
+          label: "Security",
+          position: "left",
+        },
+        {
           type: "docsVersionDropdown",
           position: "right",
           dropdownActiveClassDisabled: true,
@@ -66,7 +72,7 @@ module.exports = {
     announcementBar: {
       id: "new-major-announcement",
       content:
-        "The default documentation is for v4, which is currently in beta 🚨 migration to <b>v4</b> docs can be found <a href='/getting-started/upgrade-v4'>here</a> 👈 The old v3 docs can be found <a href='/v3/getting-started/introduction'>here</a>.",
+        "The default documentation is for v4 which has been released to GA 🚨 migration to <b>v4</b> docs can be found <a href='/getting-started/upgrade-v4'>here</a> 👈 The old v3 docs can be found <a href='/v3/getting-started/introduction'>here</a>.",
       backgroundColor: "#1786fb",
       textColor: "#fff",
     },
@@ -80,17 +86,13 @@ module.exports = {
               to: "/getting-started/introduction",
             },
             {
-              label: "Unreleased documentation",
-              to: "https://docs-git-next-nextauthjs.vercel.app/",
-            },
-            {
               html: `
             <a target="_blank" rel="noopener noreferrer" href="https://vercel.com?utm_source=nextauthjs&utm_campaign=oss">
               <img
                 alt="Powered by Vercel"
                 style="margin-top: 8px"
                 height="32"
-                src="https://raw.githubusercontent.com/nextauthjs/next-auth/main/www/static/img/powered-by-vercel.svg"
+                src="https://raw.githubusercontent.com/nextauthjs/docs/main/static/img/powered-by-vercel.svg"
               />
             </a>`,
             },

@@ -61,17 +61,23 @@ See the [providers documentation](/configuration/providers/oauth) for a list of 
 
 ### secret
 
-- **Default value**: `string` (_SHA hash of the "options" object_)
-- **Required**: _No - but strongly recommended!_
+- **Default value**: `string` (_SHA hash of the "options" object_) in development, no default in production.
+- **Required**: _Yes, in production!_
 
 #### Description
 
 A random string used to hash tokens, sign/encrypt cookies and generate cryptographic keys.
 
-If not specified, it uses a hash for all configuration options, including OAuth Client ID / Secrets for entropy. Although if the user does not use such a provider, the configuration might be guessed.
+If not specified in development, it uses a hash for all configuration options, including OAuth Client ID / Secrets for entropy. Although if the user does not use such a provider, the configuration might be guessed.
+
+You can quickly create a valid secret on the command line via this `openssl` command.
+
+```bash
+$ openssl rand -base64 32
+```
 
 :::warning
-The default behaviour is volatile, and it is strongly recommended you explicitly specify a value. If `secret` is omitted in production, we will throw an error.
+The default behaviour is volatile, and it is strongly recommended you explicitly specify a value. If `secret` is omitted in production, an error is thrown.
 :::
 
 :::tip
@@ -120,7 +126,7 @@ session: {
 
 #### Description
 
-JSON Web Tokens can be used for session tokens if enabled with `session: { jwt: true }` option. JSON Web Tokens are enabled by default if you have not specified a database.
+JSON Web Tokens can be used for session tokens if enabled with `session: { strategy: "jwt" }` option. JSON Web Tokens are enabled by default if you have not specified a database.
 
 By default JSON Web Tokens are encrypted (JWE). We recommend you keep this behavoiur, but you can override it by defining your own `encode` and `decode` methods.
 

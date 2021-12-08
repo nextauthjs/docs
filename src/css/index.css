@@ -137,23 +137,23 @@ html[data-theme="dark"] hr {
 .home-main .feature-image-wrapper {
   display: inline-block;
   overflow: auto;
-  padding: 2.0rem;
+  padding: 2rem;
   border-radius: 10rem;
   overflow: visible;
   box-shadow: 0 0 2rem rgba(0, 0, 0, 0.1);
-  background-image: url('/img/mesh-1.jpg');
+  background-image: url("/img/mesh-1.jpg");
   background-size: cover;
   background-origin: center;
 }
 
 .home-main .section-features .row .col:nth-child(2) .feature-image-wrapper {
-  background-image: url('/img/mesh-2.jpg');
+  background-image: url("/img/mesh-2.jpg");
   background-size: cover;
   background-origin: center;
 }
 
 .home-main .section-features .row .col:nth-child(3) .feature-image-wrapper {
-  background-image: url('/img/mesh-3.jpg');
+  background-image: url("/img/mesh-3.jpg");
   background-size: cover;
   background-origin: center;
 }

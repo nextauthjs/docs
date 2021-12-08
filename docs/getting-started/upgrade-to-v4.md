@@ -6,24 +6,16 @@ title: Upgrade Guide (v4)
 NextAuth.js version 4 includes a few breaking changes from the last major version (3.x). So we're here to help you upgrade your applications as smoothly as possible. It should be possible to upgrade from any version of 3.x to the latest 4 release by following the next few migration steps.
 
 :::note
-Version 4 is currently in beta. We encourage users to try it out as we don't plan to change the API any more, but be aware that if a bug-fix requires so, we will do that without further notice.
+Version 4 has been released to GA 🚨
+
+We encourage users to try it out and report any and all issues they come across.
 :::
 
 You can upgrade to the new version by running:
 
 ```bash npm2yarn
-npm install next-auth@beta
+npm install next-auth
 ```
-
-#### Verify the correct version
-
-:::warning
-Due to an [unfortunate publish on npm](https://www.npmjs.com/package/next-auth/v/4.0.0), there is a `4.0.0` version out there that is **NOT** suitable for use. During the beta release phase, please make sure/double check your `node_modules/next-auth/package.json` version to be exactly `4.0.0-beta.1` (or `beta.2` etc.), instead of `4.0.0`. (Adapters might try to install the wrong version in some cases for example.)
-
-In your project's `package.json`, make sure you don't have a `^` character before the version number. Read more in the [npm docs](https://docs.npmjs.com/cli/v7/configuring-npm/package-json#dependencies).
-
-We are sorry for this inconvenience, and we will remedy this issue as soon as v4 goes stable.
-:::
 
 ## `next-auth/jwt`
 
@@ -322,11 +314,9 @@ export default NextAuth({
 Introduced in https://github.com/nextauthjs/next-auth/releases/tag/v4.0.0-next.8 and https://github.com/nextauthjs/next-auth/pull/2361
 
 :::warning IMPORTANT
-When using the **NextAuth v4 beta**, please make sure to use the `next` tagged version of your adapter. For example, to use the appropriate `typeorm` version with NextAuth v4, you would:
+When using the **NextAuth v4**, please make sure to use the `next` tagged version of your adapter. For example, to use the appropriate `typeorm` version with NextAuth v4, you would:
 
 `npm install @next-auth/typeorm-legacy-adapter@next`
-
-If you have issues installing `@next` adapters with npm due to the required `4.0.0-beta.X` version of `next-auth` and a `4.0.0` package already existing, please use the `--force-legacy-deps` flag with `npm install`.
 :::
 
 ### Adapter API
@@ -343,7 +333,7 @@ The way we save data with adapters have slightly changed. With the new Adapter A
 
 - `created_at`/`createdAt` and `updated_at`/`updatedAt` fields are removed from all Models.
 - `user_id`/`userId` consistently named `userId`.
-- `compound_id`/`compundId` is removed from Account.
+- `compound_id`/`compoundId` is removed from Account.
 - `access_token`/`accessToken` is removed from Session.
 - `email_verified`/`emailVerified` on User is consistently named `email_verified`.
 - `provider_id`/`providerId` renamed to `provider` on Account
@@ -351,6 +341,7 @@ The way we save data with adapters have slightly changed. With the new Adapter A
 - `provider_account_id`/`providerAccountId` on Account is consistently named `providerAccountId`
 - `access_token_expires`/`accessTokenExpires` on Account renamed to `expires_in`
 - New fields on Account: `expires_at`, `token_type`, `scope`, `id_token`, `session_state`
+- `verification_requests` table has been renamed to `verification_tokens`
 
 <!-- REVIEW: Would something like this below be helpful? -->
 <details>
@@ -422,15 +413,35 @@ For more info, see the [Models page](/adapters/models).
 
 ## Missing `secret`
 
-NextAuth.js has generated a secret for convenienve, when the user did not define one. This might have been useful in development, but can be a concern in production. We have always been clear about that in the docs, but from now on, if you forget to define a `secret` property in production, we will show the user an error page. Read more about this option [here](https://next-auth.js.org/configuration/options#secret)
+NextAuth.js used to generate a secret for convenience, when the user did not define one. This might have been useful in development, but can be a concern in production. We have always been clear about that in the docs, but from now on, if you forget to define a `secret` property in production, we will show the user an error page. Read more about this option [here](https://next-auth.js.org/configuration/options#secret)
+
+You can generate a secret to be placed in the `secret` configuration option via the following command:
+
+```bash
+$ openssl rand -base64 32
+```
+
+Therefore, you're NextAuth.js config should look something like this:
+
+```javascript title="/pages/api/auth/[...nextauth].js"
+...
+export default NextAuth({
+  ...
+  providers: [...],
+  secret: "LlKq6ZtYbr+hTC073mAmAh9/h2HwMfsFo4hrfCx5mLg=",
+  ...
+})
+```
 
 Introduced in https://github.com/nextauthjs/next-auth/issues/3143
 
 ## Session `strategy`
 
-We have always supported two different session strategies. The more popular (and our default) JWT based, and a Database persisted session. Both have their advantages/disadvantages, you can learn more about the in the [FAQ](https://next-auth.js.org/faq) page.
+We have always supported two different session strategies. The first being our most popular and default strategy - the JWT based one. The second is the database adapter persisted session strategy. Both have their advantages/disadvantages, you can learn more about them on the [FAQ](https://next-auth.js.org/faq) page.
 
-The way you configured this has been through the `jwt: boolean` flag in the `session` option. The names `session` and `jwt` might be a bit overused in the options, and so for a clearer message, we renamed that option to `strategy: "jwt" | "database"`. This will hopefully better indicate the type of session you are going to use. See the [`session` option docs](https://next-auth.js.org/configuration/options#session) for more details.
+Previously, the way you configured this was through the `jwt: boolean` flag in the `session` option. The names `session` and `jwt` might have been a bit overused in the options, and so for a clearer message, we renamed this option to `strategy: "jwt" | "database"`, it is still in the `session` object. This will hopefully better indicate the purpose of this option as well as make very explicit which type of session you are going to use.
+
+See the [`session` option docs](https://next-auth.js.org/configuration/options#session) for more details.
 
 Introduced in https://github.com/nextauthjs/next-auth/pull/3144
 

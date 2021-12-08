@@ -175,31 +175,7 @@ If you are deploying directly to a particular cloud platform you may also want t
 
 ## Security
 
-<details>
-<summary>
-  <h3 style={{display:"inline-block"}}>I think I've found a security problem, what should I do?</h3>
-</summary>
-<p>
-
-Less serious or edge case issues (e.g. queries about compatibility with optional RFC specifications) can be raised as public issues on GitHub.
-
-If you discover what you think may be a potentially serious security problem, please contact a core team member via a private channel (e.g. via email to me@iaincollins.com or info@balazsorban.com and yo@ndo.dev) or raise a public issue requesting someone get in touch with you via whatever means you prefer for more details.
-
-</p>
-</details>
-
-<details>
-<summary>
-  <h3 style={{display:"inline-block"}}>What is the disclosure policy for NextAuth.js?</h3>
-</summary>
-<p>
-
-We practice responsible disclosure.
-
-If you contact us regarding a potentially serious issue, we will endeavor to get back to you within 72 hours and to publish a fix within 30 days. We will responsibly disclose the issue (and credit you with your consent) once a fix to resolve the issue has been released - or after 90 days, which ever is sooner.
-
-</p>
-</details>
+Parts of this section has been moved to its [own page](/security).
 
 <details>
 <summary>
@@ -217,6 +193,8 @@ NextAuth.js records Refresh Tokens and Access Tokens on sign in (if supplied by 
 You can then look them up from the database or persist them to the JSON Web Token.
 
 Note: NextAuth.js does not currently handle Access Token rotation for OAuth providers for you, however you can check out [this tutorial](/tutorials/refresh-token-rotation) if you want to implement it.
+
+We also have an [example repository](https://github.com/nextauthjs/next-auth-refresh-token-example) / project based upon NextAuth.js v4 where we demonstrate how to use a refresh token to refresh the provided access token.
 
 </p>
 </details>

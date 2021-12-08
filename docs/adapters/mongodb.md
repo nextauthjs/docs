@@ -9,14 +9,10 @@ The MongoDB adapter does not handle connections automatically, so you will have 
 
 ## Usage
 
-:::warning
-When using the **NextAuth v4 beta**, please make sure to use the `next` tagged version of your adapter. For more info on adapter changes, see [the migration docs](/getting-started/upgrade-v4#adapters)
-:::
-
 1. Install the necessary packages
 
 ```bash npm2yarn
-npm install next-auth@beta @next-auth/mongodb-adapter@next mongodb
+npm install next-auth @next-auth/mongodb-adapter mongodb
 ```
 
 2. Add `lib/mongodb.js`
@@ -64,12 +60,10 @@ import NextAuth from "next-auth"
 import { MongoDBAdapter } from "@next-auth/mongodb-adapter"
 import clientPromise from "lib/mongodb"
 
-export default async function auth(req, res) {
-  return await NextAuth(req, res, {
-    adapter: MongoDBAdapter({
-      db: (await clientPromise).db("your-database")
-    }),
-    ...
-  })
-}
+// For more information on each option (and a full list of options) go to
+// https://next-auth.js.org/configuration/options
+export default NextAuth({
+  adapter: MongoDBAdapter(clientPromise),
+  ...
+})
 ```

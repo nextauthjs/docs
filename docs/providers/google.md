@@ -15,7 +15,7 @@ https://console.developers.google.com/apis/credentials
 
 The **Google Provider** comes with a set of default options:
 
-- [Google Provider options](https://github.com/nextauthjs/next-auth/blob/main/src/providers/google.js)
+- [Google Provider options](https://github.com/nextauthjs/next-auth/blob/main/src/providers/google.ts)
 
 You can override any of the options to suit your own use case.
 
@@ -39,7 +39,7 @@ Google only provides Refresh Token to an application the first time a user signs
 To force Google to re-issue a Refresh Token, the user needs to remove the application from their account and sign in again:
 https://myaccount.google.com/permissions
 
-Alternatively, you can also pass options in the `authorizationUrl` which will force the Refresh Token to always be provided on sign in, however this will ask all users to confirm if they wish to grant your application access every time they sign in.
+Alternatively, you can also pass options in the `params` object of `authorization` which will force the Refresh Token to always be provided on sign in, however this will ask all users to confirm if they wish to grant your application access every time they sign in.
 
 If you need access to the RefreshToken or AccessToken for a Google account and you are not using a database to persist user accounts, this may be something you need to do.
 
@@ -50,7 +50,13 @@ const options = {
     GoogleProvider({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
-      authorizationUrl: 'https://accounts.google.com/o/oauth2/v2/auth?prompt=consent&access_type=offline&response_type=code',
+      authorization: {
+        params: {
+          prompt: "consent",
+          access_type: "offline",
+          response_type: "code"
+        }
+      }
     })
   ],
   ...
@@ -60,7 +66,7 @@ const options = {
 :::
 
 :::tip
-Google also returns a `verified_email` boolean property in the OAuth profile.
+Google also returns a `email_verified` boolean property in the OAuth profile.
 
 You can use this property to restrict access to people with verified accounts at a particular domain.
 
@@ -68,14 +74,11 @@ You can use this property to restrict access to people with verified accounts at
 const options = {
   ...
   callbacks: {
-    async signIn(user, account, profile) {
-      if (account.provider === 'google' &&
-          profile.verified_email === true &&
-          profile.email.endsWith('@example.com')) {
-        return true
-      } else {
-        return false
+    async signIn({ account, profile }) {
+      if (account.provider === "google") {
+        return profile.email_verified && profile.email.endsWith('@example.com')
       }
+      return true // Do different verification for other providers that don't have `email_verified`
     },
   }
   ...

@@ -4,11 +4,11 @@ title: Azure Active Directory B2C
 ---
 
 :::note
-Azure AD B2C returns the following fields on `Account`: 
-- `refresh_token_expires_in` (number) 
+Azure AD B2C returns the following fields on `Account`:
+- `refresh_token_expires_in` (number)
 - `not_before` (number)
 - `id_token_expires_in` (number)
-- `profile_info` (string). 
+- `profile_info` (string).
 
 See their [docs](https://docs.microsoft.com/en-us/azure/active-directory-b2c/access-tokens). Remember to add these fields to your database schema, in case if you are using an [Adapter](/adapters/overview).
 :::
@@ -25,7 +25,7 @@ https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant
 
 The **Azure Active Directory Provider** comes with a set of default options:
 
-- [Azure Active Directory Provider options](https://github.com/nextauthjs/next-auth/blob/main/src/providers/azure-ad-b2c.js)
+- [Azure Active Directory Provider options](https://github.com/nextauthjs/next-auth/blob/main/src/providers/azure-ad-b2c.ts)
 
 You can override any of the options to suit your own use case.
 

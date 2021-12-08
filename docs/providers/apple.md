@@ -15,56 +15,17 @@ https://developer.apple.com/account/resources/identifiers/list/serviceId
 
 The **Apple Provider** comes with a set of default options:
 
-- [Apple Provider options](https://github.com/nextauthjs/next-auth/blob/main/src/providers/apple.js)
+- [Apple Provider options](https://github.com/nextauthjs/next-auth/blob/main/src/providers/apple.ts)
 
 You can override any of the options to suit your own use case.
 
-## Example
+### Generating a secret
 
-There are two ways you can use the Sign in with Apple provider.
+Apple requires the client secret to be a JWT. To generate one, you can use the following script: https://bal.so/apple-gen-secret.
 
-### Dynamically generated secret
+For more information, see the [Apple docs](https://developer.apple.com/documentation/sign_in_with_apple/generate_and_validate_tokens#3262048)
 
-If you use a dynamically generated secret you never have to manually update the server.
-
-```js
-import AppleProvider from `next-auth/providers/apple`
-...
-providers: [
-  AppleProvider({
-    clientId: process.env.APPLE_ID,
-    clientSecret: {
-      teamId: process.env.APPLE_TEAM_ID,
-      privateKey: process.env.APPLE_PRIVATE_KEY,
-      keyId: process.env.APPLE_KEY_ID,
-    }
-  })
-]
-...
-```
-
-:::tip
-
-You can convert your Apple key to a single line to use it in an environment variable.
-
-**Mac**
-
-```bash
-awk 'NF {sub(/\r/, ""); printf "%s\\n",$0;}'  AuthKey_ID.k8
-```
-
-**Windows**
-
-```powershell
- $k8file = "AuthKey_ID.k8"
-(Get-Content "C:\Users\$env:UserName\Downloads\${k8file}") -join "\n"
-```
-
-:::
-
-### Pre-generated secret
-
-If you use a pre-generated secret you can avoid adding your private key as an environment variable.
+Then, you can paste the result into your `.env.local` file under `APPLE_SECRET`, so you can refer to it from your code:
 
 ```js
 import AppleProvider from `next-auth/providers/apple`
@@ -72,7 +33,7 @@ import AppleProvider from `next-auth/providers/apple`
 providers: [
   AppleProvider({
     clientId: process.env.APPLE_ID,
-    clientSecret: process.env.APPLE_KEY_SECRET
+    clientSecret: process.env.APPLE_SECRET
   })
 ]
 ...
@@ -175,35 +136,4 @@ app.prepare().then(() => {
     console.log("> Ready on https://localhost:3000")
   })
 })
-```
-
-### Example JWT code
-
-If you want to pre-generate your secret, this is an example of the code you will need:
-
-```js
-const jwt = require("jsonwebtoken")
-const fs = require("fs")
-
-const appleId = "myapp.example.com"
-const keyId = ""
-const teamId = ""
-const privateKey = fs.readFileSync("path/to/key")
-
-const secret = jwt.sign(
-  {
-    iss: teamId,
-    iat: Math.floor(Date.now() / 1000),
-    exp: Math.floor(Date.now() / 1000) + 86400 * 180, // 6 months
-    aud: "https://appleid.apple.com",
-    sub: appleId,
-  },
-  privateKey,
-  {
-    algorithm: "ES256",
-    keyid: keyId,
-  }
-)
-
-console.log(secret)
 ```

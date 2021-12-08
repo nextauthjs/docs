@@ -210,7 +210,7 @@ A `userinfo` endpoint returns information about the logged-in user. It is not pa
 
 There are three ways to use this option:
 
-1. You can either set `token` to be a full URL, like `"https://example.com/oauth/token?some=param"`.
+1. You can either set `userinfo` to be a full URL, like `"https://example.com/oauth/userinfo?some=param"`.
 2. Use an object with `url` and `params` like so
    ```js
    userinfo: {
@@ -239,7 +239,7 @@ In the rare case you don't care about what this endpoint returns, or your provid
 
 ```js
 userinfo: {
-  requst: () => {}
+  request: () => {}
 }
 ```
 
@@ -385,7 +385,7 @@ If you think your custom provider might be useful to others, we encourage you to
 
 You only need to add two changes:
 
-1. Add your config: [`src/providers/{provider}.ts`](https://github.com/nextauthjs/next-auth/tree/beta/src/providers)<br />
+1. Add your config: [`src/providers/{provider}.ts`](https://github.com/nextauthjs/next-auth/tree/main/src/providers)<br />
    • make sure you use a named default export, like this: `export default function YourProvider`
 2. Add provider documentation: [`/docs/providers/{provider}.md`](https://github.com/nextauthjs/docs/tree/main/docs/providers)
 
