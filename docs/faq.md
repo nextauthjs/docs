@@ -266,7 +266,7 @@ Ultimately if your request is not accepted or is not actively in development, yo
 
 <details>
 <summary>
-  <h3 style={{display:"inline-block"}}>Does NextAuth.js use JSON Web Tokens?</h3>
+  <h3>Does NextAuth.js use JSON Web Tokens?</h3>
 </summary>
 <p>
 
@@ -282,7 +282,7 @@ You can also choose to use JSON Web Tokens as session tokens with using a databa
 
 <details>
 <summary>
-  <h3 style={{display:"inline-block"}}>What are the advantages of JSON Web Tokens?</h3>
+  <h3>What are the advantages of JSON Web Tokens?</h3>
 </summary>
 <p>
 
@@ -301,7 +301,7 @@ JSON Web Tokens can be used for session tokens, but are also used for lots of ot
 
 <details>
 <summary>
-  <h3 style={{display:"inline-block"}}>What are the disadvantages of JSON Web Tokens?</h3>
+  <h3>What are the disadvantages of JSON Web Tokens?</h3>
 </summary>
 <p>
 
@@ -330,7 +330,7 @@ JSON Web Tokens can be used for session tokens, but are also used for lots of ot
 
 <details>
 <summary>
-  <h3 style={{display:"inline-block"}}>Are JSON Web Tokens secure?</h3>
+  <h3>Are JSON Web Tokens secure?</h3>
 </summary>
 <p>
 
@@ -347,7 +347,7 @@ Using explicit public/private keys for signing is strongly recommended.
 
 <details>
 <summary>
-  <h3 style={{display:"inline-block"}}>What signing and encryption standards does NextAuth.js support?</h3>
+  <h3>What signing and encryption standards does NextAuth.js support?</h3>
 </summary>
 <p>
 

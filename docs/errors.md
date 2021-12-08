@@ -129,17 +129,6 @@ The algorithm used for generating your key isn't listed as supported. You can ge
   jose newkey -s 512 -t oct -a HS512
 ```
 
-If you are unable to use an HS512 key (for example to interoperate with other services) you can define what is supported using
-
-```
-  jwt: {
-    signingKey: {"kty":"oct","kid":"--","alg":"HS256","k":"--"},
-    verificationOptions: {
-      algorithms: ["HS256"]
-    }
-  }
-```
-
 #### SESSION_ERROR
 
 ---

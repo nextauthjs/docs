@@ -65,8 +65,7 @@ export default NextAuth({
   },
   secret: process.env.NEXTAUTH_SECRET,
   jwt: {
-    secret: process.env.NEXTAUTH_SECRET,
-    encryption: true, // Very important to encrypt the JWT, otherwise you're leaking username+password into the browser
+    secret: process.env.JWT_SECRET,
   },
 })
 ```
