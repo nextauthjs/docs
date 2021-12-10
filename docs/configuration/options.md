@@ -134,7 +134,7 @@ By default JSON Web Tokens are encrypted (JWE). We recommend you keep this behav
 
 ```js
 jwt: {
-  // A secret to use for key generation. Defaults to the top-level `session`.
+  // A secret to use for key generation. Defaults to the top-level `secret`.
   secret: 'INp8IvdIyeMcoGAgFGoA61DdBglwwSqnXJZkgz8PSnw',
   // The maximum age of the NextAuth.js issued JWT in seconds.
   // Defaults to `session.maxAge`.
