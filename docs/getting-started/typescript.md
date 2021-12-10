@@ -90,9 +90,9 @@ declare module "next-auth" {
 }
 ```
 
-#### Extending existing interface properties
+#### Extend default interface properties
 
-By default, Typescript will merge new interface properties and overwrite existing ones. In this case, the default user session properties will be overwritten, with the new one defined here.
+By default, Typescript will merge new interface properties and overwrite existing ones. In this case, the default sessiion user properties will be overwritten, with the new one defined above.
 
 If you want to keep the default session user properties, you need to add them back into the newly declared interface:
 
