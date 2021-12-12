@@ -18,7 +18,7 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import FusionAuthProvider from `next-auth/providers/fusionauth`
+import FusionAuthProvider from 'next-auth/providers/fusionauth';
 ...
 providers: [
   FusionAuthProvider({

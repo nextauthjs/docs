@@ -26,7 +26,7 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import Auth0Provider from "next-auth/providers/auth0"
+import Auth0Provider from 'next-auth/providers/auth0';
 ...
 providers: [
   Auth0Provider({

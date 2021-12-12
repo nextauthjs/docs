@@ -24,7 +24,7 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import TwitchProvider from `next-auth/providers/twitch`
+import TwitchProvider from 'next-auth/providers/twitch';
 ...
 providers: [
   TwitchProvider({

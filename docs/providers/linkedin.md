@@ -26,7 +26,7 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import LinkedInProvider from `next-auth/providers/linkedin`
+import LinkedInProvider from 'next-auth/providers/linkedin';
 ...
 providers: [
   LinkedInProvider({

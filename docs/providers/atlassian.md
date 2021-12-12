@@ -18,7 +18,7 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import AtlassianProvider from `next-auth/providers/atlassian`
+import AtlassianProvider from 'next-auth/providers/atlassian';
 ...
 providers: [
   AtlassianProvider({

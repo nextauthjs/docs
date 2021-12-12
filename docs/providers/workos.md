@@ -22,7 +22,7 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import WorkOSProvider from `next-auth/providers/workos`
+import WorkOSProvider from 'next-auth/providers/workos';
 ...
 providers: [
   WorkOSProvider({

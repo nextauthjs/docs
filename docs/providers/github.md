@@ -27,7 +27,7 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import GitHubProvider from `next-auth/providers/github`
+import GitHubProvider from 'next-auth/providers/github';
 ...
 providers: [
   GitHubProvider({

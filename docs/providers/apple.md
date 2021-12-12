@@ -28,7 +28,7 @@ For more information, see the [Apple docs](https://developer.apple.com/documenta
 Then, you can paste the result into your `.env.local` file under `APPLE_SECRET`, so you can refer to it from your code:
 
 ```js
-import AppleProvider from `next-auth/providers/apple`
+import AppleProvider from 'next-auth/providers/apple';
 ...
 providers: [
   AppleProvider({

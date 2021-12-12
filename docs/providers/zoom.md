@@ -22,7 +22,7 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import ZoomProvider from `next-auth/providers/zoom`
+import ZoomProvider from 'next-auth/providers/zoom';
 ...
 providers: [
   ZoomProvider({

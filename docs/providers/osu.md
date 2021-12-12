@@ -28,7 +28,7 @@ Osu! does **not** provide a user email!
 ## Example
 
 ```js
-import OsuProvider from `next-auth/providers/osu`
+import OsuProvider from 'next-auth/providers/osu';
 ...
 providers: [
   OsuProvider({
