@@ -29,7 +29,7 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import SlackProvider from 'next-auth/providers/slack';
+import SlackProvider from "next-auth/providers/slack";
 ...
 providers: [
   SlackProvider({

@@ -18,7 +18,7 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import OktaProvider from 'next-auth/providers/okta';
+import OktaProvider from "next-auth/providers/okta";
 ...
 providers: [
   OktaProvider({

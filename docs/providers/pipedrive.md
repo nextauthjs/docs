@@ -18,7 +18,7 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import PipedriveProvider from 'next-auth/providers/pipedrive';
+import PipedriveProvider from "next-auth/providers/pipedrive";
 ...
 providers: [
   PipedriveProvider({

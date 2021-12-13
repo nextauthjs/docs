@@ -28,7 +28,7 @@ For more information, see the [Apple docs](https://developer.apple.com/documenta
 Then, you can paste the result into your `.env.local` file under `APPLE_SECRET`, so you can refer to it from your code:
 
 ```js
-import AppleProvider from 'next-auth/providers/apple';
+import AppleProvider from "next-auth/providers/apple";
 ...
 providers: [
   AppleProvider({
@@ -88,7 +88,7 @@ Creating a certificate for localhost is easy with openssl . Just put the followi
 ```bash
 openssl req -x509 -out localhost.crt -keyout localhost.key \
   -newkey rsa:2048 -nodes -sha256 \
-  -subj '/CN=localhost' -extensions EXT -config <( \
+  -subj "/CN=localhost" -extensions EXT -config <( \
    printf "[dn]\nCN=localhost\n[req]\ndistinguished_name = dn\n[EXT]\nsubjectAltName=DNS:localhost\nkeyUsage=digitalSignature\nextendedKeyUsage=serverAuth")
 ```
 
@@ -103,7 +103,7 @@ Add environment variable `OPENSSL_CONF=C:/Program Files/Git/mingw64/ssl/openssl.
 ```bash
  req -x509 -out localhost.crt -keyout localhost.key \
   -newkey rsa:2048 -nodes -sha256 \
-  -subj '/CN=localhost'
+  -subj "/CN=localhost"
 ```
 
 :::
