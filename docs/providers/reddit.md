@@ -22,7 +22,7 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import RedditProvider from `next-auth/providers/reddit`
+import RedditProvider from "next-auth/providers/reddit";
 ...
 providers: [
   RedditProvider({
@@ -42,7 +42,7 @@ Only allows one callback URL per Client ID / Client Secret.
 :::
 
 :::tip
-This Provider template only has a one hour access token to it and only has the 'identity' scope. If you want to get a refresh token as well you must follow this:
+This Provider template only has a one hour access token to it and only has the "identity" scope. If you want to get a refresh token as well you must follow this:
 
 ```js
 providers: [

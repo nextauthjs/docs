@@ -22,7 +22,7 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import BattleNetProvider from `next-auth/providers/battlenet`
+import BattleNetProvider from "next-auth/providers/battlenet";
 ...
 providers: [
   BattleNetProvider({

@@ -22,7 +22,7 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import LineProvider from `next-auth/providers/line`
+import LineProvider from "next-auth/providers/line";
 ...
 providers: [
   LineProvider({

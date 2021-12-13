@@ -22,7 +22,7 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import NetlifyProvider from `next-auth/providers/netlify`
+import NetlifyProvider from "next-auth/providers/netlify";
 ...
 providers: [
   NetlifyProvider({

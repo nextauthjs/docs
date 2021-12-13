@@ -22,7 +22,7 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import DropboxProvider from `next-auth/providers/dropbox`
+import DropboxProvider from "next-auth/providers/dropbox";
 ...
 providers: [
   DropboxProvider({

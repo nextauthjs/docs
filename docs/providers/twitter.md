@@ -26,7 +26,7 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import TwitterProvider from `next-auth/providers/twitter`
+import TwitterProvider from "next-auth/providers/twitter";
 ...
 providers: [
   TwitterProvider({

@@ -26,7 +26,7 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import FaceItProvider from `next-auth/providers/faceit`
+import FaceItProvider from "next-auth/providers/faceit";
 ...
 providers: [
   FaceItProvider({

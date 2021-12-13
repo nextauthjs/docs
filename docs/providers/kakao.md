@@ -22,7 +22,7 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import KakaoProvider from `next-auth/providers/kakao`
+import KakaoProvider from "next-auth/providers/kakao";
 ...
 providers: [
   KakaoProvider({

@@ -22,7 +22,7 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import EVEOnlineProvider from `next-auth/providers/eveonline`
+import EVEOnlineProvider from "next-auth/providers/eveonline";
 ...
 providers: [
   EVEOnlineProvider({

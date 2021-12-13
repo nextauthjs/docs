@@ -22,7 +22,7 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import GitlabProvider from `next-auth/providers/gitlab`
+import GitlabProvider from "next-auth/providers/gitlab";
 ...
 providers: [
   GitlabProvider({

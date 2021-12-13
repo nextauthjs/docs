@@ -12,7 +12,7 @@ https://auth0.com/docs/api/authentication#authorize-application
 https://manage.auth0.com/dashboard
 
 :::tip
-Configure your application in Auth0 as a 'Regular Web Application' (not a 'Single Page App').
+Configure your application in Auth0 as a "Regular Web Application" (not a "Single Page App").
 :::
 
 ## Options
@@ -26,7 +26,7 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import Auth0Provider from "next-auth/providers/auth0"
+import Auth0Provider from "next-auth/providers/auth0";
 ...
 providers: [
   Auth0Provider({

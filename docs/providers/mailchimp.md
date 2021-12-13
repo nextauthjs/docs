@@ -22,7 +22,7 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import MailchimpProvider from `next-auth/providers/mailchimp`
+import MailchimpProvider from "next-auth/providers/mailchimp";
 ...
 providers: [
   MailchimpProvider({

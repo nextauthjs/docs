@@ -18,7 +18,7 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import SalesforceProvider from `next-auth/providers/salesforce`
+import SalesforceProvider from "next-auth/providers/salesforce";
 ...
 providers: [
   SalesforceProvider({

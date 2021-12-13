@@ -22,7 +22,7 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import WordpressProvider from `next-auth/providers/wordpress`
+import WordpressProvider from "next-auth/providers/wordpress";
 ...
 providers: [
   WordpressProvider({

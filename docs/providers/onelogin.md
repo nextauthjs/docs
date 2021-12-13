@@ -22,7 +22,7 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import OneLoginProvider from `next-auth/providers/onelogin`
+import OneLoginProvider from "next-auth/providers/onelogin";
 ...
 providers: [
   OneLoginProvider({

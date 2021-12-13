@@ -22,7 +22,7 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import SpotifyProvider from `next-auth/providers/spotify`
+import SpotifyProvider from "next-auth/providers/spotify";
 ...
 providers: [
   SpotifyProvider({

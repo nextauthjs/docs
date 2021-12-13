@@ -24,7 +24,7 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import KeycloakProvider from `next-auth/providers/keycloak`
+import KeycloakProvider from "next-auth/providers/keycloak";
 ...
 providers: [
   KeycloakProvider({

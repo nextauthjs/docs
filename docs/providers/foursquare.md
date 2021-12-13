@@ -26,13 +26,13 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import FourSquareProvider from `next-auth/providers/foursquare`
+import FourSquareProvider from "next-auth/providers/foursquare";
 ...
 providers: [
   FourSquareProvider({
     clientId: process.env.FOURSQUARE_CLIENT_ID,
     clientSecret: process.env.FOURSQUARE_CLIENT_SECRET,
-    apiVersion: 'YYYYMMDD'
+    apiVersion: "YYYYMMDD"
   })
 ]
 ...

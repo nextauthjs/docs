@@ -22,7 +22,7 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import WorkOSProvider from `next-auth/providers/workos`
+import WorkOSProvider from "next-auth/providers/workos";
 ...
 providers: [
   WorkOSProvider({
@@ -44,7 +44,7 @@ To add a custom login page, you can use the `pages` option:
 ```javascript title="pages/api/auth/[...nextauth].js"
 ...
   pages: {
-    signIn: '/auth/signin',
+    signIn: "/auth/signin",
   }
 ```
 

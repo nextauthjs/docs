@@ -23,7 +23,7 @@ You can override any of the options to suit your own use case.
 
 ```jsx
 // pages/api/auth/[...nextauth].js
-import InstagramProvider from `next-auth/providers/instagram`
+import InstagramProvider from "next-auth/providers/instagram";
 ...
 providers: [
   InstagramProvider({

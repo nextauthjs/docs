@@ -22,14 +22,14 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import BungieProvider from `next-auth/providers/bungie`
+import BungieProvider from "next-auth/providers/bungie";
 ...
 providers: [
   BungieProvider({
     clientId: process.env.BUNGIE_CLIENT_ID,
     clientSecret: process.env.BUNGIE_SECRET,
     headers: {
-      'X-API-Key': provess.env.BUNGIE_API_KEY
+      "X-API-Key": provess.env.BUNGIE_API_KEY
     }
   }),
 ]
@@ -86,7 +86,7 @@ Creating a certificate for localhost is easy with openssl. Just put the followin
 ```bash
 openssl req -x509 -out localhost.crt -keyout localhost.key \
   -newkey rsa:2048 -nodes -sha256 \
-  -subj '/CN=localhost' -extensions EXT -config <( \
+  -subj "/CN=localhost" -extensions EXT -config <( \
    printf "[dn]\nCN=localhost\n[req]\ndistinguished_name = dn\n[EXT]\nsubjectAltName=DNS:localhost\nkeyUsage=digitalSignature\nextendedKeyUsage=serverAuth")
 ```
 
@@ -101,7 +101,7 @@ Add environment variable `OPENSSL_CONF=C:/Program Files/Git/mingw64/ssl/openssl.
 ```bash
  req -x509 -out localhost.crt -keyout localhost.key \
   -newkey rsa:2048 -nodes -sha256 \
-  -subj '/CN=localhost'
+  -subj "/CN=localhost"
 ```
 
 :::

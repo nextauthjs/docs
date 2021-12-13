@@ -22,7 +22,7 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import DiscordProvider from `next-auth/providers/discord`
+import DiscordProvider from "next-auth/providers/discord";
 ...
 providers: [
   DiscordProvider({

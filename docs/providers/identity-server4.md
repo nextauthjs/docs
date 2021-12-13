@@ -18,7 +18,7 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import IdentityServer4Provider from `next-auth/providers/identity-server4`
+import IdentityServer4Provider from "next-auth/providers/identity-server4";
 ...
 providers: [
   IdentityServer4Provider({

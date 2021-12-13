@@ -30,7 +30,7 @@ You can override any of the options to suit your own use case.
 A full example application is available at https://github.com/enterprise-oss/osso-next-auth-example and https://nextjs-demo.ossoapp.com
 
 ```js
-import OssoProvider from `next-auth/providers/osso`
+import OssoProvider from "next-auth/providers/osso";
 ...
 providers: [
   OssoProvider({

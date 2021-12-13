@@ -22,7 +22,7 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import CoinbaseProvider from `next-auth/providers/coinbase`
+import CoinbaseProvider from "next-auth/providers/coinbase";
 ...
 providers: [
   CoinbaseProvider({

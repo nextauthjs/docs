@@ -72,7 +72,7 @@ AZURE_AD_B2C_PRIMARY_USER_FLOW=<copy the name of the signin user flow you create
 In `pages/api/auth/[...nextauth].js` find or add the AZURE_AD_B2C entries:
 
 ```js
-import AzureADB2CProvider from 'next-auth/providers/azure-ad-b2c';
+import AzureADB2CProvider from "next-auth/providers/azure-ad-b2c";
 ...
 providers: [
   AzureADB2CProvider({
@@ -80,7 +80,7 @@ providers: [
     clientId: process.env.AZURE_AD_B2C_CLIENT_ID,
     clientSecret: process.env.AZURE_AD_B2C_CLIENT_SECRET,
     primaryUserFlow: process.env.AZURE_AD_B2C_PRIMARY_USER_FLOW,
-    authorization: { params: { scope: 'offline_access openid' } },
+    authorization: { params: { scope: "offline_access openid" } },
   }),
 ]
 ...
@@ -100,7 +100,7 @@ Note: this is a second app registration (similar to Step 2) but with different s
 Nothing in `.env.local` needs to change here. The only update is in `pages/api/auth/[...nextauth].js` where you will need to add the additional scopes that were created in Step 4 above:
 
 ```js
-import AzureADB2CProvider from 'next-auth/providers/azure-ad-b2c';
+import AzureADB2CProvider from "next-auth/providers/azure-ad-b2c";
 ...
 providers: [
   AzureADB2CProvider({

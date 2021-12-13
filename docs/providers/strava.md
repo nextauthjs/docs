@@ -18,7 +18,7 @@ You can override any of the options to suit your own use case.
 ## Example
 
 ```js
-import StravaProvider from 'next-auth/providers/strava'
+import StravaProvider from "next-auth/providers/strava";
 ...
 providers: [
   StravaProvider({
