@@ -31,7 +31,7 @@ In `.env.local` create the following entries:
 
 ```
 AZURE_AD_CLIENT_ID=<copy Application (client) ID here>
-AZURE_AD_CLIENT_SECRET=<copy generated cleint secret value here>
+AZURE_AD_CLIENT_SECRET=<copy generated client secret value here>
 AZURE_AD_TENANT_ID=<copy the tenant id here>
 ```
 
