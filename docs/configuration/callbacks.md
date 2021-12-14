@@ -134,7 +134,7 @@ Use an if branch to check for the existence of parameters (apart from `token`). 
 :::warning
 NextAuth.js does not limit how much data you can store in a JSON Web Token, however a ~**4096 byte limit** per cookie is commonly imposed by browsers.
 
-If you need to persist a large amount of data, you will need to persist it elsewhere (e.g. in a database). A common solution is to store a key in the cookie that can be used to look up the remaining data in the database, for example, in the `session()` callback. Opt into database persisted sessions by setting [`session: {jwt: false}`](/configuration/options#session).
+If you need to persist a large amount of data, you will need to persist it elsewhere (e.g. in a database). A common solution is to store a key in the cookie that can be used to look up the remaining data in the database, for example, in the `session()` callback. Opt into database persisted sessions by setting [`session: {strategy: "database"}`](/configuration/options#session).
 :::
 
 ## Session callback
