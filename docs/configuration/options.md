@@ -48,17 +48,6 @@ See the [providers documentation](/configuration/providers/oauth) for a list of 
 
 ---
 
-### database
-
-- **Default value**: `null`
-- **Required**: _No (unless using email provider)_
-
-#### Description
-
-[A database connection string or configuration object.](/configuration/databases)
-
----
-
 ### secret
 
 - **Default value**: `string` (_SHA hash of the "options" object_) in development, no default in production.
