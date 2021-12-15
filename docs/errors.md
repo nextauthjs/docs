@@ -157,7 +157,7 @@ Make sure the file is there and the filename is written correctly.
 
 #### NO_SECRET
 
-In production, we expect you to define a `secret` property in your configuration. In development, this is shown as a warning for convenienve. [Read more](https://next-auth.js.org/configuration/options#secret)
+In production, we expect you to define a `secret` property in your configuration. In development, this is shown as a warning for convenience. [Read more](https://next-auth.js.org/configuration/options#secret)
 
 #### oauth_callback_error expected 200 OK with body but no body was returned
 
