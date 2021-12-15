@@ -91,6 +91,10 @@ This tutorial covers:
 
 - How to use the Credentials Provider to authenticate against an LDAP database. This approach can be used to authenticate existing user accounts against any backend.
 
+#### [Anonymous Sessions](tutorials/anonymous-sessions)
+
+- How to implement persistent sessions for anonymous users, for example guest checkout on e-commerce sites.
+
 #### [Add auth support to a Next.js app with a custom backend](https://arunoda.me/blog/add-auth-support-to-a-next-js-app-with-a-custom-backend) <svg xmlns="http://www.w3.org/2000/svg" style={{ marginLeft: '5px', marginBottom:'-6px'}} height="20" width="20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><title>External</title> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /> </svg>
 
 - A tutorial by Arunoda Susirpiala.
