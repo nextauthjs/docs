@@ -101,6 +101,10 @@ model VerificationToken {
 }
 ```
 
+:::note
+When using the MySQL connector for Prisma, the [Prisma `String` type](https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#string) gets mapped to `varchar(191)` which isn't long enough to store the `id_token` in the `Account` model. To avoid hitting this problem, set the [underlying database type](https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#mysql) to `Text` as follows: `  id_token           String? @db.Text`.
+:::
+
 ### Create the database schema with Prisma Migrate
 
 ```
