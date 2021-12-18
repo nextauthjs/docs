@@ -421,7 +421,7 @@ You can generate a secret to be placed in the `secret` configuration option via 
 $ openssl rand -base64 32
 ```
 
-Therefore, you're NextAuth.js config should look something like this:
+Therefore, your NextAuth.js config should look something like this:
 
 ```javascript title="/pages/api/auth/[...nextauth].js"
 ...
