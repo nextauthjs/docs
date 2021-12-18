@@ -270,12 +270,7 @@ Ultimately if your request is not accepted or is not actively in development, yo
 </summary>
 <p>
 
-NextAuth.js supports both database session tokens and JWT session tokens.
-
-- If a database is specified, database session tokens will be used by default.
-- If no database is specified, JWT session tokens will be used by default.
-
-You can also choose to use JSON Web Tokens as session tokens with using a database, by explicitly setting the `session: { jwt: true }` option.
+NextAuth.js by default uses JSON Web Tokens for saving the user's session. However, if you use a [database adapter](/adapters/overview), the database will be used to persist the user's session. You can force the usage of JWT when using a database [through the configuration options](/configuration/options#session).
 
 </p>
 </details>

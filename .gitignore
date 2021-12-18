@@ -58,7 +58,6 @@ app/prisma/dev.db*
 /.vs/slnx.sqlite-journal
 /.vs/slnx.sqlite
 /.vs
-.vscode
 
 # GitHub Actions runner
 /actions-runner
