@@ -5,7 +5,9 @@ title: Models
 
 NextAuth.js can be used with any database. Models tell you what structures NextAuth.js expects from your database. Models will vary slightly depending on which adapter you use, but in general will look something like this.
 
-```mermaid
+![](/img/mermaid-database-model.svg)
+
+<!-- ```mermaid
 erDiagram
 User ||--|{ Account : ""
 User {
@@ -41,7 +43,7 @@ string token
 timestamp expires
 string identifier
 }
-```
+``` -->
 
 More information about each Model / Table can be found below.
 
