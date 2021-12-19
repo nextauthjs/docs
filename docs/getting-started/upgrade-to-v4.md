@@ -313,12 +313,6 @@ export default NextAuth({
 
 Introduced in https://github.com/nextauthjs/next-auth/releases/tag/v4.0.0-next.8 and https://github.com/nextauthjs/next-auth/pull/2361
 
-:::warning IMPORTANT
-When using the **NextAuth v4**, please make sure to use the `next` tagged version of your adapter. For example, to use the appropriate `typeorm` version with NextAuth v4, you would:
-
-`npm install @next-auth/typeorm-legacy-adapter@next`
-:::
-
 ### Adapter API
 
 **This does not require any changes from the user - these are adapter specific changes only**
