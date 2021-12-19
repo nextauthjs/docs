@@ -12,7 +12,7 @@ This is the Dgraph Adapter for [`next-auth`](https://next-auth.js.org).
 1. Install the necessary packages
 
 ```bash npm2yarn
-npm install next-auth @next-auth/dgraph-adapter@next
+npm install next-auth @next-auth/dgraph-adapter
 ```
 
 2. Add this adapter to your `pages/api/[...nextauth].js` next-auth configuration object.

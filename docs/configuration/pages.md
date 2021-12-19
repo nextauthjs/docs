@@ -44,7 +44,7 @@ The following errors are passed as error query parameters to the default or over
 - **OAuthCallback**: Error in handling the response ([1](https://github.com/nextauthjs/next-auth/blob/main/src/server/lib/oauth/callback.js), [2](https://github.com/nextauthjs/next-auth/blob/main/src/server/lib/oauth/pkce-handler.js), [3](https://github.com/nextauthjs/next-auth/blob/main/src/server/lib/oauth/state-handler.js)) from an OAuth provider.
 - **OAuthCreateAccount**: Could not create OAuth provider user in the database.
 - **EmailCreateAccount**: Could not create email provider user in the database.
-- **Callback**: Error in the [OAuth callback handler route](https://github.com/nextauthjs/next-auth/blob/main/src/server/routes/callback.js)
+- **Callback**: Error in the [OAuth callback handler route](https://github.com/nextauthjs/next-auth/blob/main/src/core/routes/callback.ts)
 - **OAuthAccountNotLinked**: If the email on the account is already linked, but not with this OAuth account
 - **EmailSignin**: Sending the e-mail with the verification token failed
 - **CredentialsSignin**: The `authorize` callback returned `null` in the [Credentials provider](/providers/credentials). We don't recommend providing information about which part of the credentials were wrong, as it might be abused by malicious hackers.
