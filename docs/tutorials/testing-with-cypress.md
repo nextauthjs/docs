@@ -3,11 +3,85 @@ id: testing-with-cypress
 title: Testing with Cypress
 ---
 
-To test an implementation of NextAuth.js, we encourage you to use [Cypress](https://cypress.io).
+There are different ways to test an implementation of NextAuth.js, depending on what you want to achieve.
 
-## Setting up Cypress
+This tutorial covers testing with [Cypress](https://www.cypress.io/), we plan to add more tutorials in the future on testing with [Playwirght](https://playwright.dev/) and [Jest](https://jestjs.io/).
+
+When using Cypress, you can create a testing account in your staging and production environments and run Cypress to verify the login and logout flows work correctly.
+
+You can also by-pass authentication in your Cypress tests, in case you want to test the "logged in" states of your application in a reliable way.
+
+This tutorial covers both scenarios.
+
+## Setup
+
+[Installing Cypress](https://docs.cypress.io/guides/getting-started/installing-cypress) is straightforward.
 
 To get started, install the dependencies:
+
+```
+npm i -D cypress start-server-and-test @testing-library/cypress
+```
+
+Once done, run Cypress for the first time so it can [scaffold a new project](https://docs.cypress.io/guides/getting-started/writing-your-first-test) for you:
+
+```
+npx cypress open
+```
+
+We recommend you edit the `cypress.json` config file at the root project with the following config:
+
+```json title="cypress.json"
+{
+  "baseUrl": "http://localhost:3000",
+  "chromeWebSecurity": false
+}
+```
+
+and create an Cypress environment file for storing the login details for Cypress:
+
+```js title="cypress.env.json"
+{
+  "GITHUB_USER": "username@company.com",
+  "GITHUB_PASSWORD": "password",
+  "COOKIE_NAME": "next-auth.session-token",
+  "SITE_NAME": "http://localhost:3000"
+}
+```
+
+You'll also notice Cypress created a `cypress` folder in the root of your project. Now add the [`@testing-library/cypress` commands](https://github.com/testing-library/cypress-testing-library#usage) (is our recommended way for writing assertions in Cypress tests):
+
+```js title="cypress/support/commands.js"
+import "@testing-library/cypress/add-commands"
+```
+
+Finally, using [`start-server-and-test`](https://www.npmjs.com/package/start-server-and-test), let's create a script that will launch your application and, once ready, launch Cypress to run the tests against it:
+
+```json title="package.json"
+"scripts": {
+  "dev": "next dev",
+  "test:cy": "start-server-and-test dev https://localhost:3000 'npx cypress open'"
+}
+```
+
+## Testing login flow
+
+One our setup ready, we can start writing tests around our login flows:
+
+```js title="cypress/integration/logging.spec.js"
+describe("Logging flow", () => {
+  beforeEach(() => {
+    cy.visit("/")
+  })
+
+  it("logs in correctly", () => {
+    cy.findByText("Sign in").click()
+    cy.findByText("Sign in with Github").click()
+  })
+})
+```
+
+## By-passing login flow during tests
 
 ```bash npm2yarn
 npm install --save-dev cypress cypress-social-logins @testing-library/cypress
