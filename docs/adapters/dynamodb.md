@@ -125,6 +125,6 @@ NextAuthTable:
           - AttributeName: GSI1SK
             KeyType: RANGE
     TimeToLiveSpecification:
-        AttributeName: expires
-        Enabled: true
+      AttributeName: expires
+      Enabled: true
 ```
