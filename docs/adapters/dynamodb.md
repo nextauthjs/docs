@@ -124,4 +124,7 @@ NextAuthTable:
             KeyType: HASH
           - AttributeName: GSI1SK
             KeyType: RANGE
+    TimeToLiveSpecification:
+        AttributeName: expires
+        Enabled: true
 ```
