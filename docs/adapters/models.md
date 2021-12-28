@@ -51,7 +51,7 @@ Linking and unlinking accounts through an API is a planned feature: https://gith
 
 ## Session
 
-The Session model is used for database sessions. It is not used if JSON Web Tokens are enabled. Keep in mind, that you can use a database to persist Users and Accounts, and still use JWT for sessions. See the [`session.jwt`](/configuration/options#session) option.
+The Session model is used for database sessions. It is not used if JSON Web Tokens are enabled. Keep in mind, that you can use a database to persist Users and Accounts, and still use JWT for sessions. See the [`session.strategy`](/configuration/options#session) option.
 
 A single User can have multiple Sessions, each Session can only have one User.
 
