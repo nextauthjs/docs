@@ -5,7 +5,7 @@ title: Pages
 
 NextAuth.js automatically creates simple, unbranded authentication pages for handling Sign in, Sign out, Email Verification and displaying error messages.
 
-The options displayed on the sign up page are automatically generated based on the providers specified in the options passed to NextAuth.js.
+The options displayed on the sign-up page are automatically generated based on the providers specified in the options passed to NextAuth.js.
 
 To add a custom login page, you can use the `pages` option:
 
@@ -27,9 +27,9 @@ We purposefully restrict the returned error codes for increased security.
 
 ### Error page
 
-The following errors are passed as error query parameters to the default or overriden error page:
+The following errors are passed as error query parameters to the default or overridden error page:
 
-- **Configuration**: There is a problem with the server configuration. Check if your [options](/configuration/options#options) is correct.
+- **Configuration**: There is a problem with the server configuration. Check if your [options](/configuration/options#options) are correct.
 - **AccessDenied**: Usually occurs, when you restricted access through the [`signIn` callback](/configuration/callbacks#sign-in-callback), or [`redirect` callback](/configuration/callbacks#redirect-callback)
 - **Verification**: Related to the Email provider. The token has expired or has already been used
 - **Default**: Catch all, will apply, if none of the above matched
@@ -38,7 +38,7 @@ Example: `/auth/error?error=Configuration`
 
 ### Sign-in page
 
-The following errors are passed as error query parameters to the default or overriden sign-in page:
+The following errors are passed as error query parameters to the default or overridden sign-in page:
 
 - **OAuthSignin**: Error in constructing an authorization URL ([1](https://github.com/nextauthjs/next-auth/blob/457952bb5abf08b09861b0e5da403080cd5525be/src/server/lib/signin/oauth.js), [2](https://github.com/nextauthjs/next-auth/blob/main/src/server/lib/oauth/pkce-handler.js), [3](https://github.com/nextauthjs/next-auth/blob/main/src/server/lib/oauth/state-handler.js)),
 - **OAuthCallback**: Error in handling the response ([1](https://github.com/nextauthjs/next-auth/blob/main/src/server/lib/oauth/callback.js), [2](https://github.com/nextauthjs/next-auth/blob/main/src/server/lib/oauth/pkce-handler.js), [3](https://github.com/nextauthjs/next-auth/blob/main/src/server/lib/oauth/state-handler.js)) from an OAuth provider.

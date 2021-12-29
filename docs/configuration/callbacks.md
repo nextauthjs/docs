@@ -56,9 +56,9 @@ callbacks: {
 ...
 ```
 
-- When using the **Email Provider** the `signIn()` callback is triggered both when the user makes a **Verification Request** (before they are sent email with a link that will allow them to sign in) and again _after_ they activate the link in the sign in email.
+- When using the **Email Provider** the `signIn()` callback is triggered both when the user makes a **Verification Request** (before they are sent an email with a link that will allow them to sign in) and again _after_ they activate the link in the sign-in email.
 
-  Email accounts do not have profiles in the same way OAuth accounts do. On the first call during email sign in the `email` object will include a property `verificationRequest: true` to indicate it is being triggered in the verification request flow. When the callback is invoked _after_ a user has clicked on a sign in link, this property will not be present.
+  Email accounts do not have profiles in the same way OAuth accounts do. On the first call during email sign in the `email` object will include a property `verificationRequest: true` to indicate it is being triggered in the verification request flow. When the callback is invoked _after_ a user has clicked on a sign-in link, this property will not be present.
 
   You can check for the `verificationRequest` property to avoid sending emails to addresses or domains on a blocklist (or to only explicitly generate them for email address in an allow list).
 

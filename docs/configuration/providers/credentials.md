@@ -5,7 +5,7 @@ title: Credentials
 
 ### How to
 
-The Credentials provider allows you to handle signing in with arbitrary credentials, such as a username and password, two factor authentication or hardware device (e.g. YubiKey U2F / FIDO).
+The Credentials provider allows you to handle signing in with arbitrary credentials, such as a username and password, two-factor authentication or hardware device (e.g. YubiKey U2F / FIDO).
 
 It is intended to support use cases where you have an existing system you need to authenticate users against.
 

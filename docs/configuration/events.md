@@ -15,7 +15,7 @@ The execution of your authentication API will be blocked by an `await` on your e
 
 ### signIn
 
-Sent on successful sign in.
+Sent on a successful sign in.
 
 The message will be an object and contain:
 
@@ -41,7 +41,7 @@ The message object will contain the user.
 
 ### updateUser
 
-Sent when the adapter is told to update an existing user. Currently this is only sent when the user verifies their email address.
+Sent when the adapter is told to update an existing user. Currently, this is only sent when the user verifies their email address.
 
 The message object will contain the user.
 
