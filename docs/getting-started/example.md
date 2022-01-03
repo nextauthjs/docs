@@ -13,7 +13,7 @@ The easiest way to get started is to clone the [example app](https://github.com/
 
 ### Add API route
 
-To add NextAuth.js to a project create a file called `[...nextauth].js` in `pages/api/auth`. This contains the dynamic route handler for NextAuth.js which will also contain all of your global NextAuth.js configuration.
+To add NextAuth.js to a project create a file called `[...nextauth].js` in `pages/api/auth`. This contains the dynamic route handler for NextAuth.js which will also contain all of your global NextAuth.js configurations.
 
 ```javascript title="pages/api/auth/[...nextauth].js"
 import NextAuth from "next-auth"

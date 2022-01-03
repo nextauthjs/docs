@@ -55,7 +55,7 @@ See the [providers documentation](/configuration/providers/oauth) for a list of 
 
 #### Description
 
-A random string used to hash tokens, sign/encrypt cookies and generate cryptographic keys.
+A random string is used to hash tokens, sign/encrypt cookies and generate cryptographic keys.
 
 If not specified in development, it uses a hash for all configuration options, including OAuth Client ID / Secrets for entropy. Although if the user does not use such a provider, the configuration might be guessed.
 

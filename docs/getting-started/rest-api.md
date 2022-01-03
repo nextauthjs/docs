@@ -3,7 +3,7 @@ id: rest-api
 title: REST API
 ---
 
-NextAuth.js exposes a REST API which is used by the NextAuth.js client.
+NextAuth.js exposes a REST API that is used by the NextAuth.js client.
 
 #### `GET` /api/auth/signin
 
@@ -11,7 +11,7 @@ Displays the built-in/unbranded sign-in page.
 
 #### `POST` /api/auth/signin/:provider
 
-Starts a provider specific sign-in flow.
+Starts a provider-specific sign-in flow.
 
 The POST submission requires CSRF token from `/api/auth/csrf`.
 
@@ -36,7 +36,7 @@ Displays the built-in/unbranded sign out page.
 
 #### `POST` /api/auth/signout
 
-Handles signing the user out - this is a `POST` submission to prevent malicious links from triggering signing a user out without their consent. The user Session will be invalidated/removed from the cookie/database, depending on the flow you chose to [store sessions](/configuration/options#session).
+Handles signing the user out - this is a `POST` submission to prevent malicious links from triggering signing a user out without their consent. The user session will be invalidated/removed from the cookie/database, depending on the flow you chose to [store sessions](/configuration/options#session).
 
 The `POST` submission requires CSRF token from `/api/auth/csrf`.
 
