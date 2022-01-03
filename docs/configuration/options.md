@@ -59,7 +59,7 @@ A random string is used to hash tokens, sign/encrypt cookies and generate crypto
 
 If not specified in development, it uses a hash for all configuration options, including OAuth Client ID / Secrets for entropy. Although if the user does not use such a provider, the configuration might be guessed.
 
-You can quickly create a valid secret on the command line via this `openSSL` command.
+You can quickly create a valid secret on the command line via this `openssl` command.
 
 ```bash
 $ openssl rand -base64 32

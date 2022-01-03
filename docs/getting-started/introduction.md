@@ -34,7 +34,7 @@ _Note: Email sign-in requires a database to be configured to store single-use ve
 
 ### Secure by default
 
-- Promotes the use of a passwordless sign-in mechanisms
+- Promotes the use of passwordless sign-in mechanisms
 - Designed to be secure by default and encourage best practices for safeguarding user data
 - Uses Cross-Site Request Forgery Tokens on POST routes (sign in, sign out)
 - Default cookie policy aims for the most restrictive policy appropriate for each cookie
