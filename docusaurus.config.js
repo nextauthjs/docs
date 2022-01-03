@@ -129,7 +129,7 @@ module.exports = {
           ],
         },
       ],
-      copyright: "NextAuth.js &copy; Iain Collins 2021",
+      copyright: `NextAuth.js &copy; Iain Collins ${new Date().getFullYear()}`,
     },
     colorMode: {
       respectPrefersColorScheme: true,
