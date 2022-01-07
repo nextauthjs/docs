@@ -24,7 +24,7 @@ export default function MyAdapter(client, options = {}) {
     async getUserByEmail(email) {
       return
     },
-    async getUserByAccount({ provider, id }) {
+    async getUserByAccount({providerAccountId, provider}) {
       return
     },
     async updateUser(user) {
@@ -36,7 +36,7 @@ export default function MyAdapter(client, options = {}) {
     async linkAccount(account) {
       return
     },
-    async unlinkAccount({ provider, id }) {
+    async unlinkAccount({ providerAccountId, provider}) {
       return
     },
     async createSession({ sessionToken, userId, expires }) {
