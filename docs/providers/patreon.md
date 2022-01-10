@@ -17,7 +17,7 @@ https://docs.patreon.com/#apiv2-oauth
 
 The **Patreon Provider** comes with a set of default options:
 
-- [Patreon Provider options](https://github.com/nextauthjs/next-auth/blob/main/src/providers/patreon.js)
+- [Patreon Provider options](https://github.com/nextauthjs/next-auth/blob/main/src/providers/patreon.ts)
 
 You can override any of the options to suit your own use case.
 
