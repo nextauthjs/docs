@@ -49,6 +49,8 @@ Create an `.env` file to the root of your project and add the connection string 
 Now you can add the email provider like this:
 
 ```js {3} title="pages/api/auth/[...nextauth].js"
+import EmailProvider from "next-auth/providers/email";
+...
 providers: [
   EmailProvider({
     server: process.env.EMAIL_SERVER,
@@ -72,6 +74,8 @@ EMAIL_FROM=noreply@example.com
 Now you can add the provider settings to the NextAuth options object in the Email Provider.
 
 ```js title="pages/api/auth/[...nextauth].js"
+import EmailProvider from "next-auth/providers/email";
+...
 providers: [
   EmailProvider({
     server: {
@@ -100,6 +104,8 @@ You can fully customize the sign in email that is sent by passing a custom funct
 e.g.
 
 ```js {3} title="pages/api/auth/[...nextauth].js"
+import EmailProvider from "next-auth/providers/email";
+...
 providers: [
   EmailProvider({
     server: process.env.EMAIL_SERVER,
