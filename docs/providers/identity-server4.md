@@ -3,13 +3,14 @@ id: identity-server4
 title: IdentityServer4
 ---
 
+:::warning
+[IdentityServer4 is discontinued](https://identityserver4.readthedocs.io/en/latest/#:~:text=until%20November%202022.) and only releases security updates until November 2022. You should consider an alternative provider.
+:::
+
+
 ## Documentation
 
 https://identityserver4.readthedocs.io/en/latest/
-
-:::warning
-[Identity Server 4 is discontinued](https://identityserver4.readthedocs.io/en/latest/#:~:text=until%20November%202022.) and only releases security updates until November 2022. You should consider an alternative provider.
-:::
 
 ## Options
 
