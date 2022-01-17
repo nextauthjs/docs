@@ -24,7 +24,7 @@ You'll also have to manually install [the driver for your database](https://sequ
 ```javascript title="pages/api/auth/[...nextauth].js"
 import NextAuth from "next-auth"
 import SequelizeAdapter from "@next-auth/sequelize-adapter"
-import Sequelize from "sequelize"
+import { Sequelize } from "sequelize"
 
 // https://sequelize.org/master/manual/getting-started.html#connecting-to-a-database
 const sequelize = new Sequelize("yourconnectionstring")
@@ -34,7 +34,7 @@ const sequelize = new Sequelize("yourconnectionstring")
 export default NextAuth({
   // https://next-auth.js.org/providers/overview
   providers: [],
-  adapter: Sequelize(sequelize),
+  adapter: SequelizeAdapter(sequelize),
 })
 ```
 
