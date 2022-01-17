@@ -17,6 +17,10 @@ If your Next.js application uses a custom base path, specify the route to the AP
 
 _e.g. `NEXTAUTH_URL=https://example.com/custom-route/api/auth`_
 
+:::tip
+When you're using a custom base path, you will need to pass the `basePath` page prop to the `<SessionProvider>`. More informations [here](/getting-started/client#custom-base-path).
+:::
+
 :::note
 On [Vercel](https://vercel.com) deployments, we will read the `VERCEL_URL` environment variable, so you won't need to define `NEXTAUTH_URL`.
 :::
@@ -472,30 +476,3 @@ Using a custom cookie policy may introduce security flaws into your application 
 :::
 
 ---
-
-### Custom base path
-When your Next.js application uses a custom base path, set the `NEXTAUTH_URL` environment variable to the route to the API endpoint in full - as in the example below.
-
-Also, make sure to pass the `basePath` page prop to the `<SessionProvider>` – as in the example below – so your custom base path is fully configured and used by NextAuth.
-  
-#### Example
-In this example, the custom base path used is `/custom-route`.
-
-```
-NEXTAUTH_URL=https://example.com/custom-route/api/auth
-```
-
-```jsx title="pages/_app.js"
-import { SessionProvider } from "next-auth/react"
-
-export default function App({
-  Component,
-  pageProps: { session, ...pageProps },
-}) {
-  return (
-    <SessionProvider session={session} basePath="/custom-route/api/auth">
-      <Component {...pageProps} />
-    </SessionProvider>
-  )
-}
-```
