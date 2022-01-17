@@ -11,7 +11,7 @@ https://goauthentik.io/docs/providers/oauth2
 
 The **Authentik Provider** comes with a set of default options:
 
-- [Keycloak Provider options](https://github.com/nextauthjs/next-auth/blob/main/src/providers/authentik.ts)
+- [Authentik Provider options](https://github.com/nextauthjs/next-auth/blob/main/src/providers/authentik.ts)
 
 You can override any of the options to suit your own use case.
 
