@@ -20,7 +20,8 @@ We have a list of official adapters that are distributed as their own packages u
 - [`neo4j`](./neo4j)
 - [`typeorm-legacy`](./typeorm)
 - [`sequelize`](./sequelize)
-- [`dgraph`](./dgraph) 
+- [`dgraph`](./dgraph)
+- [`upstash-redis`](./upstash-redis)
 
 ## Custom Adapter
 
