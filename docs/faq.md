@@ -331,7 +331,7 @@ JSON Web Tokens can be used for session tokens, but are also used for lots of ot
 
 By default tokens are not signed (JWS) but are encrypted (JWE). Since v4 we have implemented cookie chunking so that cookies over the 4kb limit get split and reassembled upon parsing.
 
-You can specify other valid algorithms - [as specified in RFC 7518](https://tools.ietf.org/html/rfc7517) - with either a secret (for symmetric encryption) or a public/private key pair (for a symmetric encryption).
+You can specify other valid algorithms - [as specified in RFC 7518](https://tools.ietf.org/html/rfc7517) - with either a secret (for symmetric encryption) or a public/private key pair (for asymmetric encryption).
 
 NextAuth.js will generate keys for you, but this will generate a warning at start up.
 
