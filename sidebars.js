@@ -67,6 +67,7 @@ module.exports = {
         "adapters/sequelize",
         "adapters/mikro-orm",
         "adapters/dgraph",
+        "adapters/upstash-redis",
       ],
     },
     "warnings",
