@@ -31,5 +31,5 @@ providers: [
 ```
 
 :::note
-`issuer` should include the slug – e.g. `https://my-keycloak-domain.com/application/o/My_Slug/`
+`issuer` should include the slug – e.g. `https://my-authentik-domain.com/application/o/My_Slug/`
 :::
