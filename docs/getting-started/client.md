@@ -455,7 +455,7 @@ If every one of your pages needs to be protected, you can do this in `getInitial
 
 ### Options
 
-The session state is automatically synchronized across all open tabs/windows and they are all updated whenever they gain or lose focus or the state changes in any of them (e.g. a user signs in or out).
+The session state is automatically synchronized across all open tabs/windows and they are all updated whenever they gain or lose focus or the state changes (e.g. a user signs in or out) when `refetchOnWindowFocus` is `true`.
 
 If you have session expiry times of 30 days (the default) or more then you probably don't need to change any of the default options in the Provider. If you need to, you can trigger an update of the session object across all tabs/windows by calling `getSession()` from a client side function.
 
@@ -473,6 +473,8 @@ export default function App({
       session={session}
       // Re-fetch session every 5 minutes
       refetchInterval={5 * 60}
+      // Re-fetches session when window is focused
+      refetchOnWindowFocus={true}
     >
       <Component {...pageProps} />
     </SessionProvider>
@@ -497,6 +499,14 @@ When `refetchInterval` is set to `0` (the default) there will be no session poll
 If set to any value other than zero, it specifies in seconds how often the client should contact the server to update the session state. If the session state has expired when it is triggered, all open tabs/windows will be updated to reflect this.
 
 The value for `refetchInterval` should always be lower than the value of the session `maxAge` [session option](/configuration/options#session).
+
+#### Refetch On Window Focus
+
+The `refetchOnWindowFocus` option can be used to control whether it automatically updates the session state when you switch a focus on tabs/windows.
+
+When `refetchOnWindowFocus` is set to `true` (the default) tabs/windows will be updated and initialize the components' state when they gain or lose focus.
+
+However, if it was set to `false`, it stops re-fetching the session and the components will stay as it is.
 
 :::note
 See [**the Next.js documentation**](https://nextjs.org/docs/advanced-features/custom-app) for more information on **\_app.js** in Next.js applications.
