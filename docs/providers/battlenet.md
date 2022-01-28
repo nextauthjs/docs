@@ -53,9 +53,15 @@ providers: [
 ]
 ...
 ```
-**note**: _openid_ should be always included in the scope list
+:::note
+`openid` should be always included in the scope list
+:::
 
-### NextAuth configuration to save the access token in the session
+
+### NextAuth configuration to save the access token to the user session
+:::tip
+The `accessToken` can be used to fetch profile data from a specific Game
+:::
 ```js
 ...
 export default NextAuth({
