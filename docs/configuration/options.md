@@ -23,7 +23,7 @@ _e.g. `NEXTAUTH_URL=https://example.com/custom-route/api/auth`_
 
 ### NEXTAUTH_SECRET
 
-Used to encrypt the NextAuth.js JWT, and to hash [email verification tokens](/adapters/models#verification-token). This is the default value for the [`secret`](/options#secret) option.
+Used to encrypt the NextAuth.js JWT, and to hash [email verification tokens](/adapters/models#verification-token). This is the default value for the [`secret`](/configuration/options#secret) option.
 
 ### NEXTAUTH_URL_INTERNAL
 

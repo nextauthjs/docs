@@ -6,7 +6,7 @@ You can use a Next.js Middleware with NextAuth.js to protect your site.
 
 Next.js 12 has introduced [Middleware](https://nextjs.org/docs/middleware). It is a way to run logic before accessing any page, even when they are static. On platforms like Vercel, Middleware is run at the [Edge](https://nextjs.org/docs/api-reference/edge-runtime).
 
-If the following options look familiar, this is because they are a subset of [these options](/configuration/options). You can extract these to a common configuration object to reuse them. In the future, we would like to be able to run everything in Middleware. (See [Caveats](#caveats)).
+If the following options look familiar, this is because they are a subset of [these options](/configuration/options#options). You can extract these to a common configuration object to reuse them. In the future, we would like to be able to run everything in Middleware. (See [Caveats](#caveats)).
 
 You can get the `withAuth` middleware function from `next-auth/middleware` either as a default or a named import:
 
@@ -115,8 +115,8 @@ import type { JWT } from "next-auth"
 
 import { withAuth } from "next-auth/middleware"
 
-export default withAuth(function middleware(req: NextRequest & { token: JWT }) {
-  console.log(req.token)
+export default withAuth(function middleware(req: NextRequest & { nextauth: { token: JWT } }) {
+  console.log(req.nextauth.token)
 }, {
   callbacks: {
     authorized: ({ token }) => token?.role === "admin"
@@ -131,4 +131,4 @@ The `middleware` function will only be invoked if the `authorized` callback retu
 ### Caveats
 
 - Currently only supports session verification, as parts of the sign-in code need to run in a Node.js environment. In the future, we would like to make sure that NextAuth.js can fully run at the [Edge](https://nextjs.org/docs/api-reference/edge-runtime)
-- Only supports the `"jwt"` [session strategy](/options#session). We need to wait until databases at the Edge become mature enough to ensure a fast experience. (If you know of an Edge-compatible database, we would like if you proposed a new [Adapter](http://localhost:3000/tutorials/creating-a-database-adapter))
+- Only supports the `"jwt"` [session strategy](/configuration/options#session). We need to wait until databases at the Edge become mature enough to ensure a fast experience. (If you know of an Edge-compatible database, we would like if you proposed a new [Adapter](/tutorials/creating-a-database-adapter))
