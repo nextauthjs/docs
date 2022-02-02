@@ -11,7 +11,6 @@ module.exports = {
         "getting-started/rest-api",
         "getting-started/typescript",
         "getting-started/upgrade-v4",
-        "getting-started/next",
       ],
     },
     {
@@ -35,6 +34,7 @@ module.exports = {
         "configuration/pages",
         "configuration/callbacks",
         "configuration/events",
+        "configuration/nextjs",
       ],
     },
     {
