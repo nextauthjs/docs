@@ -1,15 +1,15 @@
 # Deployment
 
-Deploying NextAuth.js only requires a few steps. It can be run anywhere a Next.js application can. Therefore, in a default configuration using only JWT OAuth providers, i.e. without a database, you will only need these few things in addition to your application:
+Deploying NextAuth.js only requires a few steps. It can be run anywhere a Next.js application can. Therefore, in a default configuration using only JWT session strategy, i.e. without a database, you will only need these few things in addition to your application:
 
 1. NextAuth.js environment variables  
    a. `NEXTAUTH_SECRET`  
    b. `NEXTAUTH_URL`
 
-2. NextAuth.js API Route and its configuration.  
+2. NextAuth.js API Route and its configuration (`/pages/api/auth/[...nextauth].js`).  
    a. OAuth Provider `clientId` / `clientSecret`
 
-Deploying a modern Javascript application using NextAuth.js then consists of simply making sure your environment variables are set correctly as well as the configuration in the NextAuth.js API route is setup, as well as any configuration (like Callback URLs, etc.) are correctly done in your OAuth provider(s) themselves.
+Deploying a modern JavaScript application using NextAuth.js consists of making sure your environment variables are set correctly as well as the configuration in the NextAuth.js API route is setup, as well as any configuration (like Callback URLs, etc.) are correctly done in your OAuth provider(s) themselves.
 
 See below for more detailed provider settings.
 
@@ -23,7 +23,7 @@ See below for more detailed provider settings.
 
 Example repository: https://github.com/nextauthjs/next-auth-example
 
-A few notes about deploying to Vercel. The environment variables are read server-side, so you do not need to prefix them with `NEXT_PUBLIC_`. Also, we support reading the current environment's URL from the Vercel provided `VERCEL_URL` environment variable. Therefore, when deploying here, you do not need to explicitly set the `NEXTAUTH_URL` environment variable as well. With other providers **you will** need to also set this environment variable.
+A few notes about deploying to Vercel. The environment variables are read server-side, so you do not need to prefix them with `NEXT_PUBLIC_`. When deploying here, you do not need to explicitly set the `NEXTAUTH_URL` environment variable. With other providers **you will** need to also set this environment variable.
 
 ### Securing a preview deployment
 
@@ -37,8 +37,6 @@ Some things to be aware of here, include:
 
 - Do not let this potential testing-only user have access to any critical data
 - If possible, maybe do not even connect this preview deployment to your production database
-
-See: https://github.com/nextauthjs/docs/issues/19
 
 #### Using the branch based preview URL
 

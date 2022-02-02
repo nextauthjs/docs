@@ -155,7 +155,7 @@ export default function Component() {
 }
 ```
 
-### Deploying to production
+## Deploying to production
 
 When deploying your site set the `NEXTAUTH_URL` environment variable to the canonical URL of the website.
 
@@ -168,3 +168,5 @@ In production, this needs to be set as an environment variable on the service yo
 
 To set environment variables on Vercel, you can use the [dashboard](https://vercel.com/dashboard) or the `vercel env pull` [command](https://vercel.com/docs/build-step#development-environment-variables).
 :::
+
+For more information please check out our [deployment page](/deployment).
