@@ -108,7 +108,7 @@ Yes! Check out the [TypeScript docs](/getting-started/typescript)
 </summary>
 <p>
 
-[Next.js Middleware](https://nextjs.org/docs/middleware) is supported. Head over to the [this page](/getting-started/next#middleware)
+[Next.js Middleware](https://nextjs.org/docs/middleware) is supported. Head over to the [this page](/configuration/nextjs#middleware)
 
 </p>
 </details>
