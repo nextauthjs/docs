@@ -23,7 +23,7 @@ _e.g. `NEXTAUTH_URL=https://example.com/custom-route/api/auth`_
 
 ### NEXTAUTH_SECRET
 
-Used to encrypt the NextAuth.js JWT, and to hash [E-mail one-time](/adapters/models#verification-token) tokens. This is the default value for the [`secret`](/options#secret) option.
+Used to encrypt the NextAuth.js JWT, and to hash [email verification tokens](/adapters/models#verification-token). This is the default value for the [`secret`](/options#secret) option.
 
 ### NEXTAUTH_URL_INTERNAL
 
@@ -76,7 +76,7 @@ $ openssl rand -base64 32
 ```
 
 :::tip
-If you rely on the default secret generation in development, you might notice JWT decryption errors, since the secret changes whenever you change your configuration. Defining a secret will make this problem go away. We will likely make this option mandatory even in development in the future.
+If you rely on the default secret generation in development, you might notice JWT decryption errors, since the secret changes whenever you change your configuration. Defining an explicit secret will make this problem go away. We will likely make this option mandatory, even in development, in the future.
 :::
 
 ---
@@ -121,16 +121,14 @@ session: {
 
 #### Description
 
-JSON Web Tokens can be used for session tokens if enabled with `session: { strategy: "jwt" }` option. JSON Web Tokens are enabled by default if you have not specified a database.
+JSON Web Tokens can be used for session tokens if enabled with `session: { strategy: "jwt" }` option. JSON Web Tokens are enabled by default if you have not specified an adapter.
 
-By default JSON Web Tokens are encrypted (JWE). We recommend you keep this behaviour, but you can override it by defining your own `encode` and `decode` methods.
+JSON Web Tokens are encrypted (JWE) by default. We recommend you keep this behaviour, but you can override this using the `encode` and `decode` methods.
 
 #### JSON Web Token Options
 
 ```js
 jwt: {
-  // A secret to use for JWT encryption. Use `NEXTAUTH_SECRET` environment variable instead.
-  secret: 'INp8IvdIyeMcoGAgFGoA61DdBglwwSqnXJZkgz8PSnw',
   // The maximum age of the NextAuth.js issued JWT in seconds.
   // Defaults to `session.maxAge`.
   maxAge: 60 * 60 * 24 * 30,
