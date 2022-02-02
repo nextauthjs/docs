@@ -18,8 +18,12 @@ If your Next.js application uses a custom base path, specify the route to the AP
 _e.g. `NEXTAUTH_URL=https://example.com/custom-route/api/auth`_
 
 :::note
-On [Vercel](https://vercel.com) deployments, we will read the `VERCEL_URL` environment variable, so you won't need to define `NEXTAUTH_URL`.
+**We automatically detect when you deploy to [Vercel](https://vercel.com)** so **you don't have to define this variable**.
 :::
+
+### NEXTAUTH_SECRET
+
+Used to encrypt the NextAuth.js JWT, and to hash [E-mail one-time](/adapters/models#verification-token) tokens. This is the default value for the [`secret`](/options#secret) option.
 
 ### NEXTAUTH_URL_INTERNAL
 
@@ -57,20 +61,22 @@ See the [providers documentation](/configuration/providers/oauth) for a list of 
 
 A random string is used to hash tokens, sign/encrypt cookies and generate cryptographic keys.
 
-If not specified in development, it uses a hash for all configuration options, including OAuth Client ID / Secrets for entropy. Although if the user does not use such a provider, the configuration might be guessed.
+If you set [`NEXTAUTH_SECRET`](#nextauth_secret) as an environment variable, you don't have to define this option.
 
-You can quickly create a valid secret on the command line via this `openssl` command.
+If no value specified specified in development (and there is no `NEXTAUTH_SECRET` variable either), it uses a hash for all configuration options, including OAuth Client ID / Secrets for entropy.
+
+:::warning
+Not providing any `secret` or `NEXTAUTH_SECRET` will throw [an error](/errors#no_secret) in production.
+:::
+
+You can quickly create a good value on the command line via this `openssl` command.
 
 ```bash
 $ openssl rand -base64 32
 ```
 
-:::warning
-The default behaviour is volatile, and it is strongly recommended you explicitly specify a value. If `secret` is omitted in production, an error is thrown.
-:::
-
 :::tip
-If you rely on the default secret generation in development, you might notice JWT decryption errors, since the secret changes whenever you change your configuration. Defining a secret will make this problem go away.
+If you rely on the default secret generation in development, you might notice JWT decryption errors, since the secret changes whenever you change your configuration. Defining a secret will make this problem go away. We will likely make this option mandatory even in development in the future.
 :::
 
 ---
@@ -123,7 +129,7 @@ By default JSON Web Tokens are encrypted (JWE). We recommend you keep this behav
 
 ```js
 jwt: {
-  // A secret to use for key generation. Defaults to the top-level `secret`.
+  // A secret to use for JWT encryption. Use `NEXTAUTH_SECRET` environment variable instead.
   secret: 'INp8IvdIyeMcoGAgFGoA61DdBglwwSqnXJZkgz8PSnw',
   // The maximum age of the NextAuth.js issued JWT in seconds.
   // Defaults to `session.maxAge`.
@@ -154,23 +160,25 @@ You can use the built-in `getToken()` helper method to verify and decrypt the to
 ```js
 import { getToken } from "next-auth/jwt"
 
-const secret = process.env.JWT_SECRET
+const secret = process.env.NEXTAUTH_SECRET
 
-export default async (req, res) => {
+export default async function handler(req, res) {
+  // if using `NEXTAUTG_SECRET` env variable, we detect it, and you won't actually need to `secret`
+  // const token = await getToken({ req })
   const token = await getToken({ req, secret })
   console.log("JSON Web Token", token)
   res.end()
 }
 ```
 
-_For convenience, this helper function is also able to read and decode tokens passed in an HTTP Bearer header._
+_For convenience, this helper function is also able to read and decode tokens passed from the `Authorization: 'Bearer token'` HTTP header._
 
 **Required**
 
 The getToken() helper requires the following options:
 
 - `req` - (object) Request object
-- `secret` - (string) JWT Secret
+- `secret` - (string) JWT Secret. Use `NEXTAUTH_SECRET` instead.
 
 You must also pass _any options configured on the `jwt` option_ to the helper.
 
@@ -277,7 +285,7 @@ events: {
   async signIn(message) { /* on successful sign in */ },
   async signOut(message) { /* on signout */ },
   async createUser(message) { /* user created */ },
-  async updateUser(message) { /* user updated - e.g. their email was verified */ },
+  async updateUser(message) { /* user updated - e.g. their email was verified */ },
   async linkAccount(message) { /* account (e.g. Twitter) linked to a user */ },
   async session(message) { /* session is active */ },
   async error(message) { /* error in authentication flow */ }

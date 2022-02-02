@@ -11,6 +11,7 @@ module.exports = {
         "getting-started/rest-api",
         "getting-started/typescript",
         "getting-started/upgrade-v4",
+        "getting-started/next",
       ],
     },
     {
@@ -72,5 +73,6 @@ module.exports = {
     },
     "warnings",
     "errors",
+    "deployment",
   ],
 }

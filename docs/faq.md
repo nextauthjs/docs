@@ -108,7 +108,7 @@ Yes! Check out the [TypeScript docs](/getting-started/typescript)
 </summary>
 <p>
 
-Support for [Next.js Middleware](https://nextjs.org/docs/middleware) is under development, and there is a proof-of-concept for simple token validation/redirect. For more information or if you have feedback, visit the following issue https://github.com/nextauthjs/next-auth/issues/3037
+[Next.js Middleware](https://nextjs.org/docs/middleware) is supported. Head over to the [this page](/getting-started/next#middleware)
 
 </p>
 </details>
