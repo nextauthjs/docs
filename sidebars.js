@@ -72,5 +72,6 @@ module.exports = {
     },
     "warnings",
     "errors",
+    "showcase",
   ],
 }
