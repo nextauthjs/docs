@@ -18,12 +18,14 @@ If your Next.js application uses a custom base path, specify the route to the AP
 _e.g. `NEXTAUTH_URL=https://example.com/custom-route/api/auth`_
 
 :::note
-**We automatically detect when you deploy to [Vercel](https://vercel.com)** so **you don't have to define this variable**.
+We automatically detect when you deploy to [Vercel](https://vercel.com) so you don't have to define this variable.
 :::
 
 ### NEXTAUTH_SECRET
 
-Used to encrypt the NextAuth.js JWT, and to hash [email verification tokens](/adapters/models#verification-token). This is the default value for the [`secret`](/configuration/options#secret) option.
+Used to encrypt the NextAuth.js JWT, and to hash [email verification tokens](/adapters/models#verification-token). This is the default value for the [`secret`](/configuration/options#secret) option. The `secret` option might be removed in the future in favor of this.
+
+If you are using [Middleware](/configuration/nextjs#prerequisites) this environment variables must be set.
 
 ### NEXTAUTH_URL_INTERNAL
 
