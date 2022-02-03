@@ -29,6 +29,10 @@ These warnings are displayed on the terminal.
 
 In development, we generate a `secret` based on your configuration for convenience. This is volatile and will throw an error in production. [Read more](https://next-auth.js.org/configuration/options#secret)
 
+#### TWITTER_OAUTH_2_BETA
+
+Twitter OAuth 2.0 is currently in beta as certain changes might still be necessary. This is not covered by semver. See the docs https://next-auth.js.org/providers/twitter#oauth-2
+
 ## Adapter
 
 ### ADAPTER_TYPEORM_UPDATING_ENTITIES

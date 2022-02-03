@@ -34,6 +34,7 @@ module.exports = {
         "configuration/pages",
         "configuration/callbacks",
         "configuration/events",
+        "configuration/nextjs",
       ],
     },
     {
@@ -72,5 +73,6 @@ module.exports = {
     },
     "warnings",
     "errors",
+    "deployment",
   ],
 }

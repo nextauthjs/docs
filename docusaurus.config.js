@@ -69,13 +69,13 @@ module.exports = {
         },
       ],
     },
-    announcementBar: {
-      id: "new-major-announcement",
-      content:
-        "The default documentation is for v4 which has been released to GA 🚨 migration to <b>v4</b> docs can be found <a href='/getting-started/upgrade-v4'>here</a> 👈 The old v3 docs can be found <a href='/v3/getting-started/introduction'>here</a>.",
-      backgroundColor: "#1786fb",
-      textColor: "#fff",
-    },
+    // announcementBar: {
+    //   id: "new-major-announcement",
+    //   content:
+    //     "The default documentation is for v4 which has been released to GA 🚨 migration to <b>v4</b> docs can be found <a href='/getting-started/upgrade-v4'>here</a> 👈 The old v3 docs can be found <a href='/v3/getting-started/introduction'>here</a>.",
+    //   backgroundColor: "#1786fb",
+    //   textColor: "#fff",
+    // },
     footer: {
       links: [
         {
