@@ -2,11 +2,11 @@
 
 Deploying NextAuth.js only requires a few steps. It can be run anywhere a Next.js application can. Therefore, in a default configuration using only JWT session strategy, i.e. without a database, you will only need these few things in addition to your application:
 
-1. NextAuth.js environment variables  
-   a. `NEXTAUTH_SECRET`  
+1. NextAuth.js environment variables
+   a. `NEXTAUTH_SECRET`
    b. `NEXTAUTH_URL`
 
-2. NextAuth.js API Route and its configuration (`/pages/api/auth/[...nextauth].js`).  
+2. NextAuth.js API Route and its configuration (`/pages/api/auth/[...nextauth].js`).
    a. OAuth Provider `clientId` / `clientSecret`
 
 Deploying a modern JavaScript application using NextAuth.js consists of making sure your environment variables are set correctly as well as the configuration in the NextAuth.js API route is setup, as well as any configuration (like Callback URLs, etc.) are correctly done in your OAuth provider(s) themselves.
@@ -15,9 +15,10 @@ See below for more detailed provider settings.
 
 ## Vercel
 
-1. Make sure to expose [System Environment Variables](https://vercel.com/docs/concepts/projects/environment-variables#system-environment-variables) in your project settings.
+1. Make sure to expose the Vercel [System Environment Variables](https://vercel.com/docs/concepts/projects/environment-variables#system-environment-variables) in your project settings.
 2. Create a `NEXTAUTH_SECRET` environment variable for all environments.
    a. You can use `openssl rand -base64 32` or https://generate-secret.vercel.app/32 to generate a random value.
+   b. You **do not** need the `NEXTAUTH_URL` environment variable in Vercel.
 3. Add your provider's client ID and client secret to environment variables. _(Skip this step if not using an [OAuth Provider](/configuration/providers/oauth))_
 4. Deploy!
 
@@ -37,6 +38,50 @@ Some things to be aware of here, include:
 
 - Do not let this potential testing-only user have access to any critical data
 - If possible, maybe do not even connect this preview deployment to your production database
+
+For example
+
+```js title="/pages/api/auth/[...nextauth].js"
+import NextAuth from "next-auth"
+import GoogleProvider from "next-auth/providers/google"
+import CredentialsProvider from "next-auth/providers/credentials"
+
+const previewLogin = CredentialsProvider({
+  name: "Credentials",
+  credentials: {
+    username: { label: "Username", type: "text", placeholder: "jsmith" },
+    password: { label: "Password", type: "password" },
+  },
+  async authorize() {
+    const user = () => {
+      return {
+        id: 1,
+        name: "J Smith",
+        email: "jsmith@example.com",
+        image: "https://i.pravatar.cc/150?u=jsmith@example.com",
+      }
+    }
+    if (user) {
+      return user()
+    } else {
+      return null
+    }
+  },
+})
+
+const options = {
+  providers: [
+    GoogleProvider({
+      clientId: process.env.GOOGLE_ID,
+      clientSecret: process.env.GOOGLE_SECRET,
+    }),
+    process.env.VERCEL_ENV === "preview" && previewLogin,
+  ],
+  ...
+}
+
+export default (req, res) => NextAuth(req, res, options)
+```
 
 #### Using the branch based preview URL
 
