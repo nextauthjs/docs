@@ -61,11 +61,7 @@ const previewLogin = CredentialsProvider({
         image: "https://i.pravatar.cc/150?u=jsmith@example.com",
       }
     }
-    if (user) {
-      return user()
-    } else {
-      return null
-    }
+    return user()
   },
 })
 
