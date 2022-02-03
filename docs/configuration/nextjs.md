@@ -10,27 +10,18 @@ If the following options look familiar, this is because they are a subset of [th
 
 You can get the `withAuth` middleware function from `next-auth/middleware` either as a default or a named import:
 
+### Prerequisites
+
+You must set the [`NEXTAUTH_SECRET`](/configuration/options#nextauth_secret) environment variable when using this middleware. If you are using the [`secret` option](/configuration/options#secret) this value must match.
+
+**We strongly recommend** replacing the `secret` value completely with this `NEXTAUTH_SECRET` environment variable. This environment variable will be picked up by both the [NextAuth config](/configuration/options#options), as well as the middleware config.
+
+---
+
 ```js
 import withAuth from "next-auth/middleware"
 // or
 import { withAuth } from "next-auth/middleware"
-```
-
----
-
-### `secret`
-
-- **Default value:** [`NEXTAUTH_SECRET`](/configuration/options#nextauth_secret)
-- **Required:** Yes (if `NEXTAUTH_SECRET` is not set)
-
-#### Description
-
-A random string that is used encrypt/decrypt the JWT session.
-
-#### Example (default value)
-
-```js
- secret: process.env.NEXTAUTH_SECRET
 ```
 
 ---
