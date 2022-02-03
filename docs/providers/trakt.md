@@ -42,7 +42,7 @@ providers: [
     clientId: process.env.TRAKT_ID,
     clientSecret: process.env.TRAKT_SECRET,
     authorization: {
-      url: "https://api-staging.trakt.tv/oauth/authorize",
+      url: "https://staging.trakt.tv/oauth/authorize",
     },
     token: "https://api-staging.trakt.tv/oauth/token",
     userinfo: {
