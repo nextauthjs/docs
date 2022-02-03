@@ -5,7 +5,7 @@ title: Trakt
 
 ## Documentation
 
-https://trakt.docs.apiary.io
+https://trakt.docs.apiary.io/#reference/authentication-oauth
 
 ## Configuration
 
