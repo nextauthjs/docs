@@ -31,6 +31,8 @@ import SAMLJacksonProvider from "next-auth/providers/saml-jackson"
 providers: [
   SAMLJacksonProvider({
     issuer: "http://localhost:5000",
+    clientId: "dummy", // The dummy here is necessary since we'll pass tenant and product custom attributes in the client code
+    clientSecret: "dummy", // The dummy here is necessary since we'll pass tenant and product custom attributes in the client code
   })
 }
 ...
