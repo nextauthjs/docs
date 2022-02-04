@@ -3,7 +3,7 @@ id: typescript
 title: TypeScript
 ---
 
-NextAuth.js comes with its own type definitions, so you can safely use it in your TypeScript projects. Even if you don't use TypeScript, IDEs like VSCode will pick this up, to provide you with a better developer experience. While you are typing, you will get suggestions about what certain objects/functions look like, and sometimes also links to documentation, examples and other useful resources.
+NextAuth.js has its own type definitions to use in your TypeScript projects safely. Even if you don't use TypeScript, IDEs like VSCode will pick this up to provide you with a better developer experience. While you are typing, you will get suggestions about what certain objects/functions look like, and sometimes links to documentation, examples, and other valuable resources.
 
 Check out the example repository showcasing how to use `next-auth` on a Next.js application with TypeScript:  
 https://github.com/nextauthjs/next-auth-typescript-example
@@ -41,7 +41,7 @@ This will work in code editors with a strong TypeScript integration like VSCode 
 
 ## Module Augmentation
 
-`next-auth` comes with certain types/interfaces, that are shared across submodules. Good examples are `Session` and `JWT`. Ideally, you should only need to create these types at a single place, and TS should pick them up in every location where they are referenced. Luckily, this is exactly what Module Augmentation can do for us. Define your shared interfaces in a single location, and get type-safety across your application, when you use `next-auth` (or one of its submodules).
+`next-auth` comes with certain types/interfaces that are shared across submodules. Good examples are `Session` and `JWT`. Ideally, you should only need to create these types at a single place, and TS should pick them up in every location where they are referenced. Luckily, Module Augmentation is exactly that, which can do this for us. Define your shared interfaces in a single place, and get type-safety across your application when using `next-auth` (or one of its submodules).
 
 ### Main module
 
@@ -86,6 +86,28 @@ declare module "next-auth" {
       /** The user's postal address. */
       address: string
     }
+  }
+}
+```
+
+#### Extend default interface properties
+
+By default, TypeScript will merge new interface properties and overwrite existing ones. In this case, the default session user properties will be overwritten, with the new one defined above.
+
+If you want to keep the default session user properties, you need to add them back into the newly declared interface:
+
+```ts title="types/next-auth.d.ts"
+import NextAuth, { DefaultSession } from "next-auth";
+
+declare module "next-auth" {
+  /**
+   * Returned by `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context
+   */
+  interface Session {
+    user: {
+      /** The user's postal address. */
+      address: string
+    } & DefaultSession["user"]
   }
 }
 ```
@@ -137,5 +159,5 @@ declare module "next-auth/jwt" {
 Contributions of any kind are always welcome, especially for TypeScript. Please keep in mind that we are a small team working on this project in our free time. We will try our best to give support, but if you think you have a solution for a problem, please open a PR!
 
 :::note
-When contributing to TypeScript, if the actual JavaScript user API does not change in a breaking manner, we reserve the right to push any TypeScript change in a minor release. This is to ensure that we can keep us on a faster release cycle.
+When contributing to TypeScript, if the actual JavaScript user API does not change in a breaking manner, we reserve the right to push any TypeScript change in a minor release. This ensures that we can keep on a faster release cycle.
 :::
