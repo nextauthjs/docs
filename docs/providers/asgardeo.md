@@ -22,6 +22,8 @@ https://wso2.com/asgardeo/docs/guides/authentication
 In `.env` add the following entries:
 
 ```
+NEXTAUTH_URL=<Your application url e.g: http://localhost:3000>
+SECRET=<Your secret here>
 ASGARDEO_ORGANIZATION=<copy the organization name(tenant) here>
 ASGARDEO_CLIENT_ID=<copy Application (client) ID here>
 ASGARDEO_CLIENT_SECRET=<copy generated client secret value here>
