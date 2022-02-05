@@ -26,6 +26,8 @@
    </p>
 </p>
 
+### Note: We have migrated the docs [`nextauthjs/docs`](https://github.com/nextauthjs/docs) code to our new primary monorepo at [`nextauthjs/next-auth`](https://github.com/nextauthjs/next-auth). This repository will be deprecated and most likely archived in the future.
+
 ## Overview
 
 This is the repository for the documentation page for NextAuth.js!
