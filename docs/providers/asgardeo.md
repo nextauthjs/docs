@@ -24,7 +24,7 @@ In `.env` add the following entries:
 ```
 NEXTAUTH_URL=<Your application url e.g: http://localhost:3000>
 SECRET=<Your secret here>
-ASGARDEO_SERVER_ORIGIN=<copy the server origin taken from asgardeo console here>
+ASGARDEO_ORGANIZATION=<copy the organization/tenant taken from asgardeo console here>
 ASGARDEO_CLIENT_ID=<copy Application (client) ID here>
 ASGARDEO_CLIENT_SECRET=<copy generated client secret value here>
 ASGARDEO_SCOPES=<mention the scopes as a string here. e.g. "openid email profile internal_login">
