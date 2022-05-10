@@ -18,16 +18,16 @@ https://wso2.com/asgardeo/docs/guides/authentication
 - After registring the application, go to protocol tab.
 - Check `code` grant type.
 - Add Authorized redirect URLs & Allowed origins fields.
+- Make Email, First Name, Photo URL user attributes mandatory from the console.
 
 In `.env` add the following entries:
 
 ```
 NEXTAUTH_URL=<Your application url e.g: http://localhost:3000>
 SECRET=<Your secret here>
-ASGARDEO_ORGANIZATION=<copy the organization/tenant taken from asgardeo console here>
 ASGARDEO_CLIENT_ID=<copy Application (client) ID here>
 ASGARDEO_CLIENT_SECRET=<copy generated client secret value here>
-ASGARDEO_SCOPES=<mention the scopes as a string here. e.g. "openid email profile internal_login">
+ASGARDEO_ISSUER=<copy the serverOrigin param taken from asgardeo console here>
 ```
 
 In `pages/api/auth/[...nextauth].js` find or add the `Asgardeo` entries:
@@ -37,10 +37,9 @@ import AsgardeoProvider from "next-auth/providers/asgardeo";
 ...
 providers: [
   AsgardeoProvider({
-    serverOrigin: process.env.ASGARDEO_SERVER_ORIGIN,
     clientId: process.env.ASGARDEO_CLIENT_ID,
     clientSecret: process.env.ASGARDEO_CLIENT_SECRET,
-    scopes: process.env.ASGARDEO_SCOPES,
+    issuer: process.env.ASGARDEO_ISSUER
   }),
 ],
 secret: process.env.SECRET,
