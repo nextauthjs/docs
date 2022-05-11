@@ -8,9 +8,7 @@ title: Asgardeo
 https://wso2.com/asgardeo/docs/guides/authentication
 
 
-## Example
-
-### To allow specific Active Directory users access:
+## Instructions
 
 - Log into https://console.asgardeo.io.
 - Next, go to "Application" tab (More info: https://wso2.com/asgardeo/docs/guides/applications/register-oidc-web-app/).
