@@ -505,7 +505,7 @@ See [**the Next.js documentation**](https://nextjs.org/docs/advanced-features/cu
 ### Custom base path
 When your Next.js application uses a custom base path, set the `NEXTAUTH_URL` environment variable to the route to the API endpoint in full - as in the example below and as explained [here](/configuration/options#nextauth_url).
 
-Also, make sure to pass the `basePath` page prop to the `<SessionProvider>` – as in the example below – so your custom base path is fully configured and used by NextAuth.
+Also, make sure to pass the `basePath` page prop to the `<SessionProvider>` – as in the example below – so your custom base path is fully configured and used by NextAuth.js.
   
 #### Example
 In this example, the custom base path used is `/custom-route`.
