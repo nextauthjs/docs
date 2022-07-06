@@ -13,9 +13,13 @@ When deploying to production, set the `NEXTAUTH_URL` environment variable to the
 NEXTAUTH_URL=https://example.com
 ```
 
-If your Next.js application uses a custom base path, specify the route to the API endpoint in full.
+If your Next.js application uses a custom base path, specify the route to the API endpoint in full. More informations about the usage of custom base path [here](#custom-base-path).
 
 _e.g. `NEXTAUTH_URL=https://example.com/custom-route/api/auth`_
+
+:::tip
+When you're using a custom base path, you will need to pass the `basePath` page prop to the `<SessionProvider>`. More informations [here](/getting-started/client#custom-base-path).
+:::
 
 :::note
 We automatically detect when you deploy to [Vercel](https://vercel.com) so you don't have to define this variable.
@@ -478,3 +482,5 @@ cookies: {
 :::warning
 Using a custom cookie policy may introduce security flaws into your application and is intended as an option for advanced users who understand the implications. Using this option is not recommended.
 :::
+
+---
